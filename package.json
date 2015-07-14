@@ -1,0 +1,52 @@
+{
+  "name": "daily_schawarma",
+  "version": "1.1.0",
+  "description": "Webpack based build system",
+  "main": "index.js",
+  "scripts": {
+    "build": "TARGET=build webpack",
+    "lint": "eslint . --ext .js --ext .jsx",
+    "start": "TARGET=dev node lib/dev_server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^5.6.15",
+    "babel-eslint": "^3.1.20",
+    "babel-loader": "^5.2.2",
+    "css-loader": "^0.15.1",
+    "cssnext-loader": "^1.0.1",
+    "eslint": "^0.24.0",
+    "eslint-config-resmio": "0.0.6",
+    "eslint-loader": "^0.14.1",
+    "eslint-plugin-react": "^2.6.4",
+    "flowcheck": "^0.2.7",
+    "flowcheck-loader": "^1.0.0",
+    "html-webpack-plugin": "^1.5.2",
+    "node-libs-browser": "^0.5.2",
+    "react-hot-loader": "^1.2.7",
+    "style-loader": "^0.12.3",
+    "webpack": "^1.9.12",
+    "webpack-dev-server": "^1.9.0",
+    "webpack-merge": "^0.1.1"
+  },
+  "dependencies": {
+    "react": "^0.13.3"
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "extends": "resmio",
+    "env": {
+      "browser": true,
+      "node": true
+    },
+    "plugins": [
+      "react"
+    ],
+    "ecmaFeatures": {
+      "jsx": true,
+      "modules": true
+    }
+  }
+
+}
