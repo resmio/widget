@@ -7,6 +7,9 @@ export default class WidgetHeader extends React.Component {
     return (
       <div id="widgetHeader">
         <WidgetHeaderTitle facilityName={ this.props.facilityName } />
+        <h3>{ this.props.reservationCovers } persons</h3>
+        <h3>{ this.props.reservationDate }</h3>
+        <h3>{ this.props.reservationHours }:{ this.props.reservationMinutes }</h3>
       </div>
     );
   }
@@ -14,5 +17,9 @@ export default class WidgetHeader extends React.Component {
 }
 
 WidgetHeader.propTypes = {
-  facilityName: React.PropTypes.string.isRequired
+  facilityName: React.PropTypes.string.isRequired,
+  reservationCovers: React.PropTypes.integer,
+  reservationDate: React.PropTypes.string,
+  reservationHours: React.PropTypes.string,
+  reservationMinutes: React.PropTypes.string
 };
