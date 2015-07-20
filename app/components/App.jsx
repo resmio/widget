@@ -1,13 +1,7 @@
 import React from 'react';
 import WidgetHeader from './WidgetHeader';
 import WidgetMessage from './WidgetMessage';
-
-const SERVER_DATA = {
-  message: 'El torito les desea felices pascuas',
-  facilityName: 'El Torito',
-  reservationCovers: 2,
-  reservationDate: new Date()
-};
+import SERVER_DATA from '../FakeServerData';
 
 export default class App extends React.Component {
   render() {
