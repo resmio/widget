@@ -19,7 +19,6 @@ export default class App extends React.Component {
           facilityMessage={SERVER_DATA.message}
         />
         <PersonPicker />
-        { PersonPicker.state.numberOfPersons }
       </div>
     );
   }
