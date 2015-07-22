@@ -3,13 +3,13 @@ import './css/main.css';
 import React from 'react';
 import App from './js/App';
 import ServerData from './FakeServerData';
-import WidgetAPI from './js/utils/WidgetAPI';
+import ApiUtils from './js/utils/ApiUtils';
 
 // load mock availabilities data into localStorage
 ServerData.init();
 
 // load mock API call
-WidgetAPI.getAvailabilities();
+ApiUtils.getAvailabilities();
 
 function main() {
   const app = document.createElement('div');

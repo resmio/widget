@@ -1,9 +1,22 @@
 import React from 'react';
+import AvailabilitiesStore from './stores/AvailabilitiesStore';
+import ViewActionCreators from './actions/ViewActionCreators';
+
 import PersonPicker from './components/PersonPicker';
 import WidgetHeader from './components/WidgetHeader';
 import WidgetMessage from './components/WidgetMessage';
 
 export default class App extends React.Component {
+
+  componentDidMount() {
+    AvailabilitiesStore.addChangeListener(this.handleStoreChange);
+    ViewActionCreators.loadAvailabilities('2015-08-22');
+  }
+
+  componentWillUnmount() {
+    AvailabilitiesStore.removeChangeListener(this.handleStoreChange());
+  }
+
   render() {
     return (
       <div>
@@ -16,6 +29,17 @@ export default class App extends React.Component {
         <PersonPicker />
       </div>
     );
+  }
+
+  constructor(props) {
+    super(props);
+    this.state = AvailabilitiesStore.getState();
+
+    this.handleStoreChange = this.handleStoreChange.bind(this);
+  }
+
+  handleStoreChange() {
+    this.setState(AvailabilitiesStore.getState());
   }
 }
 

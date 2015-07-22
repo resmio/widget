@@ -1,11 +1,22 @@
 import {Dispatcher} from 'flux';
+import { PayloadSources } from '../constants/Constants';
 
 class AppDispatcher extends Dispatcher {
-  handleAction(action) {
-    this.dispatch({
-      source: 'VIEW_ACTION',
+
+  handleServerAction(action) {
+    const payload = {
+      source: PayloadSources.SERVER_ACTION,
       action: action
-    });
+    };
+    this.dispatch(payload);
+  }
+
+  handleViewAction(action) {
+    const payload = {
+      source: PayloadSources.VIEW_ACTION,
+      action: action
+    };
+    this.dispatch(payload);
   }
 }
 
