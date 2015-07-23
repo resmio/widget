@@ -7,7 +7,7 @@ const events = new EventEmitter();
 const CHANGE_EVENT = 'CHANGE';
 
 const state = {
-  availabilities: {},
+  availabilities: [1, 2, 3],
   loaded: false
 };
 
@@ -38,7 +38,7 @@ AvailabilitiesStore.dispatchToken = AppDispatcher.register((payload) => {
   if (action.type === ActionTypes.AVAILABILITIES_LOADED) {
     setState({
       loaded: true,
-      availabilities: action.availabilities
+      availabilities: [4, 5, 6]
     });
   }
 });

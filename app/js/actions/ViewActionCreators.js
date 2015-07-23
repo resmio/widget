@@ -4,11 +4,13 @@ import ApiUtil from '../utils/ApiUtils';
 
 const ViewActionCreators = {
 
-  loadAvailabilities(date) {
+  // Actions which originate on the view, they can fire other actions
+  // originating in the server for example
+  requestAvailabilities(date) {
     AppDispatcher.handleViewAction({
-      type: ActionTypes.LOAD_AVAILABILITIES
+      type: ActionTypes.AVAILABILITIES_REQUESTED
     });
-    ApiUtil.loadAvailabilities(date);
+    ApiUtil.requestAvailabilities(date);
   }
 
 };

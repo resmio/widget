@@ -5,8 +5,8 @@ export default {
 
   ActionTypes: keyMirror({
     AVAILABILITES_LOADED: null,
-    LOAD_AVAILABILITES: null,
-    SET_SELECTED: null   // Selects a timeslot
+    AVAILABILITIES_REQUESTED: null,
+    TIMESLOT_SELECTED: null   // Selects a timeslot
   }),
 
   PayloadSources: keyMirror({

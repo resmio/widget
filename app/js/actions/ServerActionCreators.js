@@ -2,10 +2,12 @@ import {ActionTypes} from '../constants/Constants';
 import AppDispatcher from '../dispatchers/AppDispatcher';
 
 const ServerActionCreators = {
+  // Actions that come from the server
+  // They can be fired from other actions and fire other actions.
 
-  loadedAvailabilities(availabilities) {
+  availabilitiesLoaded(availabilities) {
     AppDispatcher.handleServerAction({
-      type: ActionTypes.AVAILABILITES_LOADED,
+      actionType: ActionTypes.AVAILABILITES_LOADED,
       availabilities: availabilities
     });
   }
