@@ -35,6 +35,8 @@ export default class App extends React.Component {
     super(props);
     this.state = AvailabilitiesStore.getState();
 
+    // We need to bind functions here so this won't refer to React
+    // Will be solved in ES7
     this.handleStoreChange = this.handleStoreChange.bind(this);
   }
 

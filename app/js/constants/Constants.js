@@ -1,7 +1,7 @@
 import keyMirror from 'react/lib/keyMirror';
 
 export default {
-  API: 'https://app.resmio.com/v1/',
+  API: 'https://app.resmio.com/v1',
 
   ActionTypes: keyMirror({
     AVAILABILITES_LOADED: null,

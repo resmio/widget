@@ -4,11 +4,11 @@ import ApiUtil from '../utils/ApiUtils';
 
 const ViewActionCreators = {
 
-  loadAvailabilities() {
+  loadAvailabilities(date) {
     AppDispatcher.handleViewAction({
       type: ActionTypes.LOAD_AVAILABILITIES
     });
-    ApiUtil.loadAvailabilities();
+    ApiUtil.loadAvailabilities(date);
   }
 
 };
