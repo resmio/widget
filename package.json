@@ -31,6 +31,7 @@
     "webpack-merge": "^0.1.1"
   },
   "dependencies": {
+    "flux": "^2.0.3",
     "react": "^0.13.3"
   },
   "eslintConfig": {
@@ -48,5 +49,4 @@
       "modules": true
     }
   }
-
 }
