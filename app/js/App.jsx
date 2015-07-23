@@ -2,9 +2,9 @@ import React from 'react';
 import AvailabilitiesStore from './stores/AvailabilitiesStore';
 import ViewActionCreators from './actions/ViewActionCreators';
 
-// import PersonPicker from './components/PersonPicker';
-// import WidgetHeader from './components/WidgetHeader';
-// import WidgetMessage from './components/WidgetMessage';
+import PersonPicker from './components/PersonPicker';
+import WidgetHeader from './components/WidgetHeader';
+import WidgetMessage from './components/WidgetMessage';
 
 export default class App extends React.Component {
 
@@ -29,15 +29,16 @@ export default class App extends React.Component {
   }
 
   render() {
-        // <WidgetHeader
-        //   facilityName={this.props.facilityName}
-        // />
-        // <WidgetMessage
-        //   facilityMessage={this.props.widgetMessage}
-        // />
-        // <PersonPicker />
     return (
       <div>
+        <WidgetHeader
+          facilityName={this.props.facilityName}
+        />
+        <WidgetMessage
+          facilityMessage={this.props.widgetMessage}
+        />
+        <PersonPicker />
+
         <ul>{this.renderAvailabilities()}</ul>
       </div>
     );

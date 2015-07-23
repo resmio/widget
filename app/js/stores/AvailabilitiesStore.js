@@ -7,7 +7,7 @@ const events = new EventEmitter();
 const CHANGE_EVENT = 'CHANGE';
 
 const state = {
-  availabilities: [1, 2, 3],
+  availabilities: [],
   loaded: false
 };
 
