@@ -22,8 +22,8 @@ export default class App extends React.Component {
 
   renderAvailabilities() {
     return this.state.availabilities.map((availability) => {
-      return (<li key={availability.id}>
-        {availability}
+      return (<li key={availability.checksum}>
+        {availability.local_time_formatted}
       </li>);
     });
   }
@@ -45,7 +45,7 @@ export default class App extends React.Component {
 
   constructor(props) {
     super(props);
-    ViewActionCreators.requestAvailabilities('2015-08-22');
+    ViewActionCreators.requestAvailabilities('2015-08-20');
     // We are just getting the availabilites for the state of the app for now
     // This will change in the future
     this.state = AvailabilitiesStore.getState();

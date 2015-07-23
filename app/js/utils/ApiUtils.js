@@ -11,6 +11,7 @@ const ApiUtils = {
       if (err) {
         return err;
       }
+
       ServerActionCreators.availabilitiesLoaded(res.objects);
     });
   }

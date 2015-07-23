@@ -38,7 +38,7 @@ AvailabilitiesStore.dispatchToken = AppDispatcher.register((payload) => {
   if (action.type === ActionTypes.AVAILABILITIES_LOADED) {
     setState({
       loaded: true,
-      availabilities: [4, 5, 6]
+      availabilities: action.availabilities
     });
   }
 });

@@ -1,6 +1,6 @@
 import {ActionTypes} from '../constants/Constants';
 import AppDispatcher from '../dispatchers/AppDispatcher';
-import ApiUtil from '../utils/ApiUtils';
+import ApiUtils from '../utils/ApiUtils';
 
 const ViewActionCreators = {
 
@@ -10,7 +10,7 @@ const ViewActionCreators = {
     AppDispatcher.handleViewAction({
       type: ActionTypes.AVAILABILITIES_REQUESTED
     });
-    ApiUtil.requestAvailabilities(date);
+    ApiUtils.requestAvailabilities(date);
   }
 
 };
