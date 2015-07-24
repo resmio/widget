@@ -21,11 +21,14 @@ export default class App extends React.Component {
   }
 
   renderAvailabilities() {
-    return this.state.availabilities.map((availability) => {
+    const coveredAvailabilities = this.state.availabilities.filter(this.filterAvailabilitiesByCover);
+
+    return coveredAvailabilities.map((availability) => {
       return (<li key={availability.checksum}>
         {availability.local_time_formatted}
       </li>);
-    });
+    }
+  );
   }
 
   render() {
@@ -54,6 +57,10 @@ export default class App extends React.Component {
     // We need to bind functions here so this won't refer to React
     // Will be solved in ES7
     this.handleStoreChange = this.handleStoreChange.bind(this);
+  }
+
+  filterAvailabilitiesByCover(availability) {
+    return (availability.available >= 1);
   }
 
   handleStoreChange() {
