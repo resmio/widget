@@ -36,6 +36,7 @@ export default class App extends React.Component {
       <div>
         <WidgetHeader
           facilityName={this.props.facilityName}
+          reservationCovers={this.state.covers}
         />
         <WidgetMessage
           facilityMessage={this.props.widgetMessage}
