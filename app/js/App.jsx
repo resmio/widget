@@ -57,10 +57,11 @@ export default class App extends React.Component {
     // We need to bind functions here so this won't refer to React
     // Will be solved in ES7
     this.handleStoreChange = this.handleStoreChange.bind(this);
+    this.filterAvailabilitiesByCover = this.filterAvailabilitiesByCover.bind(this);
   }
 
   filterAvailabilitiesByCover(availability) {
-    return (availability.available >= 1);
+    return (availability.available >= this.state.covers);
   }
 
   handleStoreChange() {

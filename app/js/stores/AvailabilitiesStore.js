@@ -8,6 +8,7 @@ const CHANGE_EVENT = 'CHANGE';
 
 const state = {
   availabilities: [],
+  covers: 15,
   loaded: false
 };
 
