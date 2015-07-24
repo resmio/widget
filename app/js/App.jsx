@@ -40,7 +40,10 @@ export default class App extends React.Component {
         <WidgetMessage
           facilityMessage={this.props.widgetMessage}
         />
-        <PersonPicker />
+      <PersonPicker
+        numberOfCovers={ this.state.covers }
+        handleChange={ this.handleCoverInputChange }
+      />
 
         <ul>{this.renderAvailabilities()}</ul>
       </div>
@@ -56,6 +59,7 @@ export default class App extends React.Component {
 
     // We need to bind functions here so this won't refer to React
     // Will be solved in ES7
+    this.handleCoverInputChange = this.handleCoverInputChange.bind(this);
     this.handleStoreChange = this.handleStoreChange.bind(this);
     this.filterAvailabilitiesByCover = this.filterAvailabilitiesByCover.bind(this);
   }
@@ -66,6 +70,10 @@ export default class App extends React.Component {
 
   handleStoreChange() {
     this.setState(AvailabilitiesStore.getState());
+  }
+
+  handleCoverInputChange(event) {
+    ViewActionCreators.changeNumberOfCovers(parseInt(event.target.value, 10));
   }
 
 }

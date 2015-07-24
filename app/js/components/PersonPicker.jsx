@@ -8,24 +8,17 @@ export default class PersonPicker extends React.Component {
           <label htmlFor="persons">Persons</label>
           <input
             type="number"
-            onChange={this.handleChange}
+            onChange={this.props.handleChange}
             name="persons"
-            placeholder={ this.state.numberOfCovers}
-            value={this.state.numberOfCovers}
+            placeholder={ this.props.numberOfCovers}
           />
         </div>
     );
   }
 
-  handleChange(event) {
-    this.setState({numberOfCovers: event.target.value});
-  }
-
-  constructor() {
-    super();
-    this.state = {
-      numberOfCovers: 2
-    };
-  }
-
 }
+
+PersonPicker.propTypes = {
+  numberOfCovers: React.PropTypes.number.isRequired,
+  handleChange: React.PropTypes.func.isRequired
+};
