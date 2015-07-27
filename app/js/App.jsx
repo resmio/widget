@@ -21,11 +21,14 @@ export default class App extends React.Component {
   }
 
   renderAvailabilities() {
-    return this.state.availabilities.map((availability) => {
+    const coveredAvailabilities = this.state.availabilities.filter(this.filterAvailabilitiesByCover);
+
+    return coveredAvailabilities.map((availability) => {
       return (<li key={availability.checksum}>
         {availability.local_time_formatted}
       </li>);
-    });
+    }
+  );
   }
 
   render() {
@@ -33,11 +36,15 @@ export default class App extends React.Component {
       <div>
         <WidgetHeader
           facilityName={this.props.facilityName}
+          reservationCovers={this.state.covers}
         />
         <WidgetMessage
           facilityMessage={this.props.widgetMessage}
         />
-        <PersonPicker />
+      <PersonPicker
+        numberOfCovers={ this.state.covers }
+        handleChange={ this.handleCoverInputChange }
+      />
 
         <ul>{this.renderAvailabilities()}</ul>
       </div>
@@ -53,11 +60,21 @@ export default class App extends React.Component {
 
     // We need to bind functions here so this won't refer to React
     // Will be solved in ES7
+    this.handleCoverInputChange = this.handleCoverInputChange.bind(this);
     this.handleStoreChange = this.handleStoreChange.bind(this);
+    this.filterAvailabilitiesByCover = this.filterAvailabilitiesByCover.bind(this);
+  }
+
+  filterAvailabilitiesByCover(availability) {
+    return (availability.available >= this.state.covers);
   }
 
   handleStoreChange() {
     this.setState(AvailabilitiesStore.getState());
+  }
+
+  handleCoverInputChange(event) {
+    ViewActionCreators.changeNumberOfCovers(parseInt(event.target.value, 10));
   }
 
 }

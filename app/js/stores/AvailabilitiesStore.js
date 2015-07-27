@@ -8,6 +8,7 @@ const CHANGE_EVENT = 'CHANGE';
 
 const state = {
   availabilities: [],
+  covers: 2,
   loaded: false
 };
 
@@ -39,6 +40,12 @@ AvailabilitiesStore.dispatchToken = AppDispatcher.register((payload) => {
     setState({
       loaded: true,
       availabilities: action.availabilities
+    });
+  }
+
+  if (action.type === ActionTypes.NUMBER_OF_COVERS_CHANGED) {
+    setState({
+      covers: action.newCoverValue
     });
   }
 });

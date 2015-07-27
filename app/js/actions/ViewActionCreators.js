@@ -11,6 +11,13 @@ const ViewActionCreators = {
       type: ActionTypes.AVAILABILITIES_REQUESTED
     });
     ApiUtils.requestAvailabilities(date);
+  },
+
+  changeNumberOfCovers(value) {
+    AppDispatcher.handleViewAction({
+      type: ActionTypes.NUMBER_OF_COVERS_CHANGED,
+      newCoverValue: value
+    });
   }
 
 };
