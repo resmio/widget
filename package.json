@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "TARGET=build webpack",
-    "lint": "eslint . --ext .js --ext .jsx",
-    "start": "TARGET=dev node lib/dev_server.js"
+    "lint": "cd app/js && eslint . --ext .js --ext .jsx ; exit 0",
+    "start": "TARGET=dev node lib/dev_server.js",
+    "test": "cd app/js/__tests__ && babel-node *.js | faucet"
   },
   "author": "resmio team",
   "license": "ISC",

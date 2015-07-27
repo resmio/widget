@@ -10,7 +10,6 @@ const fixtures = {
 };
 
 test('Availabilities Store updates after an AVAILABILITIES_LOADED action', (assert) => {
-
   AppDispatcher.dispatch({
     source: PayloadSources.SERVER_ACTION,
     action: { actionType: ActionTypes.AVAILABILITES_LOADED,
@@ -18,7 +17,7 @@ test('Availabilities Store updates after an AVAILABILITIES_LOADED action', (asse
   });
 
   const expected = fixtures.availabilities;
-  const actual = AvailabilitiesStore.getState().availabilities
+  const actual = AvailabilitiesStore.getState().availabilities;
 
   assert.deepEqual(actual, expected,
     'The store gets the Availabilities from the dispatcher');
