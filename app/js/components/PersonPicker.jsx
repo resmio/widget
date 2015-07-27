@@ -8,8 +8,10 @@ export default class PersonPicker extends React.Component {
           <label htmlFor="persons">Persons</label>
           <input
             type="number"
-            onChange={this.props.handleChange}
             name="persons"
+            min="1"
+            step="1"
+            onChange={this.props.handleChange}
             placeholder={ this.props.numberOfCovers}
           />
         </div>
