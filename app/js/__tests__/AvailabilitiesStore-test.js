@@ -36,6 +36,9 @@ test('Availabilities Store availabilities update after an AVAILABILITIES_LOADED 
   assert.deepEqual(actual, expected,
     'The store should get the Availabilities from the dispatcher');
 
+  assert.equal(AvailabilitiesStore.getState().loaded, true,
+    'switch loaded to true ');
+
   teardown(fixture);
   assert.end();
 });
@@ -51,8 +54,9 @@ test('Availabilities Store covers update after a NUMBER_OF_COVERS_CHANGED action
   });
 
   const expected = fixture.covers;
+  const actual = AvailabilitiesStore.getState().covers;
 
-  assert.equal(AvailabilitiesStore.getState().covers, expected,
+  assert.equal(actual, expected,
     'The store should update its covers value after a NUMBER_OF_COVERS_CHANGED action');
 
   teardown(fixture);
