@@ -1,7 +1,7 @@
 import {ActionTypes} from '../constants/Constants';
 import AppDispatcher from '../dispatchers/AppDispatcher';
 
-const ServerActionCreators = {
+export default {
   // Actions that come from the server
   // They can be fired from other actions and fire other actions.
 
@@ -13,5 +13,3 @@ const ServerActionCreators = {
   }
 
 };
-
-export default ServerActionCreators;
