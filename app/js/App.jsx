@@ -5,6 +5,7 @@ import ViewActionCreators from './actions/ViewActionCreators';
 import PersonPicker from './components/PersonPicker';
 import WidgetHeader from './components/WidgetHeader';
 import WidgetMessage from './components/WidgetMessage';
+import SelectableDay from './components/SelectableDay';
 
 export default class App extends React.Component {
 
@@ -45,6 +46,7 @@ export default class App extends React.Component {
         numberOfCovers={ this.state.covers }
         handleChange={ this.handleCoverInputChange }
       />
+    <SelectableDay />
 
         <ul>{this.renderAvailabilities()}</ul>
       </div>

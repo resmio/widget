@@ -34,7 +34,8 @@
   },
   "dependencies": {
     "flux": "^2.0.3",
-    "react": "^0.13.3"
+    "react": "^0.13.3",
+    "react-day-picker": "^1.0.3"
   },
   "eslintConfig": {
     "parser": "babel-eslint",
