@@ -42,23 +42,3 @@ test('Availabilities Store availabilities update after an AVAILABILITIES_LOADED 
   teardown(fixture);
   assert.end();
 });
-
-
-test('Availabilities Store covers update after a NUMBER_OF_COVERS_CHANGED action', (assert) => {
-  const fixture = setup();
-
-  AppDispatcher.dispatch({
-    source: PayloadSources.VIEW_ACTION,
-    action: { actionType: ActionTypes.NUMBER_OF_COVERS_CHANGED,
-              newCoverValue: fixture.covers }
-  });
-
-  const expected = fixture.covers;
-  const actual = AvailabilitiesStore.getState().covers;
-
-  assert.equal(actual, expected,
-    'The store should update its covers value after a NUMBER_OF_COVERS_CHANGED action');
-
-  teardown(fixture);
-  assert.end();
-})
