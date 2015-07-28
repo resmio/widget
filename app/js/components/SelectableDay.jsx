@@ -1,6 +1,9 @@
 import React from 'react';
 import DayPicker from 'react-day-picker';
 import {isSameDay} from '../utils/DateUtils';
+// import './SelectableDay.css';
+import ViewActionCreators from '../actions/ViewActionCreators';
+import {formatDateForApi} from '../utils/ApiUtils';
 
 class SelectableDay extends React.Component {
 
@@ -28,10 +31,15 @@ class SelectableDay extends React.Component {
     this.state = {
       selectedDay: new Date()
     };
+    this.handleDayClick = this.handleDayClick.bind(this);
   }
 
   handleDayClick(e, day) {
-    console.log('Day %s has been clicked', day.toString());
+    this.setState({
+      selectedDay: day
+    });
+    debugger;
+    ViewActionCreators.requestAvailabilities(formatDateForApi(day));
   }
 
 }

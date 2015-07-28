@@ -14,6 +14,10 @@ const ApiUtils = {
 
       ServerActionCreators.availabilitiesLoaded(res.objects);
     });
+  },
+
+  formatDateForApi(date) {
+    return date.getFullYear() + '-0' + (date.getMonth() + 1) + '-' + date.getDate();
   }
 
 };
