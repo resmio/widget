@@ -48,6 +48,8 @@ AvailabilitiesStore.dispatchToken = AppDispatcher.register((payload) => {
       covers: action.newCoverValue
     });
   }
+
+  return state;
 });
 
 export default AvailabilitiesStore;
