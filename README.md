@@ -32,3 +32,8 @@ Also rules are relative to a module, and should be written inside the component 
 
 ## Eslint ##
 To run the linting for the JS run `npm run lint --silent` the silent modifier hides the ELIFECYCLE error thrown out when the linter fails, but still shows the linting errors, you can also create an alias like `alias run ='npm run --silent'` and then simply do `run <script>`
+
+## Tests ##
+We use Tape for testing, tests go inside a `__tests__` directory inside each module directory, to run the tests first you need to install this globally on your system `npm install -g babel tape faucet browserify browser-run`. Then you can run the test individually by going into its directory and doing `babel-node test.js | faucet` where test.js is the name of your test. You can also import the test into `app/js/__tests__/testSuite.js`.  
+
+You can run all the tests included in testSuite.js by doing `npm test`

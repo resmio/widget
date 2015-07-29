@@ -7,7 +7,7 @@
     "build": "TARGET=build webpack",
     "lint": "cd app/js && eslint . --ext .js --ext .jsx ; exit 0",
     "start": "TARGET=dev node lib/dev_server.js",
-    "test": "cd app/js/__tests__ && babel-node *.js | faucet"
+    "test": "cd app/js/__tests__ && babel-node  testSuite.js | faucet"
   },
   "author": "resmio team",
   "license": "ISC",
@@ -25,6 +25,7 @@
     "flowcheck-loader": "^1.0.0",
     "html-webpack-plugin": "^1.5.2",
     "node-libs-browser": "^0.5.2",
+    "node-localstorage": "^0.5.1",
     "react-hot-loader": "^1.2.7",
     "style-loader": "^0.12.3",
     "tape": "^4.0.1",
