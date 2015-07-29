@@ -7,7 +7,7 @@
     "build": "TARGET=build webpack",
     "lint": "cd app/js && eslint . --ext .js --ext .jsx ; exit 0",
     "start": "TARGET=dev node lib/dev_server.js",
-    "test": "cd app/js/__tests__ && babel-node *.js | faucet"
+    "test": "cd app/js/__tests__ && babel-node  testSuite.js | faucet"
   },
   "author": "resmio team",
   "license": "ISC",
@@ -34,7 +34,8 @@
   },
   "dependencies": {
     "flux": "^2.0.3",
-    "react": "^0.13.3"
+    "react": "^0.13.3",
+    "react-day-picker": "^1.0.3"
   },
   "eslintConfig": {
     "parser": "babel-eslint",

@@ -6,9 +6,11 @@ export default {
 
   // Actions which originate on the view, they can fire other actions
   // originating in the server for example
+
   requestAvailabilities(date) {
     AppDispatcher.handleViewAction({
-      type: ActionTypes.AVAILABILITIES_REQUESTED
+      type: ActionTypes.AVAILABILITIES_REQUESTED,
+      newDate: date
     });
     ApiUtils.requestAvailabilities(date);
   },

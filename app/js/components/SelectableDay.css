@@ -1,0 +1,69 @@
+.DayPicker {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: relative;
+  padding: 1rem 0;
+  user-select: none;
+}
+
+.DayPicker-Month {
+  display: table;
+  border-collapse: collapse;
+  border-spacing: 0;
+  user-select: none;
+  margin: 0 1rem;
+}
+
+.DayPicker-NavBar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: 0 .5rem;
+}
+
+.DayPicker-NavButton {
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  cursor: pointer;
+}
+
+.DayPicker-Weekdays {
+  display: table-header-group;
+}
+
+.DayPicker-NavButton div{
+  display: table-row;
+}
+
+.DayPicker-Weekday {
+  display: table-cell;
+  padding: .5rem;
+  font-size: .875em;
+  text-align: center;
+}
+
+.DayPicker-Body {
+  display: table-row-group;
+}
+
+.DayPicker-Week {
+  display: table-row;
+}
+
+.DayPicker-Day {
+  display: table-cell;
+  padding: .5rem;
+  border: 1px solid lighten($grey, 5);
+  text-align: center;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.DayPicker-Day--selected {
+  color: red;
+}
