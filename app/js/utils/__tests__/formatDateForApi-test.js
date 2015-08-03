@@ -18,7 +18,7 @@ const teardown = (fixtures) => {
   delete fixtures.dateWithOneDigitMonth;
 };
 
-test('ApiUtils.formatDateForApi always returns a ten digit string', (assert) => {
+test('formatDateForApi always returns a ten digit string', (assert) => {
   const fixture = setup();
 
   const actual = {
