@@ -76,7 +76,9 @@ export default class App extends React.Component {
   }
 
   handleCoverInputChange(event) {
-    ViewActionCreators.changeNumberOfCovers(parseInt(event.target.value, 10));
+    if (isNaN(event.target.value)) {
+      ViewActionCreators.changeNumberOfCovers(parseInt(event.target.value, 10));
+    }
   }
 
 }
