@@ -16,10 +16,12 @@ export default {
   },
 
   changeNumberOfCovers(value) {
-    AppDispatcher.handleViewAction({
-      type: ActionTypes.NUMBER_OF_COVERS_CHANGED,
-      newCoverValue: value
-    });
+    if (!isNaN(value)) {
+      AppDispatcher.handleViewAction({
+        type: ActionTypes.NUMBER_OF_COVERS_CHANGED,
+        newCoverValue: value
+      });
+    }
   }
 
 };
