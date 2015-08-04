@@ -3,6 +3,12 @@ const Utils = {
     return d1.getDate() === d2.getDate() &&
       d1.getMonth() === d2.getMonth() &&
       d1.getFullYear() === d2.getFullYear();
+  },
+
+  isPastDay(d) {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    return d < today;
   }
 };
 
