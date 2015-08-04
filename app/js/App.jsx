@@ -38,6 +38,7 @@ export default class App extends React.Component {
         <WidgetHeader
           facilityName={this.props.facilityName}
           reservationCovers={this.state.covers}
+          reservationDate={this.state.date}
         />
         <WidgetMessage
           facilityMessage={this.props.widgetMessage}
@@ -55,7 +56,8 @@ export default class App extends React.Component {
 
   constructor(props) {
     super(props);
-    ViewActionCreators.requestAvailabilities('2015-08-20');
+    ViewActionCreators.setNewDate('2015-08-20');
+    // ViewActionCreators.requestAvailabilities('2015-08-20');
     // We are just getting the availabilites for the state of the app for now
     // This will change in the future
     this.state = AvailabilitiesStore.getState();

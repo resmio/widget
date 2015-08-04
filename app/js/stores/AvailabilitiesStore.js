@@ -7,6 +7,7 @@ const CHANGE_EVENT = 'CHANGE';
 const state = {
   availabilities: [],
   covers: 2,
+  date: '2016-08-20',
   loaded: false
 };
 
@@ -40,6 +41,11 @@ AvailabilitiesStore.dispatchToken = AppDispatcher.register((payload) => {
     case ActionTypes.AVAILABILITIES_LOADED:
       state.loaded = true;
       state.availabilities = action.availabilities;
+      _AvailabilitiesStore.emitChange();
+      break;
+
+    case ActionTypes.DATE_CHANGED:
+      state.date = action.newDate;
       _AvailabilitiesStore.emitChange();
       break;
 

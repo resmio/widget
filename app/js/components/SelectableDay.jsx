@@ -24,7 +24,7 @@ class SelectableDay extends React.Component {
 
   handleDayClick(event, date) {
     const formattedDate = formatDateForApi(date);
-    ViewActionCreators.requestAvailabilities(formattedDate);
+    ViewActionCreators.setNewDate(formattedDate);
   }
 
 }
