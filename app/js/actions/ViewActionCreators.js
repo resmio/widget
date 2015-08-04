@@ -22,6 +22,14 @@ export default {
         newCoverValue: value
       });
     }
+  },
+
+  setNewDate(date) {
+    AppDispatcher.handleViewAction({
+      type: ActionTypes.DATE_CHANGED,
+      newDate: date
+    });
+    ApiUtils.requestAvailabilities(date);
   }
 
 };

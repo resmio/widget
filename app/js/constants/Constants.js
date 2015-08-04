@@ -6,6 +6,7 @@ export default {
   ActionTypes: keyMirror({
     AVAILABILITES_LOADED: null,
     AVAILABILITIES_REQUESTED: null,
+    DATE_CHANGED: null,
     NUMBER_OF_COVERS_CHANGED: null,
     TIMESLOT_SELECTED: null   // Selects a timeslot
   }),
