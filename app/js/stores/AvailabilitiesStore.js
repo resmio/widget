@@ -7,7 +7,7 @@ const CHANGE_EVENT = 'CHANGE';
 const state = {
   availabilities: [],
   covers: 2,
-  date: '2016-08-20',
+  date: new Date(),
   loaded: false
 };
 

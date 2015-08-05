@@ -23,6 +23,7 @@ export default class App extends React.Component {
   }
 
   renderAvailabilities() {
+    debugger;
     const coveredAvailabilities = this.state.availabilities.filter(this.filterAvailabilitiesByCover);
 
     return coveredAvailabilities.map((availability) => {

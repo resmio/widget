@@ -14,12 +14,13 @@ export default class WidgetHeader extends React.Component {
     );
   }
 
+
 }
 
 WidgetHeader.propTypes = {
   facilityName: React.PropTypes.string.isRequired,
   reservationCovers: React.PropTypes.number,
-  reservationDate: React.PropTypes.string,
+  reservationDate: React.PropTypes.date,
   reservationHours: React.PropTypes.number,
   reservationMinutes: React.PropTypes.number
 };

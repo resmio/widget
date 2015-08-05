@@ -1,6 +1,7 @@
 import {ActionTypes} from '../constants/Constants';
 import AppDispatcher from '../dispatchers/AppDispatcher';
 import ApiUtils from '../utils/ApiUtils';
+import formatDateForApi from '../utils/formatDateForApi';
 
 export default {
 
@@ -12,7 +13,7 @@ export default {
       type: ActionTypes.AVAILABILITIES_REQUESTED,
       newDate: date
     });
-    ApiUtils.requestAvailabilities(date);
+    ApiUtils.requestAvailabilities(formatDateForApi(date));
   },
 
   changeNumberOfCovers(value) {

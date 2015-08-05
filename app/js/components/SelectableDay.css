@@ -67,3 +67,8 @@
 .DayPicker-Day--selected {
   color: red;
 }
+
+.DayPicker-Day--disabled {
+  color: lightgray;
+  cursor: normal;
+}
