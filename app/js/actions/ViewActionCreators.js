@@ -8,10 +8,10 @@ export default {
   // Actions which originate on the view, they can fire other actions
   // originating in the server for example
 
-  timeslotSelected(event) {
+  timeslotSelected(timeslot) {
     AppDispatcher.handleViewAction({
       type: ActionTypes.TIMESLOT_SELECTED,
-      timeslot: event
+      timeslot: timeslot
     });
   },
 

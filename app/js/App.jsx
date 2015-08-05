@@ -49,6 +49,7 @@ export default class App extends React.Component {
           facilityName={this.props.facilityName}
           reservationCovers={this.state.covers}
           reservationDate={formatDateForApi(this.state.date)}
+          reservationTimeslot={this.state.timeslot}
         />
         <WidgetMessage
           facilityMessage={this.props.widgetMessage}
@@ -95,7 +96,6 @@ export default class App extends React.Component {
 
   handleClickOnAvailability(availability) {
     ViewActionCreators.timeslotSelected(availability.date);
-    console.log(availability.date);
   }
 
 }
