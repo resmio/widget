@@ -37,6 +37,7 @@ class SelectableDay extends React.Component {
   }
 
   handleDayClick(event, date, modifiers) {
+    // If the date is disabled we don't fire the action
     if (modifiers.indexOf('disabled') > -1) {
       return;
     }

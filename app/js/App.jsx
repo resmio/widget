@@ -34,7 +34,7 @@ export default class App extends React.Component {
       return (
         <li
           key={availability.checksum}
-          onClick={this.handleClickOnAvailability.bind(this)}
+          onClick={this.handleClickOnAvailability.bind(this, availability)}
         >
           {availability.local_time_formatted}
         </li>
@@ -93,9 +93,9 @@ export default class App extends React.Component {
     ViewActionCreators.changeNumberOfCovers(parseInt(event.target.value, 10));
   }
 
-  handleClickOnAvailability(event) {
-    ViewActionCreators.timeslotSelected(event.target.date);
-    console.log(event.target.date);
+  handleClickOnAvailability(availability) {
+    ViewActionCreators.timeslotSelected(availability.date);
+    console.log(availability.date);
   }
 
 }
