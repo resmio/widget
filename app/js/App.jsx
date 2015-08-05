@@ -3,6 +3,7 @@ import AvailabilitiesStore from './stores/AvailabilitiesStore';
 import ViewActionCreators from './actions/ViewActionCreators';
 import formatDateForApi from './utils/formatDateForApi';
 
+// Components
 import PersonPicker from './components/PersonPicker';
 import WidgetHeader from './components/WidgetHeader';
 import WidgetMessage from './components/WidgetMessage';
@@ -23,6 +24,8 @@ export default class App extends React.Component {
   }
 
   renderAvailabilities() {
+    // We need to probably filter on the store
+    // Move it when refactoring
     const coveredAvailabilities = this.state
                                       .availabilities
                                       .filter(this.filterAvailabilitiesByCover);
@@ -31,7 +34,7 @@ export default class App extends React.Component {
       return (
         <li
           key={availability.checksum}
-          onClick={function(e, key) {console.log(key); }}
+          onClick={this.handleClickOnAvailability.bind(this)}
         >
           {availability.local_time_formatted}
         </li>
@@ -45,33 +48,35 @@ export default class App extends React.Component {
         <WidgetHeader
           facilityName={this.props.facilityName}
           reservationCovers={this.state.covers}
-          reservationDate={this.state.date}
+          reservationDate={formatDateForApi(this.state.date)}
         />
         <WidgetMessage
           facilityMessage={this.props.widgetMessage}
         />
-      <PersonPicker
-        numberOfCovers={ this.state.covers }
-        handleChange={ this.handleCoverInputChange }
-      />
-    <SelectableDay />
+        <PersonPicker
+          numberOfCovers={ this.state.covers }
+          handleChange={ this.handleCoverInputChange }
+        />
+        <SelectableDay />
 
-        <ul>{this.renderAvailabilities()}</ul>
+        <ul>
+          {this.renderAvailabilities()}
+        </ul>
+
       </div>
     );
   }
 
   constructor(props) {
     super(props);
-    ViewActionCreators.setNewDate(formatDateForApi(new Date()));
-    // ViewActionCreators.requestAvailabilities('2015-08-20');
-    // We are just getting the availabilites for the state of the app for now
-    // This will change in the future
+    ViewActionCreators.setNewDate(new Date());
+    // We trigger the action to get the availabilities for today from here
+    // This will update the state , so we render it properly
     this.state = AvailabilitiesStore.getState();
-
     // We need to bind functions here so this won't refer to React
     // Will be solved in ES7
     this.handleCoverInputChange = this.handleCoverInputChange.bind(this);
+    this.handleClickOnAvailability = this.handleClickOnAvailability.bind(this);
     this.handleStoreChange = this.handleStoreChange.bind(this);
     this.filterAvailabilitiesByCover = this.filterAvailabilitiesByCover.bind(this);
   }
@@ -86,6 +91,11 @@ export default class App extends React.Component {
 
   handleCoverInputChange(event) {
     ViewActionCreators.changeNumberOfCovers(parseInt(event.target.value, 10));
+  }
+
+  handleClickOnAvailability(event) {
+    ViewActionCreators.timeslotSelected(event.target.date);
+    console.log(event.target.date);
   }
 
 }

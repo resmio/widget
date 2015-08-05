@@ -8,6 +8,13 @@ export default {
   // Actions which originate on the view, they can fire other actions
   // originating in the server for example
 
+  timeslotSelected(event) {
+    AppDispatcher.handleViewAction({
+      type: ActionTypes.TIMESLOT_SELECTED,
+      timeslot: event
+    });
+  },
+
   requestAvailabilities(date) {
     AppDispatcher.handleViewAction({
       type: ActionTypes.AVAILABILITIES_REQUESTED,
@@ -30,7 +37,7 @@ export default {
       type: ActionTypes.DATE_CHANGED,
       newDate: date
     });
-    ApiUtils.requestAvailabilities(date);
+    ApiUtils.requestAvailabilities(formatDateForApi(date));
   }
 
 };
