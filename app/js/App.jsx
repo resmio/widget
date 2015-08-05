@@ -23,15 +23,20 @@ export default class App extends React.Component {
   }
 
   renderAvailabilities() {
-    debugger;
-    const coveredAvailabilities = this.state.availabilities.filter(this.filterAvailabilitiesByCover);
+    const coveredAvailabilities = this.state
+                                      .availabilities
+                                      .filter(this.filterAvailabilitiesByCover);
 
     return coveredAvailabilities.map((availability) => {
-      return (<li key={availability.checksum}>
-        {availability.local_time_formatted}
-      </li>);
-    }
-  );
+      return (
+        <li
+          key={availability.checksum}
+          onClick={function(e, key) {console.log(key); }}
+        >
+          {availability.local_time_formatted}
+        </li>
+      );
+    });
   }
 
   render() {
