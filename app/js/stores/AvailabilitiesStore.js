@@ -6,8 +6,9 @@ const CHANGE_EVENT = 'CHANGE';
 
 const state = {
   availabilities: [],
+  timeslot: '',
   covers: 2,
-  date: '2016-08-20',
+  date: new Date(),
   loaded: false
 };
 
@@ -51,6 +52,11 @@ AvailabilitiesStore.dispatchToken = AppDispatcher.register((payload) => {
 
     case ActionTypes.NUMBER_OF_COVERS_CHANGED:
       state.covers = action.newCoverValue;
+      _AvailabilitiesStore.emitChange();
+      break;
+
+    case ActionTypes.TIMESLOT_SELECTED:
+      state.timeslot = action.timeslot;
       _AvailabilitiesStore.emitChange();
       break;
 
