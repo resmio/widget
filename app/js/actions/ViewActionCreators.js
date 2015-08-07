@@ -37,6 +37,7 @@ export default {
       type: ActionTypes.DATE_CHANGED,
       newDate: date
     });
+    console.log('Action.setNewDate');
     ApiUtils.requestAvailabilities(formatDateForApi(date));
   }
 

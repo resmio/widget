@@ -22,7 +22,7 @@ class SelectableDay extends React.Component {
     return (
         <DayPicker
           modifiers={ modifiers }
-          enableOutsideDays={true}
+          enableOutsideDays={false}
           onDayClick={ this.handleDayClick }
         />
     );
@@ -41,6 +41,8 @@ class SelectableDay extends React.Component {
     if (modifiers.indexOf('disabled') > -1) {
       return;
     }
+    debugger;
+    console.log('handleDayClick');
     ViewActionCreators.setNewDate(date);
   }
 

@@ -13,8 +13,6 @@ export default class WidgetHeader extends React.Component {
       </div>
     );
   }
-
-
 }
 
 WidgetHeader.propTypes = {
