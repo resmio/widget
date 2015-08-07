@@ -89,24 +89,12 @@
 }
 
 .DayPicker-Day {
-    display: table-cell;
-    padding: .5rem;
-    border: 1px solid var(--light-grey);
-    text-align: center;
-    cursor: pointer;
-    vertical-align: middle;
-  }
-
-.DayPicker--interactionDisabled .DayPicker-Day {
-  cursor: default;
-}
-
-
-// Modifiers
-
-.DayPicker-Day--today {
-  color: var(--red);
-  font-weight: 500;
+  display: table-cell;
+  padding: .5rem;
+  border: 1px solid var(--light-grey);
+  text-align: center;
+  cursor: pointer;
+  vertical-align: middle;
 }
 
 .DayPicker-Day--disabled {
@@ -115,13 +103,12 @@
   cursor: default;
 }
 
+.DayPicker-Day--today {
+  color: var(--red);
+  font-weight: 500;
+}
+
 .DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {
   color: var(--white);
   background-color: var(--blue);
-}
-
-// Locales
-
-.DayPicker--ar {
-  direction: rtl;
 }

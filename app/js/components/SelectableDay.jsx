@@ -41,8 +41,6 @@ class SelectableDay extends React.Component {
     if (modifiers.indexOf('disabled') > -1) {
       return;
     }
-    debugger;
-    console.log('handleDayClick');
     ViewActionCreators.setNewDate(date);
   }
 
