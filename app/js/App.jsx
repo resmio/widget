@@ -33,7 +33,7 @@ export default class App extends React.Component {
         <AvailabilitiesPanel
           widgetMessage={this.props.widgetMessage}
         />
-      <PanelSwitcher panelNumber={this.state.panel} numberOfPanels={3}/>
+      <PanelSwitcher showPanel={this.state.showPanel} numberOfPanels={3}/>
       </div>
     );
   }

@@ -38,6 +38,18 @@ export default {
       newDate: date
     });
     ApiUtils.requestAvailabilities(formatDateForApi(date));
+  },
+
+  decreasePanelNumber() {
+    AppDispatcher.handleViewAction({
+      type: ActionTypes.PANEL_NUMBER_DECREASED
+    });
+  },
+
+  increasePanelNumber() {
+    AppDispatcher.handleViewAction({
+      type: ActionTypes.PANEL_NUMBER_INCREASED
+    });
   }
 
 };

@@ -1,20 +1,20 @@
 import React from 'react';
-// import ViewActionCreators from '../actions/ViewActionCreators';
+import ViewActionCreators from '../actions/ViewActionCreators';
 
 export default class PanelSwitcher extends React.Component {
   render() {
     let previousButton;
     let nextButton;
-    if (this.props.panelNumber > 1) {
+    if (this.props.showPanel > 1) {
       previousButton = (<a href="#"
                           onClick={this.handleClickOnPreviousButton}
                         >
                           Previous
                         </a>);
     }
-    if (this.props.panelNumber < 3) {
+    if (this.props.showPanel < this.props.numberOfPanels) {
       nextButton = (<a href="#"
-                          onClick={this.handleClickOnNextButton}
+                       onClick={this.handleClickOnNextButton}
                     >
                       Next
                     </a>);
@@ -34,12 +34,16 @@ export default class PanelSwitcher extends React.Component {
     this.handleClickOnPreviousButton = this.handleClickOnPreviousButton.bind(this);
   }
 
+  handleClickOnNextButton() {
+    ViewActionCreators.increasePanelNumber();
+  }
+
   handleClickOnPreviousButton() {
-    console.log('Carabiruri');
+    ViewActionCreators.decreasePanelNumber();
   }
 }
 
 PanelSwitcher.propTypes = {
   numberOfPanels: React.PropTypes.number,
-  panelNumber: React.PropTypes.number
+  showPanel: React.PropTypes.number
 };
