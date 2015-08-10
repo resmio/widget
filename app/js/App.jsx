@@ -36,10 +36,10 @@ export default class App extends React.Component {
       <h1>{this.state.showPanel}</h1>
         {(() => {
           switch (this.state.showPanel) {
-            case 1: return {availabilitiesPanel};
+            case 1: return availabilitiesPanel;
             case 2: return '';
             case 3: return '';
-            default: return '';
+            default: return availabilitiesPanel;
           }
         })()}
       <PanelSwitcher showPanel={this.state.showPanel} numberOfPanels={3}/>
