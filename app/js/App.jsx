@@ -5,6 +5,7 @@ import formatDateForApi from './utils/formatDateForApi';
 // Components
 import WidgetHeader from './components/WidgetHeader';
 import AvailabilitiesPanel from './components/AvailabilitiesPanel';
+import PanelSwitcher from './components/PanelSwitcher';
 
 export default class App extends React.Component {
 
@@ -32,6 +33,7 @@ export default class App extends React.Component {
         <AvailabilitiesPanel
           widgetMessage={this.props.widgetMessage}
         />
+      <PanelSwitcher panelNumber={this.state.panel} numberOfPanels={3}/>
       </div>
     );
   }

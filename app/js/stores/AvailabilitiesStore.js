@@ -9,7 +9,8 @@ const state = {
   timeslot: '',
   covers: 2,
   date: new Date(),
-  loaded: false
+  loaded: false,
+  panel: 1
 };
 
 class AvailabilitiesStore extends EventEmitter {
