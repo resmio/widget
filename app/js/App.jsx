@@ -22,6 +22,9 @@ export default class App extends React.Component {
   }
 
   render() {
+    const availabilitiesPanel = (<AvailabilitiesPanel
+                                  widgetMessage={this.props.widgetMessage}
+                                 />);
     return (
       <div>
         <WidgetHeader
@@ -30,9 +33,15 @@ export default class App extends React.Component {
           reservationDate={formatDateForApi(this.state.date)}
           reservationTimeslot={this.state.timeslot}
         />
-        <AvailabilitiesPanel
-          widgetMessage={this.props.widgetMessage}
-        />
+      <h1>{this.state.showPanel}</h1>
+        {(() => {
+          switch (this.state.showPanel) {
+            case 1: return {availabilitiesPanel};
+            case 2: return '';
+            case 3: return '';
+            default: return '';
+          }
+        })()}
       <PanelSwitcher showPanel={this.state.showPanel} numberOfPanels={3}/>
       </div>
     );
