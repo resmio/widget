@@ -9,7 +9,8 @@ const state = {
   timeslot: '',
   covers: 2,
   date: new Date(),
-  loaded: false
+  loaded: false,
+  showPanel: 1
 };
 
 class AvailabilitiesStore extends EventEmitter {
@@ -52,6 +53,16 @@ AvailabilitiesStore.dispatchToken = AppDispatcher.register((payload) => {
 
     case ActionTypes.NUMBER_OF_COVERS_CHANGED:
       state.covers = action.newCoverValue;
+      _AvailabilitiesStore.emitChange();
+      break;
+
+    case ActionTypes.PANEL_NUMBER_DECREASED:
+      state.showPanel -= 1;
+      _AvailabilitiesStore.emitChange();
+      break;
+
+    case ActionTypes.PANEL_NUMBER_INCREASED:
+      state.showPanel += 1;
       _AvailabilitiesStore.emitChange();
       break;
 

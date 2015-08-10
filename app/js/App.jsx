@@ -1,13 +1,11 @@
 import React from 'react';
 import AvailabilitiesStore from './stores/AvailabilitiesStore';
-import ViewActionCreators from './actions/ViewActionCreators';
 import formatDateForApi from './utils/formatDateForApi';
 
 // Components
-import PersonPicker from './components/PersonPicker';
 import WidgetHeader from './components/WidgetHeader';
-import WidgetMessage from './components/WidgetMessage';
-import SelectableDay from './components/SelectableDay';
+import AvailabilitiesPanel from './components/AvailabilitiesPanel';
+import PanelSwitcher from './components/PanelSwitcher';
 
 export default class App extends React.Component {
 
@@ -23,26 +21,10 @@ export default class App extends React.Component {
     AvailabilitiesStore.removeChangeListener(this.handleStoreChange());
   }
 
-  renderAvailabilities() {
-    // We need to probably filter on the store
-    // Move it when refactoring
-    const coveredAvailabilities = this.state
-                                      .availabilities
-                                      .filter(this.filterAvailabilitiesByCover);
-
-    return coveredAvailabilities.map((availability) => {
-      return (
-        <li
-          key={availability.checksum}
-          onClick={this.handleClickOnAvailability.bind(this, availability)}
-        >
-          {availability.local_time_formatted}
-        </li>
-      );
-    });
-  }
-
   render() {
+    const availabilitiesPanel = (<AvailabilitiesPanel
+                                  widgetMessage={this.props.widgetMessage}
+                                 />);
     return (
       <div>
         <WidgetHeader
@@ -51,53 +33,33 @@ export default class App extends React.Component {
           reservationDate={formatDateForApi(this.state.date)}
           reservationTimeslot={this.state.timeslot}
         />
-        <WidgetMessage
-          facilityMessage={this.props.widgetMessage}
-        />
-        <PersonPicker
-          numberOfCovers={ this.state.covers }
-          handleChange={ this.handleCoverInputChange }
-        />
-        <SelectableDay />
-
-        <ul>
-          {this.renderAvailabilities()}
-        </ul>
-
+      <h1>{this.state.showPanel}</h1>
+        {(() => {
+          switch (this.state.showPanel) {
+            case 1: return availabilitiesPanel;
+            case 2: return '';
+            case 3: return '';
+            default: return availabilitiesPanel;
+          }
+        })()}
+      <PanelSwitcher showPanel={this.state.showPanel} numberOfPanels={3}/>
       </div>
     );
   }
 
   constructor(props) {
     super(props);
-    ViewActionCreators.setNewDate(new Date());
     // We trigger the action to get the availabilities for today from here
     // This will update the state , so we render it properly
     this.state = AvailabilitiesStore.getState();
     // We need to bind functions here so this won't refer to React
     // Will be solved in ES7
-    this.handleCoverInputChange = this.handleCoverInputChange.bind(this);
-    this.handleClickOnAvailability = this.handleClickOnAvailability.bind(this);
     this.handleStoreChange = this.handleStoreChange.bind(this);
-    this.filterAvailabilitiesByCover = this.filterAvailabilitiesByCover.bind(this);
-  }
-
-  filterAvailabilitiesByCover(availability) {
-    return (availability.available >= this.state.covers);
   }
 
   handleStoreChange() {
     this.setState(AvailabilitiesStore.getState());
   }
-
-  handleCoverInputChange(event) {
-    ViewActionCreators.changeNumberOfCovers(parseInt(event.target.value, 10));
-  }
-
-  handleClickOnAvailability(availability) {
-    ViewActionCreators.timeslotSelected(availability.date);
-  }
-
 }
 
 App.propTypes = {
