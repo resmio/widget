@@ -5,6 +5,7 @@ import formatDateForApi from './utils/formatDateForApi';
 // Components
 import WidgetHeader from './components/WidgetHeader';
 import AvailabilitiesPanel from './components/AvailabilitiesPanel';
+import GuestPanel from './components/GuestPanel';
 import PanelSwitcher from './components/PanelSwitcher';
 
 export default class App extends React.Component {
@@ -37,7 +38,7 @@ export default class App extends React.Component {
         {(() => {
           switch (this.state.showPanel) {
             case 1: return availabilitiesPanel;
-            case 2: return '';
+            case 2: return <GuestPanel />;
             case 3: return '';
             default: return availabilitiesPanel;
           }
