@@ -2,7 +2,7 @@ import formatDate from './formatDateForApi';
 
 const Utils = {
   isSameDay(d1, d2) {
-    return d1 === formatDate(d2);
+    return formatDate(d1) === formatDate(d2);
   },
 
   isPastDay(d) {

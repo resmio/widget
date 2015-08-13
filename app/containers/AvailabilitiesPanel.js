@@ -38,7 +38,9 @@ export default class AvailabilitiesPanel extends React.Component {
           numberOfCovers={ this.state.covers }
           handleChange={ this.handleCoverInputChange }
         />
-        <SelectableDay />
+        <SelectableDay
+          date={ this.state.date }
+        />
 
         <ul>
           {this.renderAvailabilities()}

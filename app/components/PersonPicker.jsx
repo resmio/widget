@@ -17,7 +17,6 @@ export default class PersonPicker extends React.Component {
         </div>
     );
   }
-
 }
 
 PersonPicker.propTypes = {

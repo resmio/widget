@@ -1,6 +1,4 @@
 import React from 'react';
-import ViewActionCreators from '../actions/ViewActionCreators';
-import AvailabilitiesStore from '../stores/AvailabilitiesStore';
 
 export default class PanelSwitcher extends React.Component {
   render() {
@@ -8,21 +6,21 @@ export default class PanelSwitcher extends React.Component {
     let nextButton;
     if (this.props.showPanel > 1) {
       previousButton = (<a href="#"
-                          onClick={this.handleClickOnPreviousButton}
+                          onClick={this.props.handleClickOnPreviousButton}
                         >
                           Previous
                         </a>);
     }
     if (this.props.showPanel < this.props.numberOfPanels) {
       nextButton = (<a href="#"
-                       onClick={this.handleClickOnNextButton}
+                       onClick={this.props.handleClickOnNextButton}
                     >
                       Next
                     </a>);
     }
     if (this.props.showPanel === this.props.numberOfPanels) {
       nextButton = (<a href="#"
-                       onClick={this.handleClickOnPostButton}
+                       onClick={this.props.handleClickOnLastButton}
                     >
                       Post
                     </a>);
@@ -34,30 +32,12 @@ export default class PanelSwitcher extends React.Component {
       </div>
     );
   }
-
-  constructor(props) {
-    super(props);
-    // We need to bind functions here so this won't refer to React
-    // Will be solved in ES7
-    this.handleClickOnPreviousButton = this.handleClickOnPreviousButton.bind(this);
-    this.handleClickOnNextButton = this.handleClickOnNextButton.bind(this);
-    this.handleClickOnPostButton = this.handleClickOnPostButton.bind(this);
-  }
-
-  handleClickOnNextButton() {
-    ViewActionCreators.increasePanelNumber();
-  }
-
-  handleClickOnPreviousButton() {
-    ViewActionCreators.decreasePanelNumber();
-  }
-
-  handleClickOnPostButton() {
-    ViewActionCreators.postBooking(AvailabilitiesStore.getState());
-  }
 }
 
 PanelSwitcher.propTypes = {
+  handleClickOnLastButton: React.PropTypes.func,
+  handleClickOnNextButton: React.PropTypes.func,
+  handleClickOnPreviousButton: React.PropTypes.func,
   numberOfPanels: React.PropTypes.number,
   showPanel: React.PropTypes.number
 };

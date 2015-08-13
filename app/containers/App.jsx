@@ -1,5 +1,6 @@
 import React from 'react';
 import AvailabilitiesStore from '../stores/AvailabilitiesStore';
+import ViewActionCreators from '../actions/ViewActionCreators';
 import formatDateForApi from '../utils/formatDateForApi';
 
 // Containers
@@ -44,11 +45,18 @@ export default class App extends React.Component {
             switch (this.state.showPanel) {
               case 1: return availabilitiesPanel;
               case 2: return (<GuestPanel />);
-              case 3: return '';
               default: return availabilitiesPanel;
             }
           })()}
-        <PanelSwitcher showPanel={this.state.showPanel} numberOfPanels={2}/>
+        <PanelSwitcher showPanel={this.state.showPanel}
+                       numberOfPanels={2}
+                       handleClickOnLastButton={this.handleClickOnLastButton}
+                       handleClickOnNextButton={this.handleClickOnNextButton}
+                       handleClickOnPreviousButton={
+                                                    this.
+                                                    handleClickOnPreviousButton
+                                                   }
+        />
       </div>
     );
   }
@@ -65,6 +73,18 @@ export default class App extends React.Component {
 
   handleStoreChange() {
     this.setState(AvailabilitiesStore.getState());
+  }
+
+  handleClickOnNextButton() {
+    ViewActionCreators.increasePanelNumber();
+  }
+
+  handleClickOnPreviousButton() {
+    ViewActionCreators.decreasePanelNumber();
+  }
+
+  handleClickOnLastButton() {
+    ViewActionCreators.postBooking(AvailabilitiesStore.getState());
   }
 }
 

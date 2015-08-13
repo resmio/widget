@@ -12,7 +12,9 @@ export default class HtmlInput extends React.Component {
 }
 
 HtmlInput.propTypes = {
-  inputType: React.PropTypes.string,
+  inputType: React.PropTypes
+                  .oneOf(['email', 'number', 'password', 'tel', 'text'])
+                  .isRequired,
   onChange: React.PropTypes.func.isRequired,
   placeholder: React.PropTypes.string
 };
