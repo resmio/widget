@@ -1,7 +1,7 @@
-import './css/main.css';
+import './styles/main.css';
 
 import React from 'react';
-import App from './js/App';
+import App from './containers/App';
 
 function main() {
   const app = document.createElement('div');
