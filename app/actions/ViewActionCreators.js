@@ -71,6 +71,11 @@ export default {
       type: ActionTypes.EMAIL_CHANGED,
       email: email
     });
-  }
+  },
 
+  newsletterChanged() {
+    AppDispatcher.handleViewAction({
+      type: ActionTypes.NEWSLETTER_CHANGED
+    });
+  }
 };

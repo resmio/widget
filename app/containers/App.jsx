@@ -39,16 +39,16 @@ export default class App extends React.Component {
           reservationDate={formatDateForApi(this.state.date)}
           reservationTimeslot={this.state.timeslot}
         />
-      <h1>{this.state.showPanel}</h1>
-        {(() => {
-          switch (this.state.showPanel) {
-            case 1: return availabilitiesPanel;
-            case 2: return (<GuestPanel />);
-            case 3: return '';
-            default: return availabilitiesPanel;
-          }
-        })()}
-      <PanelSwitcher showPanel={this.state.showPanel} numberOfPanels={3}/>
+        <h1>{this.state.showPanel}</h1>
+          {(() => {
+            switch (this.state.showPanel) {
+              case 1: return availabilitiesPanel;
+              case 2: return (<GuestPanel />);
+              case 3: return '';
+              default: return availabilitiesPanel;
+            }
+          })()}
+        <PanelSwitcher showPanel={this.state.showPanel} numberOfPanels={3}/>
       </div>
     );
   }

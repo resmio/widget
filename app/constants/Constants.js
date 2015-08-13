@@ -9,6 +9,7 @@ export default {
     DATE_CHANGED: null,
     EMAIL_CHANGED: null,
     NAME_CHANGED: null,
+    NEWSLETTER_CHANGED: null,
     NUMBER_OF_COVERS_CHANGED: null,
     PANEL_NUMBER_INCREASED: null,
     PANEL_NUMBER_DECREASED: null,

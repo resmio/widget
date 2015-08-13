@@ -26,7 +26,11 @@ export default class GuestPanel extends React.Component {
           onChange={this.handleEmailInputChange}
           placeholder="name@domain.com"
         />
-        <input type="checkbox">Newsletter</input>
+      <input type="checkbox"
+             checked = {this.state.newsletter}
+             onChange={this.handleNewsletterChange}
+      />
+      Newsletter
       </div>
     );
   }
@@ -39,6 +43,7 @@ export default class GuestPanel extends React.Component {
     this.handleNameInputChange = this.handleNameInputChange.bind(this);
     this.handlePhoneInputChange = this.handlePhoneInputChange.bind(this);
     this.handleEmailInputChange = this.handleEmailInputChange.bind(this);
+    this.handleNewsletterChange = this.handleNewsletterChange.bind(this);
   }
 
   handleNameInputChange(event) {
@@ -49,5 +54,8 @@ export default class GuestPanel extends React.Component {
   }
   handleEmailInputChange(event) {
     ViewActionCreators.emailChanged(event.target.value);
+  }
+  handleNewsletterChange() {
+    ViewActionCreators.newsletterChanged();
   }
 }

@@ -8,6 +8,7 @@ const state = {
   availabilities: [],
   timeslot: '',
   covers: 2,
+  newsletter: true,
   date: new Date(),
   email: '',
   loaded: false,
@@ -86,6 +87,11 @@ AvailabilitiesStore.dispatchToken = AppDispatcher.register((payload) => {
 
     case ActionTypes.TIMESLOT_SELECTED:
       state.timeslot = action.timeslot;
+      _AvailabilitiesStore.emitChange();
+      break;
+
+    case ActionTypes.NEWSLETTER_CHANGED:
+      state.newsletter = !state.newsletter;
       _AvailabilitiesStore.emitChange();
       break;
 
