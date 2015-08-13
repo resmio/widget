@@ -9,8 +9,10 @@ const state = {
   timeslot: '',
   covers: 2,
   date: new Date(),
+  email: '',
   loaded: false,
   name: '',
+  phone: '',
   showPanel: 2
 };
 
@@ -52,6 +54,11 @@ AvailabilitiesStore.dispatchToken = AppDispatcher.register((payload) => {
       _AvailabilitiesStore.emitChange();
       break;
 
+    case ActionTypes.EMAIL_CHANGED:
+      state.email = action.email;
+      _AvailabilitiesStore.emitChange();
+      break;
+
     case ActionTypes.NAME_CHANGED:
       state.name = action.name;
       _AvailabilitiesStore.emitChange();
@@ -69,6 +76,11 @@ AvailabilitiesStore.dispatchToken = AppDispatcher.register((payload) => {
 
     case ActionTypes.PANEL_NUMBER_INCREASED:
       state.showPanel += 1;
+      _AvailabilitiesStore.emitChange();
+      break;
+
+    case ActionTypes.PHONE_CHANGED:
+      state.phone = action.phone;
       _AvailabilitiesStore.emitChange();
       break;
 

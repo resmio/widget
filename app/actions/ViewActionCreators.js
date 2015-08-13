@@ -57,6 +57,20 @@ export default {
       type: ActionTypes.NAME_CHANGED,
       name: name
     });
+  },
+
+  phoneChanged(phone) {
+    AppDispatcher.handleViewAction({
+      type: ActionTypes.PHONE_CHANGED,
+      phone: phone
+    });
+  },
+
+  emailChanged(email) {
+    AppDispatcher.handleViewAction({
+      type: ActionTypes.EMAIL_CHANGED,
+      email: email
+    });
   }
 
 };

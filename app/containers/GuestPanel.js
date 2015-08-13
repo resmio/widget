@@ -3,7 +3,7 @@ import AvailabilitiesStore from '../stores/AvailabilitiesStore';
 import ViewActionCreators from '../actions/ViewActionCreators';
 
 // Components
-import NameInput from '../components/NameInput';
+import HtmlInput from '../components/HtmlInput';
 
 export default class GuestPanel extends React.Component {
 
@@ -11,11 +11,21 @@ export default class GuestPanel extends React.Component {
     return (
       <div>
         <p>Facebook Stuff</p>
-        <NameInput
+        <HtmlInput
+          inputType="text"
           onChange={this.handleNameInputChange}
+          placeholder="name"
         />
-        <input type="phone">Phone</input>
-        <input type="email">Email</input>
+        <HtmlInput
+          inputType="tel"
+          onChange={this.handlePhoneInputChange}
+          placeholder="1234567"
+        />
+        <HtmlInput
+          inputType="email"
+          onChange={this.handleEmailInputChange}
+          placeholder="name@domain.com"
+        />
         <input type="checkbox">Newsletter</input>
       </div>
     );
@@ -27,9 +37,17 @@ export default class GuestPanel extends React.Component {
     // We need to bind functions here so this won't refer to React
     // Will be solved in ES7
     this.handleNameInputChange = this.handleNameInputChange.bind(this);
+    this.handlePhoneInputChange = this.handlePhoneInputChange.bind(this);
+    this.handleEmailInputChange = this.handleEmailInputChange.bind(this);
   }
 
   handleNameInputChange(event) {
     ViewActionCreators.nameChanged(event.target.value);
+  }
+  handlePhoneInputChange(event) {
+    ViewActionCreators.phoneChanged(event.target.value);
+  }
+  handleEmailInputChange(event) {
+    ViewActionCreators.emailChanged(event.target.value);
   }
 }

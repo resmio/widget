@@ -30,6 +30,9 @@ export default class App extends React.Component {
                                  />);
     return (
       <div>
+        <h1>{this.state.name}</h1>
+        <h2>{this.state.phone}</h2>
+        <h2>{this.state.email}</h2>
         <WidgetHeader
           facilityName={this.props.facilityName}
           reservationCovers={this.state.covers}
