@@ -70,7 +70,7 @@ export default class AvailabilitiesPanel extends React.Component {
   }
 
   handleClickOnAvailability(availability) {
-    ViewActionCreators.timeslotSelected(availability.date);
+    ViewActionCreators.timeslotSelected(availability);
   }
 }
 

@@ -6,6 +6,7 @@ export default {
   ActionTypes: keyMirror({
     AVAILABILITES_LOADED: null,
     AVAILABILITIES_REQUESTED: null,
+    BOOKING_POSTED: null,
     DATE_CHANGED: null,
     EMAIL_CHANGED: null,
     NAME_CHANGED: null,

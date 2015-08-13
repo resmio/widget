@@ -1,5 +1,6 @@
 import React from 'react';
 import ViewActionCreators from '../actions/ViewActionCreators';
+import AvailabilitiesStore from '../stores/AvailabilitiesStore';
 
 export default class PanelSwitcher extends React.Component {
   render() {
@@ -19,6 +20,13 @@ export default class PanelSwitcher extends React.Component {
                       Next
                     </a>);
     }
+    if (this.props.showPanel === this.props.numberOfPanels) {
+      nextButton = (<a href="#"
+                       onClick={this.handleClickOnPostButton}
+                    >
+                      Post
+                    </a>);
+    }
     return (
       <div>
         { previousButton }
@@ -32,6 +40,8 @@ export default class PanelSwitcher extends React.Component {
     // We need to bind functions here so this won't refer to React
     // Will be solved in ES7
     this.handleClickOnPreviousButton = this.handleClickOnPreviousButton.bind(this);
+    this.handleClickOnNextButton = this.handleClickOnNextButton.bind(this);
+    this.handleClickOnPostButton = this.handleClickOnPostButton.bind(this);
   }
 
   handleClickOnNextButton() {
@@ -40,6 +50,10 @@ export default class PanelSwitcher extends React.Component {
 
   handleClickOnPreviousButton() {
     ViewActionCreators.decreasePanelNumber();
+  }
+
+  handleClickOnPostButton() {
+    ViewActionCreators.postBooking(AvailabilitiesStore.getState());
   }
 }
 

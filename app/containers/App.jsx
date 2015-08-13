@@ -37,7 +37,7 @@ export default class App extends React.Component {
           facilityName={this.props.facilityName}
           reservationCovers={this.state.covers}
           reservationDate={formatDateForApi(this.state.date)}
-          reservationTimeslot={this.state.timeslot}
+          reservationTimeslot={this.state.timeslot.local_time_formatted}
         />
         <h1>{this.state.showPanel}</h1>
           {(() => {
@@ -48,7 +48,7 @@ export default class App extends React.Component {
               default: return availabilitiesPanel;
             }
           })()}
-        <PanelSwitcher showPanel={this.state.showPanel} numberOfPanels={3}/>
+        <PanelSwitcher showPanel={this.state.showPanel} numberOfPanels={2}/>
       </div>
     );
   }

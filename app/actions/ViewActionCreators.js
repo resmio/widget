@@ -77,5 +77,12 @@ export default {
     AppDispatcher.handleViewAction({
       type: ActionTypes.NEWSLETTER_CHANGED
     });
+  },
+
+  postBooking(state) {
+    AppDispatcher.handleViewAction({
+      type: ActionTypes.BOOKING_POSTED
+    });
+    ApiUtils.postBooking(state);
   }
 };

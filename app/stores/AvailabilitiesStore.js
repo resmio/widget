@@ -6,7 +6,7 @@ const CHANGE_EVENT = 'CHANGE';
 
 const state = {
   availabilities: [],
-  timeslot: '',
+  timeslot: {},
   covers: 2,
   newsletter: true,
   date: new Date(),
