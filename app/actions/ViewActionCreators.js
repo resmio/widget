@@ -50,6 +50,32 @@ export default {
     AppDispatcher.handleViewAction({
       type: ActionTypes.PANEL_NUMBER_INCREASED
     });
-  }
+  },
 
+  nameChanged(name) {
+    AppDispatcher.handleViewAction({
+      type: ActionTypes.NAME_CHANGED,
+      name: name
+    });
+  },
+
+  phoneChanged(phone) {
+    AppDispatcher.handleViewAction({
+      type: ActionTypes.PHONE_CHANGED,
+      phone: phone
+    });
+  },
+
+  emailChanged(email) {
+    AppDispatcher.handleViewAction({
+      type: ActionTypes.EMAIL_CHANGED,
+      email: email
+    });
+  },
+
+  newsletterChanged() {
+    AppDispatcher.handleViewAction({
+      type: ActionTypes.NEWSLETTER_CHANGED
+    });
+  }
 };

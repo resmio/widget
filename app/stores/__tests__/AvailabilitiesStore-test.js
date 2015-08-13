@@ -1,12 +1,8 @@
-import React from 'react';
 import test from 'tape';
 
 import { PayloadSources, ActionTypes } from '../../constants/Constants';
 import AvailabilitiesStore from '../../stores/AvailabilitiesStore';
 import AppDispatcher from '../../dispatchers/AppDispatcher';
-
-const before = test;
-const after = test;
 
 const setup = () => {
   const fixtures = {};

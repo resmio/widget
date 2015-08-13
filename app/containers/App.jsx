@@ -1,11 +1,14 @@
 import React from 'react';
-import AvailabilitiesStore from './stores/AvailabilitiesStore';
-import formatDateForApi from './utils/formatDateForApi';
+import AvailabilitiesStore from '../stores/AvailabilitiesStore';
+import formatDateForApi from '../utils/formatDateForApi';
+
+// Containers
+import GuestPanel from './GuestPanel';
+import AvailabilitiesPanel from './AvailabilitiesPanel';
 
 // Components
-import WidgetHeader from './components/WidgetHeader';
-import AvailabilitiesPanel from './components/AvailabilitiesPanel';
-import PanelSwitcher from './components/PanelSwitcher';
+import WidgetHeader from '../components/WidgetHeader';
+import PanelSwitcher from '../components/PanelSwitcher';
 
 export default class App extends React.Component {
 
@@ -27,22 +30,25 @@ export default class App extends React.Component {
                                  />);
     return (
       <div>
+        <h1>{this.state.name}</h1>
+        <h2>{this.state.phone}</h2>
+        <h2>{this.state.email}</h2>
         <WidgetHeader
           facilityName={this.props.facilityName}
           reservationCovers={this.state.covers}
           reservationDate={formatDateForApi(this.state.date)}
           reservationTimeslot={this.state.timeslot}
         />
-      <h1>{this.state.showPanel}</h1>
-        {(() => {
-          switch (this.state.showPanel) {
-            case 1: return availabilitiesPanel;
-            case 2: return '';
-            case 3: return '';
-            default: return availabilitiesPanel;
-          }
-        })()}
-      <PanelSwitcher showPanel={this.state.showPanel} numberOfPanels={3}/>
+        <h1>{this.state.showPanel}</h1>
+          {(() => {
+            switch (this.state.showPanel) {
+              case 1: return availabilitiesPanel;
+              case 2: return (<GuestPanel />);
+              case 3: return '';
+              default: return availabilitiesPanel;
+            }
+          })()}
+        <PanelSwitcher showPanel={this.state.showPanel} numberOfPanels={3}/>
       </div>
     );
   }

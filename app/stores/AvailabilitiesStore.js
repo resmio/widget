@@ -8,9 +8,13 @@ const state = {
   availabilities: [],
   timeslot: '',
   covers: 2,
+  newsletter: true,
   date: new Date(),
+  email: '',
   loaded: false,
-  showPanel: 1
+  name: '',
+  phone: '',
+  showPanel: 2
 };
 
 class AvailabilitiesStore extends EventEmitter {
@@ -51,6 +55,16 @@ AvailabilitiesStore.dispatchToken = AppDispatcher.register((payload) => {
       _AvailabilitiesStore.emitChange();
       break;
 
+    case ActionTypes.EMAIL_CHANGED:
+      state.email = action.email;
+      _AvailabilitiesStore.emitChange();
+      break;
+
+    case ActionTypes.NAME_CHANGED:
+      state.name = action.name;
+      _AvailabilitiesStore.emitChange();
+      break;
+
     case ActionTypes.NUMBER_OF_COVERS_CHANGED:
       state.covers = action.newCoverValue;
       _AvailabilitiesStore.emitChange();
@@ -66,8 +80,18 @@ AvailabilitiesStore.dispatchToken = AppDispatcher.register((payload) => {
       _AvailabilitiesStore.emitChange();
       break;
 
+    case ActionTypes.PHONE_CHANGED:
+      state.phone = action.phone;
+      _AvailabilitiesStore.emitChange();
+      break;
+
     case ActionTypes.TIMESLOT_SELECTED:
       state.timeslot = action.timeslot;
+      _AvailabilitiesStore.emitChange();
+      break;
+
+    case ActionTypes.NEWSLETTER_CHANGED:
+      state.newsletter = !state.newsletter;
       _AvailabilitiesStore.emitChange();
       break;
 

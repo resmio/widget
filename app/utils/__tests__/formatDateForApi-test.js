@@ -26,14 +26,14 @@ test('formatDateForApi always returns a ten digit string', (assert) => {
     dateWithOneDigitDayAndMonth: formatDateForApi(fixture.dateWithOneDigitDayAndMonth),
     dateWithOneDigitDay: formatDateForApi(fixture.dateWithOneDigitDay),
     dateWithOneDigitMonth: formatDateForApi(fixture.dateWithOneDigitMonth)
-  }
+  };
 
   const expected = {
     dateWithTwoDigitsDayAndMonth: '2034-12-25',
     dateWithOneDigitDayAndMonth: '1994-04-08',
     dateWithOneDigitDay: '2001-01-01',
     dateWithOneDigitMonth: '1999-07-16'
-  }
+  };
 
   assert.deepEqual(actual.dateWithTwoDigitsDayAndMonth, expected.dateWithTwoDigitsDayAndMonth);
   assert.deepEqual(actual.dateWithOneDigitDayAndMonth, expected.dateWithOneDigitDayAndMonth);
