@@ -10,7 +10,8 @@ const state = {
   covers: 2,
   date: new Date(),
   loaded: false,
-  showPanel: 1
+  name: '',
+  showPanel: 2
 };
 
 class AvailabilitiesStore extends EventEmitter {
@@ -48,6 +49,11 @@ AvailabilitiesStore.dispatchToken = AppDispatcher.register((payload) => {
 
     case ActionTypes.DATE_CHANGED:
       state.date = action.newDate;
+      _AvailabilitiesStore.emitChange();
+      break;
+
+    case ActionTypes.NAME_CHANGED:
+      state.name = action.name;
       _AvailabilitiesStore.emitChange();
       break;
 

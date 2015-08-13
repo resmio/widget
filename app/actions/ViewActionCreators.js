@@ -50,6 +50,13 @@ export default {
     AppDispatcher.handleViewAction({
       type: ActionTypes.PANEL_NUMBER_INCREASED
     });
+  },
+
+  nameChanged(name) {
+    AppDispatcher.handleViewAction({
+      type: ActionTypes.NAME_CHANGED,
+      name: name
+    });
   }
 
 };

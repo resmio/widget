@@ -2,10 +2,12 @@ import React from 'react';
 import AvailabilitiesStore from '../stores/AvailabilitiesStore';
 import formatDateForApi from '../utils/formatDateForApi';
 
+// Containers
+import GuestPanel from './GuestPanel';
+import AvailabilitiesPanel from './AvailabilitiesPanel';
+
 // Components
 import WidgetHeader from '../components/WidgetHeader';
-import AvailabilitiesPanel from '../components/AvailabilitiesPanel';
-import GuestPanel from '../components/GuestPanel';
 import PanelSwitcher from '../components/PanelSwitcher';
 
 export default class App extends React.Component {
@@ -38,7 +40,7 @@ export default class App extends React.Component {
         {(() => {
           switch (this.state.showPanel) {
             case 1: return availabilitiesPanel;
-            case 2: return <GuestPanel />;
+            case 2: return (<GuestPanel />);
             case 3: return '';
             default: return availabilitiesPanel;
           }

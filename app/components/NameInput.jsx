@@ -4,8 +4,13 @@ export default class NameInput extends React.Component {
   render() {
     return (
       <input type="text"
-             value="Hello!"
+             placeholder="Name"
+             onChange={this.props.onChange}
       />
     );
   }
 }
+
+NameInput.propTypes = {
+  onChange: React.PropTypes.function
+};

@@ -7,6 +7,7 @@ export default {
     AVAILABILITES_LOADED: null,
     AVAILABILITIES_REQUESTED: null,
     DATE_CHANGED: null,
+    NAME_CHANGED: null,
     NUMBER_OF_COVERS_CHANGED: null,
     PANEL_NUMBER_INCREASED: null,
     PANEL_NUMBER_DECREASED: null,
