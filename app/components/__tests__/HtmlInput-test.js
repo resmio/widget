@@ -4,20 +4,37 @@ import HtmlInput from '../../components/HtmlInput';
 const React = require('react/addons');
 const TestUtils = React.addons.TestUtils;
 
-const componentProps = {
+const createComponent = (component, props, ...children) => {
+  const shallowRenderer = TestUtils.createRenderer();
+
+  shallowRenderer.render(
+    React.createElement(
+      component,
+      props,
+      children.length > 1 ? children : children[0])
+    );
+  return shallowRenderer.getRenderOutput();
+};
+
+const testComponentProps = {
   inputType: 'text',
   placeholder: 'resmio',
   onChange: function() {return}
-}
+};
 
-test('HTML input loads the right props', (assert) => {
-  const shallowRenderer = TestUtils.createRenderer();
-  shallowRenderer.render(React.createElement(HtmlInput, componentProps));
-  const component = shallowRenderer.getRenderOutput();
+test(
+  'HtmlInput renders an <input> element with the right attributes',
+  (assert) => {
+    const component = createComponent('input', testComponentProps);
 
-  assert.deepEqual(component.props.type, 'text',
-    'Input component type should be "text"');
-  assert.deepEqual(component.props.placeholder, 'resmio',
-    'Input component placeholder should be "resmio"');
-  assert.end();
+    assert.deepEqual(component.type, 'input',
+      'Input component should render an <input> element');
+    assert.deepEqual(component.props.inputType, testComponentProps.inputType,
+      'Input component type should be the one passed as a prop');
+    assert.deepEqual(component.props.placeholder, testComponentProps.placeholder,
+      'Input component placeholder should be the one passed as a prop');
+    assert.deepEqual(typeof(component.props.onChange),
+                     typeof(testComponentProps.onChange),
+                     'Input component onChange should be a function');
+    assert.end();
 });
