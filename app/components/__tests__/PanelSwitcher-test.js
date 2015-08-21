@@ -1,5 +1,5 @@
 import test from 'tape'
-import HtmlInput from '../../components/HtmlInput';
+import PanelSwitcher from '../../components/PanelSwitcher';
 import {createComponent} from '../../__tests__/testLib';
 
 const testComponentProps = {
@@ -8,13 +8,13 @@ const testComponentProps = {
   onChange: function() {return}
 };
 
-test(
-  'HtmlInput renders an <HtmlInput> element with the right attributes',
+test.(
+  'PanelSwitcher renders an <input> element with the right attributes',
   (assert) => {
-    const component = createComponent('HtmlInput', testComponentProps);
+    const component = createComponent('input', testComponentProps);
 
-    assert.deepEqual(component.type, 'HtmlInput',
-      'Input component should render an <HtmlInput> element');
+    assert.deepEqual(component.type, 'input',
+      'Input component should render an <input> element');
     assert.deepEqual(component.props.inputType, testComponentProps.inputType,
       'Input component type should be the one passed as a prop');
     assert.deepEqual(component.props.placeholder, testComponentProps.placeholder,
