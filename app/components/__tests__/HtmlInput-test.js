@@ -1,20 +1,6 @@
 import test from 'tape'
 import HtmlInput from '../../components/HtmlInput';
-
-const React = require('react/addons');
-const TestUtils = React.addons.TestUtils;
-
-const createComponent = (component, props, ...children) => {
-  const shallowRenderer = TestUtils.createRenderer();
-
-  shallowRenderer.render(
-    React.createElement(
-      component,
-      props,
-      children.length > 1 ? children : children[0])
-    );
-  return shallowRenderer.getRenderOutput();
-};
+import {createComponent} from '../../__tests__/testLib';
 
 const testComponentProps = {
   inputType: 'text',
