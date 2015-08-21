@@ -1,26 +1,20 @@
 import test from 'tape'
 import PanelSwitcher from '../../components/PanelSwitcher';
 import {createComponent} from '../../__tests__/testLib';
+import React from 'react/addons';
+const {TestUtils} = React.addons;
 
 const testComponentProps = {
-  inputType: 'text',
-  placeholder: 'resmio',
-  onChange: function() {return}
+  numberOfPanels: 3,
+  showPanel: 1
 };
 
-test.(
-  'PanelSwitcher renders an <input> element with the right attributes',
+test(
+  'PanelSwitcher renders no previous panel if it is at the first panel',
   (assert) => {
-    const component = createComponent('input', testComponentProps);
-
-    assert.deepEqual(component.type, 'input',
-      'Input component should render an <input> element');
-    assert.deepEqual(component.props.inputType, testComponentProps.inputType,
-      'Input component type should be the one passed as a prop');
-    assert.deepEqual(component.props.placeholder, testComponentProps.placeholder,
-      'Input component placeholder should be the one passed as a prop');
-    assert.deepEqual(typeof(component.props.onChange),
-                     typeof(testComponentProps.onChange),
-                     'Input component onChange should be a function');
+    const component = createComponent('PanelSwitcher', testComponentProps);
+    const previous = TestUtils.scryRenderedDOMComponentsWithClass(component, 'panelSwitcher__previous-button');
+    assert.equal(previous.length, 0);
     assert.end();
-});
+  }
+);

@@ -5,7 +5,9 @@ export default class PanelSwitcher extends React.Component {
     let previousButton;
     let nextButton;
     if (this.props.showPanel > 1) {
-      previousButton = (<a href="#"
+      previousButton = (<a
+                          className="panelSwitcher__previous-button"
+                          href="#"
                           onClick={this.props.handleClickOnPreviousButton}
                         >
                           Previous
