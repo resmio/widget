@@ -4,4 +4,3 @@ import '../utils/__tests__/formatDateForApi-test';
 // Components
 import '../components/__tests__/HtmlInput-test';
 import '../components/__tests__/PanelSwitcher-test';
-// import '../components/__tests__/InvitationList-test';

@@ -1,39 +1,64 @@
 import test from 'tape'
 import PanelSwitcher from '../../components/PanelSwitcher';
-import {createComponent} from '../../__tests__/testLib';
 import React from 'react/addons';
-let {TestUtils} = React.addons;
+const {TestUtils} = React.addons;
+
+const before = test;
+const after = test;
+
+const setup = (position) => {
+
+  const renderer = TestUtils.createRenderer();
+  switch (position) {
+    case 'first':
+      renderer.render(<PanelSwitcher numberOfPanels={3} showPanel={1} />);
+      break;
+
+    case 'last':
+      renderer.render(<PanelSwitcher numberOfPanels={3} showPanel={3} />);
+      break;
+
+    default:
+      renderer.render(<PanelSwitcher numberOfPanels={3} showPanel={2} />);
+      break;
+  };
+
+  const component = renderer.getRenderOutput();
+  return component;
+};
 
 test(
-  'PanelSwitcher renders no previous panel button if it is at the first panel',
+  'PanelSwitcher renders previous panel button if it is not at the first panel',
   (assert) => {
-    const testComponentProps = {
-      numberOfPanels: 3,
-      showPanel: 2,
-      handleClickOnLastButton: () => {},
-      handleClickOnNextButton: () => {},
-      handleClickOnPreviousButton: () => {}
-    };
-    const renderer = TestUtils.createRenderer();
-    renderer.render(<PanelSwitcher numberOfPanels={3} showPanel={2} />);
-    const component = renderer.getRenderOutput();
-    console.log('----------------------------------------', component.props.children[0]);
-    // const a = TestUtils.findRenderedDOMComponentWithClass(component, 'panelSwitcher__button--previous');
-    // assert.equal(component.props, 'abc');
+    const component = setup();
+    assert.equal(
+      component.props.children[0].props.className,
+      'panelSwitcher__button--previous'
+    );
     assert.end();
   }
 );
 
 test.skip(
-  'PanelSwitcher renders no previous panel button if it is not at the first panel',
+  'PanelSwitcher renders no previous panel button if it is at the first panel',
   (assert) => {
-    const testComponentProps = {
-      numberOfPanels: 3,
-      showPanel: 2
-    };
-    const component = createComponent('PanelSwitcher', testComponentProps);
-    const previous = TestUtils.scryRenderedDOMComponentsWithClass(component, 'panelSwitcher__previous-button');
-    assert.equal(component, 1);
+    const component = setup('first');
+    assert.equal(
+      component.props.children[0].props.className,
+      'panelSwitcher__button--previous'
+    );
+    assert.end();
+  }
+);
+
+test(
+  'PanelSwitcher renders next panel button if it is not at the last panel',
+  (assert) => {
+    const component = setup();
+    assert.equal(
+      component.props.children[1].props.className,
+      'panelSwitcher__button--next'
+    );
     assert.end();
   }
 );
