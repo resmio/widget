@@ -14,8 +14,10 @@ test(
       handleClickOnNextButton: () => {},
       handleClickOnPreviousButton: () => {}
     };
-    const component = createComponent('PanelSwitcher', testComponentProps);
-    console.log('----------------------------------------', component);
+    const renderer = TestUtils.createRenderer();
+    renderer.render(<PanelSwitcher numberOfPanels={3} showPanel={2} />);
+    const component = renderer.getRenderOutput();
+    console.log('----------------------------------------', component.props.children[0]);
     // const a = TestUtils.findRenderedDOMComponentWithClass(component, 'panelSwitcher__button--previous');
     // assert.equal(component.props, 'abc');
     assert.end();
