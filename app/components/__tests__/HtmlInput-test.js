@@ -13,6 +13,7 @@ test(
   (assert) => {
     const component = createComponent('HtmlInput', testComponentProps);
 
+    console.log('*********************************************', component.children );
     assert.deepEqual(component.type, 'HtmlInput',
       'Input component should render an <HtmlInput> element');
     assert.deepEqual(component.props.inputType, testComponentProps.inputType,

@@ -6,7 +6,7 @@ export default class PanelSwitcher extends React.Component {
     let nextButton;
     if (this.props.showPanel > 1) {
       previousButton = (<a
-                          className="panelSwitcher__previous-button"
+                          className="panelSwitcher__button--previous"
                           href="#"
                           onClick={this.props.handleClickOnPreviousButton}
                         >
@@ -14,14 +14,16 @@ export default class PanelSwitcher extends React.Component {
                         </a>);
     }
     if (this.props.showPanel < this.props.numberOfPanels) {
-      nextButton = (<a href="#"
+      nextButton = (<a className="panelSwitcher__button--next"
+                       href="#"
                        onClick={this.props.handleClickOnNextButton}
                     >
                       Next
                     </a>);
     }
     if (this.props.showPanel === this.props.numberOfPanels) {
-      nextButton = (<a href="#"
+      nextButton = (<a className="panelSwitcher__button--final"
+                       href="#"
                        onClick={this.props.handleClickOnLastButton}
                     >
                       Post
