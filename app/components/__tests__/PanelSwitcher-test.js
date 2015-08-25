@@ -3,9 +3,6 @@ import PanelSwitcher from '../../components/PanelSwitcher';
 import React from 'react/addons';
 const {TestUtils} = React.addons;
 
-const before = test;
-const after = test;
-
 const setup = (position) => {
 
   const renderer = TestUtils.createRenderer();
@@ -40,6 +37,18 @@ test(
 );
 
 test(
+  'PanelSwitcher renders next panel button if it is not at the last panel',
+  (assert) => {
+    const component = setup();
+    assert.equal(
+      component.props.children[1].props.className,
+      'panelSwitcher__button--next'
+    );
+    assert.end();
+  }
+);
+
+test(
   'PanelSwitcher renders no previous panel button if it is at the first panel',
   (assert) => {
     const component = setup('first');
@@ -49,18 +58,6 @@ test(
     assert.equal(
       component.props.children[0],
       undefined
-    );
-    assert.end();
-  }
-);
-
-test(
-  'PanelSwitcher renders next panel button if it is not at the last panel',
-  (assert) => {
-    const component = setup();
-    assert.equal(
-      component.props.children[1].props.className,
-      'panelSwitcher__button--next'
     );
     assert.end();
   }
