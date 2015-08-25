@@ -4,14 +4,16 @@ export default class WidgetHeader extends React.Component {
 
   render() {
     return (
-      <div id="widgetHeader">
-        <div>
+      <div className="widget-header">
+        <div className="widget-header__facility-info">
           <h1>{ this.props.facilityName }</h1>
           <h2>Online Reservation</h2>
         </div>
-        <h3>{ this.props.reservationCovers } persons</h3>
-        <h3>{ this.props.reservationDate }</h3>
-        <h3>{ this.props.reservationTimeslot }</h3>
+        <div className="widget-header__reservation-info">
+          <h3>{ this.props.reservationCovers } persons</h3>
+          <h3>{ this.props.reservationDate }</h3>
+          <h3>{ this.props.reservationTimeslot }</h3>
+        </div>
       </div>
     );
   }
