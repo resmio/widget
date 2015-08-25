@@ -39,13 +39,16 @@ test(
   }
 );
 
-test.skip(
+test(
   'PanelSwitcher renders no previous panel button if it is at the first panel',
   (assert) => {
     const component = setup('first');
+    // Since the component is conditionally rendered, it will still return the
+    // child as undefined, see https://github.com/facebook/react/issues/2393
+    // for more info
     assert.equal(
-      component.props.children[0].props.className,
-      'panelSwitcher__button--previous'
+      component.props.children[0],
+      undefined
     );
     assert.end();
   }
@@ -58,6 +61,18 @@ test(
     assert.equal(
       component.props.children[1].props.className,
       'panelSwitcher__button--next'
+    );
+    assert.end();
+  }
+);
+
+test(
+  'PanelSwitcher renders last panel button if it is at the last panel',
+  (assert) => {
+    const component = setup('last');
+    assert.equal(
+      component.props.children[1].props.className,
+      'panelSwitcher__button--final'
     );
     assert.end();
   }
