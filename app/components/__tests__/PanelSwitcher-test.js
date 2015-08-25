@@ -3,9 +3,6 @@ import PanelSwitcher from '../../components/PanelSwitcher';
 import React from 'react/addons';
 const {TestUtils} = React.addons;
 
-const before = test;
-const after = test;
-
 const setup = (position) => {
 
   const renderer = TestUtils.createRenderer();

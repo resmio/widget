@@ -4,7 +4,7 @@ export default class PersonPicker extends React.Component {
 
   render() {
     return (
-        <div id="person-picker">
+        <div className="person-picker">
           <label htmlFor="persons">Persons</label>
           <input
             type="number"
