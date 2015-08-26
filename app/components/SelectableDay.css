@@ -1,4 +1,4 @@
-@import '../styles/_variables';
+@import '../styles/_variables.css';
 
 .DayPicker-NavButton--prev {
   left: 1rem;

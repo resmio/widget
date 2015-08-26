@@ -1,8 +1,12 @@
-@import '../styles/_variables';
+@import '../styles/_variables.css';
 
 .widget-header {
   background: var(--black);
   padding: 1em 2em 1em;
+}
+
+.widget-header__facility-info {
+  lost-column: 1/2;
 }
 
 .widget-header__facility-name {
