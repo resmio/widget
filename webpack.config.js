@@ -20,14 +20,11 @@ var common = {
   module: {
     loaders: [
       {
-        test: /\.css$/,
-        loaders: ['style', 'css', 'postcss'],
+        test: /\.scss$/,
+        loaders: ['style', 'css', 'sass'],
       },
     ],
   },
-  postcss: function() {
-    return [cssnext, lost]
-  }
 };
 
 if(TARGET === 'build') {
