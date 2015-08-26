@@ -1,3 +1,5 @@
+import './App.css';
+
 import React from 'react';
 import AvailabilitiesStore from '../stores/AvailabilitiesStore';
 import ViewActionCreators from '../actions/ViewActionCreators';

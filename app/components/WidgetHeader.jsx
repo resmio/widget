@@ -1,3 +1,4 @@
+import './WidgetHeader.css';
 import React from 'react';
 
 export default class WidgetHeader extends React.Component {
@@ -5,10 +6,16 @@ export default class WidgetHeader extends React.Component {
   render() {
     return (
       <div className="widget-header">
+
         <div className="widget-header__facility-info">
-          <h1>{ this.props.facilityName }</h1>
-          <h2>Online Reservation</h2>
+          <h1 className="widget-header__facility-name">
+            { this.props.facilityName }
+          </h1>
+          <h2 className="widget-header__subtitle">
+            Online Reservation
+          </h2>
         </div>
+
         <div className="widget-header__reservation-info">
           <h3>{ this.props.reservationCovers } persons</h3>
           <h3>{ this.props.reservationDate }</h3>

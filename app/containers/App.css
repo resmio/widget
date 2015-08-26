@@ -1,0 +1,8 @@
+@import '../styles/_variables';
+
+.widget-container {
+  background: yellow;
+  font-family: var(--font);
+  margin: 0 auto;
+  width: 320px;
+}
