@@ -1,23 +1,23 @@
-@import '../styles/_variables.css';
+@import '../styles/_variables.scss';
 
 .widget-header {
-  background: var(--black);
+  background: black;
   padding: 1em 2em 1em;
 }
 
 .widget-header__facility-info {
-  lost-column: 1/2;
+
 }
 
 .widget-header__facility-name {
-  color: var(--white);
+  color: white;
   font-size: 1.5em;
   font-weight: 400;
   margin-bottom: 0;
 }
 
 .widget-header__subtitle {
-  color: var(--medium-grey);
+  color: red;
   font-size: 0.8em;
   font-weight: 400;
   letter-spacing: 0.1em;
@@ -25,7 +25,7 @@
 }
 
 .widget-header__reservation-info {
-  color: var(--medium-grey);
+  color: red;
   float: right;
   font-size: 0.8em;
   font-weight: 400;

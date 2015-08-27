@@ -1,5 +1,3 @@
-@import '../styles/_variables.css';
-
 .DayPicker-NavButton--prev {
   left: 1rem;
 }
@@ -80,24 +78,24 @@
 .DayPicker-Day {
   display: table-cell;
   padding: .5rem;
-  border: 1px solid var(--light-grey);
+  border: 1px solid yellow;
   text-align: center;
   cursor: pointer;
   vertical-align: middle;
 }
 
 .DayPicker-Day--disabled {
-  background-color: var(--light-grey);
+  background-color: yellow;
   color: lightgray;
   cursor: default;
 }
 
 .DayPicker-Day--today {
-  color: var(--red);
+  color: red;
   font-weight: 500;
 }
 
 .DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {
-  color: var(--white);
-  background-color: var(--blue);
+  color: white;
+  background-color: blue;
 }
