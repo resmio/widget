@@ -1,4 +1,3 @@
-import './WidgetHeader.scss';
 import React from 'react';
 
 export default class WidgetHeader extends React.Component {

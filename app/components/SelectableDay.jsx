@@ -1,5 +1,3 @@
-import './SelectableDay.scss';
-
 import React from 'react';
 import DayPicker from 'react-day-picker';
 

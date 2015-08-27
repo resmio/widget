@@ -1,5 +1,6 @@
-@import '_variables.scss';
+@import 'vendor/bourbon/bourbon';
+@import 'base/base';
+@import 'vendor/neat/neat';
 
-body {
-  background-color: $yellow;
-}
+@import 'containers/containers';
+@import 'components/components';
