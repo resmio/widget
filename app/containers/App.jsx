@@ -30,10 +30,7 @@ export default class App extends React.Component {
                                   widgetMessage={this.props.widgetMessage}
                                  />);
     return (
-      <div>
-        <h1>{this.state.name}</h1>
-        <h2>{this.state.phone}</h2>
-        <h2>{this.state.email}</h2>
+      <div className="widget-container">
         <WidgetHeader
           facilityName={this.props.facilityName}
           reservationCovers={this.state.covers}

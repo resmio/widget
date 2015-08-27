@@ -2,6 +2,8 @@ var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var webpack = require('webpack');
 var merge = require('webpack-merge');
+var lost = require('lost');
+var cssnext = require('cssnext');
 
 var TARGET = process.env.TARGET;
 var ROOT_PATH = path.resolve(__dirname);
@@ -18,8 +20,8 @@ var common = {
   module: {
     loaders: [
       {
-        test: /\.css$/,
-        loaders: ['style', 'css', 'cssnext'],
+        test: /\.scss$/,
+        loaders: ['style', 'css', 'sass'],
       },
     ],
   },

@@ -1,4 +1,4 @@
-import './styles/main.css';
+import './styles/main.scss';
 
 import React from 'react';
 import App from './containers/App';
