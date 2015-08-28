@@ -5,6 +5,7 @@ import { ActionTypes } from '../constants/Constants';
 const CHANGE_EVENT = 'CHANGE';
 
 const state = {
+  personPickerUiExpanded: false,
   availabilities: [],
   timeslot: {},
   covers: 2,
@@ -82,6 +83,11 @@ AvailabilitiesStore.dispatchToken = AppDispatcher.register((payload) => {
 
     case ActionTypes.PANEL_NUMBER_INCREASED:
       state.showPanel += 1;
+      _AvailabilitiesStore.emitChange();
+      break;
+
+    case ActionTypes.PERSON_PICKER_UI_STATE_CHANGED:
+      state.personPickerUiExpanded = !state.personPickerUiExpanded;
       _AvailabilitiesStore.emitChange();
       break;
 

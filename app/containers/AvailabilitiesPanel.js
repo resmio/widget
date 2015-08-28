@@ -37,6 +37,7 @@ export default class AvailabilitiesPanel extends React.Component {
         <PersonPicker
           numberOfCovers={ this.state.covers }
           handleChange={ this.handleCoverInputChange }
+          isExpanded={ this.state.personPickerUiExpanded }
         />
         <SelectableDay
           date={ this.state.date }
