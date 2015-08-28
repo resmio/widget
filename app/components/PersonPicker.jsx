@@ -1,25 +1,33 @@
 import React from 'react';
+import ViewActionCreators from '../actions/ViewActionCreators';
 
 export default class PersonPicker extends React.Component {
+
+  renderPeopleSelector() {
+    const numberElements = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+    return numberElements.map((number) => {
+      return (
+        <li
+          key={number}
+          onClick={this.handleClickOnPeopleNumber.bind(this, number)}
+        >
+          {number}
+        </li>
+      );
+    });
+  }
 
   render() {
     return (
         <div className="person-picker">
-          <label htmlFor="persons">People</label>
-          <input
-            type="number"
-            name="persons"
-            min="1"
-            step="1"
-            onChange={this.props.handleChange}
-            placeholder={ this.props.numberOfCovers}
-          />
+          <span className="component__label">People</span>
+            {this.renderPeopleSelector()}
         </div>
     );
   }
-}
 
-PersonPicker.propTypes = {
-  numberOfCovers: React.PropTypes.number.isRequired,
-  handleChange: React.PropTypes.func.isRequired
-};
+  handleClickOnPeopleNumber(number) {
+    ViewActionCreators.changeNumberOfCovers(number);
+  }
+}
