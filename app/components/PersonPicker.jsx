@@ -5,7 +5,7 @@ import ViewActionCreators from '../actions/ViewActionCreators';
 export default class PersonPicker extends React.Component {
 
   renderPeopleSelector() {
-    return this.state.numberElements.map((number) => {
+    return this.state.numberElements[this.state.visibleGroupOfNumbers].map((number) => {
       return (
         <li
           key={number}
@@ -62,7 +62,8 @@ export default class PersonPicker extends React.Component {
     // We trigger the action to get the availabilities for today from here
     // This will update the state , so we render it properly
     this.state = AvailabilitiesStore.getState();
-    this.state.numberElements = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    this.state.numberElements = this.generateViewArray();
+    this.state.visibleGroupOfNumbers = 0;
     // We need to bind functions here so this won't refer to React
     // Will be solved in ES7
     this.handleClickOnPeopleNumber = this.handleClickOnPeopleNumber.bind(this);
@@ -74,11 +75,11 @@ export default class PersonPicker extends React.Component {
     // Creates an array with the numbers for the covers
     // We want it to start at one hence the +1 there
     // this.state.maxNumberOfCovers
-    const availableCovers = Array.from(new Array(15), (x, i) => i + 1);
+    const availableCovers = Array.from(new Array(27), (x, i) => i + 1);
 
     // Now  we split it into several arrays
     const availableCoversUiGroups = availableCovers.map( (element, index) => {
-      return index % 5 === 0 ? availableCovers.slice(index, index + 5) : null;
+      return index % 9 === 0 ? availableCovers.slice(index, index + 9) : null;
     })
     // We filter to remove the arrays with null
     .filter((element) => { return element; });
@@ -95,17 +96,11 @@ export default class PersonPicker extends React.Component {
   }
 
   handleNextButtonClick() {
-    const newNumbers = this.state.numberElements.map((number) => {
-      return number + 9;
-    });
-    this.setState({numberElements: newNumbers});
+    this.setState({visibleGroupOfNumbers: this.state.visibleGroupOfNumbers + 1});
   }
 
   handlePreviousButtonClick() {
-    const newNumbers = this.state.numberElements.map((number) => {
-      return number - 9;
-    });
-    this.setState({numberElements: newNumbers});
+    this.setState({visibleGroupOfNumbers: this.state.visibleGroupOfNumbers - 1});
   }
 }
 
