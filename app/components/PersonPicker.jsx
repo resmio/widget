@@ -70,6 +70,22 @@ export default class PersonPicker extends React.Component {
     this.handlePreviousButtonClick = this.handlePreviousButtonClick.bind(this);
   }
 
+  generateViewArray() {
+    // Creates an array with the numbers for the covers
+    // We want it to start at one hence the +1 there
+    // this.state.maxNumberOfCovers
+    const availableCovers = Array.from(new Array(15), (x, i) => i + 1);
+
+    // Now  we split it into several arrays
+    const availableCoversUiGroups = availableCovers.map( (element, index) => {
+      return index % 5 === 0 ? availableCovers.slice(index, index + 5) : null;
+    })
+    // We filter to remove the arrays with null
+    .filter((element) => { return element; });
+
+    return availableCoversUiGroups;
+  }
+
   handleClickOnPeopleNumber(number) {
     ViewActionCreators.changeNumberOfCovers(number);
   }
@@ -79,17 +95,17 @@ export default class PersonPicker extends React.Component {
   }
 
   handleNextButtonClick() {
-    this.state.numberElements = this.state.numberElements.map((number) => {
+    const newNumbers = this.state.numberElements.map((number) => {
       return number + 9;
     });
-    this.forceUpdate();
+    this.setState({numberElements: newNumbers});
   }
 
   handlePreviousButtonClick() {
-    this.state.numberElements = this.state.numberElements.map((number) => {
+    const newNumbers = this.state.numberElements.map((number) => {
       return number - 9;
     });
-    this.forceUpdate();
+    this.setState({numberElements: newNumbers});
   }
 }
 

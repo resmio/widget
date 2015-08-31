@@ -6,6 +6,8 @@ const CHANGE_EVENT = 'CHANGE';
 
 const state = {
   personPickerUiExpanded: false,
+  maxNumberOfCovers: 25,
+  numberOfCoversOnUi: 9,
   availabilities: [],
   timeslot: {},
   covers: 2,
