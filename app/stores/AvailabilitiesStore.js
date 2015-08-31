@@ -10,7 +10,7 @@ const state = {
   numberOfCoversOnUi: 9,
   availabilities: [],
   timeslot: {},
-  covers: 2,
+  covers: 12,
   newsletter: true,
   date: new Date(),
   email: '',

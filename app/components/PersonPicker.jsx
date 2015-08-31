@@ -4,6 +4,11 @@ import ViewActionCreators from '../actions/ViewActionCreators';
 
 export default class PersonPicker extends React.Component {
 
+  getVisibleGroupOfNumbers() {
+    // We need to return the index of the array that contains the number of covers
+    this.state.numberElements.map((el) => { el.indexOf(this.props.numberOfCovers); });
+  }
+
   renderPeopleSelector() {
     return this.state
                .numberElements[this.state.visibleGroupOfNumbers]
@@ -40,7 +45,7 @@ export default class PersonPicker extends React.Component {
     // This will update the state , so we render it properly
     this.state = AvailabilitiesStore.getState();
     this.state.numberElements = this.generateViewArray();
-    this.state.visibleGroupOfNumbers = 0;
+    this.state.visibleGroupOfNumbers = this.getVisibleGroupOfNumbers();
     // We need to bind functions here so this won't refer to React
     // Will be solved in ES7
     this.handleClickOnPeopleNumber = this.handleClickOnPeopleNumber.bind(this);
