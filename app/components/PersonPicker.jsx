@@ -5,16 +5,18 @@ import ViewActionCreators from '../actions/ViewActionCreators';
 export default class PersonPicker extends React.Component {
 
   renderPeopleSelector() {
-    return this.state.numberElements[this.state.visibleGroupOfNumbers].map((number) => {
-      return (
-        <li
-          key={number}
-          onClick={this.handleClickOnPeopleNumber.bind(this, number)}
-        >
-          {number}
-        </li>
-      );
-    });
+    return this.state
+               .numberElements[this.state.visibleGroupOfNumbers]
+               .map((number) => {
+                 return (
+                   <li
+                     key={number}
+                     onClick={this.handleClickOnPeopleNumber.bind(this, number)}
+                   >
+                     {number}
+                   </li>
+                 );
+               });
   }
 
   render() {
@@ -47,20 +49,45 @@ export default class PersonPicker extends React.Component {
   }
 
 // -----------------------------------------------------------------------------
-// Functions to generate the html
+// State changers
+// -----------------------------------------------------------------------------
+
+    generateViewArray() {
+      // Creates an array with the numbers for the covers
+      // We want it to start at one hence the +1 there
+      // this.state.maxNumberOfCovers
+      const availableCovers = Array.from(new Array(27), (x, i) => i + 1);
+
+      // Now  we split it into several arrays
+      const availableCoversUiGroups = availableCovers.map( (element, index) => {
+        return index % 9 === 0 ? availableCovers.slice(index, index + 9) : null;
+      })
+      // We filter to remove the arrays with null
+      .filter((element) => { return element; });
+
+      return availableCoversUiGroups;
+    }
+
+// -----------------------------------------------------------------------------
+// Html Generators
 // -----------------------------------------------------------------------------
 
   generateHtmlListOfCovers() {
     if (this.props.isExpanded) {
-      return (<ul onClick={this.handlePersonPickerClick}>
-                     {this.renderPeopleSelector()}
-                   </ul>
-                  );
+      return (
+        <ul onClick={this.handlePersonPickerClick}>
+          {this.renderPeopleSelector()}
+        </ul>
+       );
     }
     if (!this.props.isExpanded) {
-      return (<span className="person-picker" onClick={this.handlePersonPickerClick}>
-                    {this.props.numberOfCovers}
-                   </span>);
+      return (
+        <span
+          className="person-picker"
+          onClick={this.handlePersonPickerClick}
+        >
+          {this.props.numberOfCovers}
+        </span>);
     }
   }
 
@@ -86,21 +113,9 @@ export default class PersonPicker extends React.Component {
     }
   }
 
-  generateViewArray() {
-    // Creates an array with the numbers for the covers
-    // We want it to start at one hence the +1 there
-    // this.state.maxNumberOfCovers
-    const availableCovers = Array.from(new Array(27), (x, i) => i + 1);
-
-    // Now  we split it into several arrays
-    const availableCoversUiGroups = availableCovers.map( (element, index) => {
-      return index % 9 === 0 ? availableCovers.slice(index, index + 9) : null;
-    })
-    // We filter to remove the arrays with null
-    .filter((element) => { return element; });
-
-    return availableCoversUiGroups;
-  }
+// -----------------------------------------------------------------------------
+// Event handlers
+// -----------------------------------------------------------------------------
 
   handleClickOnPeopleNumber(number) {
     ViewActionCreators.changeNumberOfCovers(number);
@@ -111,13 +126,21 @@ export default class PersonPicker extends React.Component {
   }
 
   handleNextButtonClick() {
-    this.setState({visibleGroupOfNumbers: this.state.visibleGroupOfNumbers + 1});
+    this.setState(
+      {visibleGroupOfNumbers: this.state.visibleGroupOfNumbers + 1}
+    );
   }
 
   handlePreviousButtonClick() {
-    this.setState({visibleGroupOfNumbers: this.state.visibleGroupOfNumbers - 1});
+    this.setState(
+      {visibleGroupOfNumbers: this.state.visibleGroupOfNumbers - 1}
+    );
   }
 }
+
+// -----------------------------------------------------------------------------
+// Props validation
+// -----------------------------------------------------------------------------
 
 PersonPicker.propTypes = {
   numberOfCovers: React.PropTypes.number.isRequired,
