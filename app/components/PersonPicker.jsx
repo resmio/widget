@@ -18,37 +18,12 @@ export default class PersonPicker extends React.Component {
   }
 
   render() {
-    let component;
-    let nextButton;
-    let previousButton;
-    let classString = 'person-picker--';
-    if (this.props.isExpanded) {
-      component = (<ul onClick={this.handlePersonPickerClick}>
-                     {this.renderPeopleSelector()}
-                   </ul>
-                  );
-      nextButton = (
-        <a href="#"
-          onClick={this.handleNextButtonClick}>
-          &#10095;
-        </a>
-      );
-      previousButton = (
-        <a href="#"
-          onClick={this.handlePreviousButtonClick}>
-          &#10094;
-        </a>
-      );
-      classString += 'is-expanded';
-    }
-    if (!this.props.isExpanded) {
-      component = (<span className="person-picker" onClick={this.handlePersonPickerClick}>
-                    {this.props.numberOfCovers}
-                   </span>);
-      classString += 'is-collapsed';
-    }
+    const component = this.generateHtmlListOfCovers();
+    const nextButton = this.generateHtmlNextButton();
+    const previousButton = this.generateHtmlPreviousButton();
+
     return (
-      <div className={ classString }>
+      <div>
         <span className="component__label">People</span>
         { previousButton }
         { component }
@@ -69,6 +44,46 @@ export default class PersonPicker extends React.Component {
     this.handleClickOnPeopleNumber = this.handleClickOnPeopleNumber.bind(this);
     this.handleNextButtonClick = this.handleNextButtonClick.bind(this);
     this.handlePreviousButtonClick = this.handlePreviousButtonClick.bind(this);
+  }
+
+// -----------------------------------------------------------------------------
+// Functions to generate the html
+// -----------------------------------------------------------------------------
+
+  generateHtmlListOfCovers() {
+    if (this.props.isExpanded) {
+      return (<ul onClick={this.handlePersonPickerClick}>
+                     {this.renderPeopleSelector()}
+                   </ul>
+                  );
+    }
+    if (!this.props.isExpanded) {
+      return (<span className="person-picker" onClick={this.handlePersonPickerClick}>
+                    {this.props.numberOfCovers}
+                   </span>);
+    }
+  }
+
+  generateHtmlNextButton() {
+    if (this.props.isExpanded && this.state.visibleGroupOfNumbers !== 2) {
+      return (
+        <a href="#"
+          onClick={this.handleNextButtonClick}>
+          &#10095;
+        </a>
+      );
+    }
+  }
+
+  generateHtmlPreviousButton() {
+    if (this.props.isExpanded && this.state.visibleGroupOfNumbers !== 0) {
+      return (
+        <a href="#"
+          onClick={this.handlePreviousButtonClick}>
+          &#10094;
+        </a>
+      );
+    }
   }
 
   generateViewArray() {
