@@ -1,9 +1,26 @@
 .person-picker__number,
 .person-picker__number--selected {
   float: left;
-  padding: 10px;
+  padding: 8px 10px;
+}
+
+.person-picker__number {
+  color: $dark-gray;
+}
+
+.component__label {
+  color: $medium-gray;
+  float: left;
 }
 
 .person-picker__number--selected {
   border: 1px solid $green;
+  border-radius: 4px;
+  color: $green;
+}
+
+.person-picker__button--previous,
+.person-picker__button--next {
+  color: $dark-gray;
+  font-weight: 100;
 }

@@ -16,9 +16,10 @@
 }
 
 .DayPicker {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  @include span-columns(10);
+  @include shift(1);
+  @include omega();
+  border-bottom: 1px solid $light-gray;
   position: relative;
   padding: 1rem 0;
   user-select: none;
