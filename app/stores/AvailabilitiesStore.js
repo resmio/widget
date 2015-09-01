@@ -75,6 +75,7 @@ AvailabilitiesStore.dispatchToken = AppDispatcher.register((payload) => {
 
     case ActionTypes.NUMBER_OF_COVERS_CHANGED:
       state.covers = action.newCoverValue;
+      state.personPickerUiExpanded = false;
       _AvailabilitiesStore.emitChange();
       break;
 
