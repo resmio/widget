@@ -1,26 +1,57 @@
 .person-picker__number,
-.person-picker__number--selected {
+.person-picker__number--selected,
+.person-picker__button--previous,
+.person-picker__button--next {
+  cursor: pointer;
   float: left;
-  padding: 8px 10px;
+}
+
+.person-picker__number,
+.person-picker__number--selected {
+  padding: 8px 5%;
+}
+
+.person-picker__button--previous,
+.person-picker__button--next {
+  color: $medium-gray;
+  font-weight: lighter;
+  padding: 8px 6px;
+}
+
+.person-picker__button--next {
+  float: right;
+  padding-right: 0px;
 }
 
 .person-picker__number {
   color: $dark-gray;
 }
 
-.component__label {
-  color: $medium-gray;
-  float: left;
+.person-picker__number--selected,
+.person-picker__number:hover {
+  border-radius: 4px;
 }
 
 .person-picker__number--selected {
-  border: 1px solid $green;
-  border-radius: 4px;
+  border: 1px solid $medium-gray;
   color: $green;
 }
 
-.person-picker__button--previous,
-.person-picker__button--next {
-  color: $dark-gray;
-  font-weight: 100;
+.person-picker__number:hover {
+  border: 1px solid $medium-gray;
+  color: $medium-gray;
+}
+
+.component__label {
+  @include span-columns(2);
+  color: $medium-gray;
+}
+
+.person-picker__list-element {
+  text-align: center;
+}
+
+.person-picker__container {
+  @include span-columns(10);
+  margin-top: -6px;
 }

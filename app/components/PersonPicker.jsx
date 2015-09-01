@@ -7,9 +7,11 @@ export default class PersonPicker extends React.Component {
     return (
       <div className="panel__input">
         <span className="component__label">People</span>
-        { this._renderPreviousButton() }
-        { this._renderListOfNumbers() }
-        { this._renderNextButton() }
+        <div className="person-picker__container">
+          { this._renderPreviousButton() }
+          { this._renderListOfNumbers() }
+          { this._renderNextButton() }
+        </div>
       </div>
     );
   }
@@ -60,7 +62,7 @@ export default class PersonPicker extends React.Component {
     }
 
     _getNumberOfGroups() {
-      return Math.floor(this.props.numbersInTotal / this.props.numbersPerGroup);
+      return Math.ceil(this.props.numbersInTotal / this.props.numbersPerGroup);
     }
 
 // -----------------------------------------------------------------------------
@@ -69,8 +71,10 @@ export default class PersonPicker extends React.Component {
 
   _renderListOfNumbers() {
     return (
-      <ul onClick={this._handlePersonPickerClick}>
-        {this._renderNumbers()}
+      <ul
+        className="person-picker__list-element"
+        onClick={this._handlePersonPickerClick}>
+          {this._renderNumbers()}
       </ul>
      );
   }
