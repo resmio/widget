@@ -4,14 +4,13 @@ import ViewActionCreators from '../actions/ViewActionCreators';
 
 export default class PersonPicker extends React.Component {
 
-  getVisibleGroupOfNumbers() {
-    // We need to return the index of the array that contains the number of covers
-    this.state.numberElements.map((el) => { el.indexOf(this.props.numberOfCovers); });
+  getGroupWithSelectedElement() {
+    return Math.floor(this.state.covers / (this.state.numberOfCoversOnUi + 1));
   }
 
   renderPeopleSelector() {
     return this.state
-               .numberElements[this.state.visibleGroupOfNumbers]
+               .numberElements[this.state.groupWithSelectedElement]
                .map((number) => {
                  return (
                    <li
@@ -45,7 +44,7 @@ export default class PersonPicker extends React.Component {
     // This will update the state , so we render it properly
     this.state = AvailabilitiesStore.getState();
     this.state.numberElements = this.generateViewArray();
-    this.state.visibleGroupOfNumbers = this.getVisibleGroupOfNumbers();
+    this.state.groupWithSelectedElement = this.getGroupWithSelectedElement();
     // We need to bind functions here so this won't refer to React
     // Will be solved in ES7
     this.handleClickOnPeopleNumber = this.handleClickOnPeopleNumber.bind(this);
@@ -97,7 +96,7 @@ export default class PersonPicker extends React.Component {
   }
 
   generateHtmlNextButton() {
-    if (this.props.isExpanded && this.state.visibleGroupOfNumbers !== 2) {
+    if (this.props.isExpanded && this.state.groupWithSelectedElement !== 2) {
       return (
         <a href="#"
           onClick={this.handleNextButtonClick}>
@@ -108,7 +107,7 @@ export default class PersonPicker extends React.Component {
   }
 
   generateHtmlPreviousButton() {
-    if (this.props.isExpanded && this.state.visibleGroupOfNumbers !== 0) {
+    if (this.props.isExpanded && this.state.groupWithSelectedElement !== 0) {
       return (
         <a href="#"
           onClick={this.handlePreviousButtonClick}>
@@ -132,13 +131,13 @@ export default class PersonPicker extends React.Component {
 
   handleNextButtonClick() {
     this.setState(
-      {visibleGroupOfNumbers: this.state.visibleGroupOfNumbers + 1}
+      {groupWithSelectedElement: this.state.groupWithSelectedElement + 1}
     );
   }
 
   handlePreviousButtonClick() {
     this.setState(
-      {visibleGroupOfNumbers: this.state.visibleGroupOfNumbers - 1}
+      {groupWithSelectedElement: this.state.groupWithSelectedElement - 1}
     );
   }
 }
