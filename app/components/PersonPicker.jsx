@@ -4,10 +4,6 @@ import ViewActionCreators from '../actions/ViewActionCreators';
 
 export default class PersonPicker extends React.Component {
 
-  getGroupWithSelectedElement() {
-    return Math.floor(this.state.covers / (this.state.numberOfCoversOnUi + 1));
-  }
-
   renderPeopleSelector() {
     return this.state
                .numberElements[this.state.groupWithSelectedElement]
@@ -15,7 +11,7 @@ export default class PersonPicker extends React.Component {
                  return (
                    <li
                      key={number}
-                     onClick={this.handleClickOnPeopleNumber.bind(this, number)}
+                     onClick={this.handleNumberClick.bind(this, number)}
                    >
                      {number}
                    </li>
@@ -47,7 +43,7 @@ export default class PersonPicker extends React.Component {
     this.state.groupWithSelectedElement = this.getGroupWithSelectedElement();
     // We need to bind functions here so this won't refer to React
     // Will be solved in ES7
-    this.handleClickOnPeopleNumber = this.handleClickOnPeopleNumber.bind(this);
+    this.handleNumberClick = this.handleNumberClick.bind(this);
     this.handleNextButtonClick = this.handleNextButtonClick.bind(this);
     this.handlePreviousButtonClick = this.handlePreviousButtonClick.bind(this);
   }
@@ -70,6 +66,10 @@ export default class PersonPicker extends React.Component {
       .filter((element) => { return element; });
 
       return availableCoversUiGroups;
+    }
+
+    getGroupWithSelectedElement() {
+      return Math.floor(this.state.covers / (this.state.numberOfCoversOnUi + 1));
     }
 
 // -----------------------------------------------------------------------------
@@ -121,7 +121,7 @@ export default class PersonPicker extends React.Component {
 // Event handlers
 // -----------------------------------------------------------------------------
 
-  handleClickOnPeopleNumber(number) {
+  handleNumberClick(number) {
     ViewActionCreators.changeNumberOfCovers(number);
   }
 
