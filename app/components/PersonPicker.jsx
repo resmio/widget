@@ -4,21 +4,6 @@ import ViewActionCreators from '../actions/ViewActionCreators';
 
 export default class PersonPicker extends React.Component {
 
-  renderPeopleSelector() {
-    return this.state
-               .numberElements[this.state.groupWithSelectedElement]
-               .map((number) => {
-                 return (
-                   <li
-                     key={number}
-                     onClick={this.handleNumberClick.bind(this, number)}
-                   >
-                     {number}
-                   </li>
-                 );
-               });
-  }
-
   render() {
     const component = this.generateHtmlListOfCovers();
     const nextButton = this.generateHtmlNextButton();
@@ -80,7 +65,7 @@ export default class PersonPicker extends React.Component {
     if (this.props.isExpanded) {
       return (
         <ul onClick={this.handlePersonPickerClick}>
-          {this.renderPeopleSelector()}
+          {this.generateHtmlNumbers()}
         </ul>
        );
     }
@@ -93,6 +78,26 @@ export default class PersonPicker extends React.Component {
           {this.props.numberOfCovers}
         </span>);
     }
+  }
+
+  generateHtmlNumbers() {
+    return this.state
+               .numberElements[this.state.groupWithSelectedElement]
+               .map((number) => {
+                 return (
+                   <li
+                     className={
+                       number === this.state.covers ?
+                        'person-picker__number--selected' :
+                        'person-picker__number'
+                     }
+                     key={number}
+                     onClick={this.handleNumberClick.bind(this, number)}
+                   >
+                     {number}
+                   </li>
+                 );
+               });
   }
 
   generateHtmlNextButton() {

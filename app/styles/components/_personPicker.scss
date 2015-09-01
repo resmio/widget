@@ -1,0 +1,9 @@
+.person-picker__number,
+.person-picker__number--selected {
+  float: left;
+  padding: 10px;
+}
+
+.person-picker__number--selected {
+  border: 1px solid $green;
+}
