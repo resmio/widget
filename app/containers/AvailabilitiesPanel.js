@@ -35,7 +35,9 @@ export default class AvailabilitiesPanel extends React.Component {
           facilityMessage={this.props.widgetMessage}
         />
         <PersonPicker
-          numberOfCovers={ this.state.covers }
+          selectedNumber={ this.state.covers }
+          numbersInTotal={24}
+          numbersPerGroup={8}
           handleChange={ this.handleCoverInputChange }
           isExpanded={ this.state.personPickerUiExpanded }
         />

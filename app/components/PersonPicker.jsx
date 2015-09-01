@@ -5,9 +5,9 @@ import ViewActionCreators from '../actions/ViewActionCreators';
 export default class PersonPicker extends React.Component {
 
   render() {
-    const component = this.generateHtmlListOfCovers();
-    const nextButton = this.generateHtmlNextButton();
-    const previousButton = this.generateHtmlPreviousButton();
+    const component = this.renderListOfNumbers();
+    const nextButton = this.renderNextButton();
+    const previousButton = this.renderPreviousButton();
 
     return (
       <div>
@@ -41,11 +41,11 @@ export default class PersonPicker extends React.Component {
       // Creates an array with the numbers for the covers
       // We want it to start at one hence the +1 there
       // this.state.maxNumberOfCovers
-      const availableCovers = Array.from(new Array(27), (x, i) => i + 1);
+      const availableCovers = Array.from(new Array(this.props.numbersInTotal), (x, i) => i + 1);
 
       // Now  we split it into several arrays
       const availableCoversUiGroups = availableCovers.map( (element, index) => {
-        return index % 9 === 0 ? availableCovers.slice(index, index + 9) : null;
+        return index % this.props.numbersPerGroup === 0 ? availableCovers.slice(index, index + this.props.numbersPerGroup) : null;
       })
       // We filter to remove the arrays with null
       .filter((element) => { return element; });
@@ -61,11 +61,11 @@ export default class PersonPicker extends React.Component {
 // Html Generators
 // -----------------------------------------------------------------------------
 
-  generateHtmlListOfCovers() {
+  renderListOfNumbers() {
     if (this.props.isExpanded) {
       return (
         <ul onClick={this.handlePersonPickerClick}>
-          {this.generateHtmlNumbers()}
+          {this.renderNumbers()}
         </ul>
        );
     }
@@ -73,21 +73,21 @@ export default class PersonPicker extends React.Component {
       return (
         <span
           className="person-picker"
-          onClick={this.handlePersonPickerClick}
+          onClick={this.handleNumberListClick}
         >
-          {this.props.numberOfCovers}
+          {this.props.selectedNumber}
         </span>);
     }
   }
 
-  generateHtmlNumbers() {
+  renderNumbers() {
     return this.state
                .numberElements[this.state.groupWithSelectedElement]
                .map((number) => {
                  return (
                    <li
                      className={
-                       number === this.state.covers ?
+                       number === this.props.selectedNumber ?
                         'person-picker__number--selected' :
                         'person-picker__number'
                      }
@@ -100,7 +100,7 @@ export default class PersonPicker extends React.Component {
                });
   }
 
-  generateHtmlNextButton() {
+  renderNextButton() {
     if (this.props.isExpanded && this.state.groupWithSelectedElement !== 2) {
       return (
         <a href="#"
@@ -111,7 +111,7 @@ export default class PersonPicker extends React.Component {
     }
   }
 
-  generateHtmlPreviousButton() {
+  renderPreviousButton() {
     if (this.props.isExpanded && this.state.groupWithSelectedElement !== 0) {
       return (
         <a href="#"
@@ -130,7 +130,7 @@ export default class PersonPicker extends React.Component {
     ViewActionCreators.changeNumberOfCovers(number);
   }
 
-  handlePersonPickerClick() {
+  handleNumberListClick() {
     ViewActionCreators.changePersonPickerUiState();
   }
 
@@ -152,6 +152,8 @@ export default class PersonPicker extends React.Component {
 // -----------------------------------------------------------------------------
 
 PersonPicker.propTypes = {
-  numberOfCovers: React.PropTypes.number.isRequired,
+  selectedNumber: React.PropTypes.number.isRequired,
+  numbersInTotal: React.PropTypes.number.isRequired,
+  numbersPerGroup: React.PropTypes.number.isRequired,
   isExpanded: React.PropTypes.bool
 };
