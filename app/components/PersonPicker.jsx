@@ -1,20 +1,15 @@
 import React from 'react';
-import AvailabilitiesStore from '../stores/AvailabilitiesStore';
 import ViewActionCreators from '../actions/ViewActionCreators';
 
 export default class PersonPicker extends React.Component {
 
   render() {
-    const component = this.renderListOfNumbers();
-    const nextButton = this.renderNextButton();
-    const previousButton = this.renderPreviousButton();
-
     return (
       <div>
         <span className="component__label">People</span>
-        { previousButton }
-        { component }
-        { nextButton }
+        { this.renderPreviousButton() }
+        { this.renderListOfNumbers() }
+        { this.renderNextButton() }
       </div>
     );
   }
@@ -23,9 +18,10 @@ export default class PersonPicker extends React.Component {
     super(props);
     // We trigger the action to get the availabilities for today from here
     // This will update the state , so we render it properly
-    this.state = AvailabilitiesStore.getState();
+    this.state = {};
     this.state.numberElements = this.generateViewArray();
     this.state.groupWithSelectedElement = this.getGroupWithSelectedElement();
+    this.state.numberOfGroups = this.getNumberOfGroups();
     // We need to bind functions here so this won't refer to React
     // Will be solved in ES7
     this.handleNumberClick = this.handleNumberClick.bind(this);
@@ -40,7 +36,6 @@ export default class PersonPicker extends React.Component {
     generateViewArray() {
       // Creates an array with the numbers for the covers
       // We want it to start at one hence the +1 there
-      // this.state.maxNumberOfCovers
       const availableCovers = Array.from(new Array(this.props.numbersInTotal), (x, i) => i + 1);
 
       // Now  we split it into several arrays
@@ -54,7 +49,11 @@ export default class PersonPicker extends React.Component {
     }
 
     getGroupWithSelectedElement() {
-      return Math.floor(this.state.covers / (this.state.numberOfCoversOnUi + 1));
+      return Math.floor(this.props.selectedNumber / (this.props.numbersPerGroup + 1));
+    }
+
+    getNumberOfGroups() {
+      return Math.floor(this.props.numbersInTotal / this.props.numbersPerGroup);
     }
 
 // -----------------------------------------------------------------------------
@@ -101,7 +100,8 @@ export default class PersonPicker extends React.Component {
   }
 
   renderNextButton() {
-    if (this.props.isExpanded && this.state.groupWithSelectedElement !== 2) {
+    // We check this before the state.groupWithSelectedElement is changed, so we add one to the check
+    if (this.props.isExpanded && this.state.groupWithSelectedElement + 1 !== this.state.numberOfGroups) {
       return (
         <a href="#"
           onClick={this.handleNextButtonClick}>
