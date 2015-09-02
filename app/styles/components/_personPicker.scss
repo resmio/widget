@@ -8,7 +8,6 @@
 
 .component__label {
   @include span-columns(3);
-  text-align: right;
 }
 
 .person-picker__container {
@@ -29,9 +28,9 @@
 .person-picker__number--selected {
   @include span-columns(2 of 12, block-collapse);
   text-align: center;
-  margin-top: -4px;
-  padding-top: 4px;
-  padding-bottom: 4px;
+  margin-top: -2%;
+  padding-top: 2%;
+  padding-bottom: 2%;
 }
 
 .person-picker__button--next {

@@ -1,7 +1,8 @@
 .panel__input {
+  @include row();
+  @include span-columns(10);
+  @include shift(1);
   border-bottom: 1px solid $light-gray;
   font-size: 15px;
-  height: em(112);
-  margin: 0 25px;
-  padding-top: 11%;
+  padding: 40px 0;
 }
