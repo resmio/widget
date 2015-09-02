@@ -5,9 +5,9 @@ export default class WidgetHeader extends React.Component {
   render() {
     return (
       <div className="booking-info">
-        { this.props.reservationCovers } persons -
-        { this.props.reservationDate } -
-        { this.props.reservationTimeslot }
+        <span>{ this.props.reservationCovers } persons -</span>
+        <span>{ this.props.reservationDate } -</span>
+        <span>{ this.props.reservationTimeslot }</span>
       </div>
     );
   }

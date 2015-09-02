@@ -2,6 +2,7 @@
 import '../stores/__tests__/AvailabilitiesStore-test';
 import '../utils/__tests__/formatDateForApi-test';
 // Components
+import '../components/__tests__/BookingInfo-test';
 import '../components/__tests__/HtmlInput-test';
 import '../components/__tests__/PanelSwitcher-test';
 // import '../components/__tests__/PersonPicker-test';

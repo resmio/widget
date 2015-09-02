@@ -35,8 +35,6 @@ test(
   (assert) => {
     const component = setup();
     assert.equal(
-      // Some ugly DOM traversing here should be fixed on future versions
-      // of React.TestUtils
       component.props.children[1].props.children,
       'El Torito'
     );
