@@ -6,7 +6,7 @@ export default class PersonPicker extends React.Component {
   render() {
     return (
       <div className="panel__input">
-        <span className="component__label">People</span>
+        <span className="component__label">Mennesker</span>
         <div className="person-picker__container">
           { this._renderPreviousButton() }
           { this._renderListOfNumbers() }
@@ -72,7 +72,7 @@ export default class PersonPicker extends React.Component {
   _renderListOfNumbers() {
     return (
       <ul
-        className="person-picker__list-element"
+        className="person-picker__list-container"
         onClick={this._handlePersonPickerClick}>
           {this._renderNumbers()}
       </ul>
@@ -123,6 +123,13 @@ export default class PersonPicker extends React.Component {
         </a>
       );
     }
+    return (
+      <a href="#"
+        className="person-picker__button--disabled"
+      >
+      &#10094;
+      </a>
+    );
   }
 
 // -----------------------------------------------------------------------------

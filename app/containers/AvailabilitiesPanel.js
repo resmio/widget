@@ -36,8 +36,8 @@ export default class AvailabilitiesPanel extends React.Component {
         />
         <PersonPicker
           selectedNumber={ this.state.covers }
-          numbersInTotal={33}
-          numbersPerGroup={5}
+          numbersInTotal={19}
+          numbersPerGroup={6}
           handleChange={ this.handleCoverInputChange }
         />
         <SelectableDay
