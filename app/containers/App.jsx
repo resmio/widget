@@ -9,6 +9,7 @@ import AvailabilitiesPanel from './AvailabilitiesPanel';
 
 // Components
 import WidgetHeader from '../components/WidgetHeader';
+import BookingInfo from '../components/BookingInfo';
 import PanelSwitcher from '../components/PanelSwitcher';
 
 export default class App extends React.Component {
@@ -33,6 +34,8 @@ export default class App extends React.Component {
       <div className="widget-container">
         <WidgetHeader
           facilityName={this.props.facilityName}
+        />
+        <BookingInfo
           reservationCovers={this.state.covers}
           reservationDate={formatDateForApi(this.state.date)}
           reservationTimeslot={this.state.timeslot.local_time_formatted}

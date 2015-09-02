@@ -16,6 +16,12 @@ export default {
     }
   },
 
+  changePersonPickerUiState() {
+    AppDispatcher.handleViewAction({
+      type: ActionTypes.PERSON_PICKER_UI_STATE_CHANGED
+    });
+  },
+
   decreasePanelNumber() {
     AppDispatcher.handleViewAction({
       type: ActionTypes.PANEL_NUMBER_DECREASED

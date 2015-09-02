@@ -14,6 +14,7 @@ export default {
     NUMBER_OF_COVERS_CHANGED: null,
     PANEL_NUMBER_INCREASED: null,
     PANEL_NUMBER_DECREASED: null,
+    PERSON_PICKER_UI_STATE_CHANGED: null,
     PHONE_CHANGED: null,
     TIMESLOT_SELECTED: null   // Selects a timeslot
   }),

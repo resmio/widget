@@ -1,5 +1,6 @@
 .widget-container {
   @include outer-container();
-  background: $blue;
+  background: $white;
+  border: 1px solid $medium-gray;
   margin: 0 auto;
 }

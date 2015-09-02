@@ -52,6 +52,10 @@
     "ecmaFeatures": {
       "jsx": true,
       "modules": true
+    },
+    "rules": {
+      "react/sort-comp": 0
     }
+
   }
 }

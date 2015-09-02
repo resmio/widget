@@ -1,0 +1,85 @@
+// -----------------------------------------------------------------------------
+//                                Layout
+// -----------------------------------------------------------------------------
+
+.panel__input {
+  @include row();
+}
+
+.component__label {
+  @include span-columns(3);
+}
+
+.person-picker__container {
+  @include span-columns(9);
+}
+
+.person-picker__button--previous,
+.person-picker__button--next,
+.person-picker__button--disabled {
+  @include span-columns(1 of 9, block-collapse);
+}
+
+.person-picker__list-container {
+  @include span-columns(7 of 9, block-collapse);
+}
+
+.person-picker__number,
+.person-picker__number--selected {
+  @include span-columns(2 of 12, block-collapse);
+  text-align: center;
+  margin-top: -2%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+.person-picker__button--next {
+  @include omega();
+  text-align: right;
+}
+
+.person-picker__button--previous {
+  text-align: center;
+}
+
+.person-picker__button--disabled {
+    visibility: hidden;
+}
+
+// -----------------------------------------------------------------------------
+//                             Decoration
+// -----------------------------------------------------------------------------
+
+.component__label {
+  color: $medium-gray;
+}
+
+.person-picker__container {
+  color: $dark-gray;
+}
+
+.person-picker__button--previous,
+.person-picker__button--next,
+.person-picker__button--disabled {
+  color: $medium-gray;
+  font-weight: lighter;
+}
+
+.person-picker__number,
+.person-picker__number--selected,
+.person-picker__button--previous,
+.person-picker__button--next {
+  cursor: pointer;
+}
+
+.person-picker__number--selected {
+  border: 1px solid $green;
+  border-radius: $base-border-radius;
+  color: $green;
+}
+
+.person-picker__number:hover {
+  border: 1px solid $medium-gray;
+  border-radius: $base-border-radius;
+  color: $medium-gray;
+}
