@@ -4,3 +4,14 @@
   border: 1px solid $medium-gray;
   margin: 0 auto;
 }
+
+.widget-header-container {
+  @include background(
+    linear-gradient(
+      rgba($black, 0.8),
+      rgba($black, 0.8)
+    ),
+    url('http://www.cocobeach-restaurant.com/images/fresh-fish-restaurant-nice/fresh-fish-restaurant-nice-2.jpg')
+  );
+  padding: 1em 2em 1em;
+}
