@@ -9,6 +9,7 @@ export default {
     BOOKING_POSTED: null,
     DATE_CHANGED: null,
     EMAIL_CHANGED: null,
+    FACILITY_INFO_LOADED: null,
     NAME_CHANGED: null,
     NEWSLETTER_CHANGED: null,
     NUMBER_OF_COVERS_CHANGED: null,
@@ -16,6 +17,7 @@ export default {
     PANEL_NUMBER_DECREASED: null,
     PERSON_PICKER_UI_STATE_CHANGED: null,
     PHONE_CHANGED: null,
+    ROOT_COMPONENT_MOUNTED: null,
     TIMESLOT_SELECTED: null   // Selects a timeslot
   }),
 

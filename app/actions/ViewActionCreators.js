@@ -41,6 +41,13 @@ export default {
     });
   },
 
+  initializeWidget(facilityId) {
+    AppDispatcher.handleViewAction({
+      actionType: ActionTypes.ROOT_COMPONENT_MOUNTED
+    });
+    ApiUtils.requestFacilityInfo(facilityId);
+  },
+
   nameChanged(name) {
     AppDispatcher.handleViewAction({
       type: ActionTypes.NAME_CHANGED,

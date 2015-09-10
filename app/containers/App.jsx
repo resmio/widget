@@ -34,7 +34,7 @@ export default class App extends React.Component {
       <div className="widget-container">
       <div className="widget-header-container">
         <WidgetHeader
-          facilityName={this.props.facilityName}
+          facilityName={this.state.facilityName}
         />
         <BookingInfo
           reservationCovers={this.state.covers}
@@ -68,6 +68,7 @@ export default class App extends React.Component {
     // We trigger the action to get the availabilities for today from here
     // This will update the state , so we render it properly
     this.state = AvailabilitiesStore.getState();
+    ViewActionCreators.initializeWidget(this.props.facilityId);
     // We need to bind functions here so this won't refer to React
     // Will be solved in ES7
     this.handleStoreChange = this.handleStoreChange.bind(this);
@@ -91,6 +92,6 @@ export default class App extends React.Component {
 }
 
 App.propTypes = {
-  facilityName: React.PropTypes.string.isRequired,
+  facilityId: React.PropTypes.string.isRequired,
   widgetMessage: React.PropTypes.string
 };

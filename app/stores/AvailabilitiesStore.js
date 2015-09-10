@@ -13,6 +13,7 @@ const state = {
   covers: 2,
   newsletter: true,
   date: new Date(),
+  facilityId: '',
   email: '',
   loaded: false,
   name: '',

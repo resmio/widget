@@ -12,6 +12,7 @@ export default class AvailabilitiesPanel extends React.Component {
   renderAvailabilities() {
     // We need to probably filter on the store
     // Move it when refactoring
+    debugger;
     const coveredAvailabilities = this.state
                                       .availabilities
                                       .filter(this.filterAvailabilitiesByCover);

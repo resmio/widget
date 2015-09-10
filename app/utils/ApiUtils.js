@@ -5,8 +5,17 @@ import xhr from '../lib/xhr';
 
 const ApiUtils = {
 
+  requestFacilityInfo(facilityId) {
+    xhr.getJSON(`${API}/facility/${facilityId}`, (err, res) => {
+      if (err) {
+        return err;
+      }
+      ServerActionCreators.facilityInfoLoaded(res.name);
+    });
+  },
+
   requestAvailabilities(date) {
-    xhr.getJSON(`${API}/facility/the-fish/availability?date__gte=${date}`, (err, res) => {
+    xhr.getJSON(`${API}/facility/nudo/availability?date__gte=${date}`, (err, res) => {
       if (err) {
         return err;
       }

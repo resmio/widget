@@ -8,7 +8,7 @@ function main() {
   document.body.appendChild(app);
 
   React.render(<App
-                  facilityName="El Torito"
+                  facilityId="the-fish"
                   widgetMessage="Lleva botines y no va descalzo"
                 />, app);
 }
