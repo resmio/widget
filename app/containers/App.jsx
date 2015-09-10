@@ -32,6 +32,7 @@ export default class App extends React.Component {
                                  />);
     return (
       <div className="widget-container">
+      <div className="widget-header-container">
         <WidgetHeader
           facilityName={this.props.facilityName}
         />
@@ -40,6 +41,7 @@ export default class App extends React.Component {
           reservationDate={formatDateForApi(this.state.date)}
           reservationTimeslot={this.state.timeslot.local_time_formatted}
         />
+      </div>
         <h1>{this.state.showPanel}</h1>
           {(() => {
             switch (this.state.showPanel) {
