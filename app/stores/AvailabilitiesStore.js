@@ -45,11 +45,12 @@ const _AvailabilitiesStore = new AvailabilitiesStore();
 
 AvailabilitiesStore.dispatchToken = AppDispatcher.register((payload) => {
   const { action } = payload;
+  console.log(action.type);
 
-  switch (action.actionType) {
+  switch (action.type) {
 
     case ActionTypes.AVAILABILITIES_LOADED:
-      state.loaded = true;
+      console.log('AVAILABILITIES_LOADED', action.type);
       state.availabilities = action.availabilities;
       _AvailabilitiesStore.emitChange();
       break;

@@ -43,7 +43,7 @@ export default {
 
   initializeWidget(facilityId) {
     AppDispatcher.handleViewAction({
-      actionType: ActionTypes.ROOT_COMPONENT_MOUNTED
+      type: ActionTypes.ROOT_COMPONENT_MOUNTED
     });
     ApiUtils.requestFacilityInfo(facilityId);
   },
