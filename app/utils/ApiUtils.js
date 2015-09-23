@@ -10,7 +10,7 @@ const ApiUtils = {
       if (err) {
         return err;
       }
-      ServerActionCreators.facilityInfoLoaded(res.name);
+      ServerActionCreators.facilityInfoLoaded(res);
     });
   },
 
@@ -38,7 +38,7 @@ const ApiUtils = {
       price_change: state.timeslot.price_change,
       source: 'widgetTest'
     };
-    const url = 'https://app.resmio.com/v1/facility/meson-california-2/bookings';
+    const url = `https://app.resmio.com/v1/facility/${state.facilityId}/bookings`;
     xhr.postJSON(url, req, (err, res) => {
       if (err) {
         return err;

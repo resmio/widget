@@ -12,10 +12,11 @@ export default {
     });
   },
 
-  facilityInfoLoaded(facilityName) {
+  facilityInfoLoaded(res) {
     AppDispatcher.handleServerAction({
       type: ActionTypes.FACILITY_INFO_LOADED,
-      name: facilityName
+      id: res.id,
+      name: res.name
     });
   }
 

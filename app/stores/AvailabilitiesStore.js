@@ -65,6 +65,7 @@ AvailabilitiesStore.dispatchToken = AppDispatcher.register((payload) => {
 
     case ActionTypes.FACILITY_INFO_LOADED:
       state.name = action.name;
+      state.facilityId = action.id;
       _AvailabilitiesStore.emitChange();
       break;
 
