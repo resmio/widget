@@ -1,5 +1,5 @@
 import React from 'react';
-import AvailabilitiesStore from '../stores/AvailabilitiesStore';
+import WidgetStore from '../stores/WidgetStore';
 import ViewActionCreators from '../actions/ViewActionCreators';
 import formatDateForApi from '../utils/formatDateForApi';
 
@@ -17,13 +17,13 @@ export default class App extends React.Component {
   // Invoked once immediately after the initial rendering occurs
   // We listen for changes to the stores to run a callback when they happen
   componentDidMount() {
-    AvailabilitiesStore.addChangeListener(this.handleStoreChange);
+    WidgetStore.addChangeListener(this.handleStoreChange);
   }
 
   // Invoked once immediately before the initial rendering occurs.
   // We remove previous binded event listener to get a clean state
   componentWillUnmount() {
-    AvailabilitiesStore.removeChangeListener(this.handleStoreChange());
+    WidgetStore.removeChangeListener(this.handleStoreChange());
   }
 
   render() {
@@ -68,7 +68,7 @@ export default class App extends React.Component {
     super(props);
     // We trigger the action to get the availabilities for today from here
     // This will update the state , so we render it properly
-    this.state = AvailabilitiesStore.getState();
+    this.state = WidgetStore.getState();
     // We need to bind functions here so this won't refer to React
     // Will be solved in ES7
     this.handleStoreChange = this.handleStoreChange.bind(this);
@@ -79,7 +79,7 @@ export default class App extends React.Component {
   }
 
   handleStoreChange() {
-    this.setState(AvailabilitiesStore.getState());
+    this.setState(WidgetStore.getState());
   }
 
   handleClickOnNextButton() {
@@ -91,7 +91,7 @@ export default class App extends React.Component {
   }
 
   handleClickOnLastButton() {
-    ViewActionCreators.postBooking(AvailabilitiesStore.getState());
+    ViewActionCreators.postBooking(WidgetStore.getState());
   }
 }
 

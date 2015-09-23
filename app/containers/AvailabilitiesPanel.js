@@ -1,5 +1,5 @@
 import React from 'react';
-import AvailabilitiesStore from '../stores/AvailabilitiesStore';
+import WidgetStore from '../stores/WidgetStore';
 import ViewActionCreators from '../actions/ViewActionCreators';
 
 // Components
@@ -62,7 +62,7 @@ export default class AvailabilitiesPanel extends React.Component {
     ViewActionCreators.setNewDate(this.props.facilityId, new Date());
     // We trigger the action to get the availabilities for today from here
     // This will update the state , so we render it properly
-    this.state = AvailabilitiesStore.getState();
+    this.state = WidgetStore.getState();
     // We need to bind functions here so this won't refer to React
     // Will be solved in ES7
     this.handleCoverInputChange = this.handleCoverInputChange.bind(this);

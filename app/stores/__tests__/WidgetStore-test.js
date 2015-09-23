@@ -1,7 +1,7 @@
 import test from 'tape';
 
 import { PayloadSources, ActionTypes } from '../../constants/Constants';
-import AvailabilitiesStore from '../../stores/AvailabilitiesStore';
+import WidgetStore from '../../stores/WidgetStore';
 import AppDispatcher from '../../dispatchers/AppDispatcher';
 
 const setup = () => {
@@ -27,12 +27,12 @@ test('Availabilities Store availabilities update after an AVAILABILITIES_LOADED 
   });
 
   const expected = fixture.availabilities;
-  const actual = AvailabilitiesStore.getState().availabilities;
+  const actual = WidgetStore.getState().availabilities;
 
   assert.deepEqual(actual, expected,
     'The store should get the Availabilities from the dispatcher');
 
-  assert.equal(AvailabilitiesStore.getState().loaded, true,
+  assert.equal(WidgetStore.getState().loaded, true,
     'switch loaded to true ');
 
   teardown(fixture);

@@ -21,7 +21,7 @@ const state = {
   showPanel: 1
 };
 
-class AvailabilitiesStore extends EventEmitter {
+class WidgetStore extends EventEmitter {
 
   getState() {
     return state;
@@ -41,9 +41,9 @@ class AvailabilitiesStore extends EventEmitter {
 
 }
 
-const _AvailabilitiesStore = new AvailabilitiesStore();
+const _WidgetStore = new WidgetStore();
 
-AvailabilitiesStore.dispatchToken = AppDispatcher.register((payload) => {
+WidgetStore.dispatchToken = AppDispatcher.register((payload) => {
   const { action } = payload;
 
   switch (action.type) {
@@ -51,69 +51,69 @@ AvailabilitiesStore.dispatchToken = AppDispatcher.register((payload) => {
     case ActionTypes.AVAILABILITIES_LOADED:
       state.loaded = true;
       state.availabilities = action.availabilities;
-      _AvailabilitiesStore.emitChange();
+      _WidgetStore.emitChange();
       break;
 
     case ActionTypes.BOOKING_POSTED:
       state.booking = action.bookingDetails;
-      _AvailabilitiesStore.emitChange();
+      _WidgetStore.emitChange();
       break;
 
     case ActionTypes.DATE_CHANGED:
       state.date = action.newDate;
-      _AvailabilitiesStore.emitChange();
+      _WidgetStore.emitChange();
       break;
 
     case ActionTypes.EMAIL_CHANGED:
       state.email = action.email;
-      _AvailabilitiesStore.emitChange();
+      _WidgetStore.emitChange();
       break;
 
     case ActionTypes.FACILITY_INFO_LOADED:
       state.name = action.name;
       state.facilityId = action.id;
-      _AvailabilitiesStore.emitChange();
+      _WidgetStore.emitChange();
       break;
 
     case ActionTypes.NAME_CHANGED:
       state.name = action.name;
-      _AvailabilitiesStore.emitChange();
+      _WidgetStore.emitChange();
       break;
 
     case ActionTypes.NEWSLETTER_CHANGED:
       state.newsletter = !state.newsletter;
-      _AvailabilitiesStore.emitChange();
+      _WidgetStore.emitChange();
       break;
 
     case ActionTypes.NUMBER_OF_COVERS_CHANGED:
       state.covers = action.newCoverValue;
       state.personPickerUiExpanded = false;
-      _AvailabilitiesStore.emitChange();
+      _WidgetStore.emitChange();
       break;
 
     case ActionTypes.PANEL_NUMBER_DECREASED:
       state.showPanel -= 1;
-      _AvailabilitiesStore.emitChange();
+      _WidgetStore.emitChange();
       break;
 
     case ActionTypes.PANEL_NUMBER_INCREASED:
       state.showPanel += 1;
-      _AvailabilitiesStore.emitChange();
+      _WidgetStore.emitChange();
       break;
 
     case ActionTypes.PERSON_PICKER_UI_STATE_CHANGED:
       state.personPickerUiExpanded = !state.personPickerUiExpanded;
-      _AvailabilitiesStore.emitChange();
+      _WidgetStore.emitChange();
       break;
 
     case ActionTypes.PHONE_CHANGED:
       state.phone = action.phone;
-      _AvailabilitiesStore.emitChange();
+      _WidgetStore.emitChange();
       break;
 
     case ActionTypes.TIMESLOT_SELECTED:
       state.timeslot = action.timeslot;
-      _AvailabilitiesStore.emitChange();
+      _WidgetStore.emitChange();
       break;
 
     default:
@@ -121,4 +121,4 @@ AvailabilitiesStore.dispatchToken = AppDispatcher.register((payload) => {
   }
 });
 
-export default _AvailabilitiesStore;
+export default _WidgetStore;
