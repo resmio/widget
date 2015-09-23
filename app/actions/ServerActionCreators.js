@@ -13,7 +13,6 @@ export default {
   },
 
   facilityInfoLoaded(facilityName) {
-    console.log('Server: FacilityInfoLoaded', facilityName);
     AppDispatcher.handleServerAction({
       actionType: ActionTypes.FACILITY_INFO_LOADED,
       facilityName: facilityName

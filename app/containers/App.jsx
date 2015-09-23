@@ -75,7 +75,6 @@ export default class App extends React.Component {
 
   componentWillMount() {
     ViewActionCreators.initializeWidget(this.props.facilityId);
-    console.log('MOUNTING');
   }
 
   handleStoreChange() {

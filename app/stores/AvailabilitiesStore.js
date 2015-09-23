@@ -49,7 +49,6 @@ AvailabilitiesStore.dispatchToken = AppDispatcher.register((payload) => {
   switch (action.type) {
 
     case ActionTypes.AVAILABILITIES_LOADED:
-      console.log('AVAILABILITIES_LOADED', action);
       state.loaded = true;
       state.availabilities = action.availabilities;
       _AvailabilitiesStore.emitChange();
@@ -62,6 +61,11 @@ AvailabilitiesStore.dispatchToken = AppDispatcher.register((payload) => {
 
     case ActionTypes.EMAIL_CHANGED:
       state.email = action.email;
+      _AvailabilitiesStore.emitChange();
+      break;
+
+    case ActionTypes.FACILITY_INFO_LOADED:
+      state.name = action.name;
       _AvailabilitiesStore.emitChange();
       break;
 

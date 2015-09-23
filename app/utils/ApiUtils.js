@@ -10,7 +10,6 @@ const ApiUtils = {
       if (err) {
         return err;
       }
-      console.log('Facility Info loaded', res.name);
       ServerActionCreators.facilityInfoLoaded(res.name);
     });
   },
