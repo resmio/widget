@@ -10,12 +10,13 @@ const ApiUtils = {
       if (err) {
         return err;
       }
+      console.log('Facility Info loaded', res.name);
       ServerActionCreators.facilityInfoLoaded(res.name);
     });
   },
 
   requestAvailabilities(date) {
-    xhr.getJSON(`${API}/facility/nudo/availability?date__gte=${date}`, (err, res) => {
+    xhr.getJSON(`${API}/facility/meson-california-2/availability?date__gte=${date}`, (err, res) => {
       if (err) {
         return err;
       }
@@ -38,7 +39,7 @@ const ApiUtils = {
       price_change: state.timeslot.price_change,
       source: 'widgetTest'
     };
-    const url = 'https://app.resmio.com/v1/facility/the-fish/bookings';
+    const url = 'https://app.resmio.com/v1/facility/meson-california-2/bookings';
     xhr.postJSON(url, req, (err, res) => {
       if (err) {
         return err;

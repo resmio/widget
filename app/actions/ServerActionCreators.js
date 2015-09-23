@@ -6,7 +6,6 @@ export default {
   // They can be fired from other actions and fire other actions.
 
   availabilitiesLoaded(availabilities) {
-    console.log('availabilities loaded');
     AppDispatcher.handleServerAction({
       actionType: ActionTypes.AVAILABILITES_LOADED,
       availabilities: availabilities
@@ -14,6 +13,7 @@ export default {
   },
 
   facilityInfoLoaded(facilityName) {
+    console.log('Server: FacilityInfoLoaded', facilityName);
     AppDispatcher.handleServerAction({
       actionType: ActionTypes.FACILITY_INFO_LOADED,
       facilityName: facilityName

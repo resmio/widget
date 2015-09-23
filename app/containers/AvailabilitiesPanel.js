@@ -10,23 +10,26 @@ import SelectableDay from '../components/SelectableDay';
 export default class AvailabilitiesPanel extends React.Component {
 
   renderAvailabilities() {
-    // We need to probably filter on the store
-    // Move it when refactoring
-    debugger;
-    const coveredAvailabilities = this.state
-                                      .availabilities
-                                      .filter(this.filterAvailabilitiesByCover);
+    // We need to check if availabilities have been retrieved from the server
+    // otherwise this returns undefined and breaks the app
+    if (this.state.availabilities) {
+      const coveredAvailabilities = this.state
+                                        .availabilities
+                                        .filter(
+                                          this.filterAvailabilitiesByCover
+                                        );
 
-    return coveredAvailabilities.map((availability) => {
-      return (
-        <li
-          key={availability.checksum}
-          onClick={this.handleClickOnAvailability.bind(this, availability)}
-        >
-          {availability.local_time_formatted}
-        </li>
-      );
-    });
+      return coveredAvailabilities.map((availability) => {
+        return (
+          <li
+            key={availability.checksum}
+            onClick={this.handleClickOnAvailability.bind(this, availability)}
+          >
+            {availability.local_time_formatted}
+          </li>
+        );
+      });
+    }
   }
 
   render() {

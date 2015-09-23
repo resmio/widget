@@ -8,8 +8,8 @@ function main() {
   document.body.appendChild(app);
 
   React.render(<App
-                  facilityId="the-fish"
-                  widgetMessage="Lleva botines y no va descalzo"
+                  facilityId="meson-california-2"
+                  widgetMessage="Oye que bonito es California "
                 />, app);
 }
 

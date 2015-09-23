@@ -11,9 +11,9 @@ const state = {
   availabilities: [],
   timeslot: {},
   covers: 2,
+  facilityId: '',
   newsletter: true,
   date: new Date(),
-  facilityId: '',
   email: '',
   loaded: false,
   name: '',
@@ -49,6 +49,7 @@ AvailabilitiesStore.dispatchToken = AppDispatcher.register((payload) => {
   switch (action.type) {
 
     case ActionTypes.AVAILABILITIES_LOADED:
+      console.log('AVAILABILITIES_LOADED', action);
       state.loaded = true;
       state.availabilities = action.availabilities;
       _AvailabilitiesStore.emitChange();

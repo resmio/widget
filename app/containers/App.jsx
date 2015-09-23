@@ -34,7 +34,7 @@ export default class App extends React.Component {
       <div className="widget-container">
       <div className="widget-header-container">
         <WidgetHeader
-          facilityName={this.state.facilityName}
+          facilityName={this.props.facilityId}
         />
         <BookingInfo
           reservationCovers={this.state.covers}
@@ -68,10 +68,14 @@ export default class App extends React.Component {
     // We trigger the action to get the availabilities for today from here
     // This will update the state , so we render it properly
     this.state = AvailabilitiesStore.getState();
-    ViewActionCreators.initializeWidget(this.props.facilityId);
     // We need to bind functions here so this won't refer to React
     // Will be solved in ES7
     this.handleStoreChange = this.handleStoreChange.bind(this);
+  }
+
+  componentWillMount() {
+    ViewActionCreators.initializeWidget(this.props.facilityId);
+    console.log('MOUNTING');
   }
 
   handleStoreChange() {

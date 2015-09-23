@@ -42,6 +42,7 @@ export default {
   },
 
   initializeWidget(facilityId) {
+    console.log('Initializing Widget with facilityId', facilityId);
     AppDispatcher.handleViewAction({
       actionType: ActionTypes.ROOT_COMPONENT_MOUNTED
     });
