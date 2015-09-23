@@ -28,6 +28,7 @@ export default class App extends React.Component {
 
   render() {
     const availabilitiesPanel = (<AvailabilitiesPanel
+                                  facilityId={this.props.facilityId}
                                   widgetMessage={this.props.widgetMessage}
                                  />);
     return (

@@ -14,8 +14,8 @@ const ApiUtils = {
     });
   },
 
-  requestAvailabilities(date) {
-    xhr.getJSON(`${API}/facility/meson-california-2/availability?date__gte=${date}`, (err, res) => {
+  requestAvailabilities(facilityId, date) {
+    xhr.getJSON(`${API}/facility/${facilityId}/availability?date__gte=${date}`, (err, res) => {
       if (err) {
         return err;
       }

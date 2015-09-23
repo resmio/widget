@@ -75,20 +75,20 @@ export default {
     ApiUtils.postBooking(state);
   },
 
-  requestAvailabilities(date) {
+  requestAvailabilities(facilityId, date) {
     AppDispatcher.handleViewAction({
       type: ActionTypes.AVAILABILITIES_REQUESTED,
       newDate: date
     });
-    ApiUtils.requestAvailabilities(formatDateForApi(date));
+    ApiUtils.requestAvailabilities(facilityId, formatDateForApi(date));
   },
 
-  setNewDate(date) {
+  setNewDate(facilityId, date) {
     AppDispatcher.handleViewAction({
       type: ActionTypes.DATE_CHANGED,
       newDate: date
     });
-    ApiUtils.requestAvailabilities(formatDateForApi(date));
+    ApiUtils.requestAvailabilities(facilityId, formatDateForApi(date));
   },
 
   timeslotSelected(timeslot) {

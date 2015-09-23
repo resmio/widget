@@ -35,13 +35,14 @@ class SelectableDay extends React.Component {
     if (modifiers.indexOf('disabled') > -1) {
       return;
     }
-    ViewActionCreators.setNewDate(date);
+    ViewActionCreators.setNewDate(this.props.facilityId, date);
   }
 
 }
 
 SelectableDay.propTypes = {
-  date: React.PropTypes.object.isRequired
+  date: React.PropTypes.object.isRequired,
+  facilityId: React.PropTypes.string.isRequired
 };
 
 export default SelectableDay;
