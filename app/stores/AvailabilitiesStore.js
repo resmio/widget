@@ -53,6 +53,11 @@ AvailabilitiesStore.dispatchToken = AppDispatcher.register((payload) => {
       _AvailabilitiesStore.emitChange();
       break;
 
+    case ActionTypes.BOOKING_POSTED:
+      state.booking = action.bookingDetails;
+      _AvailabilitiesStore.emitChange();
+      break;
+
     case ActionTypes.DATE_CHANGED:
       state.date = action.newDate;
       _AvailabilitiesStore.emitChange();

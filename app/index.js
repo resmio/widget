@@ -8,7 +8,7 @@ function main() {
   document.body.appendChild(app);
 
   React.render(<App
-                  facilityId="curry-rafael"
+                  facilityId="meson-california-2"
                   widgetMessage="Oye que bonito es California "
                 />, app);
 }

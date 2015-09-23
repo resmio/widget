@@ -12,6 +12,13 @@ export default {
     });
   },
 
+  bookingPosted(res) {
+    AppDispatcher.handleServerAction({
+      type: ActionTypes.BOOKING_POSTED,
+      bookingDetails: res
+    });
+  },
+
   facilityInfoLoaded(res) {
     AppDispatcher.handleServerAction({
       type: ActionTypes.FACILITY_INFO_LOADED,

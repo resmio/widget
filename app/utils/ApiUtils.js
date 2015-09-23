@@ -39,11 +39,11 @@ const ApiUtils = {
       source: 'widgetTest'
     };
     const url = `https://app.resmio.com/v1/facility/${state.facilityId}/bookings`;
-    xhr.postJSON(url, req, (err, res) => {
+    xhr.postJSON(url, req, (res, err) => {
       if (err) {
         return err;
       }
-      return res;
+      ServerActionCreators.bookingPosted(res);
     });
   }
 };
