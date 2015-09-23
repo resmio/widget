@@ -49,6 +49,7 @@ AvailabilitiesStore.dispatchToken = AppDispatcher.register((payload) => {
   switch (action.type) {
 
     case ActionTypes.AVAILABILITIES_LOADED:
+      state.loaded = true;
       state.availabilities = action.availabilities;
       _AvailabilitiesStore.emitChange();
       break;
