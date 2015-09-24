@@ -8,6 +8,10 @@ const setup = () => {
   const fixtures = {};
   fixtures.availabilities = [1, 2, 3];
   fixtures.covers = 5;
+  fixtures.bookingDetails = {
+    testa: 'pikachu',
+    testb: 'charizard'
+  }
 
   return fixtures;
 };
@@ -15,9 +19,10 @@ const setup = () => {
 const teardown = (fixtures) => {
   delete fixtures.availabilities;
   delete fixtures.covers;
+  delete fixtures.bookingDetails;
 };
 
-test('Availabilities Store availabilities update after an AVAILABILITIES_LOADED action', (assert) => {
+test('WidgetStore availabilities update after an AVAILABILITIES_LOADED action', (assert) => {
   const fixture = setup();
 
   AppDispatcher.dispatch({
@@ -38,3 +43,22 @@ test('Availabilities Store availabilities update after an AVAILABILITIES_LOADED 
   teardown(fixture);
   assert.end();
 });
+
+// test('WidgetStore has booking details after a BOOKING_POSTED action', (assert) => {
+//   const fixture = setup();
+//
+//   AppDispatcher.dispatch({
+//     source: PayloadSources.SERVER_ACTION,
+//     action: { actionType: ActionTypes.BOOKING_POSTED,
+//               bookingDetails: fixture.bookingDetails }
+//   });
+//
+//   const expected = fixture.bookingDetails;
+//   const actual = WidgetStore.getState().bookingDetails;
+//
+//   assert.deepEqual(actual, expected,
+//     'The store should get the Booking Details from the dispatcher');
+//
+//   teardown(fixture);
+//   assert.end();
+// });

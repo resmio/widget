@@ -5,6 +5,7 @@ import { ActionTypes } from '../constants/Constants';
 const CHANGE_EVENT = 'CHANGE';
 
 const state = {
+  bookingDetails: {},
   personPickerUiExpanded: false,
   maxNumberOfCovers: 25,
   numberOfCoversOnUi: 9,
@@ -48,14 +49,14 @@ WidgetStore.dispatchToken = AppDispatcher.register((payload) => {
 
   switch (action.type) {
 
-    case ActionTypes.AVAILABILITIES_LOADED:
-      state.loaded = true;
-      state.availabilities = action.availabilities;
+    case ActionTypes.BOOKING_POSTED:
+      state.bookingDetails = action.bookingDetails;
       _WidgetStore.emitChange();
       break;
 
-    case ActionTypes.BOOKING_POSTED:
-      state.booking = action.bookingDetails;
+    case ActionTypes.AVAILABILITIES_LOADED:
+      state.loaded = true;
+      state.availabilities = action.availabilities;
       _WidgetStore.emitChange();
       break;
 
