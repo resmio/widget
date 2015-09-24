@@ -1,12 +1,12 @@
-import test from 'tape'
+import test from 'tape';
 import PanelSwitcher from '../../components/PanelSwitcher';
 import React from 'react/addons';
 const {TestUtils} = React.addons;
 
 const setup = (position) => {
-
   const renderer = TestUtils.createRenderer();
-  let numberOfPanels, showPanel;
+  let numberOfPanels;
+  let showPanel;
   const handleClickOnPreviousButton = () => {};
   const handleClickOnNextButton = () => {};
   const handleClickOnLastButton = () => {};
@@ -25,7 +25,7 @@ const setup = (position) => {
       numberOfPanels = 3;
       showPanel = 2;
       break;
-  };
+  }
 
   renderer.render(
     <PanelSwitcher

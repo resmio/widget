@@ -1,10 +1,9 @@
-import test from 'tape'
+import test from 'tape';
 import WidgetMessage from '../../components/WidgetMessage';
 import React from 'react/addons';
 const {TestUtils} = React.addons;
 
 const setup = () => {
-
   const renderer = TestUtils.createRenderer();
   const props = {
     facilityMessage: 'Test works!'

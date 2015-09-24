@@ -1,13 +1,12 @@
-import test from 'tape'
+import test from 'tape';
 import WidgetHeader from '../../components/WidgetHeader';
 import React from 'react/addons';
 const {TestUtils} = React.addons;
 
 const setup = () => {
-
   const renderer = TestUtils.createRenderer();
   const props = {
-    facilityName: 'El Torito',
+    facilityName: 'El Torito'
   };
 
   renderer.render(

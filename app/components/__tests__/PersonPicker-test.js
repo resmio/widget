@@ -1,10 +1,9 @@
-import test from 'tape'
+import test from 'tape';
 import PersonPicker from '../../components/PersonPicker';
 import React from 'react/addons';
 const {TestUtils} = React.addons;
 
 const setup = () => {
-
   const renderer = TestUtils.createRenderer();
   const numberOfCovers = 7;
   const handleChange = () => {};
