@@ -24,6 +24,7 @@ Webpack makes a distinction between development and production environments, bot
 - `npm start` targets development and gives you a server running on localhost:8090 that listens for changes to the code and updates automatically. You can check for compiling error messages in the browser console or in the terminal from where you ran the npm command.
 - `npm run build` targets production it's the same as npm start but uses an optimized react build, and also uglifies the javascript after bundling it.
 - `npm run lint` just runs the javascript linter to detect errors in the code.
+- `npm run deploy` runs npm build and then deploys the build to github pages.
 
 ## cssnext ##
 Our pipeline also detects changes in our css and runs them through the [cssnext](http://cssnext.io/) plugin, this allows us to use future css syntax today, that gets transpiled to something that works in actual browsers, as the browsers evolve we can remove postprocessing rules from the plugin and use the native css in production.
