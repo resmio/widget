@@ -1,5 +1,4 @@
 import test from 'tape';
-
 import { PayloadSources, ActionTypes } from '../../constants/Constants';
 import WidgetStore from '../../stores/WidgetStore';
 import AppDispatcher from '../../dispatchers/AppDispatcher';
@@ -11,7 +10,7 @@ const setup = () => {
   fixtures.bookingDetails = {
     testa: 'pikachu',
     testb: 'charizard'
-  }
+  };
 
   return fixtures;
 };
