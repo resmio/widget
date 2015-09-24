@@ -8,8 +8,9 @@ function main() {
   document.body.appendChild(app);
 
   React.render(<App
-                  facilityId="meson-california-2"
-                  widgetMessage="Oye que bonito es California "
+                  facilityId="the-fish"
+                  widgetMessage="It's okay to eat fish because they don't have
+                  any feelings. - Kurt Cobain"
                 />, app);
 }
 
