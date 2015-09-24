@@ -5,8 +5,17 @@ import xhr from '../lib/xhr';
 
 const ApiUtils = {
 
-  requestAvailabilities(date) {
-    xhr.getJSON(`${API}/facility/the-fish/availability?date__gte=${date}`, (err, res) => {
+  requestFacilityInfo(facilityId) {
+    xhr.getJSON(`${API}/facility/${facilityId}`, (err, res) => {
+      if (err) {
+        return err;
+      }
+      ServerActionCreators.facilityInfoLoaded(res);
+    });
+  },
+
+  requestAvailabilities(facilityId, date) {
+    xhr.getJSON(`${API}/facility/${facilityId}/availability?date__gte=${date}`, (err, res) => {
       if (err) {
         return err;
       }
@@ -29,12 +38,12 @@ const ApiUtils = {
       price_change: state.timeslot.price_change,
       source: 'widgetTest'
     };
-    const url = 'https://app.resmio.com/v1/facility/the-fish/bookings';
-    xhr.postJSON(url, req, (err, res) => {
+    const url = `https://app.resmio.com/v1/facility/${state.facilityId}/bookings`;
+    xhr.postJSON(url, req, (res, err) => {
       if (err) {
         return err;
       }
-      return res;
+      ServerActionCreators.bookingPosted(res);
     });
   }
 };

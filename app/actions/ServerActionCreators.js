@@ -7,8 +7,23 @@ export default {
 
   availabilitiesLoaded(availabilities) {
     AppDispatcher.handleServerAction({
-      actionType: ActionTypes.AVAILABILITES_LOADED,
+      type: ActionTypes.AVAILABILITIES_LOADED,
       availabilities: availabilities
+    });
+  },
+
+  bookingPosted(res) {
+    AppDispatcher.handleServerAction({
+      type: ActionTypes.BOOKING_POSTED,
+      bookingDetails: res
+    });
+  },
+
+  facilityInfoLoaded(res) {
+    AppDispatcher.handleServerAction({
+      type: ActionTypes.FACILITY_INFO_LOADED,
+      id: res.id,
+      name: res.name
     });
   }
 

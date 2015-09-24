@@ -1,5 +1,5 @@
 import React from 'react';
-import AvailabilitiesStore from '../stores/AvailabilitiesStore';
+import WidgetStore from '../stores/WidgetStore';
 import ViewActionCreators from '../actions/ViewActionCreators';
 
 // Components
@@ -10,22 +10,26 @@ import SelectableDay from '../components/SelectableDay';
 export default class AvailabilitiesPanel extends React.Component {
 
   renderAvailabilities() {
-    // We need to probably filter on the store
-    // Move it when refactoring
-    const coveredAvailabilities = this.state
-                                      .availabilities
-                                      .filter(this.filterAvailabilitiesByCover);
+    // We need to check if availabilities have been retrieved from the server
+    // otherwise this returns undefined and breaks the app
+    if (this.state.availabilities) {
+      const coveredAvailabilities = this.state
+                                        .availabilities
+                                        .filter(
+                                          this.filterAvailabilitiesByCover
+                                        );
 
-    return coveredAvailabilities.map((availability) => {
-      return (
-        <li
-          key={availability.checksum}
-          onClick={this.handleClickOnAvailability.bind(this, availability)}
-        >
-          {availability.local_time_formatted}
-        </li>
-      );
-    });
+      return coveredAvailabilities.map((availability) => {
+        return (
+          <li
+            key={availability.checksum}
+            onClick={this.handleClickOnAvailability.bind(this, availability)}
+          >
+            {availability.local_time_formatted}
+          </li>
+        );
+      });
+    }
   }
 
   render() {
@@ -42,6 +46,7 @@ export default class AvailabilitiesPanel extends React.Component {
         />
         <SelectableDay
           date={ this.state.date }
+          facilityId = { this.props.facilityId }
         />
 
         <ul>
@@ -54,10 +59,10 @@ export default class AvailabilitiesPanel extends React.Component {
 
   constructor(props) {
     super(props);
-    ViewActionCreators.setNewDate(new Date());
+    ViewActionCreators.setNewDate(this.props.facilityId, new Date());
     // We trigger the action to get the availabilities for today from here
     // This will update the state , so we render it properly
-    this.state = AvailabilitiesStore.getState();
+    this.state = WidgetStore.getState();
     // We need to bind functions here so this won't refer to React
     // Will be solved in ES7
     this.handleCoverInputChange = this.handleCoverInputChange.bind(this);
@@ -79,5 +84,6 @@ export default class AvailabilitiesPanel extends React.Component {
 }
 
 AvailabilitiesPanel.propTypes = {
+  facilityId: React.PropTypes.string,
   widgetMessage: React.PropTypes.string
 };
