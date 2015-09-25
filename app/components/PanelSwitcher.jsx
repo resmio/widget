@@ -32,6 +32,7 @@ export default class PanelSwitcher extends React.Component {
     return (
       <div>
         { previousButton }
+        { this.props.showPanel }/{this.props.numberOfPanels}
         { nextButton }
       </div>
     );
