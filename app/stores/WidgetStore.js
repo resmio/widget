@@ -6,7 +6,7 @@ const CHANGE_EVENT = 'CHANGE';
 
 const state = {
   bookingDetails: {},
-  personPickerUiExpanded: false,
+  numberPickerUiExpanded: false,
   maxNumberOfCovers: 25,
   numberOfCoversOnUi: 9,
   availabilities: [],
@@ -88,7 +88,7 @@ WidgetStore.dispatchToken = AppDispatcher.register((payload) => {
 
     case ActionTypes.NUMBER_OF_COVERS_CHANGED:
       state.covers = action.newCoverValue;
-      state.personPickerUiExpanded = false;
+      state.numberPickerUiExpanded = false;
       _WidgetStore.emitChange();
       break;
 
@@ -103,7 +103,7 @@ WidgetStore.dispatchToken = AppDispatcher.register((payload) => {
       break;
 
     case ActionTypes.PERSON_PICKER_UI_STATE_CHANGED:
-      state.personPickerUiExpanded = !state.personPickerUiExpanded;
+      state.numberPickerUiExpanded = !state.numberPickerUiExpanded;
       _WidgetStore.emitChange();
       break;
 

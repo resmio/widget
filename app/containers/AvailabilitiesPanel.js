@@ -3,7 +3,7 @@ import WidgetStore from '../stores/WidgetStore';
 import ViewActionCreators from '../actions/ViewActionCreators';
 
 // Components
-import PersonPicker from '../components/PersonPicker';
+import NumberPicker from '../components/NumberPicker';
 import WidgetMessage from '../components/WidgetMessage';
 import SelectableDay from '../components/SelectableDay';
 
@@ -34,11 +34,11 @@ export default class AvailabilitiesPanel extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="panel">
         <WidgetMessage
           facilityMessage={this.props.widgetMessage}
         />
-        <PersonPicker
+        <NumberPicker
           selectedNumber={ this.state.covers }
           numbersInTotal={19}
           numbersPerGroup={6}

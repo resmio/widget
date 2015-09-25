@@ -4,7 +4,7 @@ export default class WidgetMessage extends React.Component {
 
   render() {
     return (
-      <p className="panel__input">{ this.props.facilityMessage }</p>
+      <p className="widget__message">{ this.props.facilityMessage }</p>
     );
   }
 

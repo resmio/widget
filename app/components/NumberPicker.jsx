@@ -1,13 +1,13 @@
 import React from 'react';
 import ViewActionCreators from '../actions/ViewActionCreators';
 
-export default class PersonPicker extends React.Component {
+export default class NumberPicker extends React.Component {
 
   render() {
     return (
-      <div className="panel__input">
-        <span className="component__label">People</span>
-        <div className="person-picker__container">
+      <div className="cell">
+        <span className="cell__label">People</span>
+        <div className="cell__content">
           { this._renderPreviousButton() }
           { this._renderListOfNumbers() }
           { this._renderNextButton() }
@@ -72,8 +72,8 @@ export default class PersonPicker extends React.Component {
   _renderListOfNumbers() {
     return (
       <ul
-        className="person-picker__list-container"
-        onClick={this._handlePersonPickerClick}>
+        className="number-picker__list"
+        onClick={this._handleNumberPickerClick}>
           {this._renderNumbers()}
       </ul>
      );
@@ -87,8 +87,8 @@ export default class PersonPicker extends React.Component {
                    <li
                      className={
                        number === this.props.selectedNumber ?
-                        'person-picker__number--selected' :
-                        'person-picker__number'
+                        'number-picker__number--selected' :
+                        'number-picker__number'
                      }
                      key={number}
                      onClick={this._handleNumberClick.bind(this, number)}
@@ -105,7 +105,7 @@ export default class PersonPicker extends React.Component {
     if (this.state.groupWithSelectedElement + 1 !== this.state.numberOfGroups) {
       return (
         <a href="#"
-          className="person-picker__button--next"
+          className="list-button--next"
           onClick={this._handleNextButtonClick}>
           &#10095;
         </a>
@@ -117,7 +117,7 @@ export default class PersonPicker extends React.Component {
     if (this.state.groupWithSelectedElement !== 0) {
       return (
         <a href="#"
-          className="person-picker__button--previous"
+          className="list-button--prev"
           onClick={this._handlePreviousButtonClick}>
           &#10094;
         </a>
@@ -125,7 +125,7 @@ export default class PersonPicker extends React.Component {
     }
     return (
       <a href="#"
-        className="person-picker__button--disabled"
+        className="list-button--disabled"
       >
       &#10094;
       </a>
@@ -157,7 +157,7 @@ export default class PersonPicker extends React.Component {
 // Props validation
 // -----------------------------------------------------------------------------
 
-PersonPicker.propTypes = {
+NumberPicker.propTypes = {
   selectedNumber: React.PropTypes.number.isRequired,
   numbersInTotal: React.PropTypes.number.isRequired,
   numbersPerGroup: React.PropTypes.number.isRequired

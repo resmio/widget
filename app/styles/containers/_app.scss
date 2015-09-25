@@ -13,5 +13,10 @@
     ),
     url('http://www.cocobeach-restaurant.com/images/fresh-fish-restaurant-nice/fresh-fish-restaurant-nice-2.jpg')
   );
+  border-top: 10px solid $black;
   padding: 1em 2em 1em;
+}
+
+.panel {
+  @include fill-parent();
 }

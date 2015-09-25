@@ -16,7 +16,7 @@ export default {
     }
   },
 
-  changePersonPickerUiState() {
+  changeNumberPickerUiState() {
     AppDispatcher.handleViewAction({
       type: ActionTypes.PERSON_PICKER_UI_STATE_CHANGED
     });

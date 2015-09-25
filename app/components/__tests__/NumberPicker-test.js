@@ -1,5 +1,5 @@
 import test from 'tape';
-import PersonPicker from '../../components/PersonPicker';
+import NumberPicker from '../../components/NumberPicker';
 import React from 'react/addons';
 const {TestUtils} = React.addons;
 
@@ -8,7 +8,7 @@ const setup = () => {
   const numberOfCovers = 7;
   const handleChange = () => {};
   renderer.render(
-    <PersonPicker
+    <NumberPicker
       numberOfCovers={numberOfCovers}
       handleChange={handleChange}
     />
@@ -17,7 +17,7 @@ const setup = () => {
 };
 
 test(
-  'PersonPicker renders a <label> element',
+  'NumberPicker renders a <label> element',
   (assert) => {
     const component = setup();
     assert.equal(
@@ -29,7 +29,7 @@ test(
 );
 
 test(
-  'PersonPicker renders an <input> element with persons as its name',
+  'NumberPicker renders an <input> element with persons as its name',
   (assert) => {
     const component = setup();
     assert.equal(
@@ -45,7 +45,7 @@ test(
 );
 
 test(
-  'PersonPicker placeholder equals the number of covers passed as a prop',
+  'NumberPicker placeholder equals the number of covers passed as a prop',
   (assert) => {
     const component = setup();
     assert.equal(
@@ -57,7 +57,7 @@ test(
 );
 
 test(
-  'PersonPicker runs handleChangeProp function on change',
+  'NumberPicker runs handleChangeProp function on change',
   (assert) => {
     const component = setup('last');
     assert.equal(
