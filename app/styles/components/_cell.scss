@@ -27,6 +27,10 @@
 //                             Decoration
 // -----------------------------------------------------------------------------
 
+.cell {
+  border-bottom: 1px solid $light-gray;
+}
+
 .cell__content {
   color: $dark-gray;
 }

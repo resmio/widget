@@ -43,14 +43,13 @@ export default class App extends React.Component {
             reservationTimeslot={this.state.timeslot.local_time_formatted}
           />
         </div>
-          <h1>{this.state.showPanel}</h1>
-            {(() => {
-              switch (this.state.showPanel) {
-                case 1: return availabilitiesPanel;
-                case 2: return (<GuestPanel />);
-                default: return availabilitiesPanel;
-              }
-            })()}
+          {(() => {
+            switch (this.state.showPanel) {
+              case 1: return availabilitiesPanel;
+              case 2: return (<GuestPanel />);
+              default: return availabilitiesPanel;
+            }
+          })()}
           <PanelSwitcher showPanel={this.state.showPanel}
                          numberOfPanels={2}
                          handleClickOnLastButton={this.handleClickOnLastButton}
