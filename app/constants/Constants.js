@@ -7,6 +7,7 @@ export default {
     AVAILABILITES_LOADED: null,
     AVAILABILITIES_REQUESTED: null,
     BOOKING_POSTED: null,
+    COLLAPSED_DATE_CLICKED: null,
     DATE_CHANGED: null,
     EMAIL_CHANGED: null,
     FACILITY_INFO_LOADED: null,

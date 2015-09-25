@@ -22,6 +22,12 @@ export default {
     });
   },
 
+  collapsedDateClicked() {
+    AppDispatcher.handleViewAction({
+      type: ActionTypes.COLLAPSED_DATE_CLICKED
+    });
+  },
+
   decreasePanelNumber() {
     AppDispatcher.handleViewAction({
       type: ActionTypes.PANEL_NUMBER_DECREASED
@@ -83,7 +89,7 @@ export default {
     ApiUtils.requestAvailabilities(facilityId, formatDateForApi(date));
   },
 
-  setNewDate(facilityId, date) {
+  dateClicked(facilityId, date) {
     AppDispatcher.handleViewAction({
       type: ActionTypes.DATE_CHANGED,
       newDate: date

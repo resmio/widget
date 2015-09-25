@@ -2,27 +2,38 @@ import React from 'react';
 import DayPicker from 'react-day-picker';
 
 import {isPastDay, isSameDay} from '../utils/DateUtils';
+import formatDateForView from '../utils/FormatDateForView';
 import ViewActionCreators from '../actions/ViewActionCreators';
 
 class SelectableDay extends React.Component {
 
   render() {
-    const modifiers = {
-      // Add the `disabled` modifier to days in the past. The day cell will have
-      // a `DayPicker-Day--disabled` CSS class
-      'disabled': isPastDay,
+    let component = '';
 
-      // We add a `DayPicker-Day--selected` CSS class to selected day
-      'selected': (day) => isSameDay(this.props.date, day)
-    };
+    if (this.props.collapsed) {
+      component = (<span
+                      onClick={this._handleClickOnCollapsedDate }
+                   >
+                    { formatDateForView(this.props.date) }
+                  </span>);
+    } else {
+      const modifiers = {
+        // Add the `disabled` modifier to days in the past. The day cell will have
+        // a `DayPicker-Day--disabled` CSS class
+        'disabled': isPastDay,
 
-    return (
-        <DayPicker
-          modifiers={ modifiers }
-          enableOutsideDays={false}
-          onDayClick={ this.handleDayClick }
-        />
-    );
+        // We add a `DayPicker-Day--selected` CSS class to selected day
+        'selected': (day) => isSameDay(this.props.date, day)
+      };
+      component = (
+          <DayPicker
+            modifiers={ modifiers }
+            enableOutsideDays={false}
+            onDayClick={ this.handleDayClick }
+          />
+      );
+    }
+    return component;
   }
 
   constructor() {
@@ -35,7 +46,11 @@ class SelectableDay extends React.Component {
     if (modifiers.indexOf('disabled') > -1) {
       return;
     }
-    ViewActionCreators.setNewDate(this.props.facilityId, date);
+    ViewActionCreators.dateClicked(this.props.facilityId, date);
+  }
+
+  _handleClickOnCollapsedDate() {
+    ViewActionCreators.collapsedDateClicked();
   }
 
 }

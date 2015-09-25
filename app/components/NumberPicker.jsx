@@ -127,7 +127,7 @@ export default class NumberPicker extends React.Component {
       <a href="#"
         className="list-button--disabled"
       >
-      &#10094;
+      &nbsp;
       </a>
     );
   }
