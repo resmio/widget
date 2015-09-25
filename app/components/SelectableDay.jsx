@@ -29,11 +29,12 @@ class SelectableDay extends React.Component {
   }
 
   _renderCollapsedComponent() {
-    return (<span
-              onClick={this._handleClickOnCollapsedDate }
+    return (<div className="clickable"
+                 onClick={this._handleClickOnCollapsedDate }
             >
               { formatDateForView(this.props.date) }
-            </span>
+              <span className="arrow--down">&#10095;</span>
+            </div>
           );
   }
 
