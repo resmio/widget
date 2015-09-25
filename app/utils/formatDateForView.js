@@ -1,3 +1,5 @@
+import {isSameDay} from './DateUtils';
+
 export default function formatDateForView(date) {
   const weekDays = [
     'Sunday',
@@ -25,6 +27,7 @@ export default function formatDateForView(date) {
   const year = date.getFullYear();
   const month = months[date.getMonth()];
   const day = date.getDate();
-  const weekDay = weekDays[date.getDay()];
+  // We check if the day is today, if is not we get the day of the week name
+  const weekDay = isSameDay(date, new Date()) ? 'Today' : weekDays[date.getDay()];
   return `${weekDay}, ${day} ${month} ${year}`;
 }
