@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "TARGET=build webpack",
+    "deploy": "npm run build && gh-pages -d build",
     "lint": "cd app && eslint . --ext .js --ext .jsx ; exit 0",
     "start": "TARGET=dev node lib/dev_server.js",
     "test": "cd app/__tests__ && babel-node  testSuite.js | faucet",
@@ -23,6 +24,7 @@
     "eslint-plugin-react": "^2.6.4",
     "flowcheck": "^0.2.7",
     "flowcheck-loader": "^1.0.0",
+    "gh-pages": "^0.4.0",
     "html-webpack-plugin": "^1.5.2",
     "node-libs-browser": "^0.5.2",
     "node-sass": "^3.2.0",
@@ -56,6 +58,5 @@
     "rules": {
       "react/sort-comp": 0
     }
-
   }
 }
