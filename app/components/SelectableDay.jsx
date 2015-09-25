@@ -8,32 +8,51 @@ import ViewActionCreators from '../actions/ViewActionCreators';
 class SelectableDay extends React.Component {
 
   render() {
+    return (<div className="cell">
+              <span className="cell__label">Date</span>
+              <div className="cell__content">
+                { this._renderMainComponent() }
+              </div>
+            </div>
+           );
+  }
+
+  _renderMainComponent() {
     let component = '';
-
+    // We check if the element is collapsed and return accordingly
     if (this.props.collapsed) {
-      component = (<span
-                      onClick={this._handleClickOnCollapsedDate }
-                   >
-                    { formatDateForView(this.props.date) }
-                  </span>);
+      component = this._renderCollapsedComponent();
     } else {
-      const modifiers = {
-        // Add the `disabled` modifier to days in the past. The day cell will have
-        // a `DayPicker-Day--disabled` CSS class
-        'disabled': isPastDay,
-
-        // We add a `DayPicker-Day--selected` CSS class to selected day
-        'selected': (day) => isSameDay(this.props.date, day)
-      };
-      component = (
-          <DayPicker
-            modifiers={ modifiers }
-            enableOutsideDays={false}
-            onDayClick={ this.handleDayClick }
-          />
-      );
+      component = this._renderExpandedComponent();
     }
     return component;
+  }
+
+  _renderCollapsedComponent() {
+    return (<span
+              onClick={this._handleClickOnCollapsedDate }
+            >
+              { formatDateForView(this.props.date) }
+            </span>
+          );
+  }
+
+  _renderExpandedComponent() {
+    const modifiers = {
+      // Add the `disabled` modifier to days in the past. The day cell will have
+      // a `DayPicker-Day--disabled` CSS class
+      'disabled': isPastDay,
+
+      // We add a `DayPicker-Day--selected` CSS class to selected day
+      'selected': (day) => isSameDay(this.props.date, day)
+    };
+    return (
+        <DayPicker
+          modifiers={ modifiers }
+          enableOutsideDays={false}
+          onDayClick={ this.handleDayClick }
+        />
+    );
   }
 
   constructor() {
@@ -56,6 +75,7 @@ class SelectableDay extends React.Component {
 }
 
 SelectableDay.propTypes = {
+  collapsed: React.PropTypes.bool.isRequired,
   date: React.PropTypes.object.isRequired,
   facilityId: React.PropTypes.string.isRequired
 };
