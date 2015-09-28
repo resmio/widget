@@ -6,31 +6,9 @@ import ViewActionCreators from '../actions/ViewActionCreators';
 import NumberPicker from '../components/NumberPicker';
 import WidgetMessage from '../components/WidgetMessage';
 import SelectableDay from '../components/SelectableDay';
+import TimeslotsList from '../components/TimeslotsList';
 
 export default class AvailabilitiesPanel extends React.Component {
-
-  renderAvailabilities() {
-    // We need to check if availabilities have been retrieved from the server
-    // otherwise this returns undefined and breaks the app
-    if (this.state.availabilities) {
-      const coveredAvailabilities = this.state
-                                        .availabilities
-                                        .filter(
-                                          this.filterAvailabilitiesByCover
-                                        );
-
-      return coveredAvailabilities.map((availability) => {
-        return (
-          <li
-            key={availability.checksum}
-            onClick={this.handleClickOnAvailability.bind(this, availability)}
-          >
-            {availability.local_time_formatted}
-          </li>
-        );
-      });
-    }
-  }
 
   render() {
     return (
@@ -50,9 +28,10 @@ export default class AvailabilitiesPanel extends React.Component {
           collapsed = { this.state.calendarCollapsedOnUi }
         />
 
-        <ul>
-          {this.renderAvailabilities()}
-        </ul>
+        <TimeslotsList
+          listOfValues = { this.state.availabilities }
+          handleClick = { this.handleClickOnAvailability }
+        />
 
       </div>
     );
