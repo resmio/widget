@@ -6,9 +6,10 @@ const CHANGE_EVENT = 'CHANGE';
 
 const state = {
   bookingDetails: {},
-  personPickerUiExpanded: false,
+  numberPickerUiExpanded: false,
   maxNumberOfCovers: 25,
   numberOfCoversOnUi: 9,
+  calendarCollapsedOnUi: true,
   availabilities: [],
   timeslot: {},
   covers: 2,
@@ -60,8 +61,14 @@ WidgetStore.dispatchToken = AppDispatcher.register((payload) => {
       _WidgetStore.emitChange();
       break;
 
+    case ActionTypes.COLLAPSED_DATE_CLICKED:
+      state.calendarCollapsedOnUi = !state.calendarCollapsedOnUi;
+      _WidgetStore.emitChange();
+      break;
+
     case ActionTypes.DATE_CHANGED:
       state.date = action.newDate;
+      state.calendarCollapsedOnUi = !state.calendarCollapsedOnUi;
       _WidgetStore.emitChange();
       break;
 
@@ -88,7 +95,7 @@ WidgetStore.dispatchToken = AppDispatcher.register((payload) => {
 
     case ActionTypes.NUMBER_OF_COVERS_CHANGED:
       state.covers = action.newCoverValue;
-      state.personPickerUiExpanded = false;
+      state.numberPickerUiExpanded = false;
       _WidgetStore.emitChange();
       break;
 
@@ -103,7 +110,7 @@ WidgetStore.dispatchToken = AppDispatcher.register((payload) => {
       break;
 
     case ActionTypes.PERSON_PICKER_UI_STATE_CHANGED:
-      state.personPickerUiExpanded = !state.personPickerUiExpanded;
+      state.numberPickerUiExpanded = !state.numberPickerUiExpanded;
       _WidgetStore.emitChange();
       break;
 

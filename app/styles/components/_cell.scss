@@ -1,0 +1,43 @@
+// -----------------------------------------------------------------------------
+//                                Layout
+// -----------------------------------------------------------------------------
+
+.cell {
+  margin: 0 3%;
+  width: 94%;
+}
+
+.cell__label,
+.cell__label--top {
+  display: inline-block;
+  padding: 25px 4% 25px 0;
+  width: 18%;
+  text-align: right;
+}
+
+.cell__label--top {
+  vertical-align: top;
+}
+
+.cell__content {
+  display: inline-block;
+  text-align: center;
+  width: 78%;
+}
+
+// -----------------------------------------------------------------------------
+//                             Decoration
+// -----------------------------------------------------------------------------
+
+.cell {
+  border-bottom: 1px solid $light-gray;
+}
+
+.cell__label,
+.cell__label--top {
+  color: $medium-gray;
+}
+
+.cell__content {
+  color: $dark-gray;
+}

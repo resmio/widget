@@ -3,7 +3,7 @@ import WidgetStore from '../stores/WidgetStore';
 import ViewActionCreators from '../actions/ViewActionCreators';
 
 // Components
-import PersonPicker from '../components/PersonPicker';
+import NumberPicker from '../components/NumberPicker';
 import WidgetMessage from '../components/WidgetMessage';
 import SelectableDay from '../components/SelectableDay';
 
@@ -34,11 +34,11 @@ export default class AvailabilitiesPanel extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="panel">
         <WidgetMessage
           facilityMessage={this.props.widgetMessage}
         />
-        <PersonPicker
+        <NumberPicker
           selectedNumber={ this.state.covers }
           numbersInTotal={19}
           numbersPerGroup={6}
@@ -47,6 +47,7 @@ export default class AvailabilitiesPanel extends React.Component {
         <SelectableDay
           date={ this.state.date }
           facilityId = { this.props.facilityId }
+          collapsed = { this.state.calendarCollapsedOnUi }
         />
 
         <ul>
@@ -59,7 +60,7 @@ export default class AvailabilitiesPanel extends React.Component {
 
   constructor(props) {
     super(props);
-    ViewActionCreators.setNewDate(this.props.facilityId, new Date());
+    ViewActionCreators.dateClicked(this.props.facilityId, new Date());
     // We trigger the action to get the availabilities for today from here
     // This will update the state , so we render it properly
     this.state = WidgetStore.getState();

@@ -16,9 +16,15 @@ export default {
     }
   },
 
-  changePersonPickerUiState() {
+  changeNumberPickerUiState() {
     AppDispatcher.handleViewAction({
       type: ActionTypes.PERSON_PICKER_UI_STATE_CHANGED
+    });
+  },
+
+  collapsedDateClicked() {
+    AppDispatcher.handleViewAction({
+      type: ActionTypes.COLLAPSED_DATE_CLICKED
     });
   },
 
@@ -83,7 +89,7 @@ export default {
     ApiUtils.requestAvailabilities(facilityId, formatDateForApi(date));
   },
 
-  setNewDate(facilityId, date) {
+  dateClicked(facilityId, date) {
     AppDispatcher.handleViewAction({
       type: ActionTypes.DATE_CHANGED,
       newDate: date

@@ -33,16 +33,16 @@ export default class App extends React.Component {
                                  />);
     return (
       <div className="widget-container">
-      <div className="widget-header-container">
-        <WidgetHeader
-          facilityName={this.state.name}
-        />
-        <BookingInfo
-          reservationCovers={this.state.covers}
-          reservationDate={formatDateForApi(this.state.date)}
-          reservationTimeslot={this.state.timeslot.local_time_formatted}
-        />
-      </div>
+        <div className="widget-header-container">
+          <WidgetHeader
+            facilityName={this.state.name}
+          />
+          <BookingInfo
+            reservationCovers={this.state.covers}
+            reservationDate={formatDateForApi(this.state.date)}
+            reservationTimeslot={this.state.timeslot.local_time_formatted}
+          />
+        </div>
           {(() => {
             switch (this.state.showPanel) {
               case 1: return availabilitiesPanel;
@@ -50,15 +50,15 @@ export default class App extends React.Component {
               default: return availabilitiesPanel;
             }
           })()}
-        <PanelSwitcher showPanel={this.state.showPanel}
-                       numberOfPanels={2}
-                       handleClickOnLastButton={this.handleClickOnLastButton}
-                       handleClickOnNextButton={this.handleClickOnNextButton}
-                       handleClickOnPreviousButton={
-                                                    this.
-                                                    handleClickOnPreviousButton
-                                                   }
-        />
+          <PanelSwitcher showPanel={this.state.showPanel}
+                         numberOfPanels={2}
+                         handleClickOnLastButton={this.handleClickOnLastButton}
+                         handleClickOnNextButton={this.handleClickOnNextButton}
+                         handleClickOnPreviousButton={
+                                                      this.
+                                                      handleClickOnPreviousButton
+                                                     }
+          />
       </div>
     );
   }

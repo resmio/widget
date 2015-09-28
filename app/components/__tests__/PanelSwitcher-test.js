@@ -71,7 +71,7 @@ test(
   (assert) => {
     const component = setup();
     assert.equal(
-      component.props.children[1].props.className,
+      component.props.children[4].props.className,
       'panelSwitcher__button--next'
     );
     assert.end();
@@ -83,7 +83,7 @@ test(
   (assert) => {
     const component = setup('last');
     assert.equal(
-      component.props.children[1].props.className,
+      component.props.children[4].props.className,
       'panelSwitcher__button--final'
     );
     assert.end();
@@ -95,7 +95,7 @@ test(
   (assert) => {
     const component = setup();
     assert.equal(
-      component.props.children[1].props.onClick.toString(),
+      component.props.children[4].props.onClick.toString(),
       'function handleClickOnNextButton() {}'
     );
     assert.end();
@@ -119,7 +119,7 @@ test(
   (assert) => {
     const component = setup('last');
     assert.equal(
-      component.props.children[1].props.onClick.toString(),
+      component.props.children[4].props.onClick.toString(),
       'function handleClickOnLastButton() {}'
     );
     assert.end();
