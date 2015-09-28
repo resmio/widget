@@ -30,6 +30,7 @@ export default class AvailabilitiesPanel extends React.Component {
 
         <TimeslotsList
           listOfValues = { this.state.availabilities }
+          limit = { this.state.covers }
           handleClick = { this.handleClickOnAvailability }
         />
 
@@ -37,22 +38,17 @@ export default class AvailabilitiesPanel extends React.Component {
     );
   }
 
-  constructor(props) {
-    super(props);
-    ViewActionCreators.dateClicked(this.props.facilityId, new Date());
-    // We trigger the action to get the availabilities for today from here
-    // This will update the state , so we render it properly
-    this.state = WidgetStore.getState();
-    // We need to bind functions here so this won't refer to React
-    // Will be solved in ES7
-    this.handleCoverInputChange = this.handleCoverInputChange.bind(this);
-    this.handleClickOnAvailability = this.handleClickOnAvailability.bind(this);
-    this.filterAvailabilitiesByCover = this.filterAvailabilitiesByCover.bind(this);
-  }
-
-  filterAvailabilitiesByCover(availability) {
-    return (availability.available >= this.state.covers);
-  }
+    constructor(props) {
+      super(props);
+      ViewActionCreators.dateClicked(this.props.facilityId, new Date());
+      // We trigger the action to get the availabilities for today from here
+      // This will update the state , so we render it properly
+      this.state = WidgetStore.getState();
+      // We need to bind functions here so this won't refer to React
+      // Will be solved in ES7
+      this.handleCoverInputChange = this.handleCoverInputChange.bind(this);
+      this.handleClickOnAvailability = this.handleClickOnAvailability.bind(this);
+    }
 
   handleCoverInputChange(event) {
     ViewActionCreators.changeNumberOfCovers(parseInt(event.target.value, 10));
