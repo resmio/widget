@@ -10,6 +10,7 @@ export default class Timeslot extends React.Component {
     // Will be solved in ES7
     this._filterAvailabilitiesByCover = this._filterAvailabilitiesByCover.bind(this);
     this.state = WidgetStore.getState();
+    this.state.initial = 0;
   }
 
   render() {
@@ -42,26 +43,28 @@ export default class Timeslot extends React.Component {
       <div className="timeslots-selector">
         <ul className="timeslots-filter">
           <li onClick={this._filterByTime(0)}>Breakfast</li>
-          <li>Lunch</li>
+          <li onClick={this._filterByTime(5)}>Lunch</li>
           <li>Dinner</li>
         </ul>
         <a className="button-list--back" href="#">&lt;</a>
         <ul className="timeslots-list">
           { this._renderListOfValues() }
         </ul>
-        <a className="button-list--forward" href="#">&gt;</a>
+        <span className="button-list--forward"
+              onClick={ this._advanceList() }
+          >&gt;</span>
       </div>
     );
   }
 
   _renderListOfValues() {
     if (this.props.listOfValues) {
-      const coveredAvailabilities = this.props.listOfValues
-                                        .filter(
-                                          this._filterAvailabilitiesByCover
-                                        );
-
-      return coveredAvailabilities.map((availability) => {
+      // const coveredAvailabilities = this.props.listOfValues
+      //                                   .filter(
+      //                                     this._filterAvailabilitiesByCover
+      //                                   );
+      const filteredAvailabilities = this.props.listOfValues.splice(this.state.initial, 5);
+      return filteredAvailabilities.map((availability) => {
         return (
           <li
             key={availability.checksum}
@@ -75,7 +78,7 @@ export default class Timeslot extends React.Component {
   }
 
   _filterAvailabilitiesByCover(availability) {
-    return (availability.available >= this.props.limit); // FAILS!
+    return (availability.available >= this.props.limit);
   }
 
   _handleExpandTimelostSelectorClick() {
@@ -83,7 +86,12 @@ export default class Timeslot extends React.Component {
   }
 
   _filterByTime(number) {
-    console.log(number);
+    this.state.initial = number;
+  }
+
+  _advanceList() {
+    this.state.initial += 5;
+    console.log(this.state.initial);
   }
 
 }
