@@ -9,7 +9,7 @@ class SelectableDay extends React.Component {
 
   render() {
     return (<div className="cell">
-              <span className="cell__label">Date</span>
+              <span className="cell__label--top">Date</span>
               <div className="cell__content">
                 { this._renderMainComponent() }
               </div>
@@ -29,7 +29,7 @@ class SelectableDay extends React.Component {
   }
 
   _renderCollapsedComponent() {
-    return (<div className="clickable"
+    return (<div className="clickable DayPicker--collapsed"
                  onClick={this._handleClickOnCollapsedDate }
             >
               { formatDateForView(this.props.date) }

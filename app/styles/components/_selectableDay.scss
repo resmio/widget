@@ -16,12 +16,8 @@
 }
 
 .DayPicker {
-  @include span-columns(10);
-  @include shift(1);
-  @include omega();
-  border-bottom: 1px solid $light-gray;
   position: relative;
-  padding: 1rem 0;
+  padding: 25px 0;
   user-select: none;
 }
 
@@ -79,15 +75,13 @@
 .DayPicker-Day {
   display: table-cell;
   padding: .5rem;
-  border: 1px solid yellow;
   text-align: center;
   cursor: pointer;
   vertical-align: middle;
 }
 
 .DayPicker-Day--disabled {
-  background-color: yellow;
-  color: lightgray;
+  color: $medium-gray;
   cursor: default;
 }
 
@@ -97,6 +91,11 @@
 }
 
 .DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {
-  color: white;
-  background-color: blue;
+  color: $green;
+  border: 1px solid $green;
+  border-radius: $base-border-radius;
+}
+
+.DayPicker--collapsed {
+  padding-top: 25px;
 }
