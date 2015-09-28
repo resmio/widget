@@ -10,6 +10,7 @@ const state = {
   maxNumberOfCovers: 25,
   numberOfCoversOnUi: 9,
   calendarCollapsedOnUi: true,
+  timeslotCollapsedOnUi: true,
   availabilities: [],
   timeslot: {},
   covers: 2,
@@ -121,6 +122,12 @@ WidgetStore.dispatchToken = AppDispatcher.register((payload) => {
 
     case ActionTypes.TIMESLOT_SELECTED:
       state.timeslot = action.timeslot;
+      state.timeslotCollapsedOnUi = true;
+      _WidgetStore.emitChange();
+      break;
+
+    case ActionTypes.TIMESLOT_SELECTOR_EXPANDED:
+      state.timeslotCollapsedOnUi = !state.timeslotCollapsedOnUi;
       _WidgetStore.emitChange();
       break;
 

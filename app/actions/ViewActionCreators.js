@@ -102,5 +102,11 @@ export default {
       type: ActionTypes.TIMESLOT_SELECTED,
       timeslot: timeslot
     });
+  },
+
+  timeslotSelectorClicked() {
+    AppDispatcher.handleViewAction({
+      type: ActionTypes.TIMESLOT_SELECTOR_EXPANDED
+    });
   }
 };
