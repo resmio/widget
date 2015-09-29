@@ -15,6 +15,7 @@ export default class Timeslot extends React.Component {
     // We need to bind functions here so this won't refer to React
     // Will be solved in ES7
     this._filterAvailabilitiesByCover = this._filterAvailabilitiesByCover.bind(this);
+    this._advanceList = this._advanceList.bind(this);
     this.state = WidgetStore.getState();
     this.state.initial = 0;
     // This should be passed as props
@@ -35,7 +36,7 @@ export default class Timeslot extends React.Component {
         <span className="cell__label">Time</span>
         <div
           className="cell__content"
-          onClick = { this._handleExpandTimelostSelectorClick }
+          onClick = { this._handleExpandTimeslotSelectorClick }
         >
           { this._renderCollapsedMessage() }
         </div>
@@ -63,7 +64,7 @@ export default class Timeslot extends React.Component {
           { this._renderListOfValues() }
         </ul>
         <span className="button-list--forward"
-              onClick={ this._advanceList() }
+              onClick={ this._advanceList }
           >&gt;</span>
       </div>
     );
@@ -72,7 +73,7 @@ export default class Timeslot extends React.Component {
   _renderListOfValues() {
     if (this.props.listOfValues) {
       this._splitValuesIntoGroups();
-      console.log(this.state.groupsOfValues);
+      return this._renderVisibleGroup();
     }
   }
 
@@ -86,6 +87,19 @@ export default class Timeslot extends React.Component {
     }).filter((e) => { return e; });
   }
 
+  _renderVisibleGroup() {
+    return this.state.groupsOfValues[this.state.ui.actualTimeslotsGroup].map((availability) => {
+      return (
+        <li
+          key={availability.checksum}
+          onClick={this.props.handleClick.bind(this, availability)}
+        >
+          {availability.local_time_formatted}
+        </li>
+      );
+    });
+  }
+
   // _renderListOfValues() {
   //   if (this.props.listOfValues) {
   //     // const coveredAvailabilities = this.props.listOfValues
@@ -93,16 +107,6 @@ export default class Timeslot extends React.Component {
   //     //                                     this._filterAvailabilitiesByCover
   //     //                                   );
   //     const filteredAvailabilities = this.props.listOfValues.splice(this.state.initial, 5);
-  //     return filteredAvailabilities.map((availability) => {
-  //       return (
-  //         <li
-  //           key={availability.checksum}
-  //           onClick={this.props.handleClick.bind(this, availability)}
-  //         >
-  //           {availability.local_time_formatted}
-  //         </li>
-  //       );
-  //     });
   //   }
   // }
 
@@ -110,7 +114,7 @@ export default class Timeslot extends React.Component {
     return (availability.available >= this.props.limit);
   }
 
-  _handleExpandTimelostSelectorClick() {
+  _handleExpandTimeslotSelectorClick() {
     ViewActionCreators.timeslotSelectorClicked();
   }
 
@@ -119,7 +123,7 @@ export default class Timeslot extends React.Component {
   }
 
   _advanceList() {
-    this.state.initial += 5;
+    ViewActionCreators.timeslotsListAdvanceClicked();
   }
 
 }

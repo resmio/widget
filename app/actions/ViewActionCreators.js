@@ -97,6 +97,12 @@ export default {
     ApiUtils.requestAvailabilities(facilityId, formatDateForApi(date));
   },
 
+  timeslotsListAdvanceClicked() {
+    AppDispatcher.handleViewAction({
+      type: ActionTypes.TIMESLOT_GROUP_INCREASED
+    });
+  },
+
   timeslotSelected(timeslot) {
     AppDispatcher.handleViewAction({
       type: ActionTypes.TIMESLOT_SELECTED,

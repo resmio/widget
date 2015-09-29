@@ -5,6 +5,9 @@ import { ActionTypes } from '../constants/Constants';
 const CHANGE_EVENT = 'CHANGE';
 
 const state = {
+  ui: {
+    actualTimeslotsGroup: 0
+  },
   bookingDetails: {},
   numberPickerUiExpanded: false,
   maxNumberOfCovers: 25,
@@ -117,6 +120,11 @@ WidgetStore.dispatchToken = AppDispatcher.register((payload) => {
 
     case ActionTypes.PHONE_CHANGED:
       state.phone = action.phone;
+      _WidgetStore.emitChange();
+      break;
+
+    case ActionTypes.TIMESLOT_GROUP_INCREASED:
+      state.ui.actualTimeslotsGroup += 1;
       _WidgetStore.emitChange();
       break;
 
