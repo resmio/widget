@@ -60,19 +60,11 @@ export default class Timeslot extends React.Component {
           <li onClick={this._filterByTime(5)}>Lunch</li>
           <li>Dinner</li>
         </ul>
-        <span className="button-list--backward"
-              onClick={ this._showPreviousGroup }
-        >
-          &lt;
-        </span>
+        { this._renderPreviousGroupButton() }
         <ul className="timeslots-list">
           { this._renderListOfValues() }
         </ul>
-        <span className="button-list--forward"
-              onClick={ this._showNextGroup }
-        >
-        &gt;
-       </span>
+        { this._renderNextGroupButton() }
       </div>
     );
   }
@@ -105,6 +97,28 @@ export default class Timeslot extends React.Component {
         </li>
       );
     });
+  }
+
+  _renderNextGroupButton() {
+    if ( this.state.ui.actualTimeslotsGroup < this.state.groupsOfValues.length - 1 ) {
+      return (<span className="button-list--backward"
+                    onClick={ this._showNextGroup }
+              >
+                &gt;
+              </span>
+      );
+    }
+  }
+
+  _renderPreviousGroupButton() {
+    if ( this.state.ui.actualTimeslotsGroup > 0 ) {
+      return (<span className="button-list--backward"
+                    onClick={ this._showPreviousGroup }
+              >
+                &lt;
+              </span>
+      );
+    }
   }
 
   // _renderListOfValues() {
