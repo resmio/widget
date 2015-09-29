@@ -6,6 +6,7 @@
 // Add a selected class to selected element
 // Implement shortcut buttons actions
 // Implement shortcut buttons highlighting
+// Disable previous times for today
 
 import React from 'react';
 import WidgetStore from '../stores/WidgetStore';
@@ -92,13 +93,18 @@ export default class Timeslot extends React.Component {
   _renderVisibleGroup() {
     return this.state.groupsOfValues[this.state.ui.actualTimeslotsGroup].map((availability) => {
       let classString = '';
+      let clickFunction = this.props.handleClick.bind(this, availability);
       if (this._filterAvailabilitiesByCover(availability)) {
         classString = 'disabled';
+        clickFunction = null;
+      }
+      if (availability.checksum === this.state.timeslot.checksum) {
+        classString = 'selected';
       }
       return (
         <li
           key={availability.checksum}
-          onClick={this.props.handleClick.bind(this, availability)}
+          onClick={clickFunction}
           className={classString}
         >
           {availability.local_time_formatted}
