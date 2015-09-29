@@ -1,6 +1,8 @@
 // Get Availabilities
 // Split the array each 5 elements
 // Render first element
+    // Add a disabled class to unavailable timeslots
+// Render list navigation
 
 import React from 'react';
 import WidgetStore from '../stores/WidgetStore';
@@ -28,10 +30,6 @@ export default class Timeslot extends React.Component {
   }
 
   _renderCollapsed() {
-    let timeslotLegend = 'Select Time';
-    if ( Object.keys(this.state.timeslot).length !== 0) {
-      timeslotLegend = this.state.timeslot.local_time_formatted;
-    }
     return (
       <div className="cell">
         <span className="cell__label">Time</span>
@@ -39,10 +37,17 @@ export default class Timeslot extends React.Component {
           className="cell__content"
           onClick = { this._handleExpandTimelostSelectorClick }
         >
-          { timeslotLegend }
+          { this._renderCollapsedMessage() }
         </div>
       </div>
     );
+  }
+
+  _renderCollapsedMessage() {
+    // If we have a timeslot already selected we show its time
+    // If not, we show a message
+    return Object.keys(this.state.timeslot).length === 0 ?
+      'Select Time' : this.state.timeslot.local_time_formatted;
   }
 
   _renderExpanded() {
@@ -65,16 +70,20 @@ export default class Timeslot extends React.Component {
   }
 
   _renderListOfValues() {
-    // this splits the availabilities values into groups the size we want to
-    // show in the UI
     if (this.props.listOfValues) {
-      this.state.groupsOfValues = this.props.listOfValues.map((element, index) => {
-        return index % this.state.arraySize === 0 ?
-          this.props.listOfValues.slice(index, index + this.state.arraySize) :
-          null;
-      }).filter((e) => { return e; });
+      this._splitValuesIntoGroups();
       console.log(this.state.groupsOfValues);
     }
+  }
+
+  _splitValuesIntoGroups() {
+    // this splits the availabilities values into groups the size we want to
+    // show in the UI
+    this.state.groupsOfValues = this.props.listOfValues.map((element, index) => {
+      return index % this.state.arraySize === 0 ?
+        this.props.listOfValues.slice(index, index + this.state.arraySize) :
+        null;
+    }).filter((e) => { return e; });
   }
 
   // _renderListOfValues() {
