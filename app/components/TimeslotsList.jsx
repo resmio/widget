@@ -15,7 +15,8 @@ export default class Timeslot extends React.Component {
     // We need to bind functions here so this won't refer to React
     // Will be solved in ES7
     this._filterAvailabilitiesByCover = this._filterAvailabilitiesByCover.bind(this);
-    this._advanceList = this._advanceList.bind(this);
+    this._showNextGroup = this._showNextGroup.bind(this);
+    this._showPreviousGroup = this._showPreviousGroup.bind(this);
     this.state = WidgetStore.getState();
     this.state.initial = 0;
     // This should be passed as props
@@ -59,13 +60,19 @@ export default class Timeslot extends React.Component {
           <li onClick={this._filterByTime(5)}>Lunch</li>
           <li>Dinner</li>
         </ul>
-        <a className="button-list--back" href="#">&lt;</a>
+        <span className="button-list--backward"
+              onClick={ this._showPreviousGroup }
+        >
+          &lt;
+        </span>
         <ul className="timeslots-list">
           { this._renderListOfValues() }
         </ul>
         <span className="button-list--forward"
-              onClick={ this._advanceList }
-          >&gt;</span>
+              onClick={ this._showNextGroup }
+        >
+        &gt;
+       </span>
       </div>
     );
   }
@@ -122,8 +129,12 @@ export default class Timeslot extends React.Component {
     this.state.initial = number;
   }
 
-  _advanceList() {
-    ViewActionCreators.timeslotsListAdvanceClicked();
+  _showNextGroup() {
+    ViewActionCreators.timeslotsListNextClicked();
+  }
+
+  _showPreviousGroup() {
+    ViewActionCreators.timeslotsListPreviousClicked();
   }
 
 }

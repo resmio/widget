@@ -123,6 +123,11 @@ WidgetStore.dispatchToken = AppDispatcher.register((payload) => {
       _WidgetStore.emitChange();
       break;
 
+    case ActionTypes.TIMESLOT_GROUP_DECREASED:
+      state.ui.actualTimeslotsGroup -= 1;
+      _WidgetStore.emitChange();
+      break;
+
     case ActionTypes.TIMESLOT_GROUP_INCREASED:
       state.ui.actualTimeslotsGroup += 1;
       _WidgetStore.emitChange();

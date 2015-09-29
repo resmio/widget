@@ -19,6 +19,7 @@ export default {
     PERSON_PICKER_UI_STATE_CHANGED: null,
     PHONE_CHANGED: null,
     ROOT_COMPONENT_MOUNTED: null,
+    TIMESLOT_GROUP_DECREASED: null,
     TIMESLOT_GROUP_INCREASED: null,
     TIMESLOT_SELECTED: null,   // Selects a timeslot
     TIMESLOT_SELECTOR_EXPANDED: null
