@@ -1,8 +1,11 @@
 // Get Availabilities
 // Split the array each 5 elements
 // Render first element
-    // Add a disabled class to unavailable timeslots
 // Render list navigation
+// Add a disabled class to unavailable timeslots
+// Add a selected class to selected element
+// Implement shortcut buttons actions
+// Implement shortcut buttons highlighting
 
 import React from 'react';
 import WidgetStore from '../stores/WidgetStore';
@@ -88,10 +91,15 @@ export default class Timeslot extends React.Component {
 
   _renderVisibleGroup() {
     return this.state.groupsOfValues[this.state.ui.actualTimeslotsGroup].map((availability) => {
+      let classString = '';
+      if (this._filterAvailabilitiesByCover(availability)) {
+        classString = 'disabled';
+      }
       return (
         <li
           key={availability.checksum}
           onClick={this.props.handleClick.bind(this, availability)}
+          className={classString}
         >
           {availability.local_time_formatted}
         </li>
@@ -132,7 +140,7 @@ export default class Timeslot extends React.Component {
   // }
 
   _filterAvailabilitiesByCover(availability) {
-    return (availability.available >= this.props.limit);
+    return (availability.available <= this.props.limit);
   }
 
   _handleExpandTimeslotSelectorClick() {
