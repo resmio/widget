@@ -1,3 +1,7 @@
+// Get Availabilities
+// Split the array each 5 elements
+// Render first element
+
 import React from 'react';
 import WidgetStore from '../stores/WidgetStore';
 import ViewActionCreators from '../actions/ViewActionCreators';
@@ -11,6 +15,9 @@ export default class Timeslot extends React.Component {
     this._filterAvailabilitiesByCover = this._filterAvailabilitiesByCover.bind(this);
     this.state = WidgetStore.getState();
     this.state.initial = 0;
+    // This should be passed as props
+    this.state.arraySize = 5;
+    this.state.groupOfValues = [];
   }
 
   render() {
@@ -58,24 +65,37 @@ export default class Timeslot extends React.Component {
   }
 
   _renderListOfValues() {
+    // this splits the availabilities values into groups the size we want to
+    // show in the UI
     if (this.props.listOfValues) {
-      // const coveredAvailabilities = this.props.listOfValues
-      //                                   .filter(
-      //                                     this._filterAvailabilitiesByCover
-      //                                   );
-      const filteredAvailabilities = this.props.listOfValues.splice(this.state.initial, 5);
-      return filteredAvailabilities.map((availability) => {
-        return (
-          <li
-            key={availability.checksum}
-            onClick={this.props.handleClick.bind(this, availability)}
-          >
-            {availability.local_time_formatted}
-          </li>
-        );
-      });
+      this.state.groupsOfValues = this.props.listOfValues.map((element, index) => {
+        return index % this.state.arraySize === 0 ?
+          this.props.listOfValues.slice(index, index + this.state.arraySize) :
+          null;
+      }).filter((e) => { return e; });
+      console.log(this.state.groupsOfValues);
     }
   }
+
+  // _renderListOfValues() {
+  //   if (this.props.listOfValues) {
+  //     // const coveredAvailabilities = this.props.listOfValues
+  //     //                                   .filter(
+  //     //                                     this._filterAvailabilitiesByCover
+  //     //                                   );
+  //     const filteredAvailabilities = this.props.listOfValues.splice(this.state.initial, 5);
+  //     return filteredAvailabilities.map((availability) => {
+  //       return (
+  //         <li
+  //           key={availability.checksum}
+  //           onClick={this.props.handleClick.bind(this, availability)}
+  //         >
+  //           {availability.local_time_formatted}
+  //         </li>
+  //       );
+  //     });
+  //   }
+  // }
 
   _filterAvailabilitiesByCover(availability) {
     return (availability.available >= this.props.limit);
@@ -91,7 +111,6 @@ export default class Timeslot extends React.Component {
 
   _advanceList() {
     this.state.initial += 5;
-    console.log(this.state.initial);
   }
 
 }
