@@ -1,6 +1,7 @@
 import AppDispatcher from '../dispatchers/AppDispatcher';
 import { EventEmitter } from 'events';
 import { ActionTypes } from '../constants/Constants';
+import formatTimeForView from '../utils/formatTimeForView';
 
 const CHANGE_EVENT = 'CHANGE';
 
@@ -61,7 +62,12 @@ WidgetStore.dispatchToken = AppDispatcher.register((payload) => {
 
     case ActionTypes.AVAILABILITIES_LOADED:
       state.loaded = true;
-      state.availabilities = action.availabilities;
+      state.availabilities = action.availabilities.map((availability) => {
+        availability.local_time_formatted = (
+          formatTimeForView(availability.local_time_formatted)
+        );
+        return availability;
+      });
       _WidgetStore.emitChange();
       break;
 

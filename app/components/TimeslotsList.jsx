@@ -62,7 +62,8 @@ export default class Timeslot extends React.Component {
   }
 
   _renderCollapsedMessage() {
-    // If we have a timeslot already selected we show its time
+    // If we have a timeslot already selected we show its time converted to
+    // 24 hour format.
     // If not, we show a message
     return Object.keys(this.state.timeslot).length === 0 ?
       'Select Time' : this.state.timeslot.local_time_formatted;
