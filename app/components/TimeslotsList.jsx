@@ -95,11 +95,11 @@ export default class Timeslot extends React.Component {
       let classString = '';
       let clickFunction = this.props.handleClick.bind(this, availability);
       if (this._filterAvailabilitiesByCover(availability)) {
-        classString = 'disabled';
+        classString = 'timeslot--disabled';
         clickFunction = null;
       }
       if (availability.checksum === this.state.timeslot.checksum) {
-        classString = 'selected';
+        classString = 'timeslot--selected';
       }
       return (
         <li
