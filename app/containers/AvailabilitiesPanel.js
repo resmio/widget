@@ -29,6 +29,7 @@ export default class AvailabilitiesPanel extends React.Component {
         />
 
         <TimeslotsList
+          groupSize = {5}
           listOfValues = { this.state.availabilities }
           limit = { this.state.covers }
           handleClick = { this.handleClickOnAvailability }

@@ -6,14 +6,14 @@ const CHANGE_EVENT = 'CHANGE';
 
 const state = {
   ui: {
-    actualTimeslotsGroup: 0
+    actualTimeslotsGroup: 0,
+    timeslotCollapsed: true
   },
   bookingDetails: {},
   numberPickerUiExpanded: false,
   maxNumberOfCovers: 25,
   numberOfCoversOnUi: 9,
   calendarCollapsedOnUi: true,
-  timeslotCollapsedOnUi: true,
   availabilities: [],
   timeslot: {},
   covers: 2,
@@ -72,6 +72,7 @@ WidgetStore.dispatchToken = AppDispatcher.register((payload) => {
 
     case ActionTypes.DATE_CHANGED:
       state.date = action.newDate;
+      state.timeslot = {};
       state.calendarCollapsedOnUi = !state.calendarCollapsedOnUi;
       _WidgetStore.emitChange();
       break;
@@ -135,12 +136,12 @@ WidgetStore.dispatchToken = AppDispatcher.register((payload) => {
 
     case ActionTypes.TIMESLOT_SELECTED:
       state.timeslot = action.timeslot;
-      state.timeslotCollapsedOnUi = true;
+      state.ui.timeslotCollapsed = true;
       _WidgetStore.emitChange();
       break;
 
     case ActionTypes.TIMESLOT_SELECTOR_EXPANDED:
-      state.timeslotCollapsedOnUi = !state.timeslotCollapsedOnUi;
+      state.ui.timeslotCollapsed = !state.ui.timeslotCollapsed;
       _WidgetStore.emitChange();
       break;
 
