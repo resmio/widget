@@ -8,6 +8,7 @@ class AppDispatcher extends Dispatcher {
       source: PayloadSources.SERVER_ACTION,
       action: action
     };
+    console.log(payload.source, payload.action);
     this.dispatch(payload);
   }
 
@@ -16,6 +17,7 @@ class AppDispatcher extends Dispatcher {
       source: PayloadSources.VIEW_ACTION,
       action: action
     };
+    console.log(payload.source, payload.action);
     this.dispatch(payload);
   }
 }

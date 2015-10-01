@@ -14,18 +14,24 @@ import ViewActionCreators from '../actions/ViewActionCreators';
 export default class Timeslot extends React.Component {
 
   render() {
-    return (
-      <div className="cell">
-        <span className="cell__label">Time</span>
-        { this.state.ui.timeslotCollapsed ?
-            this._renderCollapsed() : this._renderExpanded() }
-      </div>
-    );
+    if (this.props.listOfValues.length !== 0) {
+      return (
+        <div className="cell">
+          <span className="cell__label">Time</span>
+          { this.state.ui.timeslotCollapsed ?
+              this._renderCollapsed() : this._renderExpanded() }
+        </div>
+      );
+    }
+    return (<div className="cell">Ojete</div>);
   }
 
   constructor(props) {
     super(props);
     this.state = WidgetStore.getState();
+    // We need to bind functions here so this won't refer to React
+    // Will be solved in ES7
+    this._filterAvailabilitiesByCover = this._filterAvailabilitiesByCover.bind(this);
     // We store the splitted array so we don't have to calculate every time
     this.state.listOfValuesGrouped = [];
   }
@@ -34,11 +40,15 @@ export default class Timeslot extends React.Component {
 // State changers
 // -----------------------------------------------------------------------------
 
+  _filterAvailabilitiesByCover(availability) {
+    return (availability.available >= this.props.limit);
+  }
+
   _splitValuesIntoGroups() {
     // this splits the availabilities values into groups the size we want to
     // show in the UI
     this.state.listOfValuesGrouped = (
-      this.props.listOfValues.map((element, index) => {
+      this.props.listOfValues.filter(this._filterAvailabilitiesByCover).map((element, index) => {
         return index % this.props.groupSize === 0 ?
           this.props.listOfValues.slice(index, index + this.props.groupSize) :
           null;
@@ -51,16 +61,21 @@ export default class Timeslot extends React.Component {
 // -----------------------------------------------------------------------------
 
   _renderCollapsed() {
+    if (this.props.listOfValues) { // Need to change this to check after filtering
+      return (
+          <div
+            className="cell__content"
+            onClick = { this._handleExpandTimeslotSelectorClick }
+          >
+            <span className="pointer">
+              { this._renderCollapsedMessage() }
+            </span>
+            <span className="pointer arrow--down">&#10095;</span>
+          </div>
+      );
+    }
     return (
-        <div
-          className="cell__content"
-          onClick = { this._handleExpandTimeslotSelectorClick }
-        >
-          <span className="pointer">
-            { this._renderCollapsedMessage() }
-          </span>
-          <span className="pointer arrow--down">&#10095;</span>
-        </div>
+      <div className="cell__content">NO AVAILABILITIES</div>
     );
   }
 
@@ -114,13 +129,14 @@ export default class Timeslot extends React.Component {
   }
 
   _renderVisibleGroup() {
+    if (this.state.listOfValuesGrouped.length === 0) {
+      return (
+        <li>NO AVAILABILITIES</li>
+      );
+    }
     return this.state.listOfValuesGrouped[this.state.ui.actualTimeslotsGroup].map((availability) => {
       let classString = 'timeslot';
-      let clickFunction = this.props.handleClick.bind(this, availability);
-      if (this._filterAvailabilitiesByCover(availability)) {
-        classString += ' timeslot--disabled';
-        clickFunction = null;
-      }
+      const clickFunction = this.props.handleClick.bind(this, availability);
       if (availability.checksum === this.state.timeslot.checksum) {
         classString += ' timeslot--selected';
       }
@@ -150,10 +166,6 @@ export default class Timeslot extends React.Component {
 // -----------------------------------------------------------------------------
 // Event handlers
 // -----------------------------------------------------------------------------
-
-  _filterAvailabilitiesByCover(availability) {
-    return (availability.available <= this.props.limit);
-  }
 
   _handleExpandTimeslotSelectorClick() {
     ViewActionCreators.timeslotSelectorClicked();

@@ -4,7 +4,7 @@ export default {
   API: 'https://app.resmio.com/v1',
 
   ActionTypes: keyMirror({
-    AVAILABILITES_LOADED: null,
+    AVAILABILITIES_LOADED: null,
     AVAILABILITIES_REQUESTED: null,
     BOOKING_POSTED: null,
     COLLAPSED_DATE_CLICKED: null,

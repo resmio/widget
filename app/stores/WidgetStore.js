@@ -62,6 +62,7 @@ WidgetStore.dispatchToken = AppDispatcher.register((payload) => {
 
     case ActionTypes.AVAILABILITIES_LOADED:
       state.loaded = true;
+      state.ui.timeslotCollapsed = true;
       state.availabilities = action.availabilities.map((availability) => {
         availability.local_time_formatted = (
           formatTimeForView(availability.local_time_formatted)
