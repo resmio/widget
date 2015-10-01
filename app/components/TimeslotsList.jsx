@@ -15,8 +15,11 @@ export default class Timeslot extends React.Component {
 
   render() {
     return (
-      this.state.ui.timeslotCollapsed ?
-        this._renderCollapsed() : this._renderExpanded()
+      <div className="cell">
+        <span className="cell__label">Time</span>
+        { this.state.ui.timeslotCollapsed ?
+            this._renderCollapsed() : this._renderExpanded() }
+      </div>
     );
   }
 
@@ -49,15 +52,15 @@ export default class Timeslot extends React.Component {
 
   _renderCollapsed() {
     return (
-      <div className="cell">
-        <span className="cell__label">Time</span>
         <div
           className="cell__content"
           onClick = { this._handleExpandTimeslotSelectorClick }
         >
-          { this._renderCollapsedMessage() }
+          <span className="pointer">
+            { this._renderCollapsedMessage() }
+          </span>
+          <span className="pointer arrow--down">&#10095;</span>
         </div>
-      </div>
     );
   }
 
@@ -71,7 +74,7 @@ export default class Timeslot extends React.Component {
 
   _renderExpanded() {
     return (
-      <div className="timeslots-selector">
+      <div className="cell__content timeslots-selector">
         { this._renderPreviousGroupButton() }
         <ul className="timeslots-list">
           { this._renderListOfValues() }
@@ -90,10 +93,10 @@ export default class Timeslot extends React.Component {
 
   _renderNextGroupButton() {
     if ( this.state.ui.actualTimeslotsGroup < this.state.listOfValuesGrouped.length - 1 ) {
-      return (<span className="button-list--backward"
+      return (<span className="list-button--next"
                     onClick={ this._showNextGroup }
               >
-                &gt;
+                &#10095;
               </span>
       );
     }
@@ -101,10 +104,10 @@ export default class Timeslot extends React.Component {
 
   _renderPreviousGroupButton() {
     if ( this.state.ui.actualTimeslotsGroup > 0 ) {
-      return (<span className="button-list--backward"
+      return (<span className="list-button--previous"
                     onClick={ this._showPreviousGroup }
               >
-                &lt;
+                &#10094;
               </span>
       );
     }
@@ -112,14 +115,14 @@ export default class Timeslot extends React.Component {
 
   _renderVisibleGroup() {
     return this.state.listOfValuesGrouped[this.state.ui.actualTimeslotsGroup].map((availability) => {
-      let classString = '';
+      let classString = 'timeslot';
       let clickFunction = this.props.handleClick.bind(this, availability);
       if (this._filterAvailabilitiesByCover(availability)) {
-        classString = 'timeslot--disabled';
+        classString += ' timeslot--disabled';
         clickFunction = null;
       }
       if (availability.checksum === this.state.timeslot.checksum) {
-        classString = 'timeslot--selected';
+        classString += ' timeslot--selected';
       }
       return (
         <li

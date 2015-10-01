@@ -1,7 +1,30 @@
+.timeslots-selector,
+.timeslots-list,
+.timeslot {
+  display: inline-block;
+}
+
+.timeslot {
+  cursor: pointer;
+  padding: 3% 0;
+  text-align: center;
+  width: 20%;
+}
+
+.timeslots-list {
+  width: 85%;
+}
+
 .timeslot--disabled {
   color: $light-gray;
 }
 
 .timeslot--selected {
+  border: 1px solid $green;
+  border-radius: $base-border-radius;
   color: $green;
+}
+
+.pointer {
+  cursor: pointer;
 }
