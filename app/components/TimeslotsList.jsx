@@ -23,7 +23,7 @@ export default class Timeslot extends React.Component {
         </div>
       );
     }
-    return (<div className="cell">Ojete</div>);
+    return (<div className="cell">No Availabilities sorry</div>);
   }
 
   constructor(props) {
@@ -64,13 +64,13 @@ export default class Timeslot extends React.Component {
     if (this.props.listOfValues) { // Need to change this to check after filtering
       return (
           <div
-            className="cell__content"
+            className="clickable cell__content"
             onClick = { this._handleExpandTimeslotSelectorClick }
           >
-            <span className="pointer">
+            <span>
               { this._renderCollapsedMessage() }
             </span>
-            <span className="pointer arrow--down">&#10095;</span>
+            <span className="arrow--down">&#10095;</span>
           </div>
       );
     }
@@ -119,7 +119,7 @@ export default class Timeslot extends React.Component {
 
   _renderPreviousGroupButton() {
     if ( this.state.ui.actualTimeslotsGroup > 0 ) {
-      return (<span className="list-button--previous"
+      return (<span className="list-button--prev"
                     onClick={ this._showPreviousGroup }
               >
                 &#10094;

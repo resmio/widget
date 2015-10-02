@@ -5,10 +5,15 @@
 }
 
 .timeslot {
+  border-radius: $base-border-radius;
   cursor: pointer;
   padding: 3% 0;
   text-align: center;
   width: 20%;
+
+  &:hover {
+    border: 1px solid $medium-gray;
+  }
 }
 
 .timeslots-list {
