@@ -104,11 +104,11 @@ export default class NumberPicker extends React.Component {
     // so we add one to the check
     if (this.state.groupWithSelectedElement + 1 !== this.state.numberOfGroups) {
       return (
-        <a href="#"
+        <span
           className="list-button--next"
           onClick={this._handleNextButtonClick}>
           &#10095;
-        </a>
+        </span>
       );
     }
   }
@@ -116,19 +116,19 @@ export default class NumberPicker extends React.Component {
   _renderPreviousButton() {
     if (this.state.groupWithSelectedElement !== 0) {
       return (
-        <a href="#"
+        <span
           className="list-button--prev"
           onClick={this._handlePreviousButtonClick}>
           &#10094;
-        </a>
+        </span>
       );
     }
     return (
-      <a href="#"
+      <span
         className="list-button--disabled"
       >
       &nbsp;
-      </a>
+    </span>
     );
   }
 

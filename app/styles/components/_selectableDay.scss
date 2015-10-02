@@ -3,7 +3,7 @@
 }
 
 .DayPicker-NavButton--next {
-  right: 1rem;
+  right: 0;
 }
 
 .DayPicker-NavButton--prev:before {
@@ -13,6 +13,11 @@
 .DayPicker-NavButton--next:after {
   right: 1rem;
   content: '\276F';
+}
+
+.DayPicker-NavButton--prev:hover,
+.DayPicker-NavButton--next:hover {
+  color: $action-color;
 }
 
 .DayPicker {
@@ -73,11 +78,16 @@
 }
 
 .DayPicker-Day {
+  box-sizing: border-box;
   display: table-cell;
   padding: .5rem;
   text-align: center;
   cursor: pointer;
   vertical-align: middle;
+
+  &:hover {
+    border: 1px solid $medium-gray;
+  }
 }
 
 .DayPicker-Day--disabled {
@@ -86,7 +96,7 @@
 }
 
 .DayPicker-Day--today {
-  color: red;
+  color: $black;
   font-weight: 500;
 }
 

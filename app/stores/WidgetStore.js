@@ -1,10 +1,15 @@
 import AppDispatcher from '../dispatchers/AppDispatcher';
 import { EventEmitter } from 'events';
 import { ActionTypes } from '../constants/Constants';
+import formatTimeForView from '../utils/formatTimeForView';
 
 const CHANGE_EVENT = 'CHANGE';
 
 const state = {
+  ui: {
+    actualTimeslotsGroup: 0,
+    timeslotCollapsed: true
+  },
   bookingDetails: {},
   numberPickerUiExpanded: false,
   maxNumberOfCovers: 25,
@@ -57,7 +62,13 @@ WidgetStore.dispatchToken = AppDispatcher.register((payload) => {
 
     case ActionTypes.AVAILABILITIES_LOADED:
       state.loaded = true;
-      state.availabilities = action.availabilities;
+      state.ui.timeslotCollapsed = true;
+      state.availabilities = action.availabilities.map((availability) => {
+        availability.local_time_formatted = (
+          formatTimeForView(availability.local_time_formatted)
+        );
+        return availability;
+      });
       _WidgetStore.emitChange();
       break;
 
@@ -68,6 +79,7 @@ WidgetStore.dispatchToken = AppDispatcher.register((payload) => {
 
     case ActionTypes.DATE_CHANGED:
       state.date = action.newDate;
+      state.timeslot = {};
       state.calendarCollapsedOnUi = !state.calendarCollapsedOnUi;
       _WidgetStore.emitChange();
       break;
@@ -119,8 +131,24 @@ WidgetStore.dispatchToken = AppDispatcher.register((payload) => {
       _WidgetStore.emitChange();
       break;
 
+    case ActionTypes.TIMESLOT_GROUP_DECREASED:
+      state.ui.actualTimeslotsGroup -= 1;
+      _WidgetStore.emitChange();
+      break;
+
+    case ActionTypes.TIMESLOT_GROUP_INCREASED:
+      state.ui.actualTimeslotsGroup += 1;
+      _WidgetStore.emitChange();
+      break;
+
     case ActionTypes.TIMESLOT_SELECTED:
       state.timeslot = action.timeslot;
+      state.ui.timeslotCollapsed = true;
+      _WidgetStore.emitChange();
+      break;
+
+    case ActionTypes.TIMESLOT_SELECTOR_EXPANDED:
+      state.ui.timeslotCollapsed = !state.ui.timeslotCollapsed;
       _WidgetStore.emitChange();
       break;
 
