@@ -50,6 +50,7 @@ class SelectableDay extends React.Component {
     return (
         <DayPicker
           modifiers={ modifiers }
+          initialMonth={ this.props.date }
           enableOutsideDays={false}
           onDayClick={ this.handleDayClick }
         />
