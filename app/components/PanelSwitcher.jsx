@@ -2,32 +2,34 @@ import React from 'react';
 
 export default class PanelSwitcher extends React.Component {
   render() {
+    const opts = {};
+    if (this.props.disabled) {
+      opts.disabled = 'disabled';
+    }
     let previousButton;
     let nextButton;
     if (this.props.showPanel > 1) {
-      previousButton = (<a
+      previousButton = (<button
                           className="panelSwitcher__button--previous"
-                          href="#"
                           onClick={this.props.handleClickOnPreviousButton}
                         >
                           Previous
-                        </a>);
+                        </button>);
     }
     if (this.props.showPanel < this.props.numberOfPanels) {
-      nextButton = (<a className="panelSwitcher__button--next"
-                       href="#"
+      nextButton = (<button className="panelSwitcher__button--next"
+                       {...opts}
                        onClick={this.props.handleClickOnNextButton}
                     >
                       Next
-                    </a>);
+                    </button>);
     }
     if (this.props.showPanel === this.props.numberOfPanels) {
-      nextButton = (<a className="panelSwitcher__button--final"
-                       href="#"
+      nextButton = (<button className="panelSwitcher__button--final"
                        onClick={this.props.handleClickOnLastButton}
                     >
                       Post
-                    </a>);
+                    </button>);
     }
     return (
       <div>
@@ -40,6 +42,7 @@ export default class PanelSwitcher extends React.Component {
 }
 
 PanelSwitcher.propTypes = {
+  disabled: React.PropTypes.bool,
   handleClickOnLastButton: React.PropTypes.func,
   handleClickOnNextButton: React.PropTypes.func,
   handleClickOnPreviousButton: React.PropTypes.func,
