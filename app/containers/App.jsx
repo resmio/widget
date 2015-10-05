@@ -51,6 +51,7 @@ export default class App extends React.Component {
             }
           })()}
           <PanelSwitcher showPanel={this.state.showPanel}
+                         disabled={Object.keys(this.state.timeslot).length === 0}
                          numberOfPanels={2}
                          handleClickOnLastButton={this.handleClickOnLastButton}
                          handleClickOnNextButton={this.handleClickOnNextButton}
