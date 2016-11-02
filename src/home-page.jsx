@@ -7,6 +7,7 @@ class HomePage extends React.Component {
       <div className='container'>
         <header role='banner'>
           <h1>Meson Baturro</h1>
+          <h2>Theme ALPHA</h2>
         </header>
         <Widget />
       </div>
