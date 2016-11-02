@@ -1,15 +1,15 @@
 import React from 'react'
 
-class HomePage extends React.Component {
+class Widget extends React.Component {
   render () {
     return (
       <div className='container'>
         <header role='banner'>
-          <h1>Meson Baturro</h1>
+          <h1>Widget Meson Baturro</h1>
         </header>
       </div>
     )
   }
 }
 
-export default HomePage
+export default Widget
