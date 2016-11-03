@@ -9,7 +9,10 @@ class HomePage extends React.Component {
           <h1>Meson Baturro</h1>
           <h2>Theme ALPHA</h2>
         </header>
-        <Widget />
+        <div className='webpage-main'></div>
+        <div className='webpage__widget-holder'>
+          <Widget />
+        </div>
       </div>
     )
   }

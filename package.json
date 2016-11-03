@@ -33,6 +33,7 @@
     "webpack": "^1.13.3"
   },
   "dependencies": {
+    "glamor": "^2.17.14",
     "lodash": "^4.16.6",
     "react": "^15.3.2",
     "react-redux": "^4.4.5",

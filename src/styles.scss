@@ -1,6 +1,44 @@
-$red: red;
-
 body {
-  background: $red;
-  color: white;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.webpage-main {
+  background: yellow;
+  float:left;
+  height: 1000px;
+  width: 5%;
+}
+
+.webpage__widget-holder {
+  background: coral;
+  float: right;
+}
+
+.widget-container {
+  min-width: 300px;
+  max-width: 550px;
+  height: 100%;
+}
+
+.widget__header {
+  height: 80px;
+}
+
+.main-section {
+  height: 200px;
+}
+
+.people__selector {
+  background: white;
+  border-bottom: 1px solid grey;
+  height: 33%;
+}
+
+.people__selector--is-expanded {
+
+}
+
+.calendar {
+  background: aquamarine;
+  height: 33%;
 }
