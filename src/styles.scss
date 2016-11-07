@@ -5,8 +5,8 @@ body {
 .webpage-main {
   background: yellow;
   float:left;
-  height: 1000px;
-  width: 5%;
+  height: 100px;
+  width: 500px;
 }
 
 .webpage__widget-holder {
@@ -15,13 +15,19 @@ body {
 }
 
 .widget-container {
-  min-width: 300px;
-  max-width: 550px;
+  min-width: 700px;
+  max-width: 1050px;
   height: 100%;
 }
 
 .widget__header {
+  color: white;
   height: 80px;
+  padding: 15px;
+}
+
+.main_heading {
+
 }
 
 .main-section {

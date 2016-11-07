@@ -11,6 +11,14 @@ const entities = (state = { facility: {}, availabilities: {} }, action) => {
   return state
 }
 
+const ui = (state = { calendarIsExpanded: false}, action) => {
+  if (action.response && action.response.entities) {
+    return merge({}, state, action.response.entities)
+  }
+
+  return state
+}
+
 // Updates error message to notify about the failed fetches.
 const errorMessage = (state = null, action) => {
   const { type, error } = action
