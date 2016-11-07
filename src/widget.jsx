@@ -22,6 +22,14 @@ class Widget extends Component {
   }
 
   render () {
+    switch (this.state.panel) {
+      case 1: return this._renderBookingPanel()
+      case 2: return this._renderGuestPanel()
+      default: return this._renderBookingPanel()
+    }
+  }
+
+  _renderBookingPanel () {
     return (
       <BookingPanel
         leDate={this.state.leDate}
@@ -29,6 +37,13 @@ class Widget extends Component {
         onCalendarFocusChange={this._onCalendarFocusChange}
         onDateChange={this._onDateChange}
       />
+    )
+  }
+
+  _renderGuestPanel () {
+    // Placeholder
+    return (
+      <h1>Guest Panel</h1>
     )
   }
 
