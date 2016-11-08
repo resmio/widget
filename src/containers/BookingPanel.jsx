@@ -4,6 +4,7 @@ import { render } from 'react-dom'
 import { SingleDatePicker } from 'react-dates'
 import 'react-dates/lib/css/_datepicker.css'
 import NumberSelector from '../components/NumberSelector'
+import Header from '../components/Header'
 
 class BookingPanel extends Component {
 
@@ -15,10 +16,11 @@ class BookingPanel extends Component {
     const {leDate, openCalendar, onCalendarFocusChange, onDateChange} = this.props
     return (
       <div className='widget-container'>
-        <header className='widget__header'>
-          <h1>Online Booking</h1>
-          <h2>Meson Baturro</h2>
-        </header>
+        <Header
+          collapsed
+          facility='Meson Baturro'
+          bgImage="https://zenezake.files.wordpress.com/2015/07/img_6715.jpg"
+        />
         <section className="main-section">
           <NumberSelector />
           <section className='calendar'>
