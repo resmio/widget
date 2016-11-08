@@ -1,5 +1,28 @@
+// http://callmenick.com/post/the-new-box-sizing-reset
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
 body {
-  font-family: 'Open Sans', sans-serif;
+  // https://medium.design/system-shock-6b1dc6d6596f#.szmjm1cjg
+  font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+  font-weight: 300;
 }
 
 .webpage-main {
@@ -11,19 +34,22 @@ body {
 
 .webpage__widget-holder {
   background: coral;
-  float: right;
+  width: 350px;
+  display: inline-block;
+  // float: right;
 }
 
 .widget-container {
-  min-width: 400px;
-  max-width: 550px;
-  height: 100%;
+  min-width: 300px;
+  max-width: 736px;
+  min-height: 500px;
+  max-height: 736px;
+  // height: 100%;
 }
 
-.widget__header {
+.widget-header--is-collapsed {
   color: white;
-  height: 80px;
-  padding: 15px;
+  height: 40px;
 }
 
 .main_heading {
