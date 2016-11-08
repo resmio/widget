@@ -40,20 +40,13 @@ class NumberSelector extends Component {
 
   constructor (props) {
     super(props)
-    this.state = {
-      number: 1,
-      max: 7,
-      min: 1
-    }
-    this._onPlusClicked = this._onPlusClicked.bind(this)
-    this._onMinusClicked = this._onMinusClicked.bind(this)
   }
 
   render () {
     return (
       <div {...container}>
         <div {...label}>People</div>
-        <div {...input}>{this.state.number} Guests</div>
+        <div {...input}>{this.props.selected} Guests</div>
         <div {...buttonGroup}>
           <button onClick={this._onPlusClicked}>+</button>
           <button onClick={this._onMinusClicked}>-</button>
@@ -61,22 +54,10 @@ class NumberSelector extends Component {
       </div>
     )
   }
-
-  _onPlusClicked () {
-    if (this.state.number < this.state.max) {
-      this.setState({number: this.state.number += 1})
-    }
-  }
-
-  _onMinusClicked () {
-    if (this.state.number > this.state.min) {
-      this.setState({number: this.state.number -= 1})
-    }
-  }
-
 }
 
 NumberSelector.propTypes = {
+  selected: React.PropTypes.number
 }
 
 export default NumberSelector
