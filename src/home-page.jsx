@@ -1,7 +1,7 @@
 // This is here just for testing purposes, it should be removed before the
 // final build (see index.js)
 import React from 'react'
-import Widget from './widget'
+import Widget from './widget-es5mobx'
 
 class HomePage extends React.Component {
   render () {

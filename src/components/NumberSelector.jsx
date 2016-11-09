@@ -37,31 +37,27 @@ let buttonGroup = style({
   flex: '1'
 })
 
-@inject('store')
+@inject('widgetStore')
 @observer class NumberSelector extends Component {
 
   render () {
-    const { selectedGuests } = this.props.store
+    const { selectedGuests, addGuest } = this.props.widgetStore
 
     return (
       <div {...container}>
         <div {...label}>People</div>
         <div {...input}>{selectedGuests} Guests</div>
         <div {...buttonGroup}>
-          <button onClick={this._addGuest}>+</button>
-          <button onClick={this._addGuest}>-</button>
+          <button onClick={addGuest}>+</button>
+          <button onClick={addGuest}>-</button>
         </div>
       </div>
     )
   }
-
-  _addGuest = () => {
-    this.props.store.addGuest()
-  }
 }
 
 NumberSelector.wrappedComponent.propTypes = {
-  selected: React.PropTypes.number
+  widgetStore: React.PropTypes.object
 }
 
 export default NumberSelector
