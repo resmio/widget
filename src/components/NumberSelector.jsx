@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import {observer, inject} from 'mobx-react'
 import { style } from 'glamor'
 
 let colors = {
@@ -36,27 +37,30 @@ let buttonGroup = style({
   flex: '1'
 })
 
-class NumberSelector extends Component {
-
-  constructor (props) {
-    super(props)
-  }
+@inject('store')
+@observer class NumberSelector extends Component {
 
   render () {
+    const { selectedGuests } = this.props.store
+
     return (
       <div {...container}>
         <div {...label}>People</div>
-        <div {...input}>{this.props.selected} Guests</div>
+        <div {...input}>{selectedGuests} Guests</div>
         <div {...buttonGroup}>
-          <button onClick={this._onPlusClicked}>+</button>
-          <button onClick={this._onMinusClicked}>-</button>
+          <button onClick={this._addGuest}>+</button>
+          <button onClick={this._addGuest}>-</button>
         </div>
       </div>
     )
   }
+
+  _addGuest = () => {
+    this.props.store.addGuest()
+  }
 }
 
-NumberSelector.propTypes = {
+NumberSelector.wrappedComponent.propTypes = {
   selected: React.PropTypes.number
 }
 
