@@ -1,5 +1,4 @@
 import React from 'react'
-import Widget from './widget'
 
 class HomePage extends React.Component {
   render () {
@@ -11,7 +10,7 @@ class HomePage extends React.Component {
         </header>
         <div className='webpage-main'></div>
         <div className='webpage__widget-holder'>
-          <Widget />
+          
         </div>
       </div>
     )
