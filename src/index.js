@@ -1,7 +1,31 @@
-require('./styles.scss')
-import React from 'react'
-import { render } from 'react-dom'
+// react
+import React from 'react';
+import { render } from 'react-dom';
 
-import HomePage from './home-page'
+// redux
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import * as actionCreators from './actionCreators'
+import store from './store'
 
-render(<HomePage />, document.getElementById('root'))
+import AppBase from './AppBase';
+import './index.css';
+
+function mapStateToProps (state) {
+  return state
+}
+
+function mapDispatchToProps (dispatch) {
+  return bindActionCreators(
+    actionCreators,
+    dispatch
+  )
+}
+
+const App = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AppBase)
+
+const MOUNT_NODE = document.getElementById('root')
+render(<App store={store} />, MOUNT_NODE)
