@@ -1,6 +1,6 @@
 // react
-import React, { Component, PropTypes } from 'react'
-import { render } from 'react-dom'
+import React from 'react';
+import { render } from 'react-dom';
 
 // redux
 import { bindActionCreators } from 'redux'
@@ -8,13 +8,14 @@ import { connect } from 'react-redux'
 import * as actionCreators from './actionCreators'
 import store from './store'
 
-// styles
-// import styles from './styles.scss'
+import AppBase from './AppBase';
+import './index.css';
 
-import Widget from './containers/Widget'
+function mapStateToProps (state) {
+  return state
+}
 
-function mapStateToProps(state) { return state }
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps (dispatch) {
   return bindActionCreators(
     actionCreators,
     dispatch
@@ -24,7 +25,7 @@ function mapDispatchToProps(dispatch) {
 const App = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Widget)
+)(AppBase)
 
 const MOUNT_NODE = document.getElementById('root')
 render(<App store={store} />, MOUNT_NODE)

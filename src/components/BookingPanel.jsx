@@ -13,10 +13,7 @@ class BookingPanel extends Component {
       <h1>Booking Panel</h1>
     )
   }
-  // constructor (props) {
-  //   super(props)
-  // }
-  //
+
   // render () {
   //   const {leDate, openCalendar, onCalendarFocusChange, onDateChange} = this.props
   //   return (

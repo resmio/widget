@@ -1,5 +1,5 @@
 function reducer(state = {}, action) {
-  console.info(state, action)
+  console.info('Reducer hit')
   return state
 }
 
