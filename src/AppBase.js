@@ -10,7 +10,7 @@ class AppBase extends Component {
   render() {
     return (
       <Provider store={this.props.store}>
-        <div className="Widget">
+        <div className="widget">
         <Header
           collapsed={this.props.headerCollapsed}
           facility={this.props.facility}

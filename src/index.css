@@ -26,26 +26,13 @@ h6 {
   font-weight: 300;
 }
 
-.webpage-main {
-  background: yellow;
-  float:left;
-  height: 100px;
-  width: 200px;
-}
 
-.webpage__widget-holder {
-  background: coral;
-  width: 350px;
-  display: inline-block;
-  // float: right;
-}
-
-.widget-container {
+.widget {
   min-width: 300px;
   max-width: 736px;
   min-height: 500px;
   max-height: 736px;
-  // height: 100%;
+  height: 100%;
 }
 
 .widget-header--is-collapsed {
