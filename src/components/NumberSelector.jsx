@@ -1,20 +1,55 @@
-import React, { Component, PropTypes } from 'react'
+import React, { PropTypes } from 'react'
 
-const NumberSelector = ({number, onPlusClicked, onMinusClicked}) => (
-  <div className='NumberSelector'>
-    <div className='label'>People</div>
-    <div className='input'>{number} Guests</div>
-    <div className='button-group'>
-      <button onClick={onPlusClicked}>+</button>
-      <button onClick={onMinusClicked}>-</button>
+const NumberSelector = ({
+    collapsed,
+    legendSingular,
+    legendPlural,
+    max,
+    min,
+    number,
+    onEditClicked,
+    onNumberSelected,
+    onPlusClicked,
+    onMinusClicked
+}) => {
+  const numbers = [...Array(max+1).keys()].slice(min)
+  const dropdown = collapsed
+   ? null
+   : (
+     <ul className='dropdown'>
+        { numbers.map((num, i) => {
+          const legend = num === 1 ? legendSingular : legendPlural
+          return (<li key={i} id={i} onClick={onNumberSelected}>{num} {legend}</li>)
+        })}
+     </ul>
+   )
+   const legend = number === 1 ? legendSingular : legendPlural
+  return (
+    <div className='NumberSelector'>
+      <div className='label'>People</div>
+      <div className='input' onClick={onEditClicked}>{number} {legend}</div>
+      <div className='button-group'>
+        <button onClick={onPlusClicked}>+</button>
+        <button onClick={onMinusClicked}>-</button>
+      </div>
+      {dropdown}
     </div>
-  </div>
-)
+  )
+}
+
+const { bool, func, number, string } = PropTypes
 
 NumberSelector.propTypes = {
-  number: PropTypes.number,
-  onMinusClicked: PropTypes.func,
-  onPlusClicked: PropTypes.func
+  collapsed: bool,
+  legendSingular: string,
+  legendPlural: string.isRequired,
+  max: number.isRequired,
+  min: number.isRequired,
+  number: number.isRequired,
+  onEditClicked: func.isRequired,
+  onNumberSelected: func.isRequired,
+  onPlusClicked: func.isRequired,
+  onMinusClicked: func.isRequired,
 }
 
 export default NumberSelector

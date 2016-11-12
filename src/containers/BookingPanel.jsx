@@ -14,12 +14,24 @@ class BookingPanel extends Component {
     const {
       selectedGuests,
       decrementGuest,
-      incrementGuest
+      incrementGuest,
+      maxGuests,
+      minGuests,
+      guestSelectorCollapsed,
+      guestSelectorClicked,
+      guestNumberClicked
     } = this.props
     return (
       <section className='panel'>
         <NumberSelector
+          collapsed={guestSelectorCollapsed}
+          legendSingular='guest'
+          legendPlural='guests'
+          max={maxGuests}
+          min={minGuests}
           number={selectedGuests}
+          onEditClicked={guestSelectorClicked}
+          onNumberSelected={guestNumberClicked}
           onPlusClicked={incrementGuest}
           onMinusClicked={decrementGuest}
         />

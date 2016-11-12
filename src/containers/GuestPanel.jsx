@@ -1,5 +1,4 @@
-import React, { Component, PropTypes } from 'react'
-import { render } from 'react-dom'
+import React, { Component } from 'react'
 
 class GuestPanel extends Component {
 

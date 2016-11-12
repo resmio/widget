@@ -9,6 +9,17 @@ export function decrementGuest () {
   return { type: 'DECREMENT_GUEST' }
 }
 
+export function guestSelectorClicked () {
+  return { type: 'OPEN_GUESTS_DROPDOWN' }
+}
+
+export function guestNumberClicked (e) {
+  return {
+    type: 'GUESTS_SELECTED',
+    payload: e.target.id
+  }
+}
+
 // date
 export function changeDate (date) {
   return {
