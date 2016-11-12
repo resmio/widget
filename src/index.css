@@ -1,5 +1,8 @@
- /*http://callmenick.com/post/the-new-box-sizing-reset*/
+/* ------------------------------------------------------------------
+                        Defaults
+------------------------------------------------------------------- */
 
+ /*http://callmenick.com/post/the-new-box-sizing-reset*/
 *,
 *::before,
 *::after {
@@ -26,7 +29,9 @@ h6 {
   font-weight: 300;
 }
 
-
+/* ------------------------------------------------------------------
+                        Layout
+------------------------------------------------------------------- */
 .widget {
   min-width: 300px;
   max-width: 736px;
@@ -35,30 +40,43 @@ h6 {
   height: 100%;
 }
 
-.widget-header--is-collapsed {
-  color: white;
-  height: 40px;
+.number-selector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  width: 100%;
 }
 
-.main_heading {
-
+.label {
+  flex: 1;
+  padding-left: 30px;
+  padding-right: 15px;
 }
 
-.main-section {
-  height: 200px;
+.input,
+.button-group {
+  flex: 1;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
-.people__selector {
-  background: white;
-  border-bottom: 1px solid grey;
-  height: 33%;
+/* ------------------------------------------------------------------
+                         Theme
+------------------------------------------------------------------- */
+.number-selector {
+  background: red;
+  color: #999;
 }
 
-.people__selector--is-expanded {
-
+.label {
+  background: salmon;
 }
 
-.calendar {
-  background: aquamarine;
-  height: 33%;
+.input {
+  background: lightsalmon;
+}
+
+.button-group {
+  background: lightcoral;
 }

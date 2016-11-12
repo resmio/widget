@@ -1,28 +1,35 @@
-import React, { Component, PropTypes } from 'react'
-import { render } from 'react-dom'
+import React, { Component } from 'react'
+import { bindActionCreators } from 'redux';
+import { connect,  } from 'react-redux';
+import * as actionCreators from '../actionCreators';
+
 // import { momentObj } from 'react-moment-proptypes'
 // import { SingleDatePicker } from 'react-dates'
 // import 'react-dates/lib/css/_datepicker.css'
-// import NumberSelector from '../components/NumberSelector'
-// import Header from '../components/Header'
+import NumberSelector from '../components/NumberSelector'
 
 class BookingPanel extends Component {
 
   render () {
+    const {
+      selectedGuests,
+      decrementGuest,
+      incrementGuest
+    } = this.props
     return (
-      <h1>Booking Panel</h1>
+      <section className='panel'>
+        <NumberSelector
+          number={selectedGuests}
+          onPlusClicked={incrementGuest}
+          onMinusClicked={decrementGuest}
+        />
+      </section>
     )
   }
 
   // render () {
   //   const {leDate, openCalendar, onCalendarFocusChange, onDateChange} = this.props
-  //   return (
-  //     <div className='widget-container'>
-  //       <Header
-  //         collapsed
-  //         facility='Meson Baturro'
-  //         bgImage="https://zenezake.files.wordpress.com/2015/07/img_6715.jpg"
-  //       />
+
   //       <section className="main-section">
   //         <NumberSelector />
   //         <section className='calendar'>
@@ -60,4 +67,13 @@ class BookingPanel extends Component {
 //   onDateChange: func
 // }
 
-export default BookingPanel
+
+function mapStateToProps(state) {
+  return state
+}
+
+function mapDispachToProps(dispatch) {
+  return bindActionCreators(actionCreators, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispachToProps)(BookingPanel)
