@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+import DropdownOption from './DropdownOption'
 
 const NumberSelector = ({
     collapsed,
@@ -19,7 +20,14 @@ const NumberSelector = ({
      <ul className='dropdown'>
         { numbers.map((num, i) => {
           const legend = num === 1 ? legendSingular : legendPlural
-          return (<li key={i} id={i} onClick={onNumberSelected}>{num} {legend}</li>)
+          return (
+            <DropdownOption
+              key={i}
+              index={i}
+              onClickAction={onNumberSelected}
+            >
+              {num} {legend}
+            </DropdownOption>)
         })}
      </ul>
    )
