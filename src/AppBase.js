@@ -15,6 +15,10 @@ class AppBase extends Component {
           bgImage={this.props.headerImage}
         />
         <PanelRouter panel={this.props.currentPanel} />
+        <footer>
+          <span>Mierdilogo</span>
+          <input type="button" value="Book Now"/>
+        </footer>
       </div>
     )
   }

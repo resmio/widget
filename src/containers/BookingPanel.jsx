@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux';
 import { connect,  } from 'react-redux';
 import * as actionCreators from '../actionCreators';
 
 // 3rd party components
-// import { momentObj } from 'react-moment-proptypes'
+import { momentObj } from 'react-moment-proptypes'
 import { SingleDatePicker } from 'react-dates'
 import 'react-dates/lib/css/_datepicker.css'
 import { style } from 'glamor'
@@ -66,47 +66,27 @@ class BookingPanel extends Component {
       </section>
     )
   }
-
-  // render () {
-  //   const {leDate, openCalendar, onCalendarFocusChange, onDateChange} = this.props
-
-  //       <section className="main-section">
-  //         <NumberSelector />
-  //         <section className='calendar'>
-  //           <span>Date</span>
-  //           <SingleDatePicker
-  //             id="date_input"
-  //             date={leDate}
-  //             focused={openCalendar}
-  //             onFocusChange={onCalendarFocusChange}
-  //             numberOfMonths={1}
-  //             onDateChange={onDateChange}
-  //           />
-  //         </section>
-  //         <section className='time__selector'>
-  //           <span>Time</span>
-  //           <span>18:00</span>
-  //           <span>20%</span>
-  //         </section>
-  //       </section>
-  //       <footer>
-  //         <span>Mierdilogo</span>
-  //         <input type="button" value="Book Now"/>
-  //       </footer>
-  //     </div>
-  //   )
-  // }
 }
 
-// const { bool,func } = PropTypes
-//
-// BookingPanel.propTypes = {
-//   leDate: momentObj,
-//   openCalendar: bool,
-//   onCalendarFocusChange: func,
-//   onDateChange: func
-// }
+const { bool,func, number } = PropTypes
 
+BookingPanel.propTypes = {
+  calendarFocused: bool,
+  selectedDate: momentObj,
+  selectedGuests: number,
+  decrementGuest: func,
+  incrementGuest: func,
+  openCalendar: bool,
+  onCalendarFocusChange: func,
+  onDateChange: func,
+  maxGuests: number,
+  minGuests: number,
+  guestSelectorCollapsed: bool,
+  guestSelectorClicked: func,
+  guestNumberClicked: func,
+  switchCalendarFocus: func,
+  changeSelectedDate: func
+}
 
 function mapStateToProps(state) {
   return state
