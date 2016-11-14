@@ -7,9 +7,15 @@ import * as actionCreators from '../actionCreators';
 // import { momentObj } from 'react-moment-proptypes'
 import { SingleDatePicker } from 'react-dates'
 import 'react-dates/lib/css/_datepicker.css'
+import { style } from 'glamor'
 
 // components
 import NumberSelector from '../components/NumberSelector'
+
+// styles
+const calendarIsExpanded = style({
+  height: '400px'
+})
 
 class BookingPanel extends Component {
 
@@ -28,6 +34,7 @@ class BookingPanel extends Component {
       switchCalendarFocus,
       changeSelectedDate
     } = this.props
+    const expanded = calendarFocused ? calendarIsExpanded : null
     return (
       <section className='panel'>
         <NumberSelector
@@ -42,7 +49,7 @@ class BookingPanel extends Component {
           onPlusClicked={incrementGuest}
           onMinusClicked={decrementGuest}
         />
-        <section className='calendar'>
+        <section className={`calendar ${expanded}`}>
             <span>Date</span>
             <SingleDatePicker
               id="date_input"
@@ -52,7 +59,10 @@ class BookingPanel extends Component {
               numberOfMonths={1}
               onDateChange={changeSelectedDate}
             />
-          </section>
+        </section>
+        <section>
+          TIMEPICKER
+        </section>
       </section>
     )
   }
