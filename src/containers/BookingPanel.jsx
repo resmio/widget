@@ -3,15 +3,20 @@ import { bindActionCreators } from 'redux';
 import { connect,  } from 'react-redux';
 import * as actionCreators from '../actionCreators';
 
+// 3rd party components
 // import { momentObj } from 'react-moment-proptypes'
-// import { SingleDatePicker } from 'react-dates'
-// import 'react-dates/lib/css/_datepicker.css'
+import { SingleDatePicker } from 'react-dates'
+import 'react-dates/lib/css/_datepicker.css'
+
+// components
 import NumberSelector from '../components/NumberSelector'
 
 class BookingPanel extends Component {
 
   render () {
     const {
+      calendarFocused,
+      selectedDate,
       selectedGuests,
       decrementGuest,
       incrementGuest,
@@ -19,7 +24,9 @@ class BookingPanel extends Component {
       minGuests,
       guestSelectorCollapsed,
       guestSelectorClicked,
-      guestNumberClicked
+      guestNumberClicked,
+      switchCalendarFocus,
+      changeSelectedDate
     } = this.props
     return (
       <section className='panel'>
@@ -35,6 +42,17 @@ class BookingPanel extends Component {
           onPlusClicked={incrementGuest}
           onMinusClicked={decrementGuest}
         />
+        <section className='calendar'>
+            <span>Date</span>
+            <SingleDatePicker
+              id="date_input"
+              date={selectedDate}
+              focused={calendarFocused}
+              onFocusChange={switchCalendarFocus}
+              numberOfMonths={1}
+              onDateChange={changeSelectedDate}
+            />
+          </section>
       </section>
     )
   }

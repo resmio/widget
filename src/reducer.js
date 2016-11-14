@@ -31,6 +31,16 @@ function reducer(state = {}, action) {
         guestSelectorCollapsed: true
       })
 
+    case 'CALENDAR_FOCUS_SWITCHED':
+    return Object.assign({}, state, {
+      calendarFocused: !state.calendarFocused
+    })
+
+    case 'DATE_CHANGED':
+    return Object.assign({}, state, {
+      selectedDate: action.payload
+    })
+
     default:
       return state
   }

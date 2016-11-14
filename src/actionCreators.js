@@ -21,9 +21,13 @@ export function guestNumberClicked (e) {
 }
 
 // date
-export function changeDate (date) {
+export function changeSelectedDate (date) {
   return {
-    type: 'CHANGE_DATE',
-    date
+    type: 'DATE_CHANGED',
+    payload: date
   }
+}
+
+export function switchCalendarFocus () {
+  return { type: 'CALENDAR_FOCUS_SWITCHED' }
 }
