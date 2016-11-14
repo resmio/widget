@@ -5,10 +5,14 @@ import moment from 'moment'
 const initialState = {
   facility: 'Meson Baturro',
   currentPanel: 1,
+  calendarFocused: false,
   headerCollapsed: false,
-  headerImage: 'https://zenezake.files.wordpress.com/2015/07/img_6715.jpg',
+  guestSelectorCollapsed: true,
+  maxGuests: 6,
+  minGuests: 1,
   selectedGuests: 1,
-  selectedDate: moment(new Date())
+  headerImage: 'https://zenezake.files.wordpress.com/2015/07/img_6715.jpg',
+  selectedDate: moment()
 }
 
 const store = createStore(reducer, initialState)

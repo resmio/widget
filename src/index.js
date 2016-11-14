@@ -2,30 +2,17 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-// redux
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import * as actionCreators from './actionCreators'
+import { Provider } from 'react-redux'
 import store from './store'
 
-import AppBase from './AppBase';
-import './index.css';
-
-function mapStateToProps (state) {
-  return state
-}
-
-function mapDispatchToProps (dispatch) {
-  return bindActionCreators(
-    actionCreators,
-    dispatch
-  )
-}
-
-const App = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(AppBase)
+import App from './App';
+import './styles/index';
 
 const MOUNT_NODE = document.getElementById('root')
-render(<App store={store} />, MOUNT_NODE)
+const app = (
+  <Provider store={store}>
+    <App />
+  </Provider>
+)
+
+render(app , MOUNT_NODE)

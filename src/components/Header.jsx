@@ -1,6 +1,6 @@
-import React, { Component, PropTypes } from 'react'
+import React, { PropTypes } from 'react'
 
-let Header = ({facility, bgImage, collapsed}) => (
+const Header = ({facility, bgImage, collapsed}) => (
   <div
     style={{
       backgroundImage: `url("${bgImage}")`,
