@@ -34,7 +34,6 @@ export function switchCalendarFocus () {
 
 // timeslots
 export function selectTimeslot (e) {
-  debugger
   return {
     type: 'TIMESLOT_SELECTED',
     payload: e.target.checksum

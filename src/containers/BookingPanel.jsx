@@ -10,6 +10,7 @@ import 'react-dates/lib/css/_datepicker.css'
 import { style } from 'glamor'
 
 // components
+import Header from '../components/Header'
 import NumberPicker from '../components/NumberPicker'
 import TimeslotPicker from '../components/TimeslotPicker'
 
@@ -27,7 +28,11 @@ class BookingPanel extends Component {
       selectedDate,
       selectedGuests,
       decrementGuest,
+      headerImage,
+      headerTextColor,
       incrementGuest,
+      facility,
+      mainColor,
       maxGuests,
       minGuests,
       guestSelectorCollapsed,
@@ -38,8 +43,19 @@ class BookingPanel extends Component {
       selectTimeslot
     } = this.props
     const expanded = calendarFocused ? calendarIsExpanded : null
+    const headerText = style({
+      color: headerTextColor
+    })
     return (
       <section className='panel'>
+        <Header bgImage={headerImage} bgColor={mainColor}>
+          <h2 className={`mainHeading ${headerText}`}>
+            Online Booking
+          </h2>
+          <h1 className={`secondaryHeading ${headerText}`}>
+            {facility}
+          </h1>
+        </Header>
         <NumberPicker
           collapsed={guestSelectorCollapsed}
           legendSingular='guest'
@@ -74,17 +90,21 @@ class BookingPanel extends Component {
   }
 }
 
-const { bool,func, number } = PropTypes
+const { bool, func, number, string } = PropTypes
 
 BookingPanel.propTypes = {
   calendarFocused: bool,
   selectedDate: momentObj,
   selectedGuests: number,
   decrementGuest: func,
+  facility: string,
+  headerImage: string,
+  headerTextColor: string,
   incrementGuest: func,
   openCalendar: bool,
   onCalendarFocusChange: func,
   onDateChange: func,
+  mainColor: string,
   maxGuests: number,
   minGuests: number,
   guestSelectorCollapsed: bool,

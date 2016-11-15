@@ -55,6 +55,21 @@ h6 {
   padding-right: 15px;
 }
 
+/* header */
+.mainHeading {
+  font-size: 18px;
+  font-weight: bold;
+  padding-left: 15px;
+  padding-top: 12px;
+}
+
+.secondaryHeading {
+  font-size: 14px;
+  font-weight: normal;
+  padding-left: 15px;
+  padding-top: 4px;
+}
+
 /* ------------------------------------------------------------------
                          Theme
 ------------------------------------------------------------------- */
