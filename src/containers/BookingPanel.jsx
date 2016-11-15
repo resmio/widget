@@ -10,7 +10,8 @@ import 'react-dates/lib/css/_datepicker.css'
 import { style } from 'glamor'
 
 // components
-import NumberSelector from '../components/NumberSelector'
+import NumberPicker from '../components/NumberPicker'
+import TimeslotPicker from '../components/TimeslotPicker'
 
 // styles
 const calendarIsExpanded = style({
@@ -21,6 +22,7 @@ class BookingPanel extends Component {
 
   render () {
     const {
+      availabilities,
       calendarFocused,
       selectedDate,
       selectedGuests,
@@ -32,12 +34,13 @@ class BookingPanel extends Component {
       guestSelectorClicked,
       guestNumberClicked,
       switchCalendarFocus,
-      changeSelectedDate
+      changeSelectedDate,
+      selectTimeslot
     } = this.props
     const expanded = calendarFocused ? calendarIsExpanded : null
     return (
       <section className='panel'>
-        <NumberSelector
+        <NumberPicker
           collapsed={guestSelectorCollapsed}
           legendSingular='guest'
           legendPlural='guests'
@@ -61,7 +64,10 @@ class BookingPanel extends Component {
             />
         </section>
         <section>
-          TIMEPICKER
+          <TimeslotPicker
+            timeslots={availabilities}
+            onTimeslotClick={selectTimeslot}
+          />
         </section>
       </section>
     )

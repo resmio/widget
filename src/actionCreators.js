@@ -31,3 +31,12 @@ export function changeSelectedDate (date) {
 export function switchCalendarFocus () {
   return { type: 'CALENDAR_FOCUS_SWITCHED' }
 }
+
+// timeslots
+export function selectTimeslot (e) {
+  debugger
+  return {
+    type: 'TIMESLOT_SELECTED',
+    payload: e.target.checksum
+  }
+}

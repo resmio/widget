@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import DropdownOption from './DropdownOption'
 
-const NumberSelector = ({
+const NumberPicker = ({
     collapsed,
     legendSingular,
     legendPlural,
@@ -33,7 +33,7 @@ const NumberSelector = ({
    )
    const legend = number === 1 ? legendSingular : legendPlural
   return (
-    <div className='NumberSelector'>
+    <div className='NumberPicker'>
       <div className='label'>People</div>
       <div className='input' onClick={onEditClicked}>{number} {legend}</div>
       <div className='button-group'>
@@ -47,7 +47,7 @@ const NumberSelector = ({
 
 const { bool, func, number, string } = PropTypes
 
-NumberSelector.propTypes = {
+NumberPicker.propTypes = {
   collapsed: bool,
   legendSingular: string,
   legendPlural: string.isRequired,
@@ -60,4 +60,4 @@ NumberSelector.propTypes = {
   onMinusClicked: func.isRequired,
 }
 
-export default NumberSelector
+export default NumberPicker
