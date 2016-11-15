@@ -1,21 +1,22 @@
 // react & redux
-import React, { Component } from 'react';
+import React from 'react';
 
 // components
 import PanelRouter from './components/PanelRouter'
+import Footer from './components/Footer'
 
-class AppBase extends Component {
-  render() {
-    return (
-      <div className="widget">
-        <PanelRouter panel={this.props.currentPanel} />
-        <footer>
-          <span>Mierdilogo</span>
-          <input type="button" value="Book Now"/>
-        </footer>
-      </div>
-    )
-  }
-}
+const AppBase = (props) => (
+  <div className="widget">
+    <PanelRouter panel={props.currentPanel} />
+    <Footer
+      currentPanel={props.currentPanel}
+      logo={props.logoUrl}
+      numberOfPanels={props.numberOfPanels}
+      onLastClicked={props.postBooking}
+      onNextClicked={props.increasePanel}
+      onPreviousClicked={props.decreasePanel}
+    />
+  </div>
+)
 
 export default AppBase;

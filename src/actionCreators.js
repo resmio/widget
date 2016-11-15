@@ -1,12 +1,10 @@
-// panels
-
 // guests
 export function incrementGuest () {
-  return { type: 'INCREMENT_GUEST' }
+  return { type: 'GUESTCOUNT_INCREASED' }
 }
 
 export function decrementGuest () {
-  return { type: 'DECREMENT_GUEST' }
+  return { type: 'GUESTCOUNT_DECREASED' }
 }
 
 export function guestSelectorClicked () {
@@ -37,5 +35,24 @@ export function selectTimeslot (e) {
   return {
     type: 'TIMESLOT_SELECTED',
     payload: e.target.checksum
+  }
+}
+
+// panels
+export function increasePanel () {
+  return {
+    type: 'PANEL_INCREASED'
+  }
+}
+
+export function decreasePanel () {
+  return {
+    type: 'PANEL_DECREASED'
+  }
+}
+
+export function postBooking () {
+  return {
+    type: 'BOOKING_POSTED'
   }
 }

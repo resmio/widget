@@ -7,7 +7,7 @@ const PanelRouter = (props)=> {
   switch (props.panel) {
     case 1: return (<BookingPanel />)
     case 2: return (<GuestPanel />)
-    default: return (<BookingPanel />)
+    default: return (<h1>Default</h1>)
   }
 }
 

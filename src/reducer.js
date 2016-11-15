@@ -2,7 +2,7 @@ function reducer(state = {}, action) {
 
   switch (action.type) {
 
-    case 'DECREMENT_GUEST':
+    case 'GUESTCOUNT_INCREASED':
       if (state.selectedGuests > state.minGuests) {
         return Object.assign({}, state, {
           selectedGuests: state.selectedGuests - 1
@@ -11,7 +11,7 @@ function reducer(state = {}, action) {
         return state
       }
 
-    case 'INCREMENT_GUEST':
+    case 'GUESTCOUNT_DECREASED':
       if (state.selectedGuests < state.maxGuests) {
         return Object.assign({}, state, {
           selectedGuests: state.selectedGuests + 1
@@ -32,14 +32,36 @@ function reducer(state = {}, action) {
       })
 
     case 'CALENDAR_FOCUS_SWITCHED':
-    return Object.assign({}, state, {
-      calendarFocused: !state.calendarFocused
-    })
+      return Object.assign({}, state, {
+        calendarFocused: !state.calendarFocused
+      })
 
     case 'DATE_CHANGED':
-    return Object.assign({}, state, {
-      selectedDate: action.payload
-    })
+      return Object.assign({}, state, {
+        selectedDate: action.payload
+      })
+
+    case 'PANEL_INCREASED':
+      if (state.currentPanel < state.numberOfPanels) {
+        return Object.assign({}, state, {
+          currentPanel: state.currentPanel + 1
+        })
+      } else {
+        return state
+      }
+
+    case 'PANEL_DECREASED':
+      if (state.currentPanel >= 2) {
+        return Object.assign({}, state, {
+          currentPanel: state.currentPanel - 1
+        })
+      } else {
+        return state
+      }
+
+    case 'BOOKING_POSTED':
+      console.log('BOOKING_POSTED')
+      return state
 
     default:
       return state
