@@ -3,11 +3,13 @@
   "version": "0.2.0",
   "description": "resmio booking widget",
   "repository": "https://github.com/resmio/widget",
+  "homepage": "http://resmio.github.io/widget",
   "private": true,
   "author": "resmio team",
   "license": "ISC",
   "engine": "node 6.5.0",
   "devDependencies": {
+    "gh-pages": "^0.11.0",
     "react-moment-proptypes": "^1.2.0",
     "react-scripts": "0.7.0"
   },
@@ -25,6 +27,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }
