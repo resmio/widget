@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
 import '../styles/TimeslotPicker.css'
 
 const TimeslotPicker = ({timeslots, onTimeslotClick}) => (
