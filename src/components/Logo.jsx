@@ -5,10 +5,10 @@ import resmioLogo from './resmioLogo'
 
 const logoStyles = style({
   display: 'inline-block',
-  width: '30%',
   minWidth: '30px',
   maxWidth: '80px',
-  margin: '15px 12% 15px 5%'
+  marginLeft: '15px',
+  flex: '1'
 })
 
 const Logo = (props) => {

@@ -9,7 +9,7 @@ const initialState = {
   calendarFocused: false,
   headerTextColor: 'white',
   guestSelectorCollapsed: true,
-  mainColor: 'darkBlue',
+  mainColor: 'coral',
   maxGuests: 6,
   minGuests: 1,
   numberOfPanels: 3,

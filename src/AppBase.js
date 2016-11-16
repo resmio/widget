@@ -11,6 +11,7 @@ const AppBase = (props) => (
     <Footer
       currentPanel={props.currentPanel}
       logo={props.logoUrl}
+      mainColor={props.mainColor}
       numberOfPanels={props.numberOfPanels}
       onLastClicked={props.postBooking}
       onNextClicked={props.increasePanel}

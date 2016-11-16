@@ -1,7 +1,12 @@
 import React, { PropTypes } from 'react'
-import { style } from 'glamor'
+import { style, merge, select as $ } from 'glamor'
 
 import Logo from './Logo'
+
+// This (the icon arrow) is just missing the stroke color when it's not hovered
+// somehow I can not make it work, it's just an aesthetic thing so I'm moving
+// forward and we will fix it later if we have time.
+// import IconArrow from './IconArrow'
 
 const Footer = (props) => {
 
@@ -10,35 +15,78 @@ const Footer = (props) => {
     numberOfPanels,
     onLastClicked,
     onNextClicked,
-    onPreviousClicked
+    onPreviousClicked,
+    mainColor
   } = props
 
   // styles
   const footer = style({
-    borderTop: '1px solid #DDD',
+    alignItems: 'center',
+    borderTop: `1px solid ${mainColor}`,
+    display: 'flex',
     height: '60px',
-    width: '100%',
+    justifyContent: 'center',
+    width: '100%'
   })
 
   const stepCounter = style({
-    textAlign: 'center',
     color: '#DDD',
-    display: 'inline-block',
-    width: '13%',
+    flex:'1',
+    textAlign: 'center'
   })
 
+  const button = merge(
+    {
+      background: 'white',
+      border: `1px solid ${mainColor}`,
+      borderRadius: '4px',
+      color: mainColor,
+      cursor: 'pointer',
+      flex: '1',
+      height: '46px',
+      maxWidth: '100px',
+      marginRight: '15px'
+    },
+    $('svg', {
+      stroke: 'red',
+      width: '40px'
+    }),
+    $(':hover', {
+      background: mainColor,
+      color: 'white',
+    }),
+    $(':focus', {
+      outline: 'none'
+    }),
+    // Next two styles are for the arrows svg included in the buttons, the
+    // reason to style them here is because we want the hover on the parent
+    // change its stroke color.
+    // Check this http://stackoverflow.com/a/38510022/2565132
+    // And this for how we use glamor:
+    // https://github.com/threepointone/glamor/blob/master/docs/howto.md#pseudoclasses
+    $(':hover svg', {
+      stroke: 'white',
+    })
+  )
+
+  const left = style({
+    marginLeft: '15px'
+  })
+
+  // helper functions
   const isFirstPanel = currentPanel <= 1
   const isLastPanel = currentPanel >= numberOfPanels
 
+  // what to render
   const leftElement = isFirstPanel
     ? <Logo />
-    : <button onClick={onPreviousClicked}>BACK</button>
+    : <button {...merge(button, left)} onClick={onPreviousClicked}>Back</button>
 
   const rightElement = isLastPanel
-    ? <button onClick={onLastClicked}>FINISH</button>
-    : <button onClick={onNextClicked}>NEXT</button>
+    ? <button {...button} onClick={onLastClicked}>Book Now</button>
+    : <button {...button} onClick={onNextClicked}>Next</button>
 
-
+  // actual render
   return (
     <footer {...footer}>
       {leftElement}
