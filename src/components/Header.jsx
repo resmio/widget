@@ -16,6 +16,7 @@ const Header = ({bgImage, bgColor, children}) => {
       content: '""',
       background: `url(${bgImage})`,
       backgroundSize: 'cover',
+      bacgroundPosition: 'middle',
       opacity: '0.5',
       position: 'absolute',
       width: '100%',
