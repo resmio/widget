@@ -9,7 +9,6 @@ import Logo from './Logo'
 // import IconArrow from './IconArrow'
 
 const Footer = (props) => {
-
   const {
     currentPanel,
     numberOfPanels,
@@ -22,7 +21,7 @@ const Footer = (props) => {
   // styles
   const footer = style({
     alignItems: 'center',
-    borderTop: `1px solid ${buttonColor}`,
+    borderTop: `1px solid #DDD`,
     display: 'flex',
     height: '60px',
     justifyContent: 'center',
