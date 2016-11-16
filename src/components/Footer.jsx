@@ -16,13 +16,13 @@ const Footer = (props) => {
     onLastClicked,
     onNextClicked,
     onPreviousClicked,
-    mainColor
+    buttonColor
   } = props
 
   // styles
   const footer = style({
     alignItems: 'center',
-    borderTop: `1px solid ${mainColor}`,
+    borderTop: `1px solid ${buttonColor}`,
     display: 'flex',
     height: '60px',
     justifyContent: 'center',
@@ -38,12 +38,12 @@ const Footer = (props) => {
   const button = merge(
     {
       background: 'white',
-      border: `1px solid ${mainColor}`,
+      border: `1px solid ${buttonColor}`,
       borderRadius: '4px',
-      color: mainColor,
+      color: buttonColor,
       cursor: 'pointer',
       flex: '1',
-      height: '46px',
+      height: '35px',
       maxWidth: '100px',
       marginRight: '15px'
     },
@@ -52,7 +52,7 @@ const Footer = (props) => {
       width: '40px'
     }),
     $(':hover', {
-      background: mainColor,
+      background: buttonColor,
       color: 'white',
     }),
     $(':focus', {

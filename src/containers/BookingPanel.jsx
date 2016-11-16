@@ -32,7 +32,7 @@ class BookingPanel extends Component {
       headerTextColor,
       incrementGuest,
       facility,
-      mainColor,
+      headerColor,
       maxGuests,
       minGuests,
       guestSelectorCollapsed,
@@ -48,7 +48,7 @@ class BookingPanel extends Component {
     })
     return (
       <section className='panel'>
-        <Header bgImage={headerImage} bgColor={mainColor}>
+        <Header bgImage={headerImage} bgColor={headerColor}>
           <h2 className={`mainHeading ${headerText}`}>
             Online Booking
           </h2>
@@ -104,7 +104,7 @@ BookingPanel.propTypes = {
   openCalendar: bool,
   onCalendarFocusChange: func,
   onDateChange: func,
-  mainColor: string,
+  headerColor: string,
   maxGuests: number,
   minGuests: number,
   guestSelectorCollapsed: bool,
