@@ -5,6 +5,8 @@ import availabilities from './data/availabilities'
 
 const initialState = {
   facility: 'Meson Baturro',
+  defaultWidth: '330px',
+  defaultHeight: '500px',
   currentPanel: 1,
   calendarFocused: false,
   headerColor: '#53628C',
