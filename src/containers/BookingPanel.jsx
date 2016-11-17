@@ -24,18 +24,6 @@ class BookingPanel extends Component {
 
   render () {
     const {
-      // variables
-      availabilities,
-      calendarFocused,
-      selectedDate,
-      selectedGuests,
-      headerImage,
-      headerTextColor,
-      facility,
-      headerColor,
-      maxGuests,
-      minGuests,
-      guestSelectorCollapsed,
       // actions
       uiOpenGuestDropdown,
       uiSwitchCalendarFocus,
@@ -45,6 +33,27 @@ class BookingPanel extends Component {
       selectDate,
       selectTimeslot
     } = this.props
+
+    const {
+      availabilities,
+      selectedDate,
+      selectedGuests,
+      maxGuests,
+      minGuests
+    } = this.props.booking
+
+    const {
+      headerImage,
+      headerTextColor,
+      facility,
+      headerColor
+    } = this.props.custom
+
+    const {
+      calendarFocused,
+      guestSelectorCollapsed
+    } = this.props.ui
+
     const expanded = calendarFocused ? calendarIsExpanded : null
     const headerText = style({
       color: headerTextColor

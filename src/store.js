@@ -1,5 +1,5 @@
 import { createStore } from 'redux'
-import reducer from './reducer'
+import reducer from './reducers'
 import preloadedState from './preloadedState'
 
 // const store = createStore(reducer, preloadedState)

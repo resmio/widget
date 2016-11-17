@@ -1,20 +1,14 @@
 import {
   GUEST_ADD,
-  GUEST_REMOVE
-} from './actions/bookingActions'
+  GUEST_REMOVE,
+  GUEST_SELECT,
+  DATE_SELECT,
+  BOOKING_POSTING
+} from '../actions/bookingActions'
 
-function reducer(state = {}, action) {
+function booking (state = {}, action) {
 
   switch (action.type) {
-
-    case GUEST_REMOVE:
-      if (state.selectedGuests > state.minGuests) {
-        return Object.assign({}, state, {
-          selectedGuests: state.selectedGuests - 1
-        })
-      } else {
-        return state
-      }
 
     case GUEST_ADD:
       if (state.selectedGuests < state.maxGuests) {
@@ -25,25 +19,42 @@ function reducer(state = {}, action) {
         return state
       }
 
-    case 'UI_GUEST_DROPDOWN_OPEN':
-      return Object.assign({}, state, {
-        guestSelectorCollapsed: false
-      })
+    case GUEST_REMOVE:
+      if (state.selectedGuests > state.minGuests) {
+        return Object.assign({}, state, {
+          selectedGuests: state.selectedGuests - 1
+        })
+      } else {
+        return state
+      }
 
-    case 'GUEST_SELECT':
+    case GUEST_SELECT:
       return Object.assign({}, state, {
         selectedGuests: parseInt(action.payload, 10) + 1,
         guestSelectorCollapsed: true
       })
 
+    case DATE_SELECT:
+      return Object.assign({}, state, {
+        selectedDate: action.payload
+      })
+
+    case BOOKING_POSTING:
+      console.log(BOOKING_POSTING)
+      return state
+
+    default:
+      return state
+
+    case 'UI_GUEST_DROPDOWN_OPEN':
+      return Object.assign({}, state, {
+        guestSelectorCollapsed: false
+      })
+
+
     case 'UI_CALENDAR_SWITCH_FOCUS':
       return Object.assign({}, state, {
         calendarFocused: !state.calendarFocused
-      })
-
-    case 'DATE_SELECT':
-      return Object.assign({}, state, {
-        selectedDate: action.payload
       })
 
     case 'UI_PANEL_ADVANCE':
@@ -63,14 +74,7 @@ function reducer(state = {}, action) {
       } else {
         return state
       }
-
-    case 'BOOKING_POST':
-      console.log('BOOKING_POST')
-      return state
-
-    default:
-      return state
   }
 }
 
-export default reducer
+export default booking

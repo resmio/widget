@@ -11,7 +11,7 @@ export const GUEST_REMOVE = 'GUEST_REMOVE'
 export const GUEST_SELECT = 'GUEST_SELECT'
 export const DATE_SELECT = 'DATE_SELECT'
 export const TIMESLOT_SELECT = 'TIMESLOT_SELECT'
-export const BOOKING_POST = 'BOOKING_POST'
+export const BOOKING_POSTING = 'BOOKING:POSTING'
 
 // GUEST COUNTER ---------------------------------------------------------------
 
@@ -48,5 +48,5 @@ export function selectTimeslot (e) {
 
 // FORM ------------------------------------------------------------------------
 export function postBooking () {
-  return { type: BOOKING_POST }
+  return { type: BOOKING_POSTING }
 }
