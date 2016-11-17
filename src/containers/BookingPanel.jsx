@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react'
-import { bindActionCreators } from 'redux';
-import { connect,  } from 'react-redux';
-import * as actionCreators from '../actionCreators';
+import { bindActionCreators } from 'redux'
+import { connect,  } from 'react-redux'
+import * as bookingActions from '../actions/bookingActions'
+import * as uiActions from '../actions/uiActions'
 
 // 3rd party components
 import { momentObj } from 'react-moment-proptypes'
@@ -23,24 +24,26 @@ class BookingPanel extends Component {
 
   render () {
     const {
+      // variables
       availabilities,
       calendarFocused,
       selectedDate,
       selectedGuests,
-      removeGuest,
       headerImage,
       headerTextColor,
-      addGuest,
       facility,
       headerColor,
       maxGuests,
       minGuests,
       guestSelectorCollapsed,
+      // actions
       uiOpenGuestDropdown,
-      guestSelect,
       uiSwitchCalendarFocus,
-      dateSelect,
-      timeslotSelect
+      addGuest,
+      removeGuest,
+      selectGuest,
+      selectDate,
+      selectTimeslot
     } = this.props
     const expanded = calendarFocused ? calendarIsExpanded : null
     const headerText = style({
@@ -64,7 +67,7 @@ class BookingPanel extends Component {
           min={minGuests}
           number={selectedGuests}
           onEditClicked={uiOpenGuestDropdown}
-          onNumberSelected={guestSelect}
+          onNumberSelected={selectGuest}
           onPlusClicked={addGuest}
           onMinusClicked={removeGuest}
         />
@@ -76,13 +79,13 @@ class BookingPanel extends Component {
               focused={calendarFocused}
               onFocusChange={uiSwitchCalendarFocus}
               numberOfMonths={1}
-              onDateChange={dateSelect}
+              onDateChange={selectDate}
             />
         </section>
         <section>
           <TimeslotPicker
             timeslots={availabilities}
-            onTimeslotClick={timeslotSelect}
+            onTimeslotClick={selectTimeslot}
           />
         </section>
       </section>
@@ -119,7 +122,9 @@ function mapStateToProps(state) {
 }
 
 function mapDispachToProps(dispatch) {
-  return bindActionCreators(actionCreators, dispatch)
+  return bindActionCreators(
+    Object.assign({}, bookingActions, uiActions), dispatch
+  )
 }
 
 export default connect(mapStateToProps, mapDispachToProps)(BookingPanel)

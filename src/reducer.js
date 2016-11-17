@@ -1,8 +1,13 @@
+import {
+  GUEST_ADD,
+  GUEST_REMOVE
+} from './actions/bookingActions'
+
 function reducer(state = {}, action) {
 
   switch (action.type) {
 
-    case 'GUEST_REMOVE':
+    case GUEST_REMOVE:
       if (state.selectedGuests > state.minGuests) {
         return Object.assign({}, state, {
           selectedGuests: state.selectedGuests - 1
@@ -11,7 +16,7 @@ function reducer(state = {}, action) {
         return state
       }
 
-    case 'GUEST_ADD':
+    case GUEST_ADD:
       if (state.selectedGuests < state.maxGuests) {
         return Object.assign({}, state, {
           selectedGuests: state.selectedGuests + 1

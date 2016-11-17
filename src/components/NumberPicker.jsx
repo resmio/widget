@@ -11,7 +11,8 @@ const NumberPicker = ({
     onEditClicked,
     onNumberSelected,
     onPlusClicked,
-    onMinusClicked
+    onMinusClicked,
+    uiOpenGuestDropdown
 }) => {
   const numbers = [...Array(max+1).keys()].slice(min)
   const dropdown = collapsed
