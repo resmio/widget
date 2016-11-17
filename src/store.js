@@ -3,8 +3,11 @@ import reducer from './reducer'
 import moment from 'moment'
 import availabilities from './data/availabilities'
 
-const initialState = {
+const preloadedState = {
   facility: 'Meson Baturro',
+  defaultWidth: '330px',
+  defaultHeight: '500px',
+  renderAtMaxSize: false,
   currentPanel: 1,
   calendarFocused: false,
   headerColor: '#53628C',
@@ -20,5 +23,8 @@ const initialState = {
   availabilities: availabilities
 }
 
-const store = createStore(reducer, initialState)
+// const store = createStore(reducer, initialState)
+const store = createStore(reducer, preloadedState,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  );
 export default store

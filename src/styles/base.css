@@ -27,13 +27,6 @@ h6 {
 /* ------------------------------------------------------------------
                         Layout
 ------------------------------------------------------------------- */
-.widget {
-  min-width: 300px;
-  max-width: 736px;
-  min-height: 500px;
-  max-height: 736px;
-}
-
 .number-selector {
   display: flex;
   align-items: center;
