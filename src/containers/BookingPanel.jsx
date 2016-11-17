@@ -27,20 +27,20 @@ class BookingPanel extends Component {
       calendarFocused,
       selectedDate,
       selectedGuests,
-      decrementGuest,
+      removeGuest,
       headerImage,
       headerTextColor,
-      incrementGuest,
+      addGuest,
       facility,
       headerColor,
       maxGuests,
       minGuests,
       guestSelectorCollapsed,
-      guestSelectorClicked,
-      guestNumberClicked,
-      switchCalendarFocus,
-      changeSelectedDate,
-      selectTimeslot
+      uiOpenGuestDropdown,
+      guestSelect,
+      uiSwitchCalendarFocus,
+      dateSelect,
+      timeslotSelect
     } = this.props
     const expanded = calendarFocused ? calendarIsExpanded : null
     const headerText = style({
@@ -63,10 +63,10 @@ class BookingPanel extends Component {
           max={maxGuests}
           min={minGuests}
           number={selectedGuests}
-          onEditClicked={guestSelectorClicked}
-          onNumberSelected={guestNumberClicked}
-          onPlusClicked={incrementGuest}
-          onMinusClicked={decrementGuest}
+          onEditClicked={uiOpenGuestDropdown}
+          onNumberSelected={guestSelect}
+          onPlusClicked={addGuest}
+          onMinusClicked={removeGuest}
         />
         <section className={`calendar ${expanded}`}>
             <span>Date</span>
@@ -74,15 +74,15 @@ class BookingPanel extends Component {
               id="date_input"
               date={selectedDate}
               focused={calendarFocused}
-              onFocusChange={switchCalendarFocus}
+              onFocusChange={uiSwitchCalendarFocus}
               numberOfMonths={1}
-              onDateChange={changeSelectedDate}
+              onDateChange={dateSelect}
             />
         </section>
         <section>
           <TimeslotPicker
             timeslots={availabilities}
-            onTimeslotClick={selectTimeslot}
+            onTimeslotClick={timeslotSelect}
           />
         </section>
       </section>
@@ -96,11 +96,11 @@ BookingPanel.propTypes = {
   calendarFocused: bool,
   selectedDate: momentObj,
   selectedGuests: number,
-  decrementGuest: func,
+  removeGuest: func,
   facility: string,
   headerImage: string,
   headerTextColor: string,
-  incrementGuest: func,
+  addGuest: func,
   openCalendar: bool,
   onCalendarFocusChange: func,
   onDateChange: func,
@@ -108,10 +108,10 @@ BookingPanel.propTypes = {
   maxGuests: number,
   minGuests: number,
   guestSelectorCollapsed: bool,
-  guestSelectorClicked: func,
-  guestNumberClicked: func,
-  switchCalendarFocus: func,
-  changeSelectedDate: func
+  uiOpenGuestDropdown: func,
+  guestSelect: func,
+  uiSwitchCalendarFocus: func,
+  dateSelect: func
 }
 
 function mapStateToProps(state) {

@@ -1,58 +1,61 @@
-// guests
-export function incrementGuest () {
-  return { type: 'GUESTCOUNT_INCREASED' }
+// Rules
+// Action types must have a namespace (ex GUEST_ADD)
+// Namespace must come before the action type
+// Async actions use : instead of _ (GUEST:ADDING)
+// Async actions use present and past tense to determine state
+// (ex GUEST:ADDING GUEST:ADDED)
+// Error actions append _ERROR to the action type (TODO_ADD_ERROR)
+
+// GUEST
+export function addGuest () {
+  return { type: 'GUEST_ADD' }
 }
 
-export function decrementGuest () {
-  return { type: 'GUESTCOUNT_DECREASED' }
+export function removeGuest () {
+  return { type: 'GUEST_REMOVE' }
 }
 
-export function guestSelectorClicked () {
-  return { type: 'OPEN_GUESTS_DROPDOWN' }
-}
-
-export function guestNumberClicked (e) {
+export function guestSelect (e) {
   return {
-    type: 'GUESTS_SELECTED',
+    type: 'GUEST_SELECT',
     payload: e.target.id
   }
 }
 
-// date
-export function changeSelectedDate (date) {
+// DATE
+export function dateSelect (date) {
   return {
-    type: 'DATE_CHANGED',
+    type: 'DATE_SELECT',
     payload: date
   }
 }
 
-export function switchCalendarFocus () {
-  return { type: 'CALENDAR_FOCUS_SWITCHED' }
-}
-
-// timeslots
-export function selectTimeslot (e) {
+// TIMESLOTS
+export function timeslotSelect (e) {
   return {
-    type: 'TIMESLOT_SELECTED',
+    type: 'TIMESLOT_SELECT',
     payload: e.target.checksum
   }
 }
 
-// panels
-export function increasePanel () {
-  return {
-    type: 'PANEL_INCREASED'
-  }
+// UI
+export function uiOpenGuestDropdown () {
+  return { type: 'UI_GUEST_DROPDOWN_OPEN' }
 }
 
-export function decreasePanel () {
-  return {
-    type: 'PANEL_DECREASED'
-  }
+export function uiSwitchCalendarFocus () {
+  return { type: 'UI_CALENDAR_SWITCH_FOCUS' }
 }
 
+export function advancePanel () {
+  return { type: 'UI_PANEL_ADVANCE' }
+}
+
+export function reducePanel () {
+  return { type: 'UI_PANEL_REDUCE' }
+}
+
+// FORM
 export function postBooking () {
-  return {
-    type: 'BOOKING_POSTED'
-  }
+  return { type: 'BOOKING_POST' }
 }
