@@ -12,8 +12,8 @@ const AppBase = (props) => {
     maxWidth: '736px',
     minHeight: '500px',
     maxHeight: '736px',
-    width: props.defaultWidth,
-    heigth: props.defaultHeight
+    width: props.renderAtMaxSize ? '100%' : props.defaultWidth,
+    heigth: props.renderAtMaxSize ? '100%' : props.defaultHeight
   })
 
   return (
