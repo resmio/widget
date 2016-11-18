@@ -8,7 +8,7 @@ const PanelRouter = ({panel})=> {
   switch (panel) {
     case 1: return (<BookingPanel />)
     case 2: return (<GuestPanel />)
-    default: return (<BookingPanel />)
+    default: return (<h1>Last Panel</h1>)
   }
 }
 

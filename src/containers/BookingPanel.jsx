@@ -23,6 +23,8 @@ const calendarIsExpanded = style({
 class BookingPanel extends Component {
 
   render () {
+    // All of this is horrible and coupling this to the state
+    // Find a better way to do it
     const {
       // actions
       uiOpenGuestDropdown,

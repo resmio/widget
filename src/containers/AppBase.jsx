@@ -6,20 +6,26 @@ import { style } from 'glamor'
 import PanelRouter from '../components/PanelRouter'
 import Footer from '../components/Footer'
 
-const AppBase = ({
-  // Variables
-  buttonColor,
-  currentPanel,
-  defaultHeight,
-  defaultWidth,
-  logoUrl,
-  numberOfPanels,
-  renderAtMaxSize,
-  // Functions
-  reducePanel,
-  advancePanel,
-  postBooking,
-}) => {
+const AppBase = (props) => {
+  const {
+    // Variables
+    buttonColor,
+    defaultHeight,
+    defaultWidth,
+    logoUrl,
+    numberOfPanels,
+    renderAtMaxSize
+  } = props.custom
+
+  const {
+    currentPanel
+  } = props.ui
+
+  const {
+    reducePanel,
+    advancePanel,
+    postBooking
+  } = props
 
   // generate styles
   const widgetSS = style({

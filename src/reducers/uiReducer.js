@@ -5,7 +5,7 @@ import {
   UI_PANEL_REDUCE
 } from '../actions/uiActions'
 
-function ui(state = {}, action) {
+function ui(state={}, action) {
 
   switch (action.type) {
 
@@ -20,25 +20,17 @@ function ui(state = {}, action) {
       })
 
     case UI_PANEL_ADVANCE:
-      if (state.currentPanel < state.numberOfPanels) {
-        return Object.assign({}, state, {
-          currentPanel: state.currentPanel + 1
-        })
-      } else {
-        return state
-      }
+      return Object.assign({}, state, {
+        currentPanel: state.currentPanel + 1
+      })
 
     case UI_PANEL_REDUCE:
-      if (state.currentPanel >= 2) {
-        return Object.assign({}, state, {
-          currentPanel: state.currentPanel - 1
-        })
-      } else {
-        return state
-      }
+      return Object.assign({}, state, {
+        currentPanel: state.currentPanel - 1
+      })
 
-      default:
-        return state
+    default:
+      return state
   }
 }
 

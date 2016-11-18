@@ -1,3 +1,4 @@
+// Move all this stuff to AppBase
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as bookingActions from './actions/bookingActions'
