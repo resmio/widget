@@ -1,5 +1,17 @@
 import React, { PropTypes } from 'react'
+import { style } from 'glamor'
 import DropdownOption from './DropdownOption'
+
+const numberPicker = style({
+  display: 'flex',
+  height: '33%',
+  width: '100%'
+})
+
+const label = style({
+  paddingLeft: '1em',
+  paddingRight: '1em'
+})
 
 const NumberPicker = ({
     collapsed,
@@ -34,8 +46,8 @@ const NumberPicker = ({
    )
    const legend = number === 1 ? legendSingular : legendPlural
   return (
-    <div className='NumberPicker'>
-      <div className='label'>People</div>
+    <div {...numberPicker}>
+      <div {...label}>People</div>
       <div className='input' onClick={onEditClicked}>{number} {legend}</div>
       <div className='button-group'>
         <button onClick={onPlusClicked}>+</button>

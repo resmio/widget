@@ -11,7 +11,6 @@ import 'react-dates/lib/css/_datepicker.css'
 import { style } from 'glamor'
 
 // components
-import Header from '../components/Header'
 import NumberPicker from '../components/NumberPicker'
 import TimeslotPicker from '../components/TimeslotPicker'
 
@@ -45,10 +44,7 @@ class BookingPanel extends Component {
     } = this.props.booking
 
     const {
-      headerImage,
-      headerTextColor,
-      facility,
-      headerColor
+      defaultHeight,
     } = this.props.custom
 
     const {
@@ -57,19 +53,14 @@ class BookingPanel extends Component {
     } = this.props.ui
 
     const expanded = calendarFocused ? calendarIsExpanded : null
-    const headerText = style({
-      color: headerTextColor
+
+    const panel = style({
+      height: defaultHeight,
+      overflow: 'scroll'
     })
+
     return (
-      <section className='panel'>
-        <Header bgImage={headerImage} bgColor={headerColor}>
-          <h2 className={`mainHeading ${headerText}`}>
-            Online Booking
-          </h2>
-          <h1 className={`secondaryHeading ${headerText}`}>
-            {facility}
-          </h1>
-        </Header>
+      <section {...panel}>
         <NumberPicker
           collapsed={guestSelectorCollapsed}
           legendSingular='guest'
@@ -97,6 +88,7 @@ class BookingPanel extends Component {
           <TimeslotPicker
             timeslots={availabilities}
             onTimeslotClick={selectTimeslot}
+            collapsed={true}
           />
         </section>
       </section>
@@ -104,21 +96,17 @@ class BookingPanel extends Component {
   }
 }
 
-const { bool, func, number, string } = PropTypes
+const { bool, func, number } = PropTypes
 
 BookingPanel.propTypes = {
   calendarFocused: bool,
   selectedDate: momentObj,
   selectedGuests: number,
   removeGuest: func,
-  facility: string,
-  headerImage: string,
-  headerTextColor: string,
   addGuest: func,
   openCalendar: bool,
   onCalendarFocusChange: func,
   onDateChange: func,
-  headerColor: string,
   maxGuests: number,
   minGuests: number,
   guestSelectorCollapsed: bool,

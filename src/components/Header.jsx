@@ -1,7 +1,21 @@
 import React, { PropTypes } from 'react'
-import { style } from 'glamor'
+import { style, merge } from 'glamor'
 
-const Header = ({bgImage, bgColor, children}) => {
+const heading = style({
+  fontSize: '18px',
+  fontWeight: 'bold',
+  paddingLeft: '15px',
+  paddingTop: '12px'
+})
+
+const subHeading = style({
+  fontSize: '14px',
+  fontWeight: 'normal',
+  paddingLeft: '15px',
+  paddingTop: '4px'
+})
+
+const Header = ({bgImage, bgColor, color, subheaderText}) => {
   // styles
   // For the background image magic see:
   // https://css-tricks.com/snippets/css/transparent-background-images/
@@ -25,17 +39,28 @@ const Header = ({bgImage, bgColor, children}) => {
     }
   })
 
+  const headerText = style({
+    color: color
+  })
+
   return (
-    <div className={`${header}`}>
-      {children}
-    </div>
+    <header {...header}>
+      <h2 {...merge(heading, headerText)}>
+        Online Booking
+      </h2>
+      <h1 {...merge(subHeading, headerText)}>
+        {subheaderText}
+      </h1>
+    </header>
   )
 }
 
+const {string} = PropTypes
+
 Header.propTypes = {
-  bgImage: PropTypes.string,
-  color: PropTypes.string,
-  children: PropTypes.node
+  bgImage: string,
+  bgColor: string,
+  subheaderText: string
 }
 
 export default Header

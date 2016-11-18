@@ -5,6 +5,10 @@ import {
   UI_PANEL_REDUCE
 } from '../actions/uiActions'
 
+import {
+  GUEST_SELECT
+} from '../actions/bookingActions'
+
 function ui(state={}, action) {
 
   switch (action.type) {
@@ -27,6 +31,11 @@ function ui(state={}, action) {
     case UI_PANEL_REDUCE:
       return Object.assign({}, state, {
         currentPanel: state.currentPanel - 1
+      })
+
+    case GUEST_SELECT:
+      return Object.assign({}, state, {
+        guestSelectorCollapsed: true
       })
 
     default:

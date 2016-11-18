@@ -30,8 +30,7 @@ function booking (state = {}, action) {
 
     case GUEST_SELECT:
       return Object.assign({}, state, {
-        selectedGuests: parseInt(action.payload, 10) + 1,
-        guestSelectorCollapsed: true
+        selectedGuests: parseInt(action.payload, 10) + 1
       })
 
     case DATE_SELECT:
