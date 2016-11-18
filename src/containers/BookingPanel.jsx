@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react'
-import { bindActionCreators } from 'redux';
-import { connect,  } from 'react-redux';
-import * as actionCreators from '../actionCreators';
+import { bindActionCreators } from 'redux'
+import { connect,  } from 'react-redux'
+import * as bookingActions from '../actions/bookingActions'
+import * as uiActions from '../actions/uiActions'
 
 // 3rd party components
 import { momentObj } from 'react-moment-proptypes'
@@ -22,26 +23,39 @@ const calendarIsExpanded = style({
 class BookingPanel extends Component {
 
   render () {
+    // All of this is horrible and coupling this to the state
+    // Find a better way to do it
     const {
-      availabilities,
-      calendarFocused,
-      selectedDate,
-      selectedGuests,
-      decrementGuest,
-      headerImage,
-      headerTextColor,
-      incrementGuest,
-      facility,
-      headerColor,
-      maxGuests,
-      minGuests,
-      guestSelectorCollapsed,
-      guestSelectorClicked,
-      guestNumberClicked,
-      switchCalendarFocus,
-      changeSelectedDate,
+      // actions
+      uiOpenGuestDropdown,
+      uiSwitchCalendarFocus,
+      addGuest,
+      removeGuest,
+      selectGuest,
+      selectDate,
       selectTimeslot
     } = this.props
+
+    const {
+      availabilities,
+      selectedDate,
+      selectedGuests,
+      maxGuests,
+      minGuests
+    } = this.props.booking
+
+    const {
+      headerImage,
+      headerTextColor,
+      facility,
+      headerColor
+    } = this.props.custom
+
+    const {
+      calendarFocused,
+      guestSelectorCollapsed
+    } = this.props.ui
+
     const expanded = calendarFocused ? calendarIsExpanded : null
     const headerText = style({
       color: headerTextColor
@@ -63,10 +77,10 @@ class BookingPanel extends Component {
           max={maxGuests}
           min={minGuests}
           number={selectedGuests}
-          onEditClicked={guestSelectorClicked}
-          onNumberSelected={guestNumberClicked}
-          onPlusClicked={incrementGuest}
-          onMinusClicked={decrementGuest}
+          onEditClicked={uiOpenGuestDropdown}
+          onNumberSelected={selectGuest}
+          onPlusClicked={addGuest}
+          onMinusClicked={removeGuest}
         />
         <section className={`calendar ${expanded}`}>
             <span>Date</span>
@@ -74,9 +88,9 @@ class BookingPanel extends Component {
               id="date_input"
               date={selectedDate}
               focused={calendarFocused}
-              onFocusChange={switchCalendarFocus}
+              onFocusChange={uiSwitchCalendarFocus}
               numberOfMonths={1}
-              onDateChange={changeSelectedDate}
+              onDateChange={selectDate}
             />
         </section>
         <section>
@@ -96,11 +110,11 @@ BookingPanel.propTypes = {
   calendarFocused: bool,
   selectedDate: momentObj,
   selectedGuests: number,
-  decrementGuest: func,
+  removeGuest: func,
   facility: string,
   headerImage: string,
   headerTextColor: string,
-  incrementGuest: func,
+  addGuest: func,
   openCalendar: bool,
   onCalendarFocusChange: func,
   onDateChange: func,
@@ -108,10 +122,10 @@ BookingPanel.propTypes = {
   maxGuests: number,
   minGuests: number,
   guestSelectorCollapsed: bool,
-  guestSelectorClicked: func,
-  guestNumberClicked: func,
-  switchCalendarFocus: func,
-  changeSelectedDate: func
+  uiOpenGuestDropdown: func,
+  guestSelect: func,
+  uiSwitchCalendarFocus: func,
+  dateSelect: func
 }
 
 function mapStateToProps(state) {
@@ -119,7 +133,9 @@ function mapStateToProps(state) {
 }
 
 function mapDispachToProps(dispatch) {
-  return bindActionCreators(actionCreators, dispatch)
+  return bindActionCreators(
+    Object.assign({}, bookingActions, uiActions), dispatch
+  )
 }
 
 export default connect(mapStateToProps, mapDispachToProps)(BookingPanel)

@@ -1,16 +1,20 @@
+// Move all this stuff to AppBase
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as actionCreators from './actionCreators';
-import AppBase from './AppBase';
+import * as bookingActions from './actions/bookingActions'
+import * as uiActions from './actions/uiActions'
+import AppBase from './containers/AppBase';
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   return state
 }
 
-function mapDispachToProps(dispatch) {
-  return bindActionCreators(actionCreators, dispatch);
+const  mapDispachToProps = (dispatch) => {
+  return bindActionCreators(
+    Object.assign({}, bookingActions, uiActions), dispatch
+  )
 }
 
-const App = connect(mapStateToProps, mapDispachToProps)(AppBase);
+const App = connect(mapStateToProps, mapDispachToProps)(AppBase)
 
 export default App;
