@@ -4,7 +4,6 @@ import availabilities from './data/availabilities'
 const preloadedState = {
   booking: {
     availabilities: availabilities,
-    facility: 'Meson Baturro',
     maxGuests: 6,
     minGuests: 1,
     selectedDate: moment(),
@@ -12,8 +11,9 @@ const preloadedState = {
   },
   custom: {
     buttonColor: '#3E4862',
-    defaultHeight: '500px',
+    defaultHeight: '340px', // = 500px - 80px header - 80px footer
     defaultWidth: '330px',
+    facility: 'Meson Baturro',
     headerColor: '#53628C',
     headerImage: 'https://zenezake.files.wordpress.com/2015/07/img_6715.jpg',
     headerTextColor: 'white',

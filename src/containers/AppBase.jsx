@@ -3,6 +3,7 @@ import React from 'react';
 import { style } from 'glamor'
 
 // components
+import Header from '../components/Header'
 import PanelRouter from '../components/PanelRouter'
 import Footer from '../components/Footer'
 
@@ -12,6 +13,10 @@ const AppBase = (props) => {
     buttonColor,
     defaultHeight,
     defaultWidth,
+    facility,
+    headerColor,
+    headerTextColor,
+    headerImage,
     logoUrl,
     numberOfPanels,
     renderAtMaxSize
@@ -39,6 +44,12 @@ const AppBase = (props) => {
 
   return (
     <div {...widgetSS}>
+      <Header
+        bgImage={headerImage}
+        bgColor={headerColor}
+        color={headerTextColor}
+        subheaderText={facility}
+      />
       <PanelRouter panel={currentPanel} />
       <Footer
         currentPanel={currentPanel}

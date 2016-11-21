@@ -11,6 +11,7 @@
 
 html {
   box-sizing: border-box;
+  font-size: 10px;
 }
 
 h1,
@@ -27,46 +28,18 @@ h6 {
 /* ------------------------------------------------------------------
                         Layout
 ------------------------------------------------------------------- */
-.number-selector {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 80px;
-  width: 100%;
-}
 
-.label {
-  flex: 1;
-  padding-left: 30px;
-  padding-right: 15px;
-}
-
-.input,
+/*.input,
 .button-group {
   flex: 1;
   padding-left: 15px;
   padding-right: 15px;
-}
-
-/* header */
-.mainHeading {
-  font-size: 18px;
-  font-weight: bold;
-  padding-left: 15px;
-  padding-top: 12px;
-}
-
-.secondaryHeading {
-  font-size: 14px;
-  font-weight: normal;
-  padding-left: 15px;
-  padding-top: 4px;
-}
+}*/
 
 /* ------------------------------------------------------------------
                          Theme
 ------------------------------------------------------------------- */
-.number-selector {
+/*.number-selector {
   background: red;
   color: #999;
 }
@@ -81,4 +54,4 @@ h6 {
 
 .button-group {
   background: lightcoral;
-}
+}*/

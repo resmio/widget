@@ -6,13 +6,13 @@
 // (ex GUEST:ADDING GUEST:ADDED)
 // Error actions append _ERROR to the action type (TODO_ADD_ERROR)
 
-export const UI_GUEST_DROPDOWN_OPEN = 'UI_GUEST_DROPDOWN_OPEN'
+export const UI_GUEST_DROPDOWN_SWITCH = 'UI_GUEST_DROPDOWN_SWITCH'
 export const UI_CALENDAR_SWITCH_FOCUS = 'UI_CALENDAR_SWITCH_FOCUS'
 export const UI_PANEL_ADVANCE = 'UI_PANEL_ADVANCE'
 export const UI_PANEL_REDUCE = 'UI_PANEL_REDUCE'
 
-export function uiOpenGuestDropdown () {
-  return { type: 'UI_GUEST_DROPDOWN_OPEN' }
+export function uiSwitchGuestDropdown () {
+  return { type: 'UI_GUEST_DROPDOWN_SWITCH' }
 }
 
 export function uiSwitchCalendarFocus () {
