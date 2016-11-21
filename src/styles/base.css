@@ -11,6 +11,7 @@
 
 html {
   box-sizing: border-box;
+  font-size: 10px;
 }
 
 h1,
@@ -27,19 +28,6 @@ h6 {
 /* ------------------------------------------------------------------
                         Layout
 ------------------------------------------------------------------- */
-.number-selector {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 80px;
-  width: 100%;
-}
-
-.label {
-  flex: 1;
-  padding-left: 30px;
-  padding-right: 15px;
-}
 
 .input,
 .button-group {

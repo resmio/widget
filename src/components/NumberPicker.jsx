@@ -1,16 +1,47 @@
+// This needs serious refactoring
 import React, { PropTypes } from 'react'
-import { style } from 'glamor'
+import { style, hover, merge } from 'glamor'
+import IconArrow from './IconArrow'
 import DropdownOption from './DropdownOption'
 
 const numberPicker = style({
   display: 'flex',
-  height: '33%',
-  width: '100%'
+  fontSize: '1.4rem',
+  height: '4rem',
+  width: '100%',
+  alignItems: 'center',
+  borderBottom: '1px solid #DDD'
 })
 
 const label = style({
-  paddingLeft: '1em',
-  paddingRight: '1em'
+  color: '#CCC',
+  flex: '1',
+  paddingLeft: '1em'
+})
+
+const input = style({
+  flex: '1',
+  color: '#555',
+  textAlign: 'center'
+})
+
+const arrow = style(
+  {
+    textAlign: 'right',
+    cursor: 'pointer',
+    flex: '1',
+    paddingRight: '1em',
+    color: '#CCC'
+  }
+)
+
+const arrowHover = hover({
+  color: '#555'
+})
+
+const dropdownSS = style({
+  background: 'yellow',
+  width: '100%'
 })
 
 const NumberPicker = ({
@@ -27,10 +58,23 @@ const NumberPicker = ({
     uiOpenGuestDropdown
 }) => {
   const numbers = [...Array(max+1).keys()].slice(min)
+  const action = collapsed
+    ? (
+      <div {...merge(arrow, arrowHover)} onClick={onEditClicked}>
+        <IconArrow direction='down'/>
+      </div>
+    )
+    : (
+      <div>
+        <button onClick={onPlusClicked}>+</button>
+        <button onClick={onMinusClicked}>-</button>
+      </div>
+    )
+
   const dropdown = collapsed
    ? null
    : (
-     <ul className='dropdown'>
+     <ul {...dropdownSS}>
         { numbers.map((num, i) => {
           const legend = num === 1 ? legendSingular : legendPlural
           return (
@@ -46,12 +90,11 @@ const NumberPicker = ({
    )
    const legend = number === 1 ? legendSingular : legendPlural
   return (
-    <div {...numberPicker}>
-      <div {...label}>People</div>
-      <div className='input' onClick={onEditClicked}>{number} {legend}</div>
-      <div className='button-group'>
-        <button onClick={onPlusClicked}>+</button>
-        <button onClick={onMinusClicked}>-</button>
+    <div>
+      <div {...numberPicker}>
+        <div {...label}>PEOPLE</div>
+        <div {...input} onClick={onEditClicked}>{number} {legend}</div>
+        {action}
       </div>
       {dropdown}
     </div>
