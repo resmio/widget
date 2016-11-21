@@ -26,7 +26,7 @@ class BookingPanel extends Component {
     // Find a better way to do it
     const {
       // actions
-      uiOpenGuestDropdown,
+      uiSwitchGuestDropdown,
       uiSwitchCalendarFocus,
       addGuest,
       removeGuest,
@@ -68,7 +68,7 @@ class BookingPanel extends Component {
           max={maxGuests}
           min={minGuests}
           number={selectedGuests}
-          onEditClicked={uiOpenGuestDropdown}
+          onEditClicked={uiSwitchGuestDropdown}
           onNumberSelected={selectGuest}
           onPlusClicked={addGuest}
           onMinusClicked={removeGuest}
@@ -110,7 +110,7 @@ BookingPanel.propTypes = {
   maxGuests: number,
   minGuests: number,
   guestSelectorCollapsed: bool,
-  uiOpenGuestDropdown: func,
+  uiSwitchGuestDropdown: func,
   guestSelect: func,
   uiSwitchCalendarFocus: func,
   dateSelect: func

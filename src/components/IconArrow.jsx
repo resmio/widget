@@ -1,8 +1,5 @@
 import React, { PropTypes } from 'react'
 
-// The resulting svg has no stroke color so it will show no stroke, it needs
-// to be applied via css, this is like this so it can change color on hover of
-// the parent (check Footer.jsx for an example on how to style this)
 const getRotation = (direction) => {
   switch (direction) {
     case 'left':
@@ -36,7 +33,8 @@ const IconArrow = ({direction, size = '1.2rem'}) => {
 }
 
 IconArrow.propTypes = {
-  direction: PropTypes.string
+  direction: PropTypes.string,
+  size: PropTypes.string
 }
 
 export default IconArrow

@@ -1,6 +1,6 @@
 import {
   UI_CALENDAR_SWITCH_FOCUS,
-  UI_GUEST_DROPDOWN_OPEN,
+  UI_GUEST_DROPDOWN_SWITCH,
   UI_PANEL_ADVANCE,
   UI_PANEL_REDUCE
 } from '../actions/uiActions'
@@ -18,9 +18,9 @@ function ui(state={}, action) {
         calendarFocused: !state.calendarFocused
       })
 
-    case UI_GUEST_DROPDOWN_OPEN:
+    case UI_GUEST_DROPDOWN_SWITCH:
       return Object.assign({}, state, {
-        guestSelectorCollapsed: false
+        guestSelectorCollapsed: !state.guestSelectorCollapsed
       })
 
     case UI_PANEL_ADVANCE:

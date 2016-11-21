@@ -1,17 +1,9 @@
-// This needs serious refactoring
+// This needs serious refactoring like extracting components out
+// and all that, will do after the behaviour is clear
 import React, { PropTypes } from 'react'
-import { style, hover, merge } from 'glamor'
+import { style, merge, select as $ } from 'glamor'
 import IconArrow from './IconArrow'
 import DropdownOption from './DropdownOption'
-
-const numberPicker = style({
-  display: 'flex',
-  fontSize: '1.4rem',
-  height: '4rem',
-  width: '100%',
-  alignItems: 'center',
-  borderBottom: '1px solid #DDD'
-})
 
 const label = style({
   color: '#CCC',
@@ -20,28 +12,58 @@ const label = style({
 })
 
 const input = style({
-  flex: '1',
   color: '#555',
+  flex: '1',
+  role: 'input',
+  tabindex: '0',
   textAlign: 'center'
 })
 
-const arrow = style(
+const arrow = merge(
   {
-    textAlign: 'right',
+    color: '#CCC',
     cursor: 'pointer',
     flex: '1',
     paddingRight: '1em',
-    color: '#CCC'
-  }
+    textAlign: 'right'
+  },
+  $(':hover', {
+    color: '#555'
+  })
 )
 
-const arrowHover = hover({
-  color: '#555'
+const buttonGroup = style({
+  flex: '1',
+  paddingRight: '1em',
+  textAlign: 'right'
 })
 
+const button = merge(
+  {
+    background: '#FFF',
+    border: '1px solid #DDD',
+    borderRadius: '4px',
+    cursor: 'pointer',
+    fontSize: '2rem',
+    height: '3rem',
+    width: '3rem'
+  },
+  $(':hover', {
+    background: '#555',
+    color: '#FFF'
+  })
+)
+
 const dropdownSS = style({
-  background: 'yellow',
-  width: '100%'
+  fontSize: '1.4rem',
+  listStyle: 'none',
+  maxHeight: '18rem',
+  overflow: 'scroll',
+  padding: '0 1em'
+})
+
+const numberPickerContainer = style({
+  borderBottom: '1px solid #DDD'
 })
 
 const NumberPicker = ({
@@ -55,26 +77,35 @@ const NumberPicker = ({
     onNumberSelected,
     onPlusClicked,
     onMinusClicked,
-    uiOpenGuestDropdown
+    uiSwitchGuestDropdown
 }) => {
+  const numberPicker = style({
+    display: 'flex',
+    fontSize: '1.4rem',
+    height: collapsed ? '4rem' : '6rem',
+    width: '100%',
+    alignItems: 'center',
+    cursor: 'pointer'
+  })
+
   const numbers = [...Array(max+1).keys()].slice(min)
   const action = collapsed
     ? (
-      <div {...merge(arrow, arrowHover)} onClick={onEditClicked}>
+      <div {...arrow} onClick={onEditClicked}>
         <IconArrow direction='down'/>
       </div>
     )
     : (
-      <div>
-        <button onClick={onPlusClicked}>+</button>
-        <button onClick={onMinusClicked}>-</button>
+      <div {...buttonGroup}>
+        <button {...button} onClick={onMinusClicked}>-</button>
+        <button {...button} onClick={onPlusClicked}>+</button>
       </div>
     )
 
   const dropdown = collapsed
    ? null
    : (
-     <ul {...dropdownSS}>
+     <ul {...dropdownSS} >
         { numbers.map((num, i) => {
           const legend = num === 1 ? legendSingular : legendPlural
           return (
@@ -90,7 +121,7 @@ const NumberPicker = ({
    )
    const legend = number === 1 ? legendSingular : legendPlural
   return (
-    <div>
+    <div {...numberPickerContainer}>
       <div {...numberPicker}>
         <div {...label}>PEOPLE</div>
         <div {...input} onClick={onEditClicked}>{number} {legend}</div>

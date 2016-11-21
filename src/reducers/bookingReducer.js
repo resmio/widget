@@ -45,7 +45,7 @@ function booking (state = {}, action) {
     default:
       return state
 
-    case 'UI_GUEST_DROPDOWN_OPEN':
+    case 'UI_GUEST_DROPDOWN_SWITCH':
       return Object.assign({}, state, {
         guestSelectorCollapsed: false
       })
