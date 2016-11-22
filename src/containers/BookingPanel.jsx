@@ -26,7 +26,7 @@ class BookingPanel extends Component {
     // Find a better way to do it
     const {
       // actions
-      uiSwitchGuestDropdown,
+      uiGuestDropdownChangeState,
       uiSwitchCalendarFocus,
       uiSwitchTimeslot,
       addGuest,
@@ -45,32 +45,31 @@ class BookingPanel extends Component {
     } = this.props.booking
 
     const {
-      defaultHeight,
-    } = this.props.custom
-
-    const {
       calendarFocused,
-      guestSelectorCollapsed,
+      guestSelectorState,
       timeslotSelectorCollapsed
     } = this.props.ui
 
     const expanded = calendarFocused ? calendarIsExpanded : null
 
     const panel = style({
-      height: defaultHeight,
-      overflow: 'scroll'
+      position: 'absolute',
+      top: '60',
+      bottom: '60',
+      left: '0',
+      right: '0'
     })
 
     return (
       <section {...panel}>
         <NumberPicker
-          collapsed={guestSelectorCollapsed}
+          state={guestSelectorState}
           legendSingular='guest'
           legendPlural='guests'
           max={maxGuests}
           min={minGuests}
           number={selectedGuests}
-          onEditClicked={uiSwitchGuestDropdown}
+          onEditClicked={uiGuestDropdownChangeState}
           onNumberSelected={selectGuest}
           onPlusClicked={addGuest}
           onMinusClicked={removeGuest}
@@ -113,7 +112,7 @@ BookingPanel.propTypes = {
   maxGuests: number,
   minGuests: number,
   guestSelectorCollapsed: bool,
-  uiSwitchGuestDropdown: func,
+  uiGuestDropdownChangeState: func,
   guestSelect: func,
   uiSwitchCalendarFocus: func,
   dateSelect: func

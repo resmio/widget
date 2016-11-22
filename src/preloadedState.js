@@ -11,7 +11,8 @@ const preloadedState = {
   },
   custom: {
     buttonColor: '#3E4862',
-    defaultHeight: '340px', // = 500px - 80px header - 80px footer
+    // Probably don't need the defaultHeight
+    defaultHeight: '380px', // = 500px - 60px header - 60px footer
     defaultWidth: '330px',
     facility: 'Meson Baturro',
     headerColor: '#53628C',
@@ -23,8 +24,9 @@ const preloadedState = {
   ui: {
     calendarFocused: false,
     currentPanel: 1,
-    guestSelectorCollapsed: true,
-    timeslotSelectorCollapsed: true
+    guestSelectorState: 'collapsed',
+    dateSelectorState: 'collapsed',
+    timeslotSelectorState: 'expanded'
   }
 }
 

@@ -23,9 +23,12 @@ const Footer = (props) => {
     alignItems: 'center',
     borderTop: `1px solid #DDD`,
     display: 'flex',
-    height: '60px',
+    height: '6em',
+    position: 'absolute',
+    bottom: '0',
+    left: '0',
+    right: '0',
     justifyContent: 'center',
-    width: '100%'
   })
 
   const stepCounter = style({

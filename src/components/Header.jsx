@@ -21,7 +21,7 @@ const Header = ({bgImage, bgColor, color, subheaderText}) => {
   // https://css-tricks.com/snippets/css/transparent-background-images/
   const header = style({
     background: bgColor,
-    height: '60px',
+    height: '6em',
     position: 'relative',
     zIndex: '-1', // This is to put it at the same level as the bg image
     width: '100%',

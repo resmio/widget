@@ -1,6 +1,6 @@
 import {
   UI_CALENDAR_SWITCH_FOCUS,
-  UI_GUEST_DROPDOWN_SWITCH,
+  UI_GUEST_DROPDOWN_CHANGE_STATE,
   UI_TIMESLOT_SELECTOR_SWITCH,
   UI_PANEL_ADVANCE,
   UI_PANEL_REDUCE
@@ -20,10 +20,22 @@ function ui(state={}, action) {
         calendarFocused: !state.calendarFocused
       })
 
-    case UI_GUEST_DROPDOWN_SWITCH:
-      return Object.assign({}, state, {
-        guestSelectorCollapsed: !state.guestSelectorCollapsed
-      })
+    case UI_GUEST_DROPDOWN_CHANGE_STATE:
+      // If it is expanded everything goes back to semicollapsed
+      if (state.guestSelectorState === 'expanded') {
+        return Object.assign({}, state, {
+          guestSelectorState: 'semicollapsed',
+          dateSelectorState: 'semicollapsed',
+          timeslotSelectorState: 'semicollapsed'
+        })
+      // If it's not we expand it and collpase the other two
+      } else {
+        return Object.assign({}, state, {
+          guestSelectorState: 'expanded',
+          dateSelectorState: 'collapsed',
+          timeslotSelectorState: 'collapsed'
+        })
+      }
 
     case UI_TIMESLOT_SELECTOR_SWITCH:
       return Object.assign({}, state, {

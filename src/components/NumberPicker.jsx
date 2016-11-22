@@ -58,16 +58,12 @@ const dropdownSS = style({
   fontSize: '1.4rem',
   listStyle: 'none',
   maxHeight: '18rem',
-  overflow: 'scroll',
+  overflowY: 'scroll',
   padding: '0 1em'
 })
 
-const numberPickerContainer = style({
-  borderBottom: '1px solid #DDD'
-})
-
 const NumberPicker = ({
-    collapsed,
+    state,
     legendSingular,
     legendPlural,
     max,
@@ -77,19 +73,39 @@ const NumberPicker = ({
     onNumberSelected,
     onPlusClicked,
     onMinusClicked,
-    uiSwitchGuestDropdown
+    uiGuestDropdownChangeState
 }) => {
+
+  let elementHeight
+
+  switch(state) {
+    case 'collapsed':
+      elementHeight = '15%'
+      break
+
+    case 'semicollapsed':
+      elementHeight = '33,3%'
+      break
+
+    default:
+      elementHeight = '70%'
+  }
+
+  const numberPickerContainer = style({
+    borderBottom: '1px solid #DDD',
+    height: elementHeight,
+  })
+
   const numberPicker = style({
     display: 'flex',
     fontSize: '1.4rem',
-    height: collapsed ? '4rem' : '6rem',
     width: '100%',
     alignItems: 'center',
     cursor: 'pointer'
   })
 
   const numbers = [...Array(max+1).keys()].slice(min)
-  const action = collapsed
+  const action = (state === 'collapsed')
     ? (
       <div {...arrow} onClick={onEditClicked}>
         <IconArrow direction='down'/>
@@ -102,7 +118,7 @@ const NumberPicker = ({
       </div>
     )
 
-  const dropdown = collapsed
+  const dropdown = (state === 'collapsed')
    ? null
    : (
      <ul {...dropdownSS} >
@@ -132,10 +148,10 @@ const NumberPicker = ({
   )
 }
 
-const { bool, func, number, string } = PropTypes
+const { oneOf, func, number, string } = PropTypes
 
 NumberPicker.propTypes = {
-  collapsed: bool,
+  state: oneOf(['collapsed', 'semicollapsed', 'expanded']).isRequired,
   legendSingular: string,
   legendPlural: string.isRequired,
   max: number.isRequired,
