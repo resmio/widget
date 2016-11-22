@@ -23,7 +23,8 @@ const preloadedState = {
   ui: {
     calendarFocused: false,
     currentPanel: 1,
-    guestSelectorCollapsed: true
+    guestSelectorCollapsed: true,
+    timeslotSelectorCollapsed: true
   }
 }
 

@@ -10,19 +10,24 @@ export const UI_GUEST_DROPDOWN_SWITCH = 'UI_GUEST_DROPDOWN_SWITCH'
 export const UI_CALENDAR_SWITCH_FOCUS = 'UI_CALENDAR_SWITCH_FOCUS'
 export const UI_PANEL_ADVANCE = 'UI_PANEL_ADVANCE'
 export const UI_PANEL_REDUCE = 'UI_PANEL_REDUCE'
+export const UI_TIMESLOT_SELECTOR_SWITCH = 'UI_TIMESLOT_SELECTOR_SWITCH'
 
 export function uiSwitchGuestDropdown () {
-  return { type: 'UI_GUEST_DROPDOWN_SWITCH' }
+  return { type: UI_GUEST_DROPDOWN_SWITCH }
+}
+
+export function uiSwitchTimeslot () {
+  return { type: UI_TIMESLOT_SELECTOR_SWITCH }
 }
 
 export function uiSwitchCalendarFocus () {
-  return { type: 'UI_CALENDAR_SWITCH_FOCUS' }
+  return { type: UI_CALENDAR_SWITCH_FOCUS }
 }
 
 export function advancePanel () {
-  return { type: 'UI_PANEL_ADVANCE' }
+  return { type: UI_PANEL_ADVANCE }
 }
 
 export function reducePanel () {
-  return { type: 'UI_PANEL_REDUCE' }
+  return { type: UI_PANEL_REDUCE }
 }

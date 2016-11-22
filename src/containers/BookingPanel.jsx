@@ -28,6 +28,7 @@ class BookingPanel extends Component {
       // actions
       uiSwitchGuestDropdown,
       uiSwitchCalendarFocus,
+      uiSwitchTimeslot,
       addGuest,
       removeGuest,
       selectGuest,
@@ -49,7 +50,8 @@ class BookingPanel extends Component {
 
     const {
       calendarFocused,
-      guestSelectorCollapsed
+      guestSelectorCollapsed,
+      timeslotSelectorCollapsed
     } = this.props.ui
 
     const expanded = calendarFocused ? calendarIsExpanded : null
@@ -86,9 +88,10 @@ class BookingPanel extends Component {
         </section>
         <section>
           <TimeslotPicker
+            collapsed={timeslotSelectorCollapsed}
             timeslots={availabilities}
-            onTimeslotClick={selectTimeslot}
-            collapsed={true}
+            onTimeslotClick={uiSwitchTimeslot}
+            onTimeslotSelect={selectTimeslot}
           />
         </section>
       </section>
