@@ -59,7 +59,8 @@ const dropdownSS = style({
   listStyle: 'none',
   maxHeight: '18rem',
   overflowY: 'scroll',
-  padding: '0 1em'
+  padding: '0 1em',
+  width: '100%'
 })
 
 const NumberPicker = ({
@@ -98,10 +99,11 @@ const NumberPicker = ({
 
   const numberPicker = style({
     display: 'flex',
-    fontSize: '1.4rem',
+    height: '4em',
     width: '100%',
+    fontSize: '1.4rem',
     alignItems: 'center',
-    cursor: 'pointer'
+    cursor: 'pointer',
   })
 
   const numbers = [...Array(max+1).keys()].slice(min)
@@ -118,9 +120,8 @@ const NumberPicker = ({
       </div>
     )
 
-  const dropdown = (state === 'collapsed')
-   ? null
-   : (
+  const dropdown = (state === 'expanded')
+   ? (
      <ul {...dropdownSS} >
         { numbers.map((num, i) => {
           const legend = num === 1 ? legendSingular : legendPlural
@@ -135,6 +136,8 @@ const NumberPicker = ({
         })}
      </ul>
    )
+   : null
+ 
    const legend = number === 1 ? legendSingular : legendPlural
   return (
     <div {...numberPickerContainer}>

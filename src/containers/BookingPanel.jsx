@@ -53,9 +53,10 @@ class BookingPanel extends Component {
     const expanded = calendarFocused ? calendarIsExpanded : null
 
     const panel = style({
+      background: 'lemonchiffon',
       position: 'absolute',
-      top: '60',
-      bottom: '60',
+      top: '6em',
+      bottom: '6em',
       left: '0',
       right: '0'
     })

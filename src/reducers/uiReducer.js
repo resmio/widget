@@ -21,8 +21,10 @@ function ui(state={}, action) {
       })
 
     case UI_GUEST_DROPDOWN_CHANGE_STATE:
+    case GUEST_SELECT:
       // If it is expanded everything goes back to semicollapsed
       if (state.guestSelectorState === 'expanded') {
+        debugger
         return Object.assign({}, state, {
           guestSelectorState: 'semicollapsed',
           dateSelectorState: 'semicollapsed',
@@ -50,11 +52,6 @@ function ui(state={}, action) {
     case UI_PANEL_REDUCE:
       return Object.assign({}, state, {
         currentPanel: state.currentPanel - 1
-      })
-
-    case GUEST_SELECT:
-      return Object.assign({}, state, {
-        guestSelectorCollapsed: true
       })
 
     case TIMESLOT_SELECT:
