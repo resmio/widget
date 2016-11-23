@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react'
 import { style, merge, select as $ } from 'glamor'
 
 import ExpandableSelector from './ExpandableSelector'
-
 import DropdownOption from './DropdownOption'
 
 const buttonGroup = style({
@@ -76,15 +75,6 @@ const NumberPicker = ({
       state={state}
     />
   )
-  //   <div {...numberPickerContainer}>
-  //     <div {...numberPicker}>
-  //       <Label>PEOPLE</Label>
-  //       <Value onClickAction={onEditClicked}>{number} {legend}</Value>
-  //       {action}
-  //     </div>
-  //     {dropdown}
-  //   </div>
-  // )
 }
 
 const { oneOf, func, number, string } = PropTypes

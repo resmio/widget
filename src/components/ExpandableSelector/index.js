@@ -37,7 +37,7 @@ const ExpandableSelector = ({
 
     default:
       containerHeight = '70%'
-      contentHeight = '4em'
+      contentHeight = '6em'
   }
 
   const container = style({

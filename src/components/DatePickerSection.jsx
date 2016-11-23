@@ -1,25 +1,10 @@
 import React, { PropTypes } from 'react'
-import { style, merge, select as $ } from 'glamor'
 
 import { momentObj } from 'react-moment-proptypes'
 import { SingleDatePicker } from 'react-dates'
 import 'react-dates/lib/css/_datepicker.css'
 
-import Label from './Label'
-import IconArrow from './IconArrow'
-
-const arrow = merge(
-  {
-    color: '#CCC',
-    cursor: 'pointer',
-    flex: '1',
-    paddingRight: '1em',
-    textAlign: 'right'
-  },
-  $(':hover', {
-    color: '#555'
-  })
-)
+import ExpandableSelector from './ExpandableSelector'
 
 const DatePickerSection = ({
     state,
@@ -28,60 +13,30 @@ const DatePickerSection = ({
     onFocusChange
 }) => {
 
-  let containerHeight, contentHeight
-
-  switch(state) {
-    case 'collapsed':
-      containerHeight = '15%'
-      contentHeight = '100%'
-      break
-
-    case 'semicollapsed':
-      containerHeight = '33.3%'
-      contentHeight = '100%'
-      break
-
-    default:
-      containerHeight = '70%'
-      contentHeight = '4em'
-  }
-
-  const datePickerContainer = style({
-    borderBottom: '1px solid #DDD',
-    height: containerHeight,
-  })
-
-  const datePicker = style({
-    display: 'flex',
-    height: contentHeight,
-    width: '100%',
-    fontSize: '1.4rem',
-    alignItems: 'center',
-    cursor: 'pointer',
-  })
-
   // Clicking on the arrow also fires an OnFOcuschange on the datePicker
   // So the uiDateSelectorChangeState fires twice once expanding and the
   // second one semicollapsing, check redux dev tools to see this clearly
 
   // Need to deal with it once doing the datepicker section
+  const main = (
+    <SingleDatePicker
+      id="date_input"
+      date={selectedDate}
+      focused={true}
+      onFocusChange={onFocusChange}
+      numberOfMonths={1}
+      onDateChange={onDateSelected}
+    />
+  )
+
   return (
-    <section {...datePickerContainer}>
-      <div {...datePicker}>
-        <Label>DATE</Label>
-        <SingleDatePicker
-          id="date_input"
-          date={selectedDate}
-          focused={state === 'expanded'}
-          onFocusChange={onFocusChange}
-          numberOfMonths={1}
-          onDateChange={onDateSelected}
-        />
-        <div {...arrow} onClick={onFocusChange}>
-          <IconArrow direction='down'/>
-        </div>
-      </div>
-    </section>
+    <ExpandableSelector
+      label='DATE'
+      displayedInfo='Odio el calendario'
+      onExpandClicked={onFocusChange}
+      dropdown={main}
+      state={state}
+    />
   )
 }
 

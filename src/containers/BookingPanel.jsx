@@ -10,8 +10,8 @@ import { momentObj } from 'react-moment-proptypes'
 
 // components
 import NumberPicker from '../components/NumberPicker'
-// import TimePicker from '../components/TimePicker'
-// import DatePickerSection from '../components/DatePickerSection'
+import DatePickerSection from '../components/DatePickerSection'
+import TimePicker from '../components/TimePicker'
 
 class BookingPanel extends Component {
 
@@ -66,25 +66,22 @@ class BookingPanel extends Component {
           onPlusClicked={addGuest}
           onMinusClicked={removeGuest}
         />
+        <DatePickerSection
+          state={dateSelectorState}
+          selectedDate={selectedDate}
+          onFocusChange={uiDateSelectorChangeState}
+          onDateSelected={selectDate}
+        />
+        <TimePicker
+          state={timeSelectorState}
+          timeslots={availabilities}
+          onTimePickerClick={uiTimeSelectorChangeState}
+          onTimeslotSelect={selectTimeslot}
+        />
       </section>
     )
   }
 }
-
-// <DatePickerSection
-//   state={dateSelectorState}
-//   selectedDate={selectedDate}
-//   onFocusChange={uiDateSelectorChangeState}
-//   onDateSelected={selectDate}
-// />
-// <section>
-//   <TimePicker
-//     state={timeSelectorState}
-//     timeslots={availabilities}
-//     onTimePickerClick={uiTimeSelectorChangeState}
-//     onTimeslotSelect={selectTimeslot}
-//   />
-// </section>
 
 const { bool, func, number } = PropTypes
 
