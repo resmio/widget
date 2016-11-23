@@ -24,7 +24,6 @@ function ui(state={}, action) {
     case GUEST_SELECT:
       // If it is expanded everything goes back to semicollapsed
       if (state.guestSelectorState === 'expanded') {
-        debugger
         return Object.assign({}, state, {
           guestSelectorState: 'semicollapsed',
           dateSelectorState: 'semicollapsed',
