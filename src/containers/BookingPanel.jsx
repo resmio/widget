@@ -21,7 +21,7 @@ class BookingPanel extends Component {
     const {
       // actions
       uiGuestSelectorChangeState,
-      uiDatepickerChangeState,
+      uiDateSelectorChangeState,
       uiSwitchTimeslot,
       addGuest,
       removeGuest,
@@ -70,7 +70,7 @@ class BookingPanel extends Component {
         <DatePickerSection
           state={dateSelectorState}
           selectedDate={selectedDate}
-          onFocusChange={uiDatepickerChangeState}
+          onFocusChange={uiDateSelectorChangeState}
           onDateSelected={selectDate}
         />
         <section>

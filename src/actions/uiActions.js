@@ -20,7 +20,7 @@ export function uiSwitchTimeslot () {
   return { type: UI_TIMESLOT_SELECTOR_SWITCH }
 }
 
-export function uiDatepickerChangeState () {
+export function uiDateSelectorChangeState () {
   return { type: UI_DATE_SELECTOR_CHANGE_STATE }
 }
 

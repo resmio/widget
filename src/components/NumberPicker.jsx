@@ -110,16 +110,16 @@ const NumberPicker = ({
   })
 
   const numbers = [...Array(max+1).keys()].slice(min)
-  const action = (state === 'collapsed')
+  const action = (state === 'expanded')
     ? (
-      <div {...arrow} onClick={onEditClicked}>
-        <IconArrow direction='down'/>
-      </div>
-    )
-    : (
       <div {...buttonGroup}>
         <button {...button} onClick={onMinusClicked}>-</button>
         <button {...button} onClick={onPlusClicked}>+</button>
+      </div>
+    )
+    : (
+      <div {...arrow} onClick={onEditClicked}>
+        <IconArrow direction='down'/>
       </div>
     )
 

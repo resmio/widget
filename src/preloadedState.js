@@ -22,7 +22,6 @@ const preloadedState = {
     renderAtMaxSize: false
   },
   ui: {
-    calendarFocused: false,
     currentPanel: 1,
     guestSelectorState: 'collapsed',
     dateSelectorState: 'collapsed',

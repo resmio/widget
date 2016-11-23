@@ -1,15 +1,30 @@
 import React, { PropTypes } from 'react'
-import { style } from 'glamor'
+import { style, merge, select as $ } from 'glamor'
 
 import { momentObj } from 'react-moment-proptypes'
 import { SingleDatePicker } from 'react-dates'
 import 'react-dates/lib/css/_datepicker.css'
+
+import IconArrow from './IconArrow'
 
 const label = style({
   color: '#CCC',
   flex: '1',
   paddingLeft: '1em'
 })
+
+const arrow = merge(
+  {
+    color: '#CCC',
+    cursor: 'pointer',
+    flex: '1',
+    paddingRight: '1em',
+    textAlign: 'right'
+  },
+  $(':hover', {
+    color: '#555'
+  })
+)
 
 const DatePickerSection = ({
     state,
@@ -50,6 +65,11 @@ const DatePickerSection = ({
     cursor: 'pointer',
   })
 
+  // Clicking on the arrow also fires an OnFOcuschange on the datePicker
+  // So the uiDateSelectorChangeState fires twice once expanding and the
+  // second one semicollapsing, check redux dev tools to see this clearly
+
+  // Need to deal with it once doing the datepicker section
   return (
     <section {...datePickerContainer}>
       <div {...datePicker}>
@@ -62,6 +82,9 @@ const DatePickerSection = ({
           numberOfMonths={1}
           onDateChange={onDateSelected}
         />
+        <div {...arrow} onClick={onFocusChange}>
+          <IconArrow direction='down'/>
+        </div>
       </div>
     </section>
   )
