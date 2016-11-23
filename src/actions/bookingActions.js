@@ -10,7 +10,7 @@ export const GUEST_ADD = 'GUEST_ADD'
 export const GUEST_REMOVE = 'GUEST_REMOVE'
 export const GUEST_SELECT = 'GUEST_SELECT'
 export const DATE_SELECT = 'DATE_SELECT'
-export const TIMESLOT_SELECT = 'TIMESLOT_SELECT'
+export const TIME_SELECT = 'TIME_SELECT'
 export const BOOKING_POSTING = 'BOOKING:POSTING'
 
 // GUEST COUNTER ---------------------------------------------------------------
@@ -41,7 +41,7 @@ export function selectDate (date) {
 // TIMESLOTS -------------------------------------------------------------------
 export function selectTimeslot (e) {
   return {
-    type: TIMESLOT_SELECT,
+    type: TIME_SELECT,
     payload: e.target.checksum
   }
 }

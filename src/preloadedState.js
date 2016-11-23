@@ -25,7 +25,7 @@ const preloadedState = {
     currentPanel: 1,
     guestSelectorState: 'collapsed',
     dateSelectorState: 'collapsed',
-    timeslotSelectorState: 'expanded'
+    timeSelectorState  : 'expanded'
   }
 }
 

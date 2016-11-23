@@ -10,8 +10,8 @@ import { momentObj } from 'react-moment-proptypes'
 
 // components
 import NumberPicker from '../components/NumberPicker'
-import TimeslotPicker from '../components/TimeslotPicker'
-import DatePickerSection from '../components/DatePickerSection'
+// import TimePicker from '../components/TimePicker'
+// import DatePickerSection from '../components/DatePickerSection'
 
 class BookingPanel extends Component {
 
@@ -22,7 +22,7 @@ class BookingPanel extends Component {
       // actions
       uiGuestSelectorChangeState,
       uiDateSelectorChangeState,
-      uiSwitchTimeslot,
+      uiTimeSelectorChangeState,
       addGuest,
       removeGuest,
       selectGuest,
@@ -41,11 +41,10 @@ class BookingPanel extends Component {
     const {
       dateSelectorState,
       guestSelectorState,
-      timeslotSelectorCollapsed
+      timeSelectorState
     } = this.props.ui
 
     const panel = style({
-      background: 'lemonchiffon',
       position: 'absolute',
       top: '6em',
       bottom: '6em',
@@ -67,24 +66,25 @@ class BookingPanel extends Component {
           onPlusClicked={addGuest}
           onMinusClicked={removeGuest}
         />
-        <DatePickerSection
-          state={dateSelectorState}
-          selectedDate={selectedDate}
-          onFocusChange={uiDateSelectorChangeState}
-          onDateSelected={selectDate}
-        />
-        <section>
-          <TimeslotPicker
-            collapsed={timeslotSelectorCollapsed}
-            timeslots={availabilities}
-            onTimeslotClick={uiSwitchTimeslot}
-            onTimeslotSelect={selectTimeslot}
-          />
-        </section>
       </section>
     )
   }
 }
+
+// <DatePickerSection
+//   state={dateSelectorState}
+//   selectedDate={selectedDate}
+//   onFocusChange={uiDateSelectorChangeState}
+//   onDateSelected={selectDate}
+// />
+// <section>
+//   <TimePicker
+//     state={timeSelectorState}
+//     timeslots={availabilities}
+//     onTimePickerClick={uiTimeSelectorChangeState}
+//     onTimeslotSelect={selectTimeslot}
+//   />
+// </section>
 
 const { bool, func, number } = PropTypes
 

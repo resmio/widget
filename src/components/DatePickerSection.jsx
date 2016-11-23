@@ -5,13 +5,8 @@ import { momentObj } from 'react-moment-proptypes'
 import { SingleDatePicker } from 'react-dates'
 import 'react-dates/lib/css/_datepicker.css'
 
+import Label from './Label'
 import IconArrow from './IconArrow'
-
-const label = style({
-  color: '#CCC',
-  flex: '1',
-  paddingLeft: '1em'
-})
 
 const arrow = merge(
   {
@@ -73,7 +68,7 @@ const DatePickerSection = ({
   return (
     <section {...datePickerContainer}>
       <div {...datePicker}>
-        <div {...label}>DATE</div>
+        <Label>DATE</Label>
         <SingleDatePicker
           id="date_input"
           date={selectedDate}

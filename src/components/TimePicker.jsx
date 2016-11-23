@@ -4,16 +4,6 @@ import { style, merge, select as $ } from 'glamor'
 
 import IconArrow from './IconArrow'
 
-const container = style({
-  borderTop: '1px solid #DDD',
-  display: 'flex',
-  fontSize: '1.4rem',
-  height: '4rem',
-  width: '100%',
-  alignItems: 'center',
-  cursor: 'pointer'
-})
-
 const label = style({
   color: '#CCC',
   flex: '1',
@@ -42,10 +32,6 @@ const arrow = merge(
   })
 )
 
-const timeslotContainer = style({
-  borderBottom: '1px solid #F7F7F7'
-})
-
 const timeslotSS = style({
   height: '5rem',
   fontSize: '1.6em',
@@ -73,18 +59,56 @@ const discount = style({
   color: '#F8C150'
 })
 
-const TimeslotPicker = ({timeslots, onTimeslotClick, onTimeslotSelect, collapsed}) => {
-  const collapsedState = (
-    <div {...container}>
-      <div {...label}>TIME</div>
-      <div {...input} onClick={onTimeslotClick}>Timeslot seleccionado</div>
-      <div {...arrow} onClick={onTimeslotClick}>
-        <IconArrow direction='down'/>
-      </div>
-    </div>
-  )
-  const expandedState  = (
-    <div>
+const TimePicker = ({
+  timeslots,
+  onTimePickerClick,
+  onTimeslotSelect,
+  state
+}) => {
+  let containerHeight, contentHeight
+
+  switch(state) {
+    case 'collapsed':
+      containerHeight = '15%'
+      contentHeight = '100%'
+      break
+
+    case 'semicollapsed':
+      containerHeight = '33.3%'
+      contentHeight = '100%'
+      break
+
+    default:
+      containerHeight = '70%'
+      contentHeight = '4em'
+  }
+
+  const timePickerContainer = style({
+    borderTop: '1px solid #DDD',
+    height: containerHeight
+  })
+
+  const timePicker = style({
+    display: 'flex',
+    height: contentHeight,
+    width: '100%',
+    fontSize: '1.4rem',
+    alignItems: 'center',
+    cursor: 'pointer',
+  })
+
+  const timeslotContainer = style({
+    borderBottom: '1px solid #DDD',
+  })
+
+  const dropdownSS = style({
+    maxHeight: '20em',
+    overflowY: 'scroll',
+    width: '100%'
+  })
+
+  const dropdown  = (
+    <div {...dropdownSS}>
       {timeslots.map((timeslot) => {
         return (
           <div {...timeslotContainer} key={timeslot.checksum}>
@@ -105,8 +129,17 @@ const TimeslotPicker = ({timeslots, onTimeslotClick, onTimeslotSelect, collapsed
     </div>
   )
   return (
-    collapsed ? collapsedState : expandedState
+    <div {...timePickerContainer}>
+      <div {...timePicker}>
+        <div {...label}>TIME</div>
+        <div {...input} onClick={onTimePickerClick}>Timeslot seleccionado</div>
+        <div {...arrow} onClick={onTimePickerClick}>
+          <IconArrow direction='down'/>
+        </div>
+      </div>
+      { state === 'expanded' ? dropdown : null }
+    </div>
   )
 }
 
-export default TimeslotPicker
+export default TimePicker
