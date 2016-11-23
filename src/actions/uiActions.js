@@ -6,22 +6,22 @@
 // (ex GUEST:ADDING GUEST:ADDED)
 // Error actions append _ERROR to the action type (TODO_ADD_ERROR)
 
-export const UI_GUEST_DROPDOWN_CHANGE_STATE = 'UI_GUEST_DROPDOWN_CHANGE_STATE'
-export const UI_CALENDAR_SWITCH_FOCUS = 'UI_CALENDAR_SWITCH_FOCUS'
+export const UI_DATE_SELECTOR_CHANGE_STATE = 'UI_DATE_SELECTOR_CHANGE_STATE'
+export const UI_GUEST_SELECTOR_CHANGE_STATE = 'UI_GUEST_SELECTOR_CHANGE_STATE'
 export const UI_PANEL_ADVANCE = 'UI_PANEL_ADVANCE'
 export const UI_PANEL_REDUCE = 'UI_PANEL_REDUCE'
 export const UI_TIMESLOT_SELECTOR_SWITCH = 'UI_TIMESLOT_SELECTOR_SWITCH'
 
-export function uiGuestDropdownChangeState () {
-  return { type: UI_GUEST_DROPDOWN_CHANGE_STATE }
+export function uiGuestSelectorChangeState () {
+  return { type: UI_GUEST_SELECTOR_CHANGE_STATE }
 }
 
 export function uiSwitchTimeslot () {
   return { type: UI_TIMESLOT_SELECTOR_SWITCH }
 }
 
-export function uiSwitchCalendarFocus () {
-  return { type: UI_CALENDAR_SWITCH_FOCUS }
+export function uiDatepickerChangeState () {
+  return { type: UI_DATE_SELECTOR_CHANGE_STATE }
 }
 
 export function advancePanel () {

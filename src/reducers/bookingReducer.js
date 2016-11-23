@@ -51,7 +51,7 @@ function booking (state = {}, action) {
       })
 
 
-    case 'UI_CALENDAR_SWITCH_FOCUS':
+    case 'UI_DATE_SELECTOR_CHANGE_STATE':
       return Object.assign({}, state, {
         calendarFocused: !state.calendarFocused
       })

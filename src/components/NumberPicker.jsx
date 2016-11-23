@@ -74,7 +74,7 @@ const NumberPicker = ({
     onNumberSelected,
     onPlusClicked,
     onMinusClicked,
-    uiGuestDropdownChangeState
+    uiGuestSelectorChangeState
 }) => {
 
   let containerHeight, contentHeight
