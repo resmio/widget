@@ -77,29 +77,32 @@ const NumberPicker = ({
     uiGuestDropdownChangeState
 }) => {
 
-  let elementHeight
+  let containerHeight, contentHeight
 
   switch(state) {
     case 'collapsed':
-      elementHeight = '15%'
+      containerHeight = '15%'
+      contentHeight = '100%'
       break
 
     case 'semicollapsed':
-      elementHeight = '33,3%'
+      containerHeight = '33.3%'
+      contentHeight = '100%'
       break
 
     default:
-      elementHeight = '70%'
+      containerHeight = '70%'
+      contentHeight = '4em'
   }
 
   const numberPickerContainer = style({
     borderBottom: '1px solid #DDD',
-    height: elementHeight,
+    height: containerHeight,
   })
 
   const numberPicker = style({
     display: 'flex',
-    height: '4em',
+    height: contentHeight,
     width: '100%',
     fontSize: '1.4rem',
     alignItems: 'center',
@@ -123,22 +126,22 @@ const NumberPicker = ({
   const dropdown = (state === 'expanded')
    ? (
      <ul {...dropdownSS} >
-        { numbers.map((num, i) => {
-          const legend = num === 1 ? legendSingular : legendPlural
-          return (
-            <DropdownOption
-              key={i}
-              index={i}
-              onClickAction={onNumberSelected}
-            >
-              {num} {legend}
-            </DropdownOption>)
-        })}
-     </ul>
-   )
-   : null
- 
-   const legend = number === 1 ? legendSingular : legendPlural
+        {
+          numbers.map((num, i) => {
+            const legend = num === 1 ? legendSingular : legendPlural
+            return (
+              <DropdownOption key={i} index={i} onClickAction={onNumberSelected}>
+                {num} {legend}
+              </DropdownOption>
+            )
+          })
+        }
+   </ul>
+  )
+  : null
+
+  const legend = number === 1 ? legendSingular : legendPlural
+
   return (
     <div {...numberPickerContainer}>
       <div {...numberPicker}>
