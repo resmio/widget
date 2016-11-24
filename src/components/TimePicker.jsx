@@ -37,21 +37,25 @@ const timeslotContainer = style({
 const TimePicker = ({
   timeslots,
   onTimePickerClick,
-  onTimeslotSelect,
-  state
+  onTimeSelect,
+  state,
+  dispatch
 }) => {
 
   const dropdown  = (
     <div>
       {timeslots.map((timeslot) => {
+        
+        const onTimeClick = () => {
+          onTimeSelect(timeslot.checksum)
+        }
+
         return (
-          <div {...timeslotContainer} key={timeslot.checksum}>
-            <div
-              {...timeslotSS}
-              key={timeslot.checksum}
-              id={timeslot.checksum}
-              onClick={onTimeslotSelect}
-            >
+          <div {...timeslotContainer}
+            key={timeslot.checksum}
+            onClick={onTimeClick}
+          >
+            <div {...timeslotSS}>
               <span {...time}>{timeslot.local_time_formatted}</span>
               <span {...spot}>{timeslot.available} available</span>
               <span {...discount}>{timeslot.price_change}%</span>

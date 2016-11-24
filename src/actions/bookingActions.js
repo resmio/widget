@@ -39,10 +39,10 @@ export function selectDate (date) {
 }
 
 // TIMESLOTS -------------------------------------------------------------------
-export function selectTimeslot (e) {
+export function selectTime (checksum) {
   return {
     type: TIME_SELECT,
-    payload: e.target.checksum
+    payload: checksum
   }
 }
 

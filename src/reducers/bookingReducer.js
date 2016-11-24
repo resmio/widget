@@ -3,6 +3,7 @@ import {
   GUEST_REMOVE,
   GUEST_SELECT,
   DATE_SELECT,
+  TIME_SELECT,
   BOOKING_POSTING
 } from '../actions/bookingActions'
 
@@ -36,6 +37,11 @@ function booking (state = {}, action) {
     case DATE_SELECT:
       return Object.assign({}, state, {
         selectedDate: action.payload
+      })
+
+    case TIME_SELECT:
+      return Object.assign({}, state, {
+        selectedTime: action.payload
       })
 
     case BOOKING_POSTING:

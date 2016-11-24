@@ -27,7 +27,7 @@ class BookingPanel extends Component {
       removeGuest,
       selectGuest,
       selectDate,
-      selectTimeslot
+      selectTime
     } = this.props
 
     const {
@@ -51,7 +51,6 @@ class BookingPanel extends Component {
       left: '0',
       right: '0'
     })
-
     return (
       <section {...panel}>
         <NumberPicker
@@ -76,7 +75,7 @@ class BookingPanel extends Component {
           state={timeSelectorState}
           timeslots={availabilities}
           onTimePickerClick={uiTimeSelectorChangeState}
-          onTimeslotSelect={selectTimeslot}
+          onTimeSelect={selectTime}
         />
       </section>
     )

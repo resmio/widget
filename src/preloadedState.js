@@ -7,7 +7,8 @@ const preloadedState = {
     maxGuests: 6,
     minGuests: 1,
     selectedDate: moment(),
-    selectedGuests: 1
+    selectedGuests: 1,
+    selectedTime: '0e9e393f1869c74714a4adac281b2393'
   },
   custom: {
     buttonColor: '#3E4862',
