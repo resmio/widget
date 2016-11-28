@@ -37,12 +37,19 @@ const legend = style({
 })
 
 
-const TimeslotsFilter = () => (
-  <div {...container}>
-    <div {...merge(arrow, left)}><IconArrow direction='left' size='1rem' /></div>
-    <div {...legend}>Abendessenzeit</div>
-    <div {...merge(arrow, right)}><IconArrow size='1rem'/></div>
-  </div>
-)
+const TimeslotsFilter = ({
+  timePeriods,
+  timePeriodSelected,
+  onTimePeriodAdvance,
+  onTimePeriodReduce
+}) => {
+  return (
+    <div {...container}>
+      <div {...merge(arrow, left)} onClick={onTimePeriodReduce}><IconArrow direction='left' size='1rem' /></div>
+      <div {...legend}>{timePeriods[timePeriodSelected].name}</div>
+      <div {...merge(arrow, right)} onClick={onTimePeriodAdvance}><IconArrow size='1rem'/></div>
+    </div>
+  )
+}
 
 export default TimeslotsFilter

@@ -11,6 +11,10 @@ export const UI_DATE_SELECTOR_CHANGE_STATE = 'UI_DATE_SELECTOR_CHANGE_STATE'
 export const UI_GUEST_SELECTOR_CHANGE_STATE = 'UI_GUEST_SELECTOR_CHANGE_STATE'
 export const UI_TIME_SELECTOR_CHANGE_STATE = 'UI_TIME_SELECTOR_CHANGE_STATE'
 
+// Timepicker
+export const UI_TIME_PERIOD_ADVANCE = 'UI_TIME_PERIOD_ADVANCE'
+export const UI_TIME_PERIOD_REDUCE = 'UI_TIME_PERIOD_REDUCE'
+
 // Panel navigation
 export const UI_PANEL_ADVANCE = 'UI_PANEL_ADVANCE'
 export const UI_PANEL_REDUCE = 'UI_PANEL_REDUCE'
@@ -33,4 +37,12 @@ export function advancePanel () {
 
 export function reducePanel () {
   return { type: UI_PANEL_REDUCE }
+}
+
+export function advanceTimePeriod () {
+  return { type: UI_TIME_PERIOD_ADVANCE }
+}
+
+export function reduceTimePeriod () {
+  return { type: UI_TIME_PERIOD_REDUCE }
 }

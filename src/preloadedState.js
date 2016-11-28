@@ -8,7 +8,7 @@ const preloadedState = {
     minGuests: 1,
     selectedDate: moment(),
     selectedGuests: 1,
-    selectedTime: '0e9e393f1869c74714a4adac281b2393'
+    selectedTime: ''
   },
   custom: {
     buttonColor: '#3E4862',
@@ -20,13 +20,19 @@ const preloadedState = {
     headerImage: 'https://zenezake.files.wordpress.com/2015/07/img_6715.jpg',
     headerTextColor: 'white',
     numberOfPanels: 3,
-    renderAtMaxSize: false
+    renderAtMaxSize: false,
+    timePeriods: [
+      {'name': 'Breakfast', 'time': '10:00'},
+      {'name': 'Lunch', 'time': '12:00'},
+      {'name': 'Dinner', 'time': '18:00'},
+    ]
   },
   ui: {
     currentPanel: 1,
     guestSelectorState: 'collapsed',
     dateSelectorState: 'collapsed',
-    timeSelectorState  : 'expanded'
+    timeSelectorState  : 'expanded',
+    timePeriodSelected: 0
   }
 }
 

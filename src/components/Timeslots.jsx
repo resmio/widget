@@ -42,10 +42,19 @@ const timeslotContainer = style({
 
 const Timeslots= ({
   timeslots,
-  onTimeSelect
+  onTimeSelect,
+  timePeriods,
+  timePeriodSelected,
+  onTimePeriodAdvance,
+  onTimePeriodReduce
 }) => (
   <div>
-    <TimeslotsFilter />
+    <TimeslotsFilter
+      timePeriods={timePeriods}
+      timePeriodSelected={timePeriodSelected}
+      onTimePeriodAdvance={onTimePeriodAdvance}
+      onTimePeriodReduce={onTimePeriodReduce}
+    />
     {timeslots.map((timeslot) => {
 
       const onTimeClick = () => {

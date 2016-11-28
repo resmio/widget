@@ -20,6 +20,8 @@ class BookingPanel extends Component {
     // Find a better way to do it
     const {
       // actions
+      advanceTimePeriod,
+      reduceTimePeriod,
       uiGuestSelectorChangeState,
       uiDateSelectorChangeState,
       uiTimeSelectorChangeState,
@@ -41,8 +43,13 @@ class BookingPanel extends Component {
     const {
       dateSelectorState,
       guestSelectorState,
-      timeSelectorState
+      timeSelectorState,
+      timePeriodSelected
     } = this.props.ui
+
+    const {
+      timePeriods
+    } = this.props.custom
 
     const panel = style({
       position: 'absolute',
@@ -72,10 +79,14 @@ class BookingPanel extends Component {
           onDateSelected={selectDate}
         />
         <TimePicker
+          timePeriods={timePeriods}
+          timePeriodSelected={timePeriodSelected}
           state={timeSelectorState}
           timeslots={availabilities}
           onTimePickerClick={uiTimeSelectorChangeState}
           onTimeSelect={selectTime}
+          onTimePeriodAdvance={advanceTimePeriod}
+          onTimePeriodReduce={reduceTimePeriod}
         />
       </section>
     )

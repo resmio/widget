@@ -1,6 +1,8 @@
 import {
   UI_DATE_SELECTOR_CHANGE_STATE,
   UI_GUEST_SELECTOR_CHANGE_STATE,
+  UI_TIME_PERIOD_ADVANCE,
+  UI_TIME_PERIOD_REDUCE,
   UI_TIME_SELECTOR_CHANGE_STATE,
   UI_PANEL_ADVANCE,
   UI_PANEL_REDUCE
@@ -49,6 +51,16 @@ function ui(state={}, action) {
           timeSelectorState  : 'collapsed'
         })
       }
+
+    case UI_TIME_PERIOD_ADVANCE:
+      return Object.assign({}, state, {
+        timePeriodSelected: state.timePeriodSelected + 1
+      })
+
+    case UI_TIME_PERIOD_REDUCE:
+      return Object.assign({}, state, {
+        timePeriodSelected: state.timePeriodSelected - 1
+      })
 
     case UI_TIME_SELECTOR_CHANGE_STATE:
     case TIME_SELECT:

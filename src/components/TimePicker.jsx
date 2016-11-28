@@ -5,6 +5,10 @@ import Timeslots from './Timeslots'
 
 const TimePicker = ({
   timeslots,
+  timePeriods,
+  timePeriodSelected,
+  onTimePeriodAdvance,
+  onTimePeriodReduce,
   onTimePickerClick,
   onTimeSelect,
   state,
@@ -12,7 +16,11 @@ const TimePicker = ({
 }) => {
   const dropdown = (
     <Timeslots
+      timePeriods={timePeriods}
+      timePeriodSelected={timePeriodSelected}
       timeslots={timeslots}
+      onTimePeriodAdvance={onTimePeriodAdvance}
+      onTimePeriodReduce={onTimePeriodReduce}
       onTimeSelect={onTimeSelect}
     />
   )
