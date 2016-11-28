@@ -9,7 +9,10 @@ const container = style({
   alignItems: 'center',
   height: '4rem',
   fontSize: '1em',
-  lineHeight: '4rem'
+  lineHeight: '4rem',
+  position: 'absolute',
+  right: '5%',
+  left: '5%'
 })
 
 const arrow = merge({
@@ -19,6 +22,14 @@ const arrow = merge({
   cursor: 'pointer',
   ':hover': {
     color: 'white'
+  }
+})
+
+const disabled = merge({
+  opacity: '0.2',
+  cursor: 'normal',
+  ':hover': {
+    color: 'black'
   }
 })
 
@@ -43,11 +54,19 @@ const TimeslotsFilter = ({
   onTimePeriodAdvance,
   onTimePeriodReduce
 }) => {
+  const leftButton = timePeriodSelected <= 0
+    ? (<div {...merge(arrow, left, disabled)}><IconArrow direction='left' size='1rem' /></div>)
+    : (<div {...merge(arrow, left)} onClick={onTimePeriodReduce}><IconArrow direction='left' size='1rem' /></div>)
+
+  const rightButton = timePeriodSelected >= 2
+    ? (<div {...merge(arrow, right, disabled)}><IconArrow size='1rem'/></div>)
+    : (<div {...merge(arrow, right)} onClick={onTimePeriodAdvance}><IconArrow size='1rem'/></div>)
+
   return (
     <div {...container}>
-      <div {...merge(arrow, left)} onClick={onTimePeriodReduce}><IconArrow direction='left' size='1rem' /></div>
+      { leftButton }
       <div {...legend}>{timePeriods[timePeriodSelected].name}</div>
-      <div {...merge(arrow, right)} onClick={onTimePeriodAdvance}><IconArrow size='1rem'/></div>
+      { rightButton }
     </div>
   )
 }
