@@ -11,8 +11,8 @@ const container = style({
   fontSize: '1em',
   lineHeight: '4rem',
   position: 'absolute',
-  right: '5%',
-  left: '5%'
+  right: '4%',
+  left: '4%'
 })
 
 const arrow = merge({

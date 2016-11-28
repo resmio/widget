@@ -10,7 +10,7 @@ const timeslotSS = style({
   lineHeight: '4rem',
   margin: '0 auto',
   width: '90%',
-  cursor: 'pointer'
+  cursor: 'pointer',
 })
 
 const timeslotHover = hover({
@@ -37,7 +37,11 @@ const discount = style({
 })
 
 const timeslotContainer = style({
-  borderBottom: '1px solid #DDD',
+  borderBottom: '1px solid #DDD'
+})
+
+const timeslotsContainer = style({
+  paddingTop: '4rem'
 })
 
 const Timeslots= ({
@@ -55,25 +59,27 @@ const Timeslots= ({
       onTimePeriodAdvance={onTimePeriodAdvance}
       onTimePeriodReduce={onTimePeriodReduce}
     />
-    {timeslots.map((timeslot) => {
+    <div {...timeslotsContainer}>
+      {timeslots.map((timeslot) => {
 
-      const onTimeClick = () => {
-        onTimeSelect(timeslot.checksum)
-      }
+        const onTimeClick = () => {
+          onTimeSelect(timeslot.checksum)
+        }
 
-      return (
-        <div {...merge(timeslotContainer, timeslotHover)}
-          key={timeslot.checksum}
-          onClick={onTimeClick}
-        >
-          <div {...timeslotSS}>
-            <span {...time}>{timeslot.local_time_formatted}</span>
-            <span {...spot}>{timeslot.available} available</span>
-            <span {...discount}>{timeslot.price_change}%</span>
+        return (
+          <div {...merge(timeslotContainer, timeslotHover)}
+            key={timeslot.checksum}
+            onClick={onTimeClick}
+          >
+            <div {...timeslotSS}>
+              <span {...time}>{timeslot.local_time_formatted}</span>
+              <span {...spot}>{timeslot.available} available</span>
+              <span {...discount}>{timeslot.price_change}%</span>
+            </div>
           </div>
-        </div>
-      )
-    })}
+        )
+      })}
+    </div>
   </div>
 )
 
