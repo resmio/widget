@@ -1,14 +1,21 @@
 import React from 'react'
-import { style } from 'glamor'
+import { style, hover, merge } from 'glamor'
+
+import TimeslotsFilter from './TimeslotsFilter'
 
 const timeslotSS = style({
-  height: '5rem',
+  height: '4rem',
   fontSize: '1em',
   color: '#555',
-  lineHeight: '5rem',
+  lineHeight: '4rem',
   margin: '0 auto',
   width: '90%',
   cursor: 'pointer'
+})
+
+const timeslotHover = hover({
+  background: '#555',
+  color: 'white'
 })
 
 const time = style({
@@ -18,7 +25,8 @@ const time = style({
 
 const spot = style({
   display: 'inline-block',
-  width: '50%',
+  width: '45%',
+  marginLeft: '5%',
   color: '#999'
 })
 
@@ -37,6 +45,7 @@ const Timeslots= ({
   onTimeSelect
 }) => (
   <div>
+    <TimeslotsFilter />
     {timeslots.map((timeslot) => {
 
       const onTimeClick = () => {
@@ -44,7 +53,7 @@ const Timeslots= ({
       }
 
       return (
-        <div {...timeslotContainer}
+        <div {...merge(timeslotContainer, timeslotHover)}
           key={timeslot.checksum}
           onClick={onTimeClick}
         >

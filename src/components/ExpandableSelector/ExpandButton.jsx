@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import { style, hover, merge } from 'glamor'
 
-import IconArrow from './IconArrow'
+import IconArrow from '../IconArrow'
 
 const arrow = style({
   color: '#CCC',
