@@ -46,6 +46,7 @@ const timeslotsContainer = style({
 
 const Timeslots= ({
   timeslots,
+  timeSelected,
   onTimeSelect,
   timePeriods,
   timePeriodSelected,

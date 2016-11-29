@@ -4,6 +4,7 @@ import ExpandableSelector from './ExpandableSelector'
 import Timeslots from './Timeslots'
 
 const TimePicker = ({
+  timeSelected,
   timeslots,
   timePeriods,
   timePeriodSelected,

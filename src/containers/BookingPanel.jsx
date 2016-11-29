@@ -37,19 +37,17 @@ class BookingPanel extends Component {
       selectedDate,
       selectedGuests,
       maxGuests,
-      minGuests
+      minGuests,
+      timeSelected,
+      timePeriodSelected,
+      timePeriods
     } = this.props.booking
 
     const {
       dateSelectorState,
       guestSelectorState,
-      timeSelectorState,
-      timePeriodSelected
+      timeSelectorState
     } = this.props.ui
-
-    const {
-      timePeriods
-    } = this.props.custom
 
     const panel = style({
       position: 'absolute',
@@ -80,6 +78,7 @@ class BookingPanel extends Component {
         />
         <TimePicker
           timePeriods={timePeriods}
+          timeSelected={timeSelected}
           timePeriodSelected={timePeriodSelected}
           state={timeSelectorState}
           timeslots={availabilities}

@@ -1,8 +1,6 @@
 import {
   UI_DATE_SELECTOR_CHANGE_STATE,
   UI_GUEST_SELECTOR_CHANGE_STATE,
-  UI_TIME_PERIOD_ADVANCE,
-  UI_TIME_PERIOD_REDUCE,
   UI_TIME_SELECTOR_CHANGE_STATE,
   UI_PANEL_ADVANCE,
   UI_PANEL_REDUCE
@@ -52,18 +50,7 @@ function ui(state={}, action) {
         })
       }
 
-    case UI_TIME_PERIOD_ADVANCE:
-      return Object.assign({}, state, {
-        timePeriodSelected: state.timePeriodSelected + 1
-      })
-
-    case UI_TIME_PERIOD_REDUCE:
-      return Object.assign({}, state, {
-        timePeriodSelected: state.timePeriodSelected - 1
-      })
-
     case UI_TIME_SELECTOR_CHANGE_STATE:
-    case TIME_SELECT:
       // If it is expanded everything goes back to semicollapsed
       if (state.timeSelectorState === 'expanded') {
         return Object.assign({}, state, {
@@ -79,6 +66,14 @@ function ui(state={}, action) {
           timeSelectorState  : 'expanded'
         })
       }
+
+    case TIME_SELECT:
+      return Object.assign({}, state, {
+        guestSelectorState: 'semicollapsed',
+        dateSelectorState: 'semicollapsed',
+        timeSelectorState  : 'semicollapsed',
+        timeFocused: action.payload
+      })
 
     case UI_PANEL_ADVANCE:
       return Object.assign({}, state, {

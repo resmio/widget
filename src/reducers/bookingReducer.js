@@ -7,6 +7,11 @@ import {
   BOOKING_POSTING
 } from '../actions/bookingActions'
 
+import {
+  UI_TIME_PERIOD_ADVANCE,
+  UI_TIME_PERIOD_REDUCE
+} from '../actions/uiActions'
+
 function booking (state = {}, action) {
 
   switch (action.type) {
@@ -42,6 +47,22 @@ function booking (state = {}, action) {
     case TIME_SELECT:
       return Object.assign({}, state, {
         selectedTime: action.payload
+      })
+
+    case UI_TIME_PERIOD_ADVANCE:
+      return Object.assign({}, state, {
+        timePeriodSelected: state.timePeriodSelected + 1,
+        timeFocused: state.availabilities.filter(
+          function(availability) {
+            return availability.local_time_formatted === state.timePeriods[state.timePeriodSelected + 1].time
+          }
+        ).checksum
+      })
+
+    case UI_TIME_PERIOD_REDUCE:
+      return Object.assign({}, state, {
+        timePeriodSelected: state.timePeriodSelected - 1,
+        timeFocused: state.timePeriods[state.timePeriodSelected - 1].time
       })
 
     case BOOKING_POSTING:
