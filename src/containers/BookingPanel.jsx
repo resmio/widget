@@ -29,8 +29,7 @@ class BookingPanel extends Component {
       removeGuest,
       selectGuest,
       selectDate,
-      selectTime,
-      fetchAvailabilities
+      selectTime
     } = this.props
 
     const {
@@ -69,7 +68,7 @@ class BookingPanel extends Component {
           number={selectedGuests}
           onEditClicked={uiGuestSelectorChangeState}
           onNumberSelected={selectGuest}
-          onPlusClicked={fetchAvailabilities}
+          onPlusClicked={addGuest}
           onMinusClicked={removeGuest}
         />
         <DatePickerSection

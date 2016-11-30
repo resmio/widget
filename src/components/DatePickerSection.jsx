@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 
 import { momentObj } from 'react-moment-proptypes'
-import { SingleDatePicker } from 'react-dates'
+import { DayPicker } from 'react-dates'
 import 'react-dates/lib/css/_datepicker.css'
 
 import ExpandableSelector from './ExpandableSelector'
@@ -19,20 +19,19 @@ const DatePickerSection = ({
 
   // Need to deal with it once doing the datepicker section
   const main = (
-    <SingleDatePicker
+    <DayPicker
       id="date_input"
       date={selectedDate}
-      focused={true}
-      onFocusChange={onFocusChange}
+      focused={state === 'expanded'}
       numberOfMonths={1}
-      onDateChange={onDateSelected}
+      onDayClick={onDateSelected}
     />
   )
 
   return (
     <ExpandableSelector
       label='DATE'
-      displayedInfo='Odio el calendario'
+      displayedInfo={selectedDate.format('dddd, MMM Do')}
       onExpandClicked={onFocusChange}
       dropdown={main}
       state={state}

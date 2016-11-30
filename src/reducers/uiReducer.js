@@ -8,6 +8,7 @@ import {
 
 import {
   GUEST_SELECT,
+  DATE_SELECT,
   TIME_SELECT,
   AVAILABILITIES_FETCHING_ERROR,
   AVAILABILITIES_FETCHING_SUCCESS,
@@ -28,6 +29,7 @@ function ui(state={}, action) {
       })
 
     case UI_DATE_SELECTOR_CHANGE_STATE:
+    case DATE_SELECT:
       // If it is expanded everything goes back to semicollapsed
       if (state.dateSelectorState === 'expanded') {
         return Object.assign({}, state, {

@@ -34,18 +34,19 @@ export function selectGuest (e) {
 
 // DATE ------------------------------------------------------------------------
 export function selectDate (date) {
-  return {
-    type: DATE_SELECT,
-    payload: date
+  return (dispatch) => {
+    dispatch({type: DATE_SELECT, payload: date})
+    dispatch(fetchAvailabilities(date))
   }
 }
 
 // AVAILABILITIES --------------------------------------------------------------
-export function fetchAvailabilities () {
+export function fetchAvailabilities (date) {
+  console.log('fetchAvailabilities')
   return {
     type: API,
     payload: {
-      url: `/availability?date__gte=${new Date().toJSON().substr(0,10)}`,
+      url: `/availability?date__gte=${date.toJSON().substr(0,10)}`,
       pending: AVAILABILITIES_FETCHING,
       success: AVAILABILITIES_FETCHING_SUCCESS,
       error: AVAILABILITIES_FETCHING_ERROR
