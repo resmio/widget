@@ -45,6 +45,7 @@ class BookingPanel extends Component {
     } = this.props.booking
 
     const {
+      availabilitiesError,
       dateSelectorState,
       guestSelectorState,
       timeSelectorState
@@ -78,6 +79,7 @@ class BookingPanel extends Component {
           onDateSelected={selectDate}
         />
         <TimePicker
+          error={availabilitiesError}
           timePeriods={timePeriods}
           timeSelected={timeSelected}
           timePeriodSelected={timePeriodSelected}

@@ -13,17 +13,20 @@ const TimePicker = ({
   onTimePickerClick,
   onTimeSelect,
   state,
-  dispatch
+  dispatch,
+  error
 }) => {
   const dropdown = (
-    <Timeslots
-      timePeriods={timePeriods}
-      timePeriodSelected={timePeriodSelected}
-      timeslots={timeslots}
-      onTimePeriodAdvance={onTimePeriodAdvance}
-      onTimePeriodReduce={onTimePeriodReduce}
-      onTimeSelect={onTimeSelect}
-    />
+    error
+      ? (<div>OOPS</div>)
+      : (<Timeslots
+          timePeriods={timePeriods}
+          timePeriodSelected={timePeriodSelected}
+          timeslots={timeslots}
+          onTimePeriodAdvance={onTimePeriodAdvance}
+          onTimePeriodReduce={onTimePeriodReduce}
+          onTimeSelect={onTimeSelect}
+        />)
   )
 
   return (

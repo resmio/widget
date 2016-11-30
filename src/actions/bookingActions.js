@@ -45,7 +45,7 @@ export function fetchAvailabilities () {
   return {
     type: API,
     payload: {
-      url: `the-fish/availability?date__gte=${new Date().toJSON().substr(0,10)}`,
+      url: `/availability?date__gte=${new Date().toJSON().substr(0,10)}`,
       pending: AVAILABILITIES_FETCHING,
       success: AVAILABILITIES_FETCHING_SUCCESS,
       error: AVAILABILITIES_FETCHING_ERROR

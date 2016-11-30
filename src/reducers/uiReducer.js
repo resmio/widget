@@ -8,12 +8,24 @@ import {
 
 import {
   GUEST_SELECT,
-  TIME_SELECT
+  TIME_SELECT,
+  AVAILABILITIES_FETCHING_ERROR,
+  AVAILABILITIES_FETCHING_SUCCESS,
 } from '../actions/bookingActions'
 
 function ui(state={}, action) {
 
   switch (action.type) {
+
+    case AVAILABILITIES_FETCHING_ERROR:
+      return Object.assign({}, state, {
+        availabilitiesError: true
+      })
+
+    case AVAILABILITIES_FETCHING_SUCCESS:
+      return Object.assign({}, state, {
+        availabilitiesError: false
+      })
 
     case UI_DATE_SELECTOR_CHANGE_STATE:
       // If it is expanded everything goes back to semicollapsed
