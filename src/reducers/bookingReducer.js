@@ -4,7 +4,10 @@ import {
   GUEST_SELECT,
   DATE_SELECT,
   TIME_SELECT,
-  BOOKING_POSTING
+  BOOKING_POSTING,
+  AVAILABILITIES_FETCHING,
+  AVAILABILITIES_FETCHING_SUCCESS,
+  AVAILABILITIES_FETCHING_ERROR
 } from '../actions/bookingActions'
 
 import {
@@ -47,6 +50,11 @@ function booking (state = {}, action) {
     case TIME_SELECT:
       return Object.assign({}, state, {
         selectedTime: action.payload
+      })
+
+    case AVAILABILITIES_FETCHING_SUCCESS:
+      return Object.assign({}, state, {
+        availabilities: action.response.objects
       })
 
     case UI_TIME_PERIOD_ADVANCE:

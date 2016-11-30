@@ -2,8 +2,6 @@
 // Action types must have a namespace (ex GUEST_ADD)
 // Namespace must come before the action type
 // Async actions use : instead of _ (GUEST:ADDING)
-// Async actions use present and past tense to determine state
-// (ex GUEST:ADDING GUEST:ADDED)
 // Error actions append _ERROR to the action type (TODO_ADD_ERROR)
 
 export const GUEST_ADD = 'GUEST_ADD'
@@ -12,6 +10,10 @@ export const GUEST_SELECT = 'GUEST_SELECT'
 export const DATE_SELECT = 'DATE_SELECT'
 export const TIME_SELECT = 'TIME_SELECT'
 export const BOOKING_POSTING = 'BOOKING:POSTING'
+export const AVAILABILITIES_FETCHING = 'AVAILABILITIES:FETCHING'
+export const AVAILABILITIES_FETCHING_SUCCESS = 'AVAILABILITIES:FETCHING:SUCCESS'
+export const AVAILABILITIES_FETCHING_ERROR = 'AVAILABILITIES:FETCHING:ERROR'
+export const API = 'API'
 
 // GUEST COUNTER ---------------------------------------------------------------
 
@@ -35,6 +37,19 @@ export function selectDate (date) {
   return {
     type: DATE_SELECT,
     payload: date
+  }
+}
+
+// AVAILABILITIES --------------------------------------------------------------
+export function fetchAvailabilities () {
+  return {
+    type: API,
+    payload: {
+      url: `the-fish/availability?date__gte=${new Date().toJSON().substr(0,10)}`,
+      pending: AVAILABILITIES_FETCHING,
+      success: AVAILABILITIES_FETCHING_SUCCESS,
+      error: AVAILABILITIES_FETCHING_ERROR
+    }
   }
 }
 
