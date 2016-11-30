@@ -32,7 +32,7 @@ const TimePicker = ({
   return (
     <ExpandableSelector
       label='TIME'
-      displayedInfo='TIMESLOT SELECCIONADO'
+      displayedInfo={timeSelected}
       onExpandClicked={onTimePickerClick}
       dropdown={dropdown}
       state={state}

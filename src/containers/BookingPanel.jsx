@@ -29,7 +29,8 @@ class BookingPanel extends Component {
       removeGuest,
       selectGuest,
       selectDate,
-      selectTime
+      selectTime,
+      selectedAvailability
     } = this.props
 
     const {
@@ -38,7 +39,6 @@ class BookingPanel extends Component {
       selectedGuests,
       maxGuests,
       minGuests,
-      timeSelected,
       timePeriodSelected,
       timePeriods
     } = this.props.booking
@@ -80,7 +80,7 @@ class BookingPanel extends Component {
         <TimePicker
           error={availabilitiesError}
           timePeriods={timePeriods}
-          timeSelected={timeSelected}
+          timeSelected={selectedAvailability.local_time_formatted}
           timePeriodSelected={timePeriodSelected}
           state={timeSelectorState}
           timeslots={availabilities}
@@ -114,8 +114,25 @@ BookingPanel.propTypes = {
   dateSelect: func
 }
 
+const getSelectedAvailability = (availabilities, checksum) => {
+  // we are returning an empty object at initialization
+  // this is not a goood solution but it works for now
+  // Probably we need to init with some availability in there before
+  // rendering the time picker
+  return availabilities.filter(
+    availability => availability.checksum === checksum
+  )[0] || {}
+}
+
 function mapStateToProps(state) {
-  return state
+  return {
+    ui: state.ui,
+    custom: state.custom,
+    booking: state.booking,
+    selectedAvailability: getSelectedAvailability(
+      state.booking.availabilities, state.booking.selectedTime
+    )
+  }
 }
 
 function mapDispachToProps(dispatch) {
