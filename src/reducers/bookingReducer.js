@@ -3,8 +3,15 @@ import {
   GUEST_REMOVE,
   GUEST_SELECT,
   DATE_SELECT,
-  BOOKING_POSTING
+  TIME_SELECT,
+  BOOKING_POSTING,
+  AVAILABILITIES_FETCHING_SUCCESS
 } from '../actions/bookingActions'
+
+import {
+  UI_TIME_PERIOD_ADVANCE,
+  UI_TIME_PERIOD_REDUCE
+} from '../actions/uiActions'
 
 function booking (state = {}, action) {
 
@@ -38,42 +45,39 @@ function booking (state = {}, action) {
         selectedDate: action.payload
       })
 
+    case TIME_SELECT:
+      return Object.assign({}, state, {
+        selectedTime: action.payload
+      })
+
+    case AVAILABILITIES_FETCHING_SUCCESS:
+      return Object.assign({}, state, {
+        availabilities: action.response.objects
+      })
+
+    case UI_TIME_PERIOD_ADVANCE:
+      return Object.assign({}, state, {
+        timePeriodSelected: state.timePeriodSelected + 1,
+        timeFocused: state.availabilities.filter(
+          function(availability) {
+            return availability.local_time_formatted === state.timePeriods[state.timePeriodSelected + 1].time
+          }
+        ).checksum
+      })
+
+    case UI_TIME_PERIOD_REDUCE:
+      return Object.assign({}, state, {
+        timePeriodSelected: state.timePeriodSelected - 1,
+        timeFocused: state.timePeriods[state.timePeriodSelected - 1].time
+      })
+
     case BOOKING_POSTING:
       console.log(BOOKING_POSTING)
       return state
 
     default:
       return state
-
-    case 'UI_GUEST_DROPDOWN_SWITCH':
-      return Object.assign({}, state, {
-        guestSelectorCollapsed: false
-      })
-
-
-    case 'UI_CALENDAR_SWITCH_FOCUS':
-      return Object.assign({}, state, {
-        calendarFocused: !state.calendarFocused
-      })
-
-    case 'UI_PANEL_ADVANCE':
-      if (state.currentPanel < state.numberOfPanels) {
-        return Object.assign({}, state, {
-          currentPanel: state.currentPanel + 1
-        })
-      } else {
-        return state
-      }
-
-    case 'UI_PANEL_REDUCE':
-      if (state.currentPanel >= 2) {
-        return Object.assign({}, state, {
-          currentPanel: state.currentPanel - 1
-        })
-      } else {
-        return state
-      }
-  }
+    }
 }
 
 export default booking

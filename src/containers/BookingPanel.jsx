@@ -5,19 +5,13 @@ import * as bookingActions from '../actions/bookingActions'
 import * as uiActions from '../actions/uiActions'
 
 // 3rd party components
-import { momentObj } from 'react-moment-proptypes'
-import { SingleDatePicker } from 'react-dates'
-import 'react-dates/lib/css/_datepicker.css'
 import { style } from 'glamor'
+import { momentObj } from 'react-moment-proptypes'
 
 // components
 import NumberPicker from '../components/NumberPicker'
-import TimeslotPicker from '../components/TimeslotPicker'
-
-// styles
-const calendarIsExpanded = style({
-  height: '400px'
-})
+import DatePickerSection from '../components/DatePickerSection'
+import TimePicker from '../components/TimePicker'
 
 class BookingPanel extends Component {
 
@@ -26,13 +20,17 @@ class BookingPanel extends Component {
     // Find a better way to do it
     const {
       // actions
-      uiSwitchGuestDropdown,
-      uiSwitchCalendarFocus,
+      advanceTimePeriod,
+      reduceTimePeriod,
+      uiGuestSelectorChangeState,
+      uiDateSelectorChangeState,
+      uiTimeSelectorChangeState,
       addGuest,
       removeGuest,
       selectGuest,
       selectDate,
-      selectTimeslot
+      selectTime,
+      selectedAvailability
     } = this.props
 
     const {
@@ -40,57 +38,57 @@ class BookingPanel extends Component {
       selectedDate,
       selectedGuests,
       maxGuests,
-      minGuests
+      minGuests,
+      timePeriodSelected,
+      timePeriods
     } = this.props.booking
 
     const {
-      defaultHeight,
-    } = this.props.custom
-
-    const {
-      calendarFocused,
-      guestSelectorCollapsed
+      availabilitiesError,
+      dateSelectorState,
+      guestSelectorState,
+      timeSelectorState
     } = this.props.ui
 
-    const expanded = calendarFocused ? calendarIsExpanded : null
-
     const panel = style({
-      height: defaultHeight,
-      overflow: 'scroll'
+      position: 'absolute',
+      top: '6em',
+      bottom: '6em',
+      left: '0',
+      right: '0'
     })
-
     return (
       <section {...panel}>
         <NumberPicker
-          collapsed={guestSelectorCollapsed}
+          state={guestSelectorState}
           legendSingular='guest'
           legendPlural='guests'
           max={maxGuests}
           min={minGuests}
           number={selectedGuests}
-          onEditClicked={uiSwitchGuestDropdown}
+          onEditClicked={uiGuestSelectorChangeState}
           onNumberSelected={selectGuest}
           onPlusClicked={addGuest}
           onMinusClicked={removeGuest}
         />
-        <section className={`calendar ${expanded}`}>
-            <span>Date</span>
-            <SingleDatePicker
-              id="date_input"
-              date={selectedDate}
-              focused={calendarFocused}
-              onFocusChange={uiSwitchCalendarFocus}
-              numberOfMonths={1}
-              onDateChange={selectDate}
-            />
-        </section>
-        <section>
-          <TimeslotPicker
-            timeslots={availabilities}
-            onTimeslotClick={selectTimeslot}
-            collapsed={true}
-          />
-        </section>
+        <DatePickerSection
+          state={dateSelectorState}
+          selectedDate={selectedDate}
+          onFocusChange={uiDateSelectorChangeState}
+          onDateSelected={selectDate}
+        />
+        <TimePicker
+          error={availabilitiesError}
+          timePeriods={timePeriods}
+          timeSelected={selectedAvailability.local_time_formatted}
+          timePeriodSelected={timePeriodSelected}
+          state={timeSelectorState}
+          timeslots={availabilities}
+          onTimePickerClick={uiTimeSelectorChangeState}
+          onTimeSelect={selectTime}
+          onTimePeriodAdvance={advanceTimePeriod}
+          onTimePeriodReduce={reduceTimePeriod}
+        />
       </section>
     )
   }
@@ -110,14 +108,34 @@ BookingPanel.propTypes = {
   maxGuests: number,
   minGuests: number,
   guestSelectorCollapsed: bool,
-  uiSwitchGuestDropdown: func,
+  uiGuestSelectorChangeState: func,
   guestSelect: func,
-  uiSwitchCalendarFocus: func,
+  uiDatepickerChangeState: func,
   dateSelect: func
 }
 
+const getSelectedAvailability = (availabilities, checksum) => {
+  // we are returning an empty object at initialization
+  // this is not a goood solution but it works for now
+  // Probably we need to init with some availability in there before
+  // rendering the time picker
+  return availabilities.filter(
+    availability => availability.checksum === checksum
+  )[0] || {}
+}
+
 function mapStateToProps(state) {
-  return state
+  return {
+    ui: state.ui,
+    custom: state.custom,
+    booking: state.booking,
+    // Maybe move this selector to the booking reducer
+    // https://medium.com/javascript-scene/10-tips-for-better-redux-architecture-69250425af44#.da5nnmgvg
+    // See point 9
+    selectedAvailability: getSelectedAvailability(
+      state.booking.availabilities, state.booking.selectedTime
+    )
+  }
 }
 
 function mapDispachToProps(dispatch) {

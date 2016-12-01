@@ -22,9 +22,9 @@ const DropdownOption = ({
   index,
   onClickAction
 }) => (
-  <li {...option} id={index} onClick={onClickAction}>
+  <div {...option} id={index} onClick={onClickAction}>
     {children}
-  </li>
+  </div>
 )
 
 DropdownOption.propTypes = {

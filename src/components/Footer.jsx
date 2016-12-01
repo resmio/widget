@@ -21,11 +21,15 @@ const Footer = (props) => {
   // styles
   const footer = style({
     alignItems: 'center',
+    fontSize: '1.2rem',
     borderTop: `1px solid #DDD`,
     display: 'flex',
-    height: '60px',
+    height: '6em',
+    position: 'absolute',
+    bottom: '0',
+    left: '0',
+    right: '0',
     justifyContent: 'center',
-    width: '100%'
   })
 
   const stepCounter = style({

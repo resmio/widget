@@ -6,23 +6,43 @@
 // (ex GUEST:ADDING GUEST:ADDED)
 // Error actions append _ERROR to the action type (TODO_ADD_ERROR)
 
-export const UI_GUEST_DROPDOWN_SWITCH = 'UI_GUEST_DROPDOWN_SWITCH'
-export const UI_CALENDAR_SWITCH_FOCUS = 'UI_CALENDAR_SWITCH_FOCUS'
+// First Panel collapsing/expanding selectors
+export const UI_DATE_SELECTOR_CHANGE_STATE = 'UI_DATE_SELECTOR_CHANGE_STATE'
+export const UI_GUEST_SELECTOR_CHANGE_STATE = 'UI_GUEST_SELECTOR_CHANGE_STATE'
+export const UI_TIME_SELECTOR_CHANGE_STATE = 'UI_TIME_SELECTOR_CHANGE_STATE'
+
+// Timepicker
+export const UI_TIME_PERIOD_ADVANCE = 'UI_TIME_PERIOD_ADVANCE'
+export const UI_TIME_PERIOD_REDUCE = 'UI_TIME_PERIOD_REDUCE'
+
+// Panel navigation
 export const UI_PANEL_ADVANCE = 'UI_PANEL_ADVANCE'
 export const UI_PANEL_REDUCE = 'UI_PANEL_REDUCE'
 
-export function uiSwitchGuestDropdown () {
-  return { type: 'UI_GUEST_DROPDOWN_SWITCH' }
+export function uiGuestSelectorChangeState () {
+  return { type: UI_GUEST_SELECTOR_CHANGE_STATE }
 }
 
-export function uiSwitchCalendarFocus () {
-  return { type: 'UI_CALENDAR_SWITCH_FOCUS' }
+export function uiTimeSelectorChangeState () {
+  return { type: UI_TIME_SELECTOR_CHANGE_STATE }
+}
+
+export function uiDateSelectorChangeState () {
+  return { type: UI_DATE_SELECTOR_CHANGE_STATE }
 }
 
 export function advancePanel () {
-  return { type: 'UI_PANEL_ADVANCE' }
+  return { type: UI_PANEL_ADVANCE }
 }
 
 export function reducePanel () {
-  return { type: 'UI_PANEL_REDUCE' }
+  return { type: UI_PANEL_REDUCE }
+}
+
+export function advanceTimePeriod () {
+  return { type: UI_TIME_PERIOD_ADVANCE }
+}
+
+export function reduceTimePeriod () {
+  return { type: UI_TIME_PERIOD_REDUCE }
 }

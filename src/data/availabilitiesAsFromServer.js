@@ -1,5 +1,4 @@
 /* eslint-disable */
-
 const availabilities = {
   "meta": {
     "limit": 1000,

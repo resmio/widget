@@ -39,7 +39,8 @@ const AppBase = (props) => {
     maxHeight: '736px',
     minHeight: '500px',
     width: renderAtMaxSize ? '100%' : defaultWidth,
-    heigth: renderAtMaxSize ? '100%' : defaultHeight
+    height: renderAtMaxSize ? '100%' : defaultHeight,
+    position: 'relative'
   })
 
   return (
