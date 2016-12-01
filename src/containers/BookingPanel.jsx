@@ -5,10 +5,10 @@ import * as bookingActions from '../actions/bookingActions'
 import * as uiActions from '../actions/uiActions'
 
 // 3rd party components
-import { style } from 'glamor'
 import { momentObj } from 'react-moment-proptypes'
 
 // components
+import Panel from '../components/Panel'
 import NumberPicker from '../components/NumberPicker'
 import DatePickerSection from '../components/DatePickerSection'
 import TimePicker from '../components/TimePicker'
@@ -50,15 +50,8 @@ class BookingPanel extends Component {
       timeSelectorState
     } = this.props.ui
 
-    const panel = style({
-      position: 'absolute',
-      top: '6em',
-      bottom: '6em',
-      left: '0',
-      right: '0'
-    })
     return (
-      <section {...panel}>
+      <Panel>
         <NumberPicker
           state={guestSelectorState}
           legendSingular='guest'
@@ -89,7 +82,7 @@ class BookingPanel extends Component {
           onTimePeriodAdvance={advanceTimePeriod}
           onTimePeriodReduce={reduceTimePeriod}
         />
-      </section>
+      </Panel>
     )
   }
 }
