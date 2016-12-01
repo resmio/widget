@@ -20,7 +20,6 @@ const apiMiddleware = ({ getState, dispatch }) => next => action => {
       }
     })
     .catch(handleError)
-
 }
 
 export default apiMiddleware

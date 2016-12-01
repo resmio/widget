@@ -129,6 +129,9 @@ function mapStateToProps(state) {
     ui: state.ui,
     custom: state.custom,
     booking: state.booking,
+    // Maybe move this selector to the booking reducer
+    // https://medium.com/javascript-scene/10-tips-for-better-redux-architecture-69250425af44#.da5nnmgvg
+    // See point 9
     selectedAvailability: getSelectedAvailability(
       state.booking.availabilities, state.booking.selectedTime
     )
