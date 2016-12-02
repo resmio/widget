@@ -8,7 +8,7 @@ const preloadedState = {
     minGuests: 1,
     selectedDate: moment(),
     selectedGuests: 1,
-    selectedTime: '',
+    selectedAvailability: '',
     timePeriodSelected: 0,
     timeFocused: '',
     timePeriods: [

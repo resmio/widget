@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect,  } from 'react-redux'
 import * as bookingActions from '../actions/bookingActions'
 import * as uiActions from '../actions/uiActions'
+import { getSelectedAvailability } from '../selectors'
 
 // 3rd party components
 import { momentObj } from 'react-moment-proptypes'
@@ -107,27 +108,12 @@ BookingPanel.propTypes = {
   dateSelect: func
 }
 
-const getSelectedAvailability = (availabilities, checksum) => {
-  // we are returning an empty object at initialization
-  // this is not a goood solution but it works for now
-  // Probably we need to init with some availability in there before
-  // rendering the time picker
-  return availabilities.filter(
-    availability => availability.checksum === checksum
-  )[0] || {}
-}
-
 function mapStateToProps(state) {
   return {
     ui: state.ui,
     custom: state.custom,
     booking: state.booking,
-    // Maybe move this selector to the booking reducer
-    // https://medium.com/javascript-scene/10-tips-for-better-redux-architecture-69250425af44#.da5nnmgvg
-    // See point 9
-    selectedAvailability: getSelectedAvailability(
-      state.booking.availabilities, state.booking.selectedTime
-    )
+    selectedAvailability: getSelectedAvailability(state)
   }
 }
 

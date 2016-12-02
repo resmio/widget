@@ -5,13 +5,13 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux'
 import store from './store'
 
-import App from './App';
+import AppBase from './containers/AppBase';
 import './styles/index';
 
 const MOUNT_NODE = document.getElementById('root')
 const app = (
   <Provider store={store}>
-    <App />
+    <AppBase />
   </Provider>
 )
 

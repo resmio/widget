@@ -1,3 +1,9 @@
+// Move all this stuff to AppBase
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as bookingActions from '../actions/bookingActions'
+import * as uiActions from '../actions/uiActions'
+
 // react & redux
 import React from 'react';
 import { style } from 'glamor'
@@ -9,7 +15,6 @@ import Footer from '../components/Footer'
 
 const AppBase = (props) => {
   const {
-    // Variables
     buttonColor,
     defaultHeight,
     defaultWidth,
@@ -49,7 +54,7 @@ const AppBase = (props) => {
         bgImage={headerImage}
         bgColor={headerColor}
         color={headerTextColor}
-        subheaderText={facility}
+        subheaderText={ currentPanel === 1 ? facility : 'Booking Info' }
       />
       <PanelRouter panel={currentPanel} />
       <Footer
@@ -65,4 +70,18 @@ const AppBase = (props) => {
   )
 }
 
-export default AppBase;
+// Wiring
+const mapStateToProps = (state) => {
+  return {
+    custom: state.custom,
+    ui: state.ui
+  }
+}
+
+const  mapDispachToProps = (dispatch) => {
+  return bindActionCreators(
+    Object.assign({}, bookingActions, uiActions), dispatch
+  )
+}
+
+export default connect(mapStateToProps, mapDispachToProps)(AppBase)

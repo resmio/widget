@@ -47,7 +47,7 @@ function booking (state = {}, action) {
 
     case TIME_SELECT:
       return Object.assign({}, state, {
-        selectedTime: action.payload
+        selectedAvailability: action.payload
       })
 
     case AVAILABILITIES_FETCHING_SUCCESS:
