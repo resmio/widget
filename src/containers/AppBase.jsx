@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as bookingActions from '../actions/bookingActions'
 import * as uiActions from '../actions/uiActions'
+import { getDisplayBooking } from '../selectors'
 
 // react & redux
 import React from 'react';
@@ -34,6 +35,7 @@ const AppBase = (props) => {
   const {
     reducePanel,
     advancePanel,
+    bookingInfo,
     postBooking
   } = props
 
@@ -54,7 +56,7 @@ const AppBase = (props) => {
         bgImage={headerImage}
         bgColor={headerColor}
         color={headerTextColor}
-        subheaderText={ currentPanel === 1 ? facility : 'Booking Info' }
+        subheaderText={ currentPanel === 1 ? facility : bookingInfo }
       />
       <PanelRouter panel={currentPanel} />
       <Footer
@@ -74,7 +76,8 @@ const AppBase = (props) => {
 const mapStateToProps = (state) => {
   return {
     custom: state.custom,
-    ui: state.ui
+    ui: state.ui,
+    bookingInfo: getDisplayBooking(state)
   }
 }
 

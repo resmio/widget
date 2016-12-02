@@ -1,7 +1,7 @@
-// import { createSelector } from 'reselect'
+import { createSelector } from 'reselect'
+import { formatLocalDate } from '../utils/dates'
 
-// const getGuests = (state) => state.booking.selectedGuests
-// const getDate = (state) => state.booking.selectedDate
+const getGuests = (state) => state.booking.selectedGuests
 
 export const getSelectedAvailability = (state) => {
   const { availabilities, selectedAvailability } = state.booking
@@ -15,11 +15,14 @@ export const getSelectedAvailability = (state) => {
   )[0] || {}
 }
 
-//
-// export const getSelectedTime = createSelector(
-//   []
-// )
-//
+
+export const getDisplayBooking = createSelector(
+  [getGuests, getSelectedAvailability],
+  (guests, availability) => {
+    return `${guests} Guests, ${formatLocalDate(availability.local_date_formatted)}`
+  }
+)
+
 // export const getVisibleTodos = createSelector(
 //   [ getVisibilityFilter, getTodos ],
 //   (visibilityFilter, todos) => {
