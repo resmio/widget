@@ -4,6 +4,13 @@
 // Async actions use : instead of _ (GUEST:ADDING)
 // Error actions append _ERROR to the action type (TODO_ADD_ERROR)
 
+export const API = 'API'
+export const AVAILABILITIES_FETCHING = 'AVAILABILITIES:FETCHING'
+export const AVAILABILITIES_FETCHING_SUCCESS = 'AVAILABILITIES:FETCHING:SUCCESS'
+export const AVAILABILITIES_FETCHING_ERROR = 'AVAILABILITIES:FETCHING:ERROR'
+export const BOOKING_POSTING = 'BOOKING:POSTING'
+export const BOOKING_POSTING_SUCCESS = 'BOOKING:POSTING:SUCCESS'
+export const BOOKING_POSTING_ERROR = 'BOOKING:POSTING:ERROR'
 export const CHECKBOX_CHANGED = 'CHECKBOX_CHANGED'
 export const GUEST_ADD = 'GUEST_ADD'
 export const GUEST_REMOVE = 'GUEST_REMOVE'
@@ -11,11 +18,6 @@ export const GUEST_SELECT = 'GUEST_SELECT'
 export const INPUT_CHANGED = 'INPUT_CHANGED'
 export const DATE_SELECT = 'DATE_SELECT'
 export const TIME_SELECT = 'TIME_SELECT'
-export const BOOKING_POSTING = 'BOOKING:POSTING'
-export const AVAILABILITIES_FETCHING = 'AVAILABILITIES:FETCHING'
-export const AVAILABILITIES_FETCHING_SUCCESS = 'AVAILABILITIES:FETCHING:SUCCESS'
-export const AVAILABILITIES_FETCHING_ERROR = 'AVAILABILITIES:FETCHING:ERROR'
-export const API = 'API'
 
 // GUEST COUNTER ---------------------------------------------------------------
 
@@ -86,5 +88,31 @@ export function checkboxChanged (name, checked) {
 }
 
 export function postBooking () {
-  return { type: BOOKING_POSTING }
+  return (dispatch, getState) => {
+    dispatch({
+      type: API,
+      payload: {
+        url: '/bookings',
+        method: 'POST',
+        body: state => ({
+          num: state.booking.selectedGuests,
+          date: '2016-11-30T17:30:00.000Z',
+          name: state.booking.guestName,
+          email: state.booking.guestName,
+          phone: state.booking.guestPhone,
+          checksum: '7128540c68819986d83bba0d4eb6825d',
+          facility: `/v1/facility/${state.custom.facility}`,
+          source: 'widget test',
+          fb_access_token :null,
+          resource_group: '',
+          newsletter_subscribe: state.booking.newsletterSubscription,
+          resmio_newsletter_subscribe :false,
+          booking_request_parameters: {}
+        }),
+        pending: BOOKING_POSTING,
+        success: BOOKING_POSTING_SUCCESS,
+        error: BOOKING_POSTING_ERROR
+      }
+    })
+  }
 }

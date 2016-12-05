@@ -6,11 +6,16 @@ const apiMiddleware = ({ getState, dispatch }) => next => action => {
   }
 
   const { payload } = action
+  const method = payload.method || 'get'
+
   const handleError = (response => dispatch({ type: payload.error, response }))
 
   const facility = getState().custom.facility
 
-  fetch(`${API_ROOT}${facility}${payload.url}`)
+  fetch(`${API_ROOT}${facility}${payload.url}`, {
+    method: method,
+    body: JSON.stringify(payload.body(getState()))
+  })
     .then(response => {
       if (response.status >= 300) {
         handleError(response)

@@ -1,4 +1,5 @@
 import {
+  BOOKING_POSTING_SUCCESS,
   CHECKBOX_CHANGED,
   GUEST_ADD,
   GUEST_REMOVE,
@@ -62,6 +63,10 @@ function booking (state = {}, action) {
       return Object.assign({}, state, {
         availabilities: action.response.objects
       })
+
+    case BOOKING_POSTING_SUCCESS:
+      console.log(action.response)
+      return state
 
     case UI_TIME_PERIOD_ADVANCE:
       return Object.assign({}, state, {
