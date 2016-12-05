@@ -34,7 +34,7 @@ const preloadedState = {
     renderAtMaxSize: false
   },
   ui: {
-    currentPanel: 2,
+    currentPanel: 1,
     guestSelectorState: 'collapsed',
     dateSelectorState: 'collapsed',
     timeSelectorState  : 'expanded',

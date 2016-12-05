@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react'
-import {style, merge} from 'glamor'
+import {style} from 'glamor'
 import {colors} from '../styles/variables'
 
 const inputSS = style({
@@ -20,10 +20,10 @@ const labelSS = style({
   display: 'block'
 })
 
-const disabledSS = style({
-  cursor: 'not-allowed',
-  backgroundColor: colors.gallery
-})
+// const disabledSS = style({
+//   cursor: 'not-allowed',
+//   backgroundColor: colors.gallery
+// })
 
 const TextField = (props) => {
   // let borderColorStyle = Object.assign({},

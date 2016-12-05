@@ -3,6 +3,7 @@
 // Namespace must come before the action type
 // Async actions use : instead of _ (GUEST:ADDING)
 // Error actions append _ERROR to the action type (TODO_ADD_ERROR)
+import { getSelectedAvailability } from '../selectors'
 
 export const API = 'API'
 export const AVAILABILITIES_FETCHING = 'AVAILABILITIES:FETCHING'
@@ -96,11 +97,11 @@ export function postBooking () {
         method: 'POST',
         body: state => ({
           num: state.booking.selectedGuests,
-          date: '2016-11-30T17:30:00.000Z',
+          date: getSelectedAvailability(state).date,
           name: state.booking.guestName,
           email: state.booking.guestName,
           phone: state.booking.guestPhone,
-          checksum: '7128540c68819986d83bba0d4eb6825d',
+          checksum: state.booking.selectedAvailability,
           facility: `/v1/facility/${state.custom.facility}`,
           source: 'widget test',
           fb_access_token :null,
