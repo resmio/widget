@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect,  } from 'react-redux'
+
 import * as bookingActions from '../actions/bookingActions'
 
 // components
@@ -12,13 +13,15 @@ class GuestPanel extends Component {
 
   render () {
     const {
+      checkboxChanged,
       inputChanged
     } = this.props
 
     const {
       guestName,
       guestEmail,
-      guestPhone
+      guestPhone,
+      newsletterSubscription
     } = this.props.booking
 
     return (
@@ -30,7 +33,7 @@ class GuestPanel extends Component {
             placeHolder='John Doe'
             key='name'
             defaultValue={guestName}
-            onChange={(e)=>{inputChanged(e.target.id, e.target.value)}}
+            onChange={(e)=>{inputChanged('guestName', e.target.value)}}
           />
           <Input
             label='Email'
@@ -38,7 +41,7 @@ class GuestPanel extends Component {
             placeHolder='example@mail.com'
             key='email'
             defaultValue={guestEmail}
-            onChange={(e)=>{inputChanged(e.target.id, e.target.value)}}
+            onChange={(e)=>{inputChanged('guestEmail', e.target.value)}}
           />
           <Input
             label='Phone Number'
@@ -46,10 +49,15 @@ class GuestPanel extends Component {
             placeHolder='017645990313'
             key='phone'
             defaultValue={guestPhone}
-            onChange={(e)=>{inputChanged(e.target.id, e.target.value)}}
+            onChange={(e)=>{inputChanged('guestPhone', e.target.value)}}
           />
-          <input type='checkbox' id='newsletter'/>
-          <label htmlFor='newsletter'>Follow restaurant newsletter</label>
+          <input
+            type='checkbox'
+            checked={newsletterSubscription}
+            id='newsletterSubscription'
+            onChange={(e)=>{checkboxChanged('newsletterSubscription', e.target.checked)}}
+           />
+           <label htmlFor='newsletterSubscription'>Follow restaurant newsletter</label>
         </Form>
       </Panel>
     )

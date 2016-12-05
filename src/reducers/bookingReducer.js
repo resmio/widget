@@ -1,4 +1,5 @@
 import {
+  CHECKBOX_CHANGED,
   GUEST_ADD,
   GUEST_REMOVE,
   GUEST_SELECT,
@@ -47,6 +48,7 @@ function booking (state = {}, action) {
       })
 
     case INPUT_CHANGED:
+    case CHECKBOX_CHANGED:
       return Object.assign({}, state, {
         [action.payload.name]: action.payload.value
       })

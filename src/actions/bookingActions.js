@@ -4,6 +4,7 @@
 // Async actions use : instead of _ (GUEST:ADDING)
 // Error actions append _ERROR to the action type (TODO_ADD_ERROR)
 
+export const CHECKBOX_CHANGED = 'CHECKBOX_CHANGED'
 export const GUEST_ADD = 'GUEST_ADD'
 export const GUEST_REMOVE = 'GUEST_REMOVE'
 export const GUEST_SELECT = 'GUEST_SELECT'
@@ -70,6 +71,16 @@ export function inputChanged (name, value) {
     payload: {
       name: name,
       value: value
+    }
+  }
+}
+
+export function checkboxChanged (name, checked) {
+  return {
+    type: CHECKBOX_CHANGED,
+    payload: {
+      name: name,
+      value: checked
     }
   }
 }

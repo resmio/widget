@@ -7,6 +7,7 @@ const preloadedState = {
     guestEmail: '',
     guestName: '',
     guestPhone: '',
+    newsletterSubscription: false,
     maxGuests: 6,
     minGuests: 1,
     selectedDate: moment(),
@@ -29,7 +30,7 @@ const preloadedState = {
     headerColor: '#53628C',
     headerImage: 'https://zenezake.files.wordpress.com/2015/07/img_6715.jpg',
     headerTextColor: 'white',
-    numberOfPanels: 3,
+    numberOfPanels: 2,
     renderAtMaxSize: false
   },
   ui: {
