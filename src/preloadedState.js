@@ -4,6 +4,9 @@ import availabilities from './data/availabilities'
 const preloadedState = {
   booking: {
     availabilities: availabilities,
+    guestEmail: '',
+    guestName: '',
+    guestPhone: '',
     maxGuests: 6,
     minGuests: 1,
     selectedDate: moment(),
@@ -30,7 +33,7 @@ const preloadedState = {
     renderAtMaxSize: false
   },
   ui: {
-    currentPanel: 1,
+    currentPanel: 2,
     guestSelectorState: 'collapsed',
     dateSelectorState: 'collapsed',
     timeSelectorState  : 'expanded',

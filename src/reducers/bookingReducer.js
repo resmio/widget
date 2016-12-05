@@ -3,6 +3,7 @@ import {
   GUEST_REMOVE,
   GUEST_SELECT,
   DATE_SELECT,
+  INPUT_CHANGED,
   TIME_SELECT,
   BOOKING_POSTING,
   AVAILABILITIES_FETCHING_SUCCESS
@@ -43,6 +44,11 @@ function booking (state = {}, action) {
     case DATE_SELECT:
       return Object.assign({}, state, {
         selectedDate: action.payload
+      })
+
+    case INPUT_CHANGED:
+      return Object.assign({}, state, {
+        [action.payload.name]: action.payload.value
       })
 
     case TIME_SELECT:

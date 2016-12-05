@@ -7,6 +7,7 @@
 export const GUEST_ADD = 'GUEST_ADD'
 export const GUEST_REMOVE = 'GUEST_REMOVE'
 export const GUEST_SELECT = 'GUEST_SELECT'
+export const INPUT_CHANGED = 'INPUT_CHANGED'
 export const DATE_SELECT = 'DATE_SELECT'
 export const TIME_SELECT = 'TIME_SELECT'
 export const BOOKING_POSTING = 'BOOKING:POSTING'
@@ -63,6 +64,16 @@ export function selectTime (checksum) {
 }
 
 // FORM ------------------------------------------------------------------------
+export function inputChanged (name, value) {
+  return {
+    type: INPUT_CHANGED,
+    payload: {
+      name: name,
+      value: value
+    }
+  }
+}
+
 export function postBooking () {
   return { type: BOOKING_POSTING }
 }
