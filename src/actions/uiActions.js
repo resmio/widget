@@ -6,6 +6,8 @@
 // (ex GUEST:ADDING GUEST:ADDED)
 // Error actions append _ERROR to the action type (TODO_ADD_ERROR)
 
+export const UI_APP_INIT = 'UI_APP_INIT'
+
 // First Panel collapsing/expanding selectors
 export const UI_DATE_SELECTOR_CHANGE_STATE = 'UI_DATE_SELECTOR_CHANGE_STATE'
 export const UI_GUEST_SELECTOR_CHANGE_STATE = 'UI_GUEST_SELECTOR_CHANGE_STATE'
@@ -18,6 +20,13 @@ export const UI_TIME_PERIOD_REDUCE = 'UI_TIME_PERIOD_REDUCE'
 // Panel navigation
 export const UI_PANEL_ADVANCE = 'UI_PANEL_ADVANCE'
 export const UI_PANEL_REDUCE = 'UI_PANEL_REDUCE'
+
+export function appInit () {
+  // return (dispatch) => {
+  //   dispatch({type: UI_APP_INIT})
+  //   dispatch(fetchAvailabilities(date))
+  // }
+}
 
 export function uiGuestSelectorChangeState () {
   return { type: UI_GUEST_SELECTOR_CHANGE_STATE }

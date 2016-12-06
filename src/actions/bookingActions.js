@@ -41,21 +41,23 @@ export function selectGuest (e) {
 export function selectDate (date) {
   return (dispatch) => {
     dispatch({type: DATE_SELECT, payload: date})
-    dispatch(fetchAvailabilities(date))
+    dispatch(fetchAvailabilities())
   }
 }
 
 // AVAILABILITIES --------------------------------------------------------------
-export function fetchAvailabilities (date) {
-  console.log('fetchAvailabilities')
-  return {
-    type: API,
-    payload: {
-      url: `/availability?date__gte=${date.toJSON().substr(0,10)}`,
-      pending: AVAILABILITIES_FETCHING,
-      success: AVAILABILITIES_FETCHING_SUCCESS,
-      error: AVAILABILITIES_FETCHING_ERROR
-    }
+export function fetchAvailabilities () {
+  return  (dispatch, getState) => {
+    const date = getState().booking.selectedDate.toJSON().substr(0,10)
+    dispatch({
+      type: API,
+      payload: {
+        url: `/availability?date__gte=${date}`,
+        pending: AVAILABILITIES_FETCHING,
+        success: AVAILABILITIES_FETCHING_SUCCESS,
+        error: AVAILABILITIES_FETCHING_ERROR
+      }
+    })
   }
 }
 

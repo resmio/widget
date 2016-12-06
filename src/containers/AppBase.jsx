@@ -6,7 +6,7 @@ import * as uiActions from '../actions/uiActions'
 import { getDisplayBooking } from '../selectors'
 
 // react & redux
-import React from 'react';
+import React, { Component } from 'react';
 import { style } from 'glamor'
 
 // components
@@ -14,62 +14,69 @@ import Header from '../components/Header'
 import PanelRouter from '../components/PanelRouter'
 import Footer from '../components/Footer'
 
-const AppBase = (props) => {
-  const {
-    buttonColor,
-    defaultHeight,
-    defaultWidth,
-    facility,
-    headerColor,
-    headerTextColor,
-    headerImage,
-    logoUrl,
-    numberOfPanels,
-    renderAtMaxSize
-  } = props.custom
+class AppBase extends Component {
 
-  const {
-    currentPanel
-  } = props.ui
+  componentDidMount() {
+    uiActions.appInit()
+  }
 
-  const {
-    reducePanel,
-    advancePanel,
-    bookingInfo,
-    postBooking
-  } = props
+  render() {
+    const {
+      buttonColor,
+      defaultHeight,
+      defaultWidth,
+      facility,
+      headerColor,
+      headerTextColor,
+      headerImage,
+      logoUrl,
+      numberOfPanels,
+      renderAtMaxSize
+    } = this.props.custom
 
-  // generate styles
-  const widgetSS = style({
-    minWidth: '300px',
-    maxWidth: '736px',
-    maxHeight: '736px',
-    minHeight: '500px',
-    width: renderAtMaxSize ? '100%' : defaultWidth,
-    height: renderAtMaxSize ? '100%' : defaultHeight,
-    position: 'relative'
-  })
+    const {
+      currentPanel
+    } = this.props.ui
 
-  return (
-    <div {...widgetSS}>
-      <Header
-        bgImage={headerImage}
-        bgColor={headerColor}
-        color={headerTextColor}
-        subheaderText={ currentPanel === 1 ? facility : bookingInfo }
-      />
-      <PanelRouter panel={currentPanel} />
-      <Footer
-        currentPanel={currentPanel}
-        logo={logoUrl}
-        buttonColor={buttonColor}
-        numberOfPanels={numberOfPanels}
-        onLastClicked={postBooking}
-        onNextClicked={advancePanel}
-        onPreviousClicked={reducePanel}
-      />
-    </div>
-  )
+    const {
+      reducePanel,
+      advancePanel,
+      bookingInfo,
+      postBooking
+    } = this.props
+
+    // generate styles
+    const widgetSS = style({
+      minWidth: '300px',
+      maxWidth: '736px',
+      maxHeight: '736px',
+      minHeight: '500px',
+      width: renderAtMaxSize ? '100%' : defaultWidth,
+      height: renderAtMaxSize ? '100%' : defaultHeight,
+      position: 'relative'
+    })
+
+    return (
+      <div {...widgetSS}>
+        <Header
+          bgImage={headerImage}
+          bgColor={headerColor}
+          color={headerTextColor}
+          subheaderText={ currentPanel === 1 ? facility : bookingInfo }
+        />
+        <PanelRouter panel={currentPanel} />
+        <Footer
+          currentPanel={currentPanel}
+          logo={logoUrl}
+          buttonColor={buttonColor}
+          numberOfPanels={numberOfPanels}
+          onLastClicked={postBooking}
+          onNextClicked={advancePanel}
+          onPreviousClicked={reducePanel}
+        />
+      </div>
+    )
+  }
 }
 
 // Wiring
