@@ -6,7 +6,7 @@
 // (ex GUEST:ADDING GUEST:ADDED)
 // Error actions append _ERROR to the action type (TODO_ADD_ERROR)
 
-export const UI_APP_INIT = 'UI_APP_INIT'
+import {fetchAvailabilities} from './bookingActions'
 
 // First Panel collapsing/expanding selectors
 export const UI_DATE_SELECTOR_CHANGE_STATE = 'UI_DATE_SELECTOR_CHANGE_STATE'
@@ -22,10 +22,9 @@ export const UI_PANEL_ADVANCE = 'UI_PANEL_ADVANCE'
 export const UI_PANEL_REDUCE = 'UI_PANEL_REDUCE'
 
 export function appInit () {
-  // return (dispatch) => {
-  //   dispatch({type: UI_APP_INIT})
-  //   dispatch(fetchAvailabilities(date))
-  // }
+  return (dispatch) => {
+    dispatch(fetchAvailabilities())
+  }
 }
 
 export function uiGuestSelectorChangeState () {

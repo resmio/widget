@@ -15,9 +15,8 @@ import PanelRouter from '../components/PanelRouter'
 import Footer from '../components/Footer'
 
 class AppBase extends Component {
-
   componentDidMount() {
-    uiActions.appInit()
+    this.props.appInit()
   }
 
   render() {

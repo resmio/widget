@@ -1,9 +1,9 @@
 import moment from 'moment'
-import availabilities from './data/availabilities'
+// import availabilities from './data/availabilities'
 
 const preloadedState = {
   booking: {
-    availabilities: availabilities,
+    availabilities: [],
     guestEmail: '',
     guestName: '',
     guestPhone: '',

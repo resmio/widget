@@ -6,6 +6,7 @@
 import { getSelectedAvailability } from '../selectors'
 
 export const API = 'API'
+export const APP_INIT = 'APP_INIT'
 export const AVAILABILITIES_FETCHING = 'AVAILABILITIES:FETCHING'
 export const AVAILABILITIES_FETCHING_SUCCESS = 'AVAILABILITIES:FETCHING:SUCCESS'
 export const AVAILABILITIES_FETCHING_ERROR = 'AVAILABILITIES:FETCHING:ERROR'
@@ -48,6 +49,7 @@ export function selectDate (date) {
 // AVAILABILITIES --------------------------------------------------------------
 export function fetchAvailabilities () {
   return  (dispatch, getState) => {
+    console.log('FETTCH')
     const date = getState().booking.selectedDate.toJSON().substr(0,10)
     dispatch({
       type: API,
