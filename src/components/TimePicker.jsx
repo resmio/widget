@@ -14,20 +14,25 @@ const TimePicker = ({
   onTimeSelect,
   state,
   dispatch,
-  error
+  error,
+  fetching
 }) => {
-  const dropdown = (
-    error
-      ? (<div>OOPS</div>)
-      : (<Timeslots
-          timePeriods={timePeriods}
-          timePeriodSelected={timePeriodSelected}
-          timeslots={timeslots}
-          onTimePeriodAdvance={onTimePeriodAdvance}
-          onTimePeriodReduce={onTimePeriodReduce}
-          onTimeSelect={onTimeSelect}
-        />)
-  )
+  let dropdown
+  if (error) {
+    dropdown = <div>OOPS</div>
+  } else if (fetching) {
+    dropdown = <div>FETCHING</div>
+  } else {
+    dropdown = (
+      <Timeslots
+        timePeriods={timePeriods}
+        timePeriodSelected={timePeriodSelected}
+        timeslots={timeslots}
+        onTimePeriodAdvance={onTimePeriodAdvance}
+        onTimePeriodReduce={onTimePeriodReduce}
+        onTimeSelect={onTimeSelect}
+    />)
+  }
 
   return (
     <ExpandableSelector

@@ -28,6 +28,9 @@ const apiMiddleware = ({ getState, dispatch }) => next => action => {
     response => dispatch({ type: payload.error, response })
   )
 
+  // This allows us to show spinners
+  dispatch({ type: payload.pending })
+
   fetch(url, options)
     .then(response => {
       if (response.status >= 300) {

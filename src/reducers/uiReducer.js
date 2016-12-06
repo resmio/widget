@@ -10,6 +10,7 @@ import {
   GUEST_SELECT,
   DATE_SELECT,
   TIME_SELECT,
+  AVAILABILITIES_FETCHING,
   AVAILABILITIES_FETCHING_ERROR,
   AVAILABILITIES_FETCHING_SUCCESS,
 } from '../actions/bookingActions'
@@ -18,14 +19,21 @@ function ui(state={}, action) {
 
   switch (action.type) {
 
+    case AVAILABILITIES_FETCHING:
+      return Object.assign({}, state, {
+        availabilitiesFetching: true
+      })
+
     case AVAILABILITIES_FETCHING_ERROR:
       return Object.assign({}, state, {
-        availabilitiesError: true
+        availabilitiesError: true,
+        availabilitiesFetching: false
       })
 
     case AVAILABILITIES_FETCHING_SUCCESS:
       return Object.assign({}, state, {
-        availabilitiesError: false
+        availabilitiesError: false,
+        availabilitiesFetching: false
       })
 
     case UI_DATE_SELECTOR_CHANGE_STATE:

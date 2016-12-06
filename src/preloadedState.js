@@ -38,6 +38,7 @@ const preloadedState = {
     guestSelectorState: 'collapsed',
     dateSelectorState: 'collapsed',
     timeSelectorState  : 'expanded',
+    availabilitiesFetching: false,
     availabilitiesError: false
   }
 }

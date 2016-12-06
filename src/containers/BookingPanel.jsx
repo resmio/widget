@@ -46,6 +46,7 @@ class BookingPanel extends Component {
 
     const {
       availabilitiesError,
+      availabilitiesFetching,
       dateSelectorState,
       guestSelectorState,
       timeSelectorState
@@ -82,6 +83,7 @@ class BookingPanel extends Component {
           onTimeSelect={selectTime}
           onTimePeriodAdvance={advanceTimePeriod}
           onTimePeriodReduce={reduceTimePeriod}
+          fetching={availabilitiesFetching}
         />
       </Panel>
     )

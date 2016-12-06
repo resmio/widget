@@ -49,7 +49,6 @@ export function selectDate (date) {
 // AVAILABILITIES --------------------------------------------------------------
 export function fetchAvailabilities () {
   return  (dispatch, getState) => {
-    console.log('FETTCH')
     const date = getState().booking.selectedDate.toJSON().substr(0,10)
     dispatch({
       type: API,
