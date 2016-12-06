@@ -9,10 +9,15 @@ const apiMiddleware = ({ getState, dispatch }) => next => action => {
 
   const { payload } = action
 
-  // default to get unless something is specified
-  const method = payload.method || 'get'
+  const options = {
+    // default to get unless something is specified
+    method: payload.method || 'get'
+  }
+
   // the 'magic' for the body of the request
-  const body = JSON.stringify(payload.body(getState())) || ''
+  if (payload.body) {
+    options.body = JSON.stringify(payload.body(getState()))
+  }
 
   // let's build the url to be used as an endpoint
   const facility = getState().custom.facility
@@ -23,10 +28,7 @@ const apiMiddleware = ({ getState, dispatch }) => next => action => {
     response => dispatch({ type: payload.error, response })
   )
 
-  fetch(url, {
-    method: method,
-    body: body
-  })
+  fetch(url, options)
     .then(response => {
       if (response.status >= 300) {
         handleError(response)
