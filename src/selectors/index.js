@@ -25,6 +25,13 @@ export const getSelectedAvailability = (state) => {
   )[0] || {}
 }
 
+export const showAvailabilities = (state) => {
+  const { availabilities } = state.booking
+  return availabilities.filter(
+    availability => availability.available > 0
+  ) || []
+}
+
 export const getDisplayBooking = createSelector(
   [getGuests, getSelectedAvailability],
   (guests, availability) => {

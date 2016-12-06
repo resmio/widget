@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect,  } from 'react-redux'
 import * as bookingActions from '../actions/bookingActions'
 import * as uiActions from '../actions/uiActions'
-import { getSelectedAvailability } from '../selectors'
+import { getSelectedAvailability, showAvailabilities } from '../selectors'
 
 // 3rd party components
 import { momentObj } from 'react-moment-proptypes'
@@ -31,11 +31,11 @@ class BookingPanel extends Component {
       selectGuest,
       selectDate,
       selectTime,
+      availabilities,
       selectedAvailability
     } = this.props
 
     const {
-      availabilities,
       selectedDate,
       selectedGuests,
       maxGuests,
@@ -113,7 +113,8 @@ function mapStateToProps(state) {
     ui: state.ui,
     custom: state.custom,
     booking: state.booking,
-    selectedAvailability: getSelectedAvailability(state)
+    selectedAvailability: getSelectedAvailability(state),
+    availabilities: showAvailabilities(state)
   }
 }
 
