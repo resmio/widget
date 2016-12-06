@@ -15,7 +15,8 @@ const Footer = (props) => {
     onLastClicked,
     onNextClicked,
     onPreviousClicked,
-    buttonColor
+    buttonColor,
+    buttonDisabled
   } = props
 
   // styles
@@ -86,8 +87,8 @@ const Footer = (props) => {
     : <button {...merge(button, left)} onClick={onPreviousClicked}>Back</button>
 
   const rightElement = isLastPanel
-    ? <button {...button} onClick={onLastClicked}>Book Now</button>
-    : <button {...button} onClick={onNextClicked}>Next</button>
+    ? <button {...button} onClick={onLastClicked} disabled={buttonDisabled}>Book Now</button>
+    : <button {...button} onClick={onNextClicked} disabled={buttonDisabled}>Next</button>
 
   // actual render
   return (

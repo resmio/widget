@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as bookingActions from '../actions/bookingActions'
 import * as uiActions from '../actions/uiActions'
-import { getDisplayBooking } from '../selectors'
+import { getDisplayBooking, isNextButtonEnabled } from '../selectors'
 
 // react & redux
 import React, { Component } from 'react';
@@ -41,7 +41,8 @@ class AppBase extends Component {
       reducePanel,
       advancePanel,
       bookingInfo,
-      postBooking
+      postBooking,
+      buttonEnabled
     } = this.props
 
     // generate styles
@@ -72,6 +73,7 @@ class AppBase extends Component {
           onLastClicked={postBooking}
           onNextClicked={advancePanel}
           onPreviousClicked={reducePanel}
+          buttonDisabled={!buttonEnabled}
         />
       </div>
     )
@@ -83,7 +85,8 @@ const mapStateToProps = (state) => {
   return {
     custom: state.custom,
     ui: state.ui,
-    bookingInfo: getDisplayBooking(state)
+    bookingInfo: getDisplayBooking(state),
+    buttonEnabled: isNextButtonEnabled(state)
   }
 }
 

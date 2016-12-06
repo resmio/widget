@@ -2,6 +2,16 @@ import { createSelector } from 'reselect'
 import { formatLocalDate } from '../utils/dates'
 
 const getGuests = (state) => state.booking.selectedGuests
+const getPanel = (state) => state.ui.currentPanel
+
+const validGuestData = (state) => {
+  // We can create more sophisticated validations later if needed
+  return (
+    state.booking.guestName !== ''
+    && state.booking.guestEmail !== ''
+    && state.booking.guestPhone !== ''
+  )
+}
 
 export const getSelectedAvailability = (state) => {
   const { availabilities, selectedAvailability } = state.booking
@@ -15,7 +25,6 @@ export const getSelectedAvailability = (state) => {
   )[0] || {}
 }
 
-
 export const getDisplayBooking = createSelector(
   [getGuests, getSelectedAvailability],
   (guests, availability) => {
@@ -23,16 +32,22 @@ export const getDisplayBooking = createSelector(
   }
 )
 
-// export const getVisibleTodos = createSelector(
-//   [ getVisibilityFilter, getTodos ],
-//   (visibilityFilter, todos) => {
-//     switch (visibilityFilter) {
-//       case 'SHOW_ALL':
-//         return todos
-//       case 'SHOW_COMPLETED':
-//         return todos.filter(t => t.completed)
-//       case 'SHOW_ACTIVE':
-//         return todos.filter(t => !t.completed)
-//     }
-//   }
-// )
+// This can be a lot more elegant extracting every panel logic into its own
+// selector
+export const isNextButtonEnabled = createSelector(
+  [getPanel, getSelectedAvailability, validGuestData],
+  (panel, availability, guestData) => {
+    // In the first panel we disable the button if there's
+    // no availability selected
+    if (panel === 1 && Object.keys(availability).length === 0) {
+      return false
+    }
+
+    // In the second one we check for valid guest data
+    if (panel === 2 && !guestData) {
+      return false
+    }
+
+    return true
+  }
+)
