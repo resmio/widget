@@ -1,0 +1,41 @@
+exports[`user interface actions should create an action to advance the panel 1`] = `
+Object {
+  "type": "UI_PANEL_ADVANCE",
+}
+`;
+
+exports[`user interface actions should create an action to advance the time period 1`] = `
+Object {
+  "type": "UI_TIME_PERIOD_ADVANCE",
+}
+`;
+
+exports[`user interface actions should create an action to change the date selector state 1`] = `
+Object {
+  "type": "UI_DATE_SELECTOR_CHANGE_STATE",
+}
+`;
+
+exports[`user interface actions should create an action to change the guest selector state 1`] = `
+Object {
+  "type": "UI_GUEST_SELECTOR_CHANGE_STATE",
+}
+`;
+
+exports[`user interface actions should create an action to change the time selector state 1`] = `
+Object {
+  "type": "UI_TIME_SELECTOR_CHANGE_STATE",
+}
+`;
+
+exports[`user interface actions should create an action to reduce the panel 1`] = `
+Object {
+  "type": "UI_PANEL_REDUCE",
+}
+`;
+
+exports[`user interface actions should create an action to reduce the time period 1`] = `
+Object {
+  "type": "UI_TIME_PERIOD_REDUCE",
+}
+`;

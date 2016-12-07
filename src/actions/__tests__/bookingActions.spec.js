@@ -15,4 +15,16 @@ describe('booking actions', () => {
     expect(actions.selectGuest(fakeEvent)).toMatchSnapshot()
   })
 
+  it('should create an action to select a time', () => {
+    expect(actions.selectTime('123')).toMatchSnapshot()
+  })
+
+  it('should create an action to check a checkbox', () => {
+    expect(actions.checkboxChanged('a', true)).toMatchSnapshot()
+  })
+
+  it('should create an action to uncheck a checkbox', () => {
+    expect(actions.checkboxChanged('b', false)).toMatchSnapshot()
+  })
+
 })
