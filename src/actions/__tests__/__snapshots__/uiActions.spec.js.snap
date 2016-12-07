@@ -39,3 +39,5 @@ Object {
   "type": "UI_TIME_PERIOD_REDUCE",
 }
 `;
+
+exports[`user interface actions should dispatch an action to fetch availabilities on init 1`] = `[Function]`;

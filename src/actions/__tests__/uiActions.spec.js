@@ -2,6 +2,10 @@ import * as actions from '../uiActions'
 
 describe('user interface actions', () => {
 
+  it('should dispatch an action to fetch availabilities on init', () => {
+    expect(actions.appInit()).toMatchSnapshot()
+  })
+
   it('should create an action to change the guest selector state', () => {
     expect(actions.uiGuestSelectorChangeState()).toMatchSnapshot()
   })
