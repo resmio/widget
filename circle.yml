@@ -1,2 +1,3 @@
 test:
-  pre: npm install spawn-sync
+  pre:
+    - npm install spawn-sync
