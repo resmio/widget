@@ -15,4 +15,8 @@ const app = (
   </Provider>
 )
 
-render(app , MOUNT_NODE)
+if (process.env.npm_lifecycle_event !== 'test') {
+  // When testing we want to call the render from the test,
+  // since it uses its own (fake) DOM
+  render(app , MOUNT_NODE)  
+}
