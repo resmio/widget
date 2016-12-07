@@ -15,6 +15,11 @@ describe('booking actions', () => {
     expect(actions.selectGuest(fakeEvent)).toMatchSnapshot()
   })
 
+  xit('should create an action to select a date', () => {
+    const fakeDate = new Date('Wed Dec 07 2016 11:39:06 GMT+0100 (CET)')
+    expect(actions.selectDate(fakeDate)).toMatchSnapshot()
+  })
+
   it('should create an action to select a time', () => {
     expect(actions.selectTime('123')).toMatchSnapshot()
   })

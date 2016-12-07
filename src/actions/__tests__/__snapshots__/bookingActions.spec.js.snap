@@ -20,6 +20,8 @@ Object {
 }
 `;
 
+exports[`booking actions should create an action to select a date 1`] = `[Function]`;
+
 exports[`booking actions should create an action to select a guest 1`] = `
 Object {
   "payload": 1,
