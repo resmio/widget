@@ -1,0 +1,18 @@
+exports[`booking actions should create an action to add a guest 1`] = `
+Object {
+  "type": "GUEST_ADD",
+}
+`;
+
+exports[`booking actions should create an action to remove a guest 1`] = `
+Object {
+  "type": "GUEST_REMOVE",
+}
+`;
+
+exports[`booking actions should create an action to select a guest 1`] = `
+Object {
+  "payload": 1,
+  "type": "GUEST_SELECT",
+}
+`;
