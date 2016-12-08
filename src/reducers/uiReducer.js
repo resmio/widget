@@ -7,12 +7,12 @@ import {
 } from '../actions/uiActions'
 
 import {
-  GUEST_SELECT,
-  DATE_SELECT,
-  TIME_SELECT,
   AVAILABILITIES_FETCHING,
   AVAILABILITIES_FETCHING_ERROR,
   AVAILABILITIES_FETCHING_SUCCESS,
+  DATE_SELECT,
+  GUEST_SELECT,
+  TIME_SELECT,
 } from '../actions/bookingActions'
 
 function ui(state={}, action) {
@@ -94,7 +94,7 @@ function ui(state={}, action) {
         guestSelectorState: 'semicollapsed',
         dateSelectorState: 'semicollapsed',
         timeSelectorState  : 'semicollapsed',
-        timeFocused: action.payload
+        // timeFocused: action.payload
       })
 
     case UI_PANEL_ADVANCE:

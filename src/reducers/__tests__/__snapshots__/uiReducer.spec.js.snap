@@ -1,0 +1,32 @@
+exports[`ui reducer should clear error and pending on availabilities fetching success 1`] = `
+Object {
+  "availabilitiesError": false,
+  "availabilitiesFetching": false,
+  "currentPanel": 1,
+  "dateSelectorState": "collapsed",
+  "guestSelectorState": "collapsed",
+  "timeSelectorState": "expanded",
+}
+`;
+
+exports[`ui reducer should set availabilities fetching errors 1`] = `
+Object {
+  "availabilitiesError": true,
+  "availabilitiesFetching": false,
+  "currentPanel": 1,
+  "dateSelectorState": "collapsed",
+  "guestSelectorState": "collapsed",
+  "timeSelectorState": "expanded",
+}
+`;
+
+exports[`ui reducer should set availabilities fetching to true 1`] = `
+Object {
+  "availabilitiesError": false,
+  "availabilitiesFetching": true,
+  "currentPanel": 1,
+  "dateSelectorState": "collapsed",
+  "guestSelectorState": "collapsed",
+  "timeSelectorState": "expanded",
+}
+`;
