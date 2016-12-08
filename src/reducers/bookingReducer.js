@@ -40,7 +40,7 @@ function booking (state = {}, action) {
 
     case GUEST_SELECT:
       return Object.assign({}, state, {
-        selectedGuests: parseInt(action.payload, 10) + 1
+        selectedGuests: action.payload
       })
 
     case DATE_SELECT:
@@ -68,25 +68,24 @@ function booking (state = {}, action) {
       console.log(action.response)
       return state
 
-    case UI_TIME_PERIOD_ADVANCE:
-      return Object.assign({}, state, {
-        timePeriodSelected: state.timePeriodSelected + 1,
-        timeFocused: state.availabilities.filter(
-          function(availability) {
-            return availability.local_time_formatted === state.timePeriods[state.timePeriodSelected + 1].time
-          }
-        ).checksum
-      })
+    // This suff is shaky, probably need to move the timeFocused
+    // part of it to a selector
 
-    case UI_TIME_PERIOD_REDUCE:
-      return Object.assign({}, state, {
-        timePeriodSelected: state.timePeriodSelected - 1,
-        timeFocused: state.timePeriods[state.timePeriodSelected - 1].time
-      })
-
-    case BOOKING_POSTING:
-      console.log(BOOKING_POSTING)
-      return state
+    // case UI_TIME_PERIOD_ADVANCE:
+    //   return Object.assign({}, state, {
+    //     timePeriodSelected: state.timePeriodSelected + 1,
+    //     timeFocused: state.availabilities.filter(
+    //       function(availability) {
+    //         return availability.local_time_formatted === state.timePeriods[state.timePeriodSelected + 1].time
+    //       }
+    //     ).checksum
+    //   })
+    //
+    // case UI_TIME_PERIOD_REDUCE:
+    //   return Object.assign({}, state, {
+    //     timePeriodSelected: state.timePeriodSelected - 1,
+    //     timeFocused: state.timePeriods[state.timePeriodSelected - 1].time
+    //   })
 
     default:
       return state
