@@ -64,9 +64,10 @@ function booking (state = {}, action) {
         availabilities: action.response.objects
       })
 
-    case BOOKING_POSTING_SUCCESS:
-      console.log(action.response)
-      return state
+    // Not yet implemented but the action works
+    // case BOOKING_POSTING_SUCCESS:
+    //   console.log(action.response)
+    //   return state
 
     // This suff is shaky, probably need to move the timeFocused
     // part of it to a selector
