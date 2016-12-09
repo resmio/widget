@@ -4,15 +4,44 @@ Object {
 }
 `;
 
+exports[`booking actions should create an action to check a checkbox 1`] = `
+Object {
+  "payload": Object {
+    "name": "a",
+    "value": true,
+  },
+  "type": "CHECKBOX_CHANGED",
+}
+`;
+
 exports[`booking actions should create an action to remove a guest 1`] = `
 Object {
   "type": "GUEST_REMOVE",
 }
 `;
 
+exports[`booking actions should create an action to select a date 1`] = `[Function]`;
+
 exports[`booking actions should create an action to select a guest 1`] = `
 Object {
-  "payload": 1,
+  "payload": 2,
   "type": "GUEST_SELECT",
+}
+`;
+
+exports[`booking actions should create an action to select a time 1`] = `
+Object {
+  "payload": "123",
+  "type": "TIME_SELECT",
+}
+`;
+
+exports[`booking actions should create an action to uncheck a checkbox 1`] = `
+Object {
+  "payload": Object {
+    "name": "b",
+    "value": false,
+  },
+  "type": "CHECKBOX_CHANGED",
 }
 `;

@@ -23,7 +23,7 @@ export const TIME_SELECT = 'TIME_SELECT'
 
 // GUEST COUNTER ---------------------------------------------------------------
 
-export function addGuest () {
+export function addGuest () { 
  return { type: GUEST_ADD }
 }
 
@@ -34,7 +34,7 @@ export function removeGuest () {
 export function selectGuest (e) {
   return {
     type: GUEST_SELECT,
-    payload: e.target.id
+    payload: parseInt(e.target.id, 10) + 1
   }
 }
 

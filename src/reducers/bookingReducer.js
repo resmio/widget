@@ -1,5 +1,4 @@
 import {
-  BOOKING_POSTING_SUCCESS,
   CHECKBOX_CHANGED,
   GUEST_ADD,
   GUEST_REMOVE,
@@ -7,14 +6,8 @@ import {
   DATE_SELECT,
   INPUT_CHANGED,
   TIME_SELECT,
-  BOOKING_POSTING,
   AVAILABILITIES_FETCHING_SUCCESS
 } from '../actions/bookingActions'
-
-import {
-  UI_TIME_PERIOD_ADVANCE,
-  UI_TIME_PERIOD_REDUCE
-} from '../actions/uiActions'
 
 function booking (state = {}, action) {
 
@@ -40,7 +33,7 @@ function booking (state = {}, action) {
 
     case GUEST_SELECT:
       return Object.assign({}, state, {
-        selectedGuests: parseInt(action.payload, 10) + 1
+        selectedGuests: action.payload
       })
 
     case DATE_SELECT:
@@ -64,29 +57,29 @@ function booking (state = {}, action) {
         availabilities: action.response.objects
       })
 
-    case BOOKING_POSTING_SUCCESS:
-      console.log(action.response)
-      return state
+    // Not yet implemented but the action works
+    // case BOOKING_POSTING_SUCCESS:
+    //   console.log(action.response)
+    //   return state
 
-    case UI_TIME_PERIOD_ADVANCE:
-      return Object.assign({}, state, {
-        timePeriodSelected: state.timePeriodSelected + 1,
-        timeFocused: state.availabilities.filter(
-          function(availability) {
-            return availability.local_time_formatted === state.timePeriods[state.timePeriodSelected + 1].time
-          }
-        ).checksum
-      })
+    // This suff is shaky, probably need to move the timeFocused
+    // part of it to a selector
 
-    case UI_TIME_PERIOD_REDUCE:
-      return Object.assign({}, state, {
-        timePeriodSelected: state.timePeriodSelected - 1,
-        timeFocused: state.timePeriods[state.timePeriodSelected - 1].time
-      })
-
-    case BOOKING_POSTING:
-      console.log(BOOKING_POSTING)
-      return state
+    // case UI_TIME_PERIOD_ADVANCE:
+    //   return Object.assign({}, state, {
+    //     timePeriodSelected: state.timePeriodSelected + 1,
+    //     timeFocused: state.availabilities.filter(
+    //       function(availability) {
+    //         return availability.local_time_formatted === state.timePeriods[state.timePeriodSelected + 1].time
+    //       }
+    //     ).checksum
+    //   })
+    //
+    // case UI_TIME_PERIOD_REDUCE:
+    //   return Object.assign({}, state, {
+    //     timePeriodSelected: state.timePeriodSelected - 1,
+    //     timeFocused: state.timePeriods[state.timePeriodSelected - 1].time
+    //   })
 
     default:
       return state
