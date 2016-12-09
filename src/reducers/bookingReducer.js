@@ -1,5 +1,4 @@
 import {
-  BOOKING_POSTING_SUCCESS,
   CHECKBOX_CHANGED,
   GUEST_ADD,
   GUEST_REMOVE,
@@ -7,14 +6,8 @@ import {
   DATE_SELECT,
   INPUT_CHANGED,
   TIME_SELECT,
-  BOOKING_POSTING,
   AVAILABILITIES_FETCHING_SUCCESS
 } from '../actions/bookingActions'
-
-import {
-  UI_TIME_PERIOD_ADVANCE,
-  UI_TIME_PERIOD_REDUCE
-} from '../actions/uiActions'
 
 function booking (state = {}, action) {
 
