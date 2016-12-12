@@ -1,13 +1,12 @@
-// Move all this stuff to AppBase
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+// react & redux
+import React, { Component } from 'react';
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import { style } from 'glamor'
+
 import * as bookingActions from '../actions/bookingActions'
 import * as uiActions from '../actions/uiActions'
 import { getDisplayBooking, isNextButtonEnabled } from '../selectors'
-
-// react & redux
-import React, { Component } from 'react';
-import { style } from 'glamor'
 
 // components
 import Header from '../components/Header'
@@ -15,8 +14,14 @@ import PanelRouter from '../components/PanelRouter'
 import Footer from '../components/Footer'
 
 class AppBase extends Component {
-  componentDidMount() {
+  componentWillMount() {
+    // This call to appInit (which just calls set_locale) cause everything to
+    // rerender, investigate how to solve this
     this.props.appInit()
+  }
+
+  componentDidMount() {
+    this.props.fetchAvailabilities()
   }
 
   render() {

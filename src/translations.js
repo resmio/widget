@@ -8,6 +8,9 @@ const translations = {
   es: {
     locale: 'es',
     messages: {
+      'DATE': 'FECHA',
+      'guest': 'comensal',
+      'guests': 'comensales',
       'Online Booking': 'Reserva Online'
     }
   }

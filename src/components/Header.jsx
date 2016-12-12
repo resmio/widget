@@ -47,7 +47,7 @@ const Header = ({bgImage, bgColor, color, subheaderText, translate}) => {
   return (
     <header {...header}>
       <h2 {...merge(heading, headerText)}>
-        {translate('Online booking')}
+        {translate('Online Booking')}
       </h2>
       <h1 {...merge(subHeading, headerText)}>
         {subheaderText}
