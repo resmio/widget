@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect,  } from 'react-redux'
+import { withTranslate } from 'react-redux-multilingual'
+
 import * as bookingActions from '../actions/bookingActions'
 import * as uiActions from '../actions/uiActions'
 import { getSelectedAvailability, showAvailabilities } from '../selectors'
@@ -32,7 +34,8 @@ class BookingPanel extends Component {
       selectDate,
       selectTime,
       availabilities,
-      selectedAvailability
+      selectedAvailability,
+      translate
     } = this.props
 
     const {
@@ -56,8 +59,8 @@ class BookingPanel extends Component {
       <Panel>
         <NumberPicker
           state={guestSelectorState}
-          legendSingular='guest'
-          legendPlural='guests'
+          legendSingular={translate('guest')}
+          legendPlural={translate('guests')}
           max={maxGuests}
           min={minGuests}
           number={selectedGuests}
@@ -126,4 +129,4 @@ function mapDispachToProps(dispatch) {
   )
 }
 
-export default connect(mapStateToProps, mapDispachToProps)(BookingPanel)
+export default connect(mapStateToProps, mapDispachToProps)(withTranslate(BookingPanel))
