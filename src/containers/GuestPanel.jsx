@@ -8,6 +8,7 @@ import * as bookingActions from '../actions/bookingActions'
 import Panel from '../components/Panel'
 import Form from '../components/Form'
 import Input from '../components/Input'
+import Checkbox from '../components/Checkbox'
 
 class GuestPanel extends Component {
 
@@ -51,13 +52,11 @@ class GuestPanel extends Component {
             defaultValue={guestPhone}
             onChange={(e)=>{inputChanged('guestPhone', e.target.value)}}
           />
-          <input
-            type='checkbox'
+          <Checkbox
             checked={newsletterSubscription}
             id='newsletterSubscription'
-            onChange={(e)=>{checkboxChanged('newsletterSubscription', e.target.checked)}}
+            onChange={checkboxChanged}
            />
-           <label htmlFor='newsletterSubscription'>Follow restaurant newsletter</label>
         </Form>
       </Panel>
     )
