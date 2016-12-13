@@ -5,8 +5,7 @@
 // Async actions use present and past tense to determine state
 // (ex GUEST:ADDING GUEST:ADDED)
 // Error actions append _ERROR to the action type (TODO_ADD_ERROR)
-
-import {fetchAvailabilities} from './bookingActions'
+import { IntlActions } from 'react-redux-multilingual'
 
 // First Panel collapsing/expanding selectors
 export const UI_DATE_SELECTOR_CHANGE_STATE = 'UI_DATE_SELECTOR_CHANGE_STATE'
@@ -23,7 +22,7 @@ export const UI_PANEL_REDUCE = 'UI_PANEL_REDUCE'
 
 export function appInit () {
   return (dispatch) => {
-    dispatch(fetchAvailabilities())
+    dispatch(IntlActions.setLocale('es'))
   }
 }
 
