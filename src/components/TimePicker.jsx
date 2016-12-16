@@ -21,7 +21,7 @@ const TimePicker = ({
   if (error) {
     dropdown = <div>OOPS</div>
   } else if (fetching) {
-    dropdown = <div>FETCHING</div>
+    dropdown = <div className='spinner' />
   } else {
     dropdown = (
       <Timeslots
