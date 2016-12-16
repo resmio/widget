@@ -7,7 +7,7 @@ import ExpandButton from './ExpandButton'
 
 const dropdownSS = style({
   fontSize: '1.4rem',
-  maxHeight: '18rem',
+  maxHeight: '26rem',
   overflowY: 'scroll',
   padding: '0 1em',
   width: '100%'
@@ -37,7 +37,7 @@ const ExpandableSelector = ({
 
     default:
       containerHeight = '70%'
-      contentHeight = '6em'
+      contentHeight = '100%'
   }
 
   const container = style({
@@ -65,16 +65,17 @@ const ExpandableSelector = ({
   const dropdownIfExpanded = (
     state === 'expanded'
       ? <div {...dropdownSS}>{dropdown}</div>
-      : null
+      : (
+        <div {...main}>
+          <Label>{label}</Label>
+          <Value onClickAction={onExpandClicked}>{displayedInfo}</Value>
+          { action }
+        </div>
+      )
   )
 
   return (
     <div {...container}>
-      <div {...main}>
-        <Label>{label}</Label>
-        <Value onClickAction={onExpandClicked}>{displayedInfo}</Value>
-        { action }
-      </div>
       { dropdownIfExpanded }
     </div>
   )
