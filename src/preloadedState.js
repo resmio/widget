@@ -33,6 +33,9 @@ const preloadedState = {
     numberOfPanels: 2,
     renderAtMaxSize: false
   },
+  facebook: {
+    loaded: false
+  },
   ui: {
     currentPanel: 1,
     guestSelectorState: 'collapsed',

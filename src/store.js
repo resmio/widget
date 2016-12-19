@@ -3,6 +3,7 @@ import reducer from './reducers'
 import preloadedState from './preloadedState'
 import log from './middleware/logMiddleware'
 import api from './middleware/apiMiddleware'
+import fb from './middleware/facebookMiddleware'
 import thunk from 'redux-thunk'
 
 // const store = createStore(reducer, preloadedState)
@@ -12,7 +13,7 @@ const store = createStore(
   reducer,
   preloadedState,
   composeEnhancers(
-    applyMiddleware(log, thunk, api)
+    applyMiddleware(log, thunk, api, fb)
   )
 )
 export default store
