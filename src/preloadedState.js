@@ -36,8 +36,8 @@ const preloadedState = {
   ui: {
     currentPanel: 1,
     guestSelectorState: 'collapsed',
-    dateSelectorState: 'collapsed',
-    timeSelectorState  : 'expanded',
+    dateSelectorState: 'expanded',
+    timeSelectorState  : 'collapsed',
     availabilitiesFetching: false,
     availabilitiesError: false
   }

@@ -1,10 +1,20 @@
 import React, { PropTypes } from 'react'
+import { style } from 'glamor'
 
 import { momentObj } from 'react-moment-proptypes'
 import { DayPicker } from 'react-dates'
-import 'react-dates/lib/css/_datepicker.css'
+import '../styles/_datepicker.css'
 
+import {colors} from '../styles/variables'
 import ExpandableSelector from './ExpandableSelector'
+
+const dropdownLabel = style({
+  width: '100%',
+  textAlign: 'center',
+  height: '3rem',
+  background: colors.silver,
+  lineHeight: '3rem'
+})
 
 const DatePickerSection = ({
     state,
@@ -19,13 +29,16 @@ const DatePickerSection = ({
 
   // Need to deal with it once doing the datepicker section
   const main = (
-    <DayPicker
-      id="date_input"
-      date={selectedDate}
-      focused={state === 'expanded'}
-      numberOfMonths={1}
-      onDayClick={onDateSelected}
-    />
+    <div className='datepicker__dropdown'>
+      <div {...dropdownLabel}>Select day</div>
+      <DayPicker
+        id="date_input"
+        date={selectedDate}
+        focused={state === 'expanded'}
+        numberOfMonths={1}
+        onDayClick={onDateSelected}
+      />
+    </div>
   )
 
   return (

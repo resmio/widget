@@ -54,29 +54,21 @@ const ExpandableSelector = ({
     cursor: 'pointer',
   })
 
-  // This is just for the numberPicker that has the +/- buttons when expanded
-  // change here if we also want those buttons for collapsed or remove the
-  // entire customButton logic if we want every component to just have an up
-  // arrow when expanded
-  const action = (state === 'expanded' && customButton )
-    ? customButton
-    : <ExpandButton state={state} onClickAction={onExpandClicked} />
-
-  const dropdownIfExpanded = (
+  const dropdownSection = (
     state === 'expanded'
       ? <div {...dropdownSS}>{dropdown}</div>
       : (
         <div {...main}>
           <Label>{label}</Label>
           <Value onClickAction={onExpandClicked}>{displayedInfo}</Value>
-          { action }
+          <ExpandButton state={state} onClickAction={onExpandClicked} />
         </div>
       )
   )
 
   return (
     <div {...container}>
-      { dropdownIfExpanded }
+      { dropdownSection }
     </div>
   )
 }
