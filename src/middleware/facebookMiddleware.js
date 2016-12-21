@@ -12,7 +12,7 @@ const facebookMiddleware = ({ getState, dispatch }) => next => action => {
   // This allows us to show spinners
   dispatch({ type: payload.pending })
 
-  fetch('//connect.facebook.net/en_US/sdk.js', {mode: 'no-cors'})
+  fetch('//connect.facebook.net/en_US/sdk.js')
     .then(response => {
       if (response.status >= 300) {
         handleError(response)
