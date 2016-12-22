@@ -1,8 +1,9 @@
 import React, { PropTypes } from 'react'
 import { style } from 'glamor'
+import { colors } from '../../styles/variables'
 
 const label = style({
-  color: '#CCC',
+  color: colors.silver,
   flex: '1',
   paddingLeft: '1em'
 })

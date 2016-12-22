@@ -35,6 +35,8 @@ class BookingPanel extends Component {
       selectedAvailability
     } = this.props
 
+    const { buttonColor } = this.props.custom
+
     const {
       selectedDate,
       selectedGuests,
@@ -65,6 +67,7 @@ class BookingPanel extends Component {
           onNumberSelected={selectGuest}
           onPlusClicked={addGuest}
           onMinusClicked={removeGuest}
+          color={buttonColor}
         />
         <DatePickerSection
           state={dateSelectorState}

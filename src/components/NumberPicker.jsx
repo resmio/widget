@@ -1,32 +1,12 @@
-import React, { PropTypes } from 'react'
-import { style, merge, select as $ } from 'glamor'
+import React, {PropTypes} from 'react'
+import {style} from 'glamor'
+import {hexToRgb} from '../utils/colors'
 
 import ExpandableSelector from './ExpandableSelector'
 import DropdownOption from './DropdownOption'
 
-const buttonGroup = style({
-  flex: '1',
-  paddingRight: '1em',
-  textAlign: 'right'
-})
-
-const button = merge(
-  {
-    background: '#FFF',
-    border: '1px solid #DDD',
-    borderRadius: '4px',
-    cursor: 'pointer',
-    fontSize: '2rem',
-    height: '3rem',
-    width: '3rem'
-  },
-  $(':hover', {
-    background: '#555',
-    color: '#FFF'
-  })
-)
-
 const NumberPicker = ({
+    color,
     state,
     legendSingular,
     legendPlural,
@@ -39,39 +19,53 @@ const NumberPicker = ({
     onMinusClicked,
     uiGuestSelectorChangeState
 }) => {
+  const numberPickerSS = style({
+    color: color,
+    marginTop: '1.6rem'
+  })
+
+  const dropdownLabel = style({
+    width: '100%',
+    textAlign: 'center',
+    height: '4rem',
+    background: `rgba(${hexToRgb(color)}, 0.3)`,
+    lineHeight: '4rem'
+  })
 
   const numbers = [...Array(max+1).keys()].slice(min)
-  const customButton = (
-    <div {...buttonGroup}>
-      <button {...button} onClick={onMinusClicked}>-</button>
-      <button {...button} onClick={onPlusClicked}>+</button>
-    </div>
+  const legend = (num) => num === 1 ? legendSingular : legendPlural
+
+  const dropdownOptions = (
+    numbers.map((num, i) => {
+      return (
+        <DropdownOption
+          color={color}
+          index={i}
+          key={i}
+          onClickAction={onNumberSelected}
+        >
+          {num} {legend(num)}
+        </DropdownOption>
+      )
+    })
   )
 
   const dropdown = (
-   <div>
-      {
-        numbers.map((num, i) => {
-          const legend = num === 1 ? legendSingular : legendPlural
-          return (
-            <DropdownOption key={i} index={i} onClickAction={onNumberSelected}>
-              {num} {legend}
-            </DropdownOption>
-          )
-        })
-      }
-   </div>
+    <div {...numberPickerSS}>
+      <div {...dropdownLabel}>
+        Select amount of people
+      </div>
+      {dropdownOptions}
+    </div>
   )
-
-  const legend = number === 1 ? legendSingular : legendPlural
 
   return (
     <ExpandableSelector
       label='PEOPLE'
-      displayedInfo={`${number} ${legend}`}
+      color={color}
+      displayedInfo={`${number} ${legend(number)}`}
       onExpandClicked={onEditClicked}
       dropdown={dropdown}
-      customButton={customButton}
       state={state}
     />
   )

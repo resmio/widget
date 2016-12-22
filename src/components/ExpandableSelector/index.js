@@ -1,25 +1,26 @@
 import React, { PropTypes } from 'react'
 import { style } from 'glamor'
 
+import { colors } from '../../styles/variables'
 import Label from './Label'
 import Value from './Value'
 import ExpandButton from './ExpandButton'
 
 const dropdownSS = style({
   fontSize: '1.4rem',
-  maxHeight: '26rem',
+  maxHeight: '26.5rem',
   overflowY: 'scroll',
   padding: '0 1em',
   width: '100%'
 })
 
 const ExpandableSelector = ({
-    state,
-    label,
-    displayedInfo,
     customButton,
+    displayedInfo,
     dropdown,
-    onExpandClicked
+    label,
+    onExpandClicked,
+    state
 }) => {
 
   let containerHeight, contentHeight
@@ -41,7 +42,7 @@ const ExpandableSelector = ({
   }
 
   const container = style({
-    borderBottom: '1px solid #DDD',
+    borderBottom: `1px solid ${colors.alto}`,
     height: containerHeight,
   })
 
@@ -76,11 +77,11 @@ const ExpandableSelector = ({
 const { oneOf, func, string, node } = PropTypes
 
 ExpandableSelector.propTypes = {
-  state: oneOf(['collapsed', 'semicollapsed', 'expanded']).isRequired,
-  label: string,
-  displayedInfo: string.isRequired,
   customButton: node,
+  displayedInfo: string.isRequired,
   dropdown: node,
+  label: string,
+  state: oneOf(['collapsed', 'semicollapsed', 'expanded']).isRequired,
   onExpandClicked: func.isRequired,
 }
 
