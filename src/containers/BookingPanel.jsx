@@ -70,6 +70,7 @@ class BookingPanel extends Component {
           color={buttonColor}
         />
         <DatePickerSection
+          color={buttonColor}
           state={dateSelectorState}
           selectedDate={selectedDate}
           onFocusChange={uiDateSelectorChangeState}

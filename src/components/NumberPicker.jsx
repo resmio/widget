@@ -27,9 +27,9 @@ const NumberPicker = ({
   const dropdownLabel = style({
     width: '100%',
     textAlign: 'center',
-    height: '4rem',
+    height: '3rem',
     background: `rgba(${hexToRgb(color)}, 0.3)`,
-    lineHeight: '4rem'
+    lineHeight: '3rem'
   })
 
   const numbers = [...Array(max+1).keys()].slice(min)
