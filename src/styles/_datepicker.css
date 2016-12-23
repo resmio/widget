@@ -31,8 +31,8 @@
 .CalendarMonth__caption {
   color: #3c3f40;
   margin-top: 5px;
-  font-size: 1.6rem;
-  padding: 5px 0 35px;
+  font-size: 1.4rem;
+  padding: 5px 0 25px;
   text-align: center;
   margin-bottom: 2px; }
 
@@ -145,7 +145,8 @@
 .DayPicker__week-header {
   color: #757575;
   position: absolute;
-  top: 45px;
+  top: 35px;
+  left: 8% !important;
   z-index: 2;
   text-align: left; }
   .DayPicker__week-header ul {
@@ -154,7 +155,7 @@
     padding-left: 0; }
   .DayPicker__week-header li {
     display: inline-block;
-    width: 38px;
+    width: 30px;
     text-align: center; }
 
 .DayPicker--horizontal .DayPicker__week-header {
@@ -212,18 +213,18 @@
   .DayPickerNavigation--horizontal .DayPickerNavigation__prev,
   .DayPickerNavigation--horizontal .DayPickerNavigation__next {
     border-radius: 3px;
-    padding: 4px 6px;
+    padding: 2px 4px;
     top: 7px;
     z-index: 2;
     position: absolute; }
   .DayPickerNavigation--horizontal .DayPickerNavigation__prev {
-    left: 22px; }
+    left: 46px; }
   .DayPickerNavigation--horizontal .DayPickerNavigation__next {
-    right: 22px; }
+    right: 46px; }
   .DayPickerNavigation--horizontal .DayPickerNavigation__prev--default svg,
   .DayPickerNavigation--horizontal .DayPickerNavigation__next--default svg {
-    height: 19px;
-    width: 19px;
+    height: 16px;
+    width: 16px;
     fill: #82888a; }
 
 .DayPickerNavigation--vertical {
