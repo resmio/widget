@@ -1,8 +1,6 @@
 import React from 'react'
 import { style, hover, merge } from 'glamor'
 
-import TimeslotsFilter from './TimeslotsFilter'
-
 const timeslotSS = style({
   height: '4rem',
   fontSize: '1em',
@@ -54,12 +52,6 @@ const Timeslots= ({
   onTimePeriodReduce
 }) => (
   <div>
-    <TimeslotsFilter
-      timePeriods={timePeriods}
-      timePeriodSelected={timePeriodSelected}
-      onTimePeriodAdvance={onTimePeriodAdvance}
-      onTimePeriodReduce={onTimePeriodReduce}
-    />
     <div {...timeslotsContainer}>
       {timeslots.map((timeslot) => {
 
@@ -85,3 +77,13 @@ const Timeslots= ({
 )
 
 export default Timeslots
+
+// This is the part for the filter
+
+// import TimeslotsFilter from './TimeslotsFilter'
+// <TimeslotsFilter
+//   timePeriods={timePeriods}
+//   timePeriodSelected={timePeriodSelected}
+//   onTimePeriodAdvance={onTimePeriodAdvance}
+//   onTimePeriodReduce={onTimePeriodReduce}
+// />

@@ -25,7 +25,8 @@ const DatePickerSection = ({
     lineHeight: '3rem'
   })
 
-  const daypickerContainer = style({
+  const datepickerDropdown = style({
+    marginTop: '1.3rem',
     background: `rgba(${hexToRgb(color)}, 0.3)`,
   })
   // Clicking on the arrow also fires an OnFOcuschange on the datePicker
@@ -34,17 +35,16 @@ const DatePickerSection = ({
 
   // Need to deal with it once doing the datepicker section
   const main = (
-    <div className='datepicker__dropdown'>
+    <div {...datepickerDropdown}>
       <div {...dropdownLabelSS}>Select day</div>
-      <div {...daypickerContainer}>
-        <DayPicker
-          id="date_input"
-          date={selectedDate}
-          focused={state === 'expanded'}
-          numberOfMonths={1}
-          onDayClick={onDateSelected}
-        />
-      </div>
+      <DayPicker
+        id="date_input"
+        date={selectedDate}
+        focused={state === 'expanded'}
+        numberOfMonths={1}
+        isOutsideRange={(d) => d < Date.now()}
+        onDayClick={onDateSelected}
+      />
     </div>
   )
 
