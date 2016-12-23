@@ -26,7 +26,7 @@ const preloadedState = {
     // Probably don't need the defaultHeight
     defaultHeight: '380px', // = 500px - 60px header - 60px footer
     defaultWidth: '330px',
-    facility: 'the-fish',
+    facility: 'meson-california-2',
     headerColor: '#53628C',
     headerImage: 'https://zenezake.files.wordpress.com/2015/07/img_6715.jpg',
     headerTextColor: 'white',
