@@ -14,7 +14,7 @@
 
 .CalendarMonth {
   text-align: center;
-  padding: 0 23px;
+  padding: 0 13px;
   vertical-align: top; }
   .CalendarMonth:first-of-type {
     position: absolute;
@@ -42,7 +42,7 @@
   box-sizing: border-box;
   color: #565a5c;
   cursor: pointer;
-  width: 30px;
+  width: 36px;
   height: 30px; }
   .CalendarMonth__day:active {
     color: red; }
@@ -118,8 +118,8 @@
 
 .CalendarMonthGrid--horizontal {
   position: absolute;
-  left: 24px;
-  width: 1140px; }
+  left: 12px;
+  width: 1200px; }
 
 .CalendarMonthGrid--vertical {
   width: 300px;
@@ -146,8 +146,8 @@
   color: #757575;
   position: absolute;
   top: 35px;
-  left: 8% !important;
   z-index: 2;
+  left: 1% !important; /* Overrides the inlined style that sets the offset */
   text-align: left; }
   .DayPicker__week-header ul {
     list-style: none;
@@ -155,7 +155,7 @@
     padding-left: 0; }
   .DayPicker__week-header li {
     display: inline-block;
-    width: 30px;
+    width: 36px;
     text-align: center; }
 
 .DayPicker--horizontal .DayPicker__week-header {
@@ -218,9 +218,9 @@
     z-index: 2;
     position: absolute; }
   .DayPickerNavigation--horizontal .DayPickerNavigation__prev {
-    left: 46px; }
+    left: 26px; }
   .DayPickerNavigation--horizontal .DayPickerNavigation__next {
-    right: 46px; }
+    right: 26px; }
   .DayPickerNavigation--horizontal .DayPickerNavigation__prev--default svg,
   .DayPickerNavigation--horizontal .DayPickerNavigation__next--default svg {
     height: 16px;

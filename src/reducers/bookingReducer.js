@@ -36,7 +36,6 @@ function selectAvailability(availabilities, state) {
     availability.magicTime = parseInt(availability.local_time_formatted.replace(/:/, ''))
     return availability
   })
-  debugger
   // If we have an availability already selected we want to run our logic
   if (state.selectedAvailability !== '') {
   // If not we get the closest one two hours from now
