@@ -9,6 +9,19 @@ import {
   AVAILABILITIES_FETCHING_SUCCESS
 } from '../actions/bookingActions'
 
+function isToday(date) {
+    const today = new Date()
+    return (
+      date.getDate() === today.getDate() &&
+      date.getMonth() === today.getMonth() &&
+      date.getYear() === today.getYear()
+    )
+}
+
+function toMagicTime(time) {
+    return parseInt(time.replace(/:/, ''), 10)
+}
+
 function selectAvailability(availabilities, state) {
 
   if (state.availabilities.length === 0) {
@@ -16,35 +29,51 @@ function selectAvailability(availabilities, state) {
     return
   }
 
-  // We get the time from the currently selected availability
-  const availability = state.availabilities.filter((availability) => {
-    return availability.checksum === state.selectedAvailability
-  })[0]
+  const today = isToday(state.selectedDate.toDate())
 
-  // We convert the time to an integer so we can compare it
-  // We can make this better by:
-  // getting the part before the colon and multiplying by 60
-  // Adding the part after the colon
-  // So we get the minutes after 00:00 and we can add times like 1:15 (75)
-  // To convert back divide by 60 put the result before the semicolon and
-  // the modulus after it
-  const time = parseInt(availability.local_time_formatted.replace(/:/, ''))
+  // If we have an availability already selected
+  if (state.selectedAvailability !== '' && typeof state.selectedAvailability !== 'undefined') {
+    console.log('We have a selectedAvailability', state.selectedAvailability)
 
-  // same for the received availabilities, we extend them with our
-  // 'magic' time
-  const magicAvailabilities = availabilities.map((availability) => {
-    availability.magicTime = parseInt(availability.local_time_formatted.replace(/:/, ''))
-    return availability
-  })
-  // If we have an availability already selected we want to run our logic
-  if (state.selectedAvailability !== '') {
-  // If not we get the closest one two hours from now
+    // We get the time from the currently selected availability
+    const availability = state.availabilities.filter((availability) => {
+      return availability.checksum === state.selectedAvailability
+    })[0]
+
+    // We convert the time to an integer so we can compare it
+    const time = toMagicTime(availability.local_time_formatted)
+
+    // same for the received availabilities, we extend them with our
+    // 'magic' time
+    // const magicAvailabilities = availabilities.map((availability) => {
+    //   availability.magicTime = toMagicTime(availability.local_time_formatted)
+    //   return availability
+    // })
+
+    const theOne = availabilities.find((e)=>{
+      return toMagicTime(e.local_time_formatted) === time}
+    )
+
+    return theOne
+    // is it available on the new date
+    //  ? select it
+    //  : unselect availability
+
   } else {
-    // We want to return empty string so the selectedAvailability
-    // is not set to undefined
-    return ''
+    if (today) { // Is is today?
+      const now = new Date()
+      const magicNow = (now.getHours() * 100) + now.getMinutes()
+      console.log('SELECT TIME 2 HOURS FROM NOW')
+      //   ? time available two hours from now
+      //      ? get it
+      //      : get the next available time
+    } else  {
+      console.log('DO NOTHING')
+      return ''
+    }
   }
-
+  //   : return empty string so the selectedAvailability is not set to undefined
+  return ''
 }
 
 function booking (state = {}, action) {
