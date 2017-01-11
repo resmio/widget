@@ -9,6 +9,38 @@ import {
   AVAILABILITIES_FETCHING_SUCCESS
 } from '../actions/bookingActions'
 
+function getAvailability(availabilities, time, timeOffset) {
+  return availabilities.find((availability) => {
+    return (
+      toDecimalTime(availability.local_time_formatted) >= toDecimalTime(time) + timeOffset)
+  })
+}
+
+function getSameTimeAvailability(
+  currentAvailabilities,
+  newAvailabilities,
+  selectedAvailability
+) {
+  // We get the currently selected availability
+  const currentAvailability = findAvailabilityByChecksum(
+    currentAvailabilities, selectedAvailability
+  )
+
+  const it = newAvailabilities.find((element)=>{
+    return element.local_time_formatted === currentAvailability.local_time_formatted}
+  )
+
+  return it
+}
+
+function findAvailabilityByChecksum(availabilities, checksum) {
+  const es = availabilities.find((availability) => {
+    return availability.checksum = checksum
+  })
+
+  return es
+}
+
 function isToday(date) {
     const today = new Date()
     return (
@@ -18,62 +50,41 @@ function isToday(date) {
     )
 }
 
-function toMagicTime(time) {
+function toDecimalTime(time) {
     return parseInt(time.replace(/:/, ''), 10)
 }
 
 function selectAvailability(availabilities, state) {
 
-  if (state.availabilities.length === 0) {
-    // Short circuit here if we don't have availabilities in the state yet
+  // Short circuit here if we don't have availabilities in the state yet
+  // we need to have availabilities there, so
+  // TODO: find a way to wait for them OR fire this on availabilities fetch success instead
+  if (!state.availabilities.length) {
+    console.log('No availabilities yet!')
     return
   }
 
-  const today = isToday(state.selectedDate.toDate())
-
-  // If we have an availability already selected
-  if (state.selectedAvailability !== '' && typeof state.selectedAvailability !== 'undefined') {
-    console.log('We have a selectedAvailability', state.selectedAvailability)
-
-    // We get the time from the currently selected availability
-    const availability = state.availabilities.filter((availability) => {
-      return availability.checksum === state.selectedAvailability
-    })[0]
-
-    // We convert the time to an integer so we can compare it
-    const time = toMagicTime(availability.local_time_formatted)
-
-    // same for the received availabilities, we extend them with our
-    // 'magic' time
-    // const magicAvailabilities = availabilities.map((availability) => {
-    //   availability.magicTime = toMagicTime(availability.local_time_formatted)
-    //   return availability
-    // })
-
-    const theOne = availabilities.find((e)=>{
-      return toMagicTime(e.local_time_formatted) === time}
-    )
-
-    return theOne
-    // is it available on the new date
-    //  ? select it
-    //  : unselect availability
-
+  if (state.selectedAvailability !== {} && typeof state.selectedAvailability !== 'undefined') {
+    // If we have an availability already selected, we check if one availability
+    // for the same time is available in the new date
+    debugger
+    return getSameTimeAvailability(state.availabilities, availabilities, state.selectedAvailability.checksum)
   } else {
-    if (today) { // Is is today?
-      const now = new Date()
-      const magicNow = (now.getHours() * 100) + now.getMinutes()
-      console.log('SELECT TIME 2 HOURS FROM NOW')
-      //   ? time available two hours from now
-      //      ? get it
-      //      : get the next available time
-    } else  {
-      console.log('DO NOTHING')
+    // If we don't have an availability already selected
+    if (!isToday(state.selectedDate.toDate())) {
+      // If it's not today, we do nothing
       return ''
+    } else  {
+      // If it is today we select the first availability 2 hours from now
+      const now = new Date()
+      // This calculation needs to be moved to the getAvailability function
+      // so it works with whatever we throw at it
+      const nowTime = `${now.getHours()}:${now.getMinutes()}`
+
+      const hola = getAvailability(availabilities, nowTime, 200)
+      return hola
     }
   }
-  //   : return empty string so the selectedAvailability is not set to undefined
-  return ''
 }
 
 function booking (state = {}, action) {
