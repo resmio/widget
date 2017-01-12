@@ -9,36 +9,29 @@ import {
   AVAILABILITIES_FETCHING_SUCCESS
 } from '../actions/bookingActions'
 
-function getAvailability(availabilities, time, timeOffset) {
+import { getSelectedAvailability } from '../selectors'
+
+function getFutureAvailability({
+  availabilities,
+  time,
+  timeOffset
+}) {
+  const targetTime = toDecimalTime(time) + timeOffset
   return availabilities.find((availability) => {
-    return (
-      toDecimalTime(availability.local_time_formatted) >= toDecimalTime(time) + timeOffset)
-  })
+    return (toDecimalTime(availability.local_time_formatted) >= targetTime)
+  }).checksum
 }
 
-function getSameTimeAvailability(
-  currentAvailabilities,
-  newAvailabilities,
-  selectedAvailability
-) {
-  // We get the currently selected availability
-  const currentAvailability = findAvailabilityByChecksum(
-    currentAvailabilities, selectedAvailability
+function getSameTimeAvailability({
+  nextAvailabilities,
+  selectedAvailabilityTime
+}) {
+  const it = nextAvailabilities.find((availability) => {
+    return availability.local_time_formatted === selectedAvailabilityTime
+    }
   )
 
-  const it = newAvailabilities.find((element)=>{
-    return element.local_time_formatted === currentAvailability.local_time_formatted}
-  )
-
-  return it
-}
-
-function findAvailabilityByChecksum(availabilities, checksum) {
-  const es = availabilities.find((availability) => {
-    return availability.checksum = checksum
-  })
-
-  return es
+  return it.checksum
 }
 
 function isToday(date) {
@@ -51,37 +44,46 @@ function isToday(date) {
 }
 
 function toDecimalTime(time) {
-    return parseInt(time.replace(/:/, ''), 10)
+  const timeStr = (
+    time
+      .match(/\d+/g)
+      .map((numStr) => numStr.length < 2 ? 0 + numStr : numStr )
+      .join('')
+  )
+  return parseInt(timeStr, 10)
 }
 
-function selectAvailability(availabilities, state) {
+function selectAvailability(nextAvailabilities, state) {
 
-  // Short circuit here if we don't have availabilities in the state yet
-  // we need to have availabilities there, so
-  // TODO: find a way to wait for them OR fire this on availabilities fetch success instead
-  if (!state.availabilities.length) {
-    console.log('No availabilities yet!')
-    return
-  }
-
-  if (state.selectedAvailability !== {} && typeof state.selectedAvailability !== 'undefined') {
+  if (state.selectedAvailability !== '') {
     // If we have an availability already selected, we check if one availability
     // for the same time is available in the new date
-    debugger
-    return getSameTimeAvailability(state.availabilities, availabilities, state.selectedAvailability.checksum)
+    console.log('availability selected so we try to getSameTimeAvailability')
+    return getSameTimeAvailability({
+      nextAvailabilities: nextAvailabilities,
+      selectedAvailabilityTime: getSelectedAvailability(state).local_time_formatted
+    })
   } else {
     // If we don't have an availability already selected
+    console.log('no availability selected ')
     if (!isToday(state.selectedDate.toDate())) {
+      console.log('not today so we do nothing')
       // If it's not today, we do nothing
       return ''
     } else  {
+      console.log('today so we select an avaialbility in the future')
       // If it is today we select the first availability 2 hours from now
       const now = new Date()
-      // This calculation needs to be moved to the getAvailability function
+      // This calculation needs to be moved to the getFutureAvailability function
       // so it works with whatever we throw at it
       const nowTime = `${now.getHours()}:${now.getMinutes()}`
 
-      const hola = getAvailability(availabilities, nowTime, 200)
+      const hola = getFutureAvailability({
+        availabilities: nextAvailabilities,
+        time: nowTime,
+        timeOffset: 200
+      })
+
       return hola
     }
   }
