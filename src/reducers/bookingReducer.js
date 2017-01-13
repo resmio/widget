@@ -9,67 +9,7 @@ import {
   AVAILABILITIES_FETCHING_SUCCESS
 } from '../actions/bookingActions'
 
-import { getSelectedAvailability } from '../selectors'
-import { isSameDay, toDecimalTime } from '../utils/dates'
-
-function getFutureAvailability({
-  availabilities,
-  time,
-  timeOffset
-}) {
-  const targetTime = toDecimalTime(time) + timeOffset
-  return availabilities.find((availability) => {
-    return (toDecimalTime(availability.local_time_formatted) >= targetTime)
-  }).checksum
-}
-
-function getSameTimeAvailability({
-  nextAvailabilities,
-  selectedAvailabilityTime
-}) {
-  const it = nextAvailabilities.find((availability) => {
-    return availability.local_time_formatted === selectedAvailabilityTime
-    }
-  )
-
-  return it.checksum
-}
-
-function selectAvailability(nextAvailabilities, state) {
-
-  if (state.selectedAvailability !== '') {
-    // If we have an availability already selected, we check if one availability
-    // for the same time is available in the new date
-    console.log('availability selected so we try to getSameTimeAvailability')
-    return getSameTimeAvailability({
-      nextAvailabilities: nextAvailabilities,
-      selectedAvailabilityTime: getSelectedAvailability({booking: state}).local_time_formatted
-    })
-  } else {
-    // If we don't have an availability already selected
-    console.log('no availability selected ')
-    if (!isSameDay(new Date(), state.selectedDate.toDate())) {
-      console.log('not today so we do nothing')
-      // If it's not today, we do nothing
-      return ''
-    } else  {
-      console.log('today so we select an avaialbility in the future')
-      // If it is today we select the first availability 2 hours from now
-      const now = new Date()
-      // This calculation needs to be moved to the getFutureAvailability function
-      // so it works with whatever we throw at it
-      const nowTime = `${now.getHours()}:${now.getMinutes()}`
-
-      const hola = getFutureAvailability({
-        availabilities: nextAvailabilities,
-        time: nowTime,
-        timeOffset: 200
-      })
-
-      return hola
-    }
-  }
-}
+import { selectAvailability } from '../utils/availabilities'
 
 function booking (state = {}, action) {
 
@@ -119,7 +59,7 @@ function booking (state = {}, action) {
         availabilities: action.response.objects,
         selectedAvailability: selectAvailability(
           action.response.objects, state
-        )
+        ).checksum
       })
     // Not yet implemented but the action works
     // case BOOKING_POSTING_SUCCESS:
