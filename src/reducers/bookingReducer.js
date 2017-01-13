@@ -10,6 +10,7 @@ import {
 } from '../actions/bookingActions'
 
 import { getSelectedAvailability } from '../selectors'
+import { isSameDay, toDecimalTime } from '../utils/dates'
 
 function getFutureAvailability({
   availabilities,
@@ -34,25 +35,6 @@ function getSameTimeAvailability({
   return it.checksum
 }
 
-function isToday(date) {
-    const today = new Date()
-    return (
-      date.getDate() === today.getDate() &&
-      date.getMonth() === today.getMonth() &&
-      date.getYear() === today.getYear()
-    )
-}
-
-function toDecimalTime(time) {
-  const timeStr = (
-    time
-      .match(/\d+/g)
-      .map((numStr) => numStr.length < 2 ? 0 + numStr : numStr )
-      .join('')
-  )
-  return parseInt(timeStr, 10)
-}
-
 function selectAvailability(nextAvailabilities, state) {
 
   if (state.selectedAvailability !== '') {
@@ -61,12 +43,12 @@ function selectAvailability(nextAvailabilities, state) {
     console.log('availability selected so we try to getSameTimeAvailability')
     return getSameTimeAvailability({
       nextAvailabilities: nextAvailabilities,
-      selectedAvailabilityTime: getSelectedAvailability(state).local_time_formatted
+      selectedAvailabilityTime: getSelectedAvailability({booking: state}).local_time_formatted
     })
   } else {
     // If we don't have an availability already selected
     console.log('no availability selected ')
-    if (!isToday(state.selectedDate.toDate())) {
+    if (!isSameDay(new Date(), state.selectedDate.toDate())) {
       console.log('not today so we do nothing')
       // If it's not today, we do nothing
       return ''

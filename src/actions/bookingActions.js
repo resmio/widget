@@ -23,7 +23,7 @@ export const TIME_SELECT = 'TIME_SELECT'
 
 // GUEST COUNTER ---------------------------------------------------------------
 
-export function addGuest () { 
+export function addGuest () {
  return { type: GUEST_ADD }
 }
 
