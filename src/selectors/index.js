@@ -20,9 +20,10 @@ export const getSelectedAvailability = (state) => {
   // Probably we need to init with some availability in there before
   // rendering the time picker (componentDidMount for booking Panel)
   // We need the spinner logic first
+  if (availabilities.length === 0) { return {} }
   return availabilities.filter(
     availability => availability.checksum === selectedAvailability
-  )[0] || {}
+  )[0]
 }
 
 export const showAvailabilities = (state) => {
