@@ -57,9 +57,11 @@ function booking (state = {}, action) {
     case AVAILABILITIES_FETCHING_SUCCESS:
       return Object.assign({}, state, {
         availabilities: action.response.objects,
-        selectedAvailability: selectAvailability(
-          action.response.objects, state
-        ).checksum
+        selectedAvailability: selectAvailability({
+          availabilities: action.response.objects,
+          state: state,
+          property: 'checksum'
+        })
       })
     // Not yet implemented but the action works
     // case BOOKING_POSTING_SUCCESS:

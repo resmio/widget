@@ -3,11 +3,12 @@ import { isSameDay, toDecimalTime } from './dates'
 
 export const getFutureAvailability = ({
   availabilities,
+  date,
   timeOffset
 }) => {
-  const today = new Date()
-  const now = `${today.getHours()}:${today.getMinutes()}`
-  const targetTime = toDecimalTime(now) + timeOffset
+
+  const time = `${date.getHours()}:${date.getMinutes()}`
+  const targetTime = toDecimalTime(time) + timeOffset
 
   return availabilities.find((availability) => {
     return (toDecimalTime(availability.local_time_formatted) >= targetTime)
@@ -24,7 +25,13 @@ export const getSameTimeAvailability = ({
   )
 }
 
-export const selectAvailability = (nextAvailabilities, state) => {
+export const selectAvailability = ({
+  availabilities,
+  state,
+  property
+}) => {
+
+  let availability
 
   if (state.selectedAvailability !== '') {
     // If we have an availability already selected
@@ -33,8 +40,8 @@ export const selectAvailability = (nextAvailabilities, state) => {
       getSelectedAvailability({booking: state}).local_time_formatted
     )
 
-    return getSameTimeAvailability({
-      nextAvailabilities: nextAvailabilities,
+    availability = getSameTimeAvailability({
+      nextAvailabilities: availabilities,
       selectedAvailabilityTime: selectedTime
     })
 
@@ -44,13 +51,20 @@ export const selectAvailability = (nextAvailabilities, state) => {
 
     if (today) {
       // If it is today we select the first availability 2 hours from now
-      return getFutureAvailability({
-        availabilities: nextAvailabilities,
+      availability = getFutureAvailability({
+        availabilities: availabilities,
+        date: new Date(),
         timeOffset: 200
       })
     } else  {
       // If it's not today, we do not select an availability
-      return ''
+      availability = {}
     }
+  }
+
+  if (typeof property !== undefined && availability[property]) {
+    return availability[property]
+  } else {
+    return availability
   }
 }
