@@ -2,6 +2,7 @@ import React from 'react'
 
 import ExpandableSelector from './ExpandableSelector'
 import Timeslots from './Timeslots'
+import Spinner from './Spinner'
 
 const TimePicker = ({
   timeSelected,
@@ -21,7 +22,7 @@ const TimePicker = ({
   if (error) {
     dropdown = <div>OOPS</div>
   } else if (fetching) {
-    dropdown = <div>FETCHING</div>
+    dropdown = <Spinner />
   } else {
     dropdown = (
       <Timeslots
