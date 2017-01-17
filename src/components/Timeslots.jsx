@@ -18,19 +18,20 @@ const timeslotHover = hover({
 
 const time = style({
   display: 'inline-block',
+  textAlign: 'center',
   width: '30%'
 })
 
 const spot = style({
   display: 'inline-block',
-  width: '45%',
-  marginLeft: '5%',
+  width: '55%',
+  textAlign: 'center',
   color: '#999'
 })
 
 const discount = style({
   display: 'inline-block',
-  width: '20%',
+  width: '10%',
   color: '#F8C150'
 })
 
@@ -67,7 +68,9 @@ const Timeslots= ({
             <div {...timeslotSS}>
               <span {...time}>{timeslot.local_time_formatted}</span>
               <span {...spot}>{timeslot.available} available</span>
-              <span {...discount}>{timeslot.price_change}%</span>
+              <span {...discount}>
+                {timeslot.price_change !== 0 ? `${timeslot.price_change}%` : ''}
+              </span>
             </div>
           </div>
         )
