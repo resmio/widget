@@ -18,6 +18,26 @@ export const toDecimalTime = (time) => {
   return parseInt(timeStr, 10)
 }
 
+// Date => Int
+export const toLinuxTimestamp = (date) => {
+  return Date.parse(date)
+}
+
+//
+export const toMilliseconds = ({
+  hours,
+  minutes
+}) => {
+  let result = 0
+  if (typeof hours === 'number') {
+    result += (hours * 3600000)
+  }
+  if (typeof minutes === 'number') {
+    result += (minutes * 60000)
+  }
+  return result
+}
+
 // TODO:
 // Create a regex that does this conversion
 // Nov. 14, 2016, 12:30 p.m.

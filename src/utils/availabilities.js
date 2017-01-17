@@ -1,20 +1,15 @@
 import { getSelectedAvailability } from '../selectors'
-import { isSameDay, toDecimalTime } from './dates'
+import { isSameDay, toLinuxTimestamp, toMilliseconds } from './dates'
 
 export const getFutureAvailability = ({
   availabilities,
   date,
-  timeOffset
+  timeOffsetInMilliseconds
 }) => {
-  console.log('DATE', date)
-  const time = `${date.getHours()}:${date.getMinutes()}`
-  const targetTime = toDecimalTime(time) + timeOffset
+  const targetTime = toLinuxTimestamp(date) + timeOffsetInMilliseconds
 
   const selectedAvailability = availabilities.find((availability) => {
-    console.log('TIME', time)
-    console.log('TARGET TIME', targetTime)
-    console.log('AVAILABILITY', toDecimalTime(availability.local_time_formatted))
-    return (toDecimalTime(availability.local_time_formatted) >= targetTime)
+    return (toLinuxTimestamp(availability.date) >= targetTime)
   })
 
   return selectedAvailability ? selectedAvailability : {}
@@ -59,7 +54,7 @@ export const selectAvailability = ({
       availability = getFutureAvailability({
         availabilities: availabilities,
         date: new Date(),
-        timeOffset: 200
+        timeOffsetInMilliseconds: toMilliseconds({hours: 2})
       })
     }
   }

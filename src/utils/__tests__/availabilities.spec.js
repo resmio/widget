@@ -43,11 +43,21 @@ describe('getFutureAvailability', ()=>{
   it('should return the first availability after the time limit if it exists', () => {
     const options ={
       availabilities: availabilities,
-      date: new Date('2017-01-14T09:30:00Z'),
-      timeOffset: 200
+      date: new Date('2017-01-14T19:30:00Z'),
+      timeOffsetInMilliseconds: (2*60*60*1000)
     }
     const actual = getFutureAvailability(options)
     const expected = availabilities[1]
+    expect(actual).toEqual(expected)
+  }),
+  it('should return an empty object if no availability after the offset exists', () => {
+    const options ={
+      availabilities: availabilities,
+      date: new Date('2017-01-14T19:30:00Z'),
+      timeOffsetInMilliseconds: (5*60*60*1000)
+    }
+    const actual = getFutureAvailability(options)
+    const expected = {}
     expect(actual).toEqual(expected)
   })
 })
