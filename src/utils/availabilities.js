@@ -6,10 +6,14 @@ export const getFutureAvailability = ({
   date,
   timeOffset
 }) => {
+  console.log('DATE', date)
   const time = `${date.getHours()}:${date.getMinutes()}`
   const targetTime = toDecimalTime(time) + timeOffset
 
   const selectedAvailability = availabilities.find((availability) => {
+    console.log('TIME', time)
+    console.log('TARGET TIME', targetTime)
+    console.log('AVAILABILITY', toDecimalTime(availability.local_time_formatted))
     return (toDecimalTime(availability.local_time_formatted) >= targetTime)
   })
 
