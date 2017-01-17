@@ -1,4 +1,7 @@
-import {getFutureAvailability} from '../availabilities'
+import {
+  getFutureAvailability,
+  getSameTimeAvailability
+} from '../availabilities'
 
 const availabilities = [
   {
@@ -57,6 +60,27 @@ describe('getFutureAvailability', ()=>{
       timeOffsetInMilliseconds: (5*60*60*1000)
     }
     const actual = getFutureAvailability(options)
+    const expected = {}
+    expect(actual).toEqual(expected)
+  })
+})
+
+describe('getSameTimeAvailability', ()=>{
+  it('should return an availability for the same time if it exists', () => {
+    const options ={
+      availabilities: availabilities,
+      time: availabilities[1].local_time_formatted
+    }
+    const actual = getSameTimeAvailability(options)
+    const expected = availabilities[1]
+    expect(actual).toEqual(expected)
+  }),
+  it('should return an empty object if no availability with the same time exists', () => {
+    const options ={
+      availabilities: availabilities,
+      time: '18:30'
+    }
+    const actual = getSameTimeAvailability(options)
     const expected = {}
     expect(actual).toEqual(expected)
   })

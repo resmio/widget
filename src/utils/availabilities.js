@@ -16,13 +16,15 @@ export const getFutureAvailability = ({
 }
 
 export const getSameTimeAvailability = ({
-  nextAvailabilities,
-  selectedAvailabilityTime
+  availabilities,
+  time
 }) => {
-  return nextAvailabilities.find((availability) => {
-    return availability.local_time_formatted === selectedAvailabilityTime
+  const availability = availabilities.find((availability) => {
+    return availability.local_time_formatted === time
     }
   )
+
+  return availability ?  availability : {}
 }
 
 export const selectAvailability = ({
@@ -41,8 +43,8 @@ export const selectAvailability = ({
     )
 
     availability = getSameTimeAvailability({
-      nextAvailabilities: availabilities,
-      selectedAvailabilityTime: selectedTime
+      availabilities: availabilities,
+      time: selectedTime
     })
 
   } else {
