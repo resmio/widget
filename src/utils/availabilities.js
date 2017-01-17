@@ -61,7 +61,7 @@ export const selectAvailability = ({
     }
   }
 
-  if (typeof property !== undefined && typeof availability[property] !== undefined) {
+  if (typeof property !== 'undefined' && typeof availability[property] !== 'undefined') {
     return availability[property]
   } else {
     return availability || {}
