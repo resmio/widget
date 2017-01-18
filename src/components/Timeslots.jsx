@@ -10,11 +10,6 @@ const timeslotSS = style({
   cursor: 'pointer',
 })
 
-const timeslotHover = hover({
-  background: '#555',
-  color: 'white'
-})
-
 const time = style({
   display: 'inline-block',
   textAlign: 'center',
@@ -39,6 +34,7 @@ const timeslotContainer = style({
 })
 
 const Timeslots= ({
+  color,
   timeslots,
   timeSelected,
   onTimeSelect,
@@ -47,6 +43,11 @@ const Timeslots= ({
   onTimePeriodAdvance,
   onTimePeriodReduce
 }) => {
+  const timeslotHover = hover({
+    background: color,
+    color: 'white'
+  })
+
   return (
     <div>
       {timeslots.map((timeslot) => {
@@ -58,7 +59,7 @@ const Timeslots= ({
         const isTimeSelected = timeSelected === timeslot.local_time_formatted
 
         const selectedSS = isTimeSelected
-          ? style({background: '#555'})
+          ? style({background: color})
           : style({})
 
         const selectedTimeSS = isTimeSelected

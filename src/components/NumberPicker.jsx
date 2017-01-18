@@ -39,6 +39,7 @@ const NumberPicker = ({
     numbers.map((num, i) => {
       return (
         <DropdownOption
+          selected={num === number}
           color={color}
           index={i}
           key={i}

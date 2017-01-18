@@ -37,6 +37,7 @@ const TimePicker = ({
           Select time
         </DropdownLabel>
         <Timeslots
+          color={color}
           timePeriods={timePeriods}
           timePeriodSelected={timePeriodSelected}
           timeslots={timeslots}
