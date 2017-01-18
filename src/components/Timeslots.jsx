@@ -1,5 +1,6 @@
 import React from 'react'
 import { style, hover, merge } from 'glamor'
+import {hexToRgb} from '../utils/colors'
 
 const timeslotSS = style({
   height: '4rem',
@@ -59,7 +60,7 @@ const Timeslots= ({
         const isTimeSelected = timeSelected === timeslot.local_time_formatted
 
         const selectedSS = isTimeSelected
-          ? style({background: color})
+          ? {backgroundColor: `rgba(${hexToRgb(color)}, 0.8)`}
           : style({})
 
         const selectedTimeSS = isTimeSelected

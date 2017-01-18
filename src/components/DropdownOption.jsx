@@ -10,18 +10,18 @@ const DropdownOption = ({
   onClickAction
 }) => {
   const selectedSS = selected
-    ? {background: color, color:'white'}
+    ? {backgroundColor: `rgba(${hexToRgb(color)}, 0.8)`, color:'white'}
     : {}
 
   const optionSS = merge(
     {
-      background: `rgba(${hexToRgb(color)}, 0.1)`,
-      height: '4rem',
-      lineHeight: '4rem',
-      paddingLeft: '9em',
+      backgroundColor: `rgba(${hexToRgb(color)}, 0.1)`,
       border: `1px solid rgba(${hexToRgb(color)}, 0.2)`,
       borderBottom: 'none',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      height: '4rem',
+      lineHeight: '4rem',
+      paddingLeft: '9em'
     },
     $(':hover', {
       background: color,
