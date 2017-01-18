@@ -1,17 +1,17 @@
 import React from 'react'
-
 import { style } from 'glamor'
-import { colors } from '../styles/variables'
+
 import ExpandableSelector from './ExpandableSelector'
+import DropdownLabel from './DropdownLabel'
 import Timeslots from './Timeslots'
 
-const label = style({
-  color: colors.silver,
-  flex: '1',
-  paddingLeft: '1em'
+
+const timepickerContainer = style({
+  marginTop: '1.6rem'
 })
 
 const TimePicker = ({
+  color,
   timeSelected,
   timeslots,
   timePeriods,
@@ -32,8 +32,10 @@ const TimePicker = ({
     dropdown = <div>FETCHING</div>
   } else {
     dropdown = (
-      <div {...label}>
-        TIME {timeSelected || 'Select time'}
+      <div {...timepickerContainer}>
+        <DropdownLabel color={color}>
+          Select time
+        </DropdownLabel>
         <Timeslots
           timePeriods={timePeriods}
           timePeriodSelected={timePeriodSelected}

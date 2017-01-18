@@ -23,7 +23,6 @@ const Footer = (props) => {
   const footer = style({
     alignItems: 'center',
     fontSize: '1.2rem',
-    borderTop: `1px solid #DDD`,
     display: 'flex',
     height: '6em',
     position: 'absolute',

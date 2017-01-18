@@ -77,6 +77,7 @@ class BookingPanel extends Component {
           onDateSelected={selectDate}
         />
         <TimePicker
+          color={buttonColor}
           error={availabilitiesError}
           timePeriods={timePeriods}
           timeSelected={selectedAvailability.local_time_formatted}

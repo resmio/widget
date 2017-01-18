@@ -39,10 +39,6 @@ const timeslotContainer = style({
   borderBottom: '1px solid #DDD'
 })
 
-const timeslotsContainer = style({
-  paddingTop: '4rem'
-})
-
 const Timeslots= ({
   timeslots,
   timeSelected,
@@ -53,29 +49,27 @@ const Timeslots= ({
   onTimePeriodReduce
 }) => (
   <div>
-    <div {...timeslotsContainer}>
-      {timeslots.map((timeslot) => {
+    {timeslots.map((timeslot) => {
 
-        const onTimeClick = () => {
-          onTimeSelect(timeslot.checksum)
-        }
+      const onTimeClick = () => {
+        onTimeSelect(timeslot.checksum)
+      }
 
-        return (
-          <div {...merge(timeslotContainer, timeslotHover)}
-            key={timeslot.checksum}
-            onClick={onTimeClick}
-          >
-            <div {...timeslotSS}>
-              <span {...time}>{timeslot.local_time_formatted}</span>
-              <span {...spot}>{timeslot.available} available</span>
-              <span {...discount}>
-                {timeslot.price_change !== 0 ? `${timeslot.price_change}%` : ''}
-              </span>
-            </div>
+      return (
+        <div {...merge(timeslotContainer, timeslotHover)}
+          key={timeslot.checksum}
+          onClick={onTimeClick}
+        >
+          <div {...timeslotSS}>
+            <span {...time}>{timeslot.local_time_formatted}</span>
+            <span {...spot}>{timeslot.available} available</span>
+            <span {...discount}>
+              {timeslot.price_change !== 0 ? `${timeslot.price_change}%` : ''}
+            </span>
           </div>
-        )
-      })}
-    </div>
+        </div>
+      )
+    })}
   </div>
 )
 
