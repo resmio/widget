@@ -40,6 +40,7 @@ const TimePicker = ({
           timePeriods={timePeriods}
           timePeriodSelected={timePeriodSelected}
           timeslots={timeslots}
+          timeSelected={timeSelected}
           onTimePeriodAdvance={onTimePeriodAdvance}
           onTimePeriodReduce={onTimePeriodReduce}
           onTimeSelect={onTimeSelect}

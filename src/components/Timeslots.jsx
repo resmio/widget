@@ -4,7 +4,6 @@ import { style, hover, merge } from 'glamor'
 const timeslotSS = style({
   height: '4rem',
   fontSize: '1em',
-  color: '#555',
   lineHeight: '4rem',
   margin: '0 auto',
   width: '90%',
@@ -47,31 +46,43 @@ const Timeslots= ({
   timePeriodSelected,
   onTimePeriodAdvance,
   onTimePeriodReduce
-}) => (
-  <div>
-    {timeslots.map((timeslot) => {
+}) => {
+  return (
+    <div>
+      {timeslots.map((timeslot) => {
 
-      const onTimeClick = () => {
-        onTimeSelect(timeslot.checksum)
-      }
+        const onTimeClick = () => {
+          onTimeSelect(timeslot.checksum)
+        }
 
-      return (
-        <div {...merge(timeslotContainer, timeslotHover)}
-          key={timeslot.checksum}
-          onClick={onTimeClick}
-        >
-          <div {...timeslotSS}>
-            <span {...time}>{timeslot.local_time_formatted}</span>
-            <span {...spot}>{timeslot.available} available</span>
-            <span {...discount}>
-              {timeslot.price_change !== 0 ? `${timeslot.price_change}%` : ''}
-            </span>
+        const isTimeSelected = timeSelected === timeslot.local_time_formatted
+
+        const selectedSS = isTimeSelected
+          ? style({background: '#555'})
+          : style({})
+
+        const selectedTimeSS = isTimeSelected
+          ? style({color: 'white'})
+          : style({})
+
+        return (
+          <div {...merge(timeslotContainer, timeslotHover, selectedSS)}
+            key={timeslot.checksum}
+            onClick={onTimeClick}
+          >
+            <div {...timeslotSS}>
+              <span {...merge(time, selectedTimeSS)}>{timeslot.local_time_formatted}</span>
+              <span {...spot}>{timeslot.available} available</span>
+              <span {...discount}>
+                {timeslot.price_change !== 0 ? `${timeslot.price_change}%` : ''}
+              </span>
+            </div>
           </div>
-        </div>
-      )
-    })}
-  </div>
-)
+        )
+      })}
+    </div>
+  )
+}
 
 export default Timeslots
 
