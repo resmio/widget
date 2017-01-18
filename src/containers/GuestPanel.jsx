@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect,  } from 'react-redux'
+import { style } from 'glamor'
 
 import * as bookingActions from '../actions/bookingActions'
 
@@ -8,6 +9,16 @@ import * as bookingActions from '../actions/bookingActions'
 import Panel from '../components/Panel'
 import Form from '../components/Form'
 import Input from '../components/Input'
+
+const newsletterSection = style({
+  marginTop: '2rem',
+  fontSize: '1.6rem',
+  color: '#999'
+})
+
+const newsletterCheckbox = style({
+  marginRight: '1rem'
+})
 
 class GuestPanel extends Component {
 
@@ -51,13 +62,16 @@ class GuestPanel extends Component {
             defaultValue={guestPhone}
             onChange={(e)=>{inputChanged('guestPhone', e.target.value)}}
           />
-          <input
-            type='checkbox'
-            checked={newsletterSubscription}
-            id='newsletterSubscription'
-            onChange={(e)=>{checkboxChanged('newsletterSubscription', e.target.checked)}}
-           />
-           <label htmlFor='newsletterSubscription'>Follow restaurant newsletter</label>
+          <div {...newsletterSection}>
+            <input
+              {...newsletterCheckbox}
+              type='checkbox'
+              checked={newsletterSubscription}
+              id='newsletterSubscription'
+              onChange={(e)=>{checkboxChanged('newsletterSubscription', e.target.checked)}}
+             />
+             <label htmlFor='newsletterSubscription'>Follow restaurant newsletter</label>
+          </div>
         </Form>
       </Panel>
     )

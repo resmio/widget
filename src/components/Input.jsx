@@ -14,7 +14,7 @@ const inputSS = style({
 
 const labelSS = style({
   fontWeight: 400,
-  fontSize: '1.6em',
+  fontSize: '1.5em',
   marginBottom: '0.5rem',
   marginTop: '2rem',
   display: 'block'

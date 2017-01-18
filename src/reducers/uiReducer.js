@@ -10,6 +10,7 @@ import {
   AVAILABILITIES_FETCHING,
   AVAILABILITIES_FETCHING_ERROR,
   AVAILABILITIES_FETCHING_SUCCESS,
+  BOOKING_POSTING_SUCCESS,
   DATE_SELECT,
   GUEST_SELECT,
   TIME_SELECT,
@@ -34,6 +35,11 @@ function ui(state={}, action) {
       return Object.assign({}, state, {
         availabilitiesError: false,
         availabilitiesFetching: false
+      })
+
+    case BOOKING_POSTING_SUCCESS:
+      return Object.assign({}, state, {
+        currentPanel: 3
       })
 
     case UI_DATE_SELECTOR_CHANGE_STATE:

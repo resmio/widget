@@ -63,7 +63,7 @@ function booking (state = {}, action) {
           property: 'checksum'
         })
       })
-    // Not yet implemented but the action works
+    // 
     // case BOOKING_POSTING_SUCCESS:
     //   console.log(action.response)
     //   return state
