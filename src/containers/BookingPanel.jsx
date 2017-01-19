@@ -80,7 +80,7 @@ class BookingPanel extends Component {
           color={buttonColor}
           error={availabilitiesError}
           timePeriods={timePeriods}
-          timeSelected={selectedAvailability.local_time_formatted}
+          timeSelected={selectedAvailability ? selectedAvailability.local_time_formatted : ''}
           timePeriodSelected={timePeriodSelected}
           state={timeSelectorState}
           timeslots={availabilities}

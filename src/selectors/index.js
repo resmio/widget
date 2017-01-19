@@ -36,7 +36,12 @@ export const showAvailabilities = (state) => {
 export const getDisplayBooking = createSelector(
   [getGuests, getSelectedAvailability],
   (guests, availability) => {
-    return `${guests} Guests, ${formatLocalDate(availability.local_date_formatted)}`
+    if (typeof availability !== 'undefined') {
+      return `${guests} Guests, ${formatLocalDate(availability.local_date_formatted)}`
+    }
+    else {
+      return ''
+    }
   }
 )
 
@@ -45,6 +50,7 @@ export const getDisplayBooking = createSelector(
 export const isNextButtonEnabled = createSelector(
   [getPanel, getSelectedAvailability, validGuestData],
   (panel, availability, guestData) => {
+    if (typeof availability === 'undefined') { return }
     // In the first panel we disable the button if there's
     // no availability selected
     if (panel === 1 && Object.keys(availability).length === 0) {

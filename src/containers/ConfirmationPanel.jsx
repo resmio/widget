@@ -13,9 +13,13 @@ import Panel from '../components/Panel'
 class ConfirmationPanel extends Component {
 
   render () {
+    const {
+      status
+    } = this.props.booking
+
     return (
       <Panel>
-        HOLALALALLA
+        {status}
       </Panel>
     )
   }
