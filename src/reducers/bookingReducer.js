@@ -1,4 +1,6 @@
 import {
+  BOOKING_POSTING,
+  BOOKING_POSTING_SUCCESS,
   CHECKBOX_CHANGED,
   GUEST_ADD,
   GUEST_REMOVE,
@@ -63,10 +65,17 @@ function booking (state = {}, action) {
           property: 'checksum'
         })
       })
-    // 
-    // case BOOKING_POSTING_SUCCESS:
-    //   console.log(action.response)
-    //   return state
+
+    case BOOKING_POSTING:
+      return Object.assign({}, state, {
+        status: 'pending'
+      })
+
+    case BOOKING_POSTING_SUCCESS:
+      console.log(action.status)
+      return Object.assign({}, state, {
+        status: action.response.status
+      })
 
     // This suff is shaky, probably need to move the timeFocused
     // part of it to a selector
