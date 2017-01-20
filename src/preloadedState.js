@@ -13,7 +13,7 @@ const preloadedState = {
     selectedDate: moment(),
     selectedGuests: 1,
     selectedAvailability: '',
-    status: 'confirmed',
+    status: 'unconfirmed',
     timePeriodSelected: 0,
     timeFocused: '',
     timePeriods: [

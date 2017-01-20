@@ -11,10 +11,15 @@ import {colors} from '../styles/variables'
 import Panel from '../components/Panel'
 import IconCheckmark from '../components/IconCheckmark'
 // import IconCircledX from '../components/IconCircledX'
-// import IconWarning from '../components/IconWarning'
+import IconWarning from '../components/IconWarning'
 
 const successSS = style({
     color: colors.java,
+    padding: '5rem 3rem'
+})
+
+const unconfirmedSS = style({
+    color: colors.goldenTainoi,
     padding: '5rem 3rem'
 })
 
@@ -32,7 +37,7 @@ const smallTextSS = style({
   color: colors.dustyGray
 })
 
-const codeSS = style({
+const blackerSS = style({
   color: colors.mineShaft
 })
 
@@ -52,13 +57,23 @@ const success = (
     <p {...messageSS}>Thank you!</p>
     <p {...messageSS}>Your booking is confirmed</p>
     <p {...smallTextSS}>
-      An email to {'EMAIL@EMAIL.COM'} was sent with your booking confirmation and reservation code - <span {...codeSS}>{'CODE'}</span>
+      An email to {'EMAIL@EMAIL.COM'} was sent with your booking confirmation and reservation code - <span {...blackerSS}>{'CODE'}</span>
     </p>
   </div>
 )
-const unconfirmed = <h1>Unconfirmed</h1>
-const pending = <h1>Pending</h1>
+const unconfirmed = (
+  <div {...unconfirmedSS}>
+    <IconWarning size='3.5rem'/>
+    <p {...messageSS}>Thank you!</p>
+    <p {...messageSS}>Booking request received</p>
+    <p {...smallTextSS}>
+      Atention, your booking <span {...blackerSS}>has not been confirmed yet</span>, but we will contact you as soon as we know whether we can accomodate your request.
+    </p>
+  </div>
+)
+
 const error = <h1>Error</h1>
+const pending = <h1>Pending</h1>
 
 const PanelRouter = (status)=> {
   switch (status) {
