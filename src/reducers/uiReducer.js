@@ -12,6 +12,7 @@ import {
   AVAILABILITIES_FETCHING_ERROR,
   AVAILABILITIES_FETCHING_SUCCESS,
   BOOKING_POSTING_SUCCESS,
+  BOOKING_POSTING_ERROR,
   DATE_SELECT,
   GUEST_SELECT,
   TIME_SELECT,
@@ -39,6 +40,7 @@ function ui(state={}, action) {
       })
 
     case BOOKING_POSTING_SUCCESS:
+    case BOOKING_POSTING_ERROR:
       return Object.assign({}, state, {
         currentPanel: 3
       })

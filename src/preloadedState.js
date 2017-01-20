@@ -13,7 +13,7 @@ const preloadedState = {
     selectedDate: moment(),
     selectedGuests: 1,
     selectedAvailability: '',
-    status: 'unconfirmed',
+    status: 'pending',
     timePeriodSelected: 0,
     timeFocused: '',
     timePeriods: [
@@ -27,7 +27,7 @@ const preloadedState = {
     // Probably don't need the defaultHeight
     defaultHeight: '380px', // = 500px - 60px header - 60px footer
     defaultWidth: '330px',
-    facility: 'meson-california-2',
+    facility: 'pimenta',
     headerColor: '#53628C',
     headerImage: 'https://zenezake.files.wordpress.com/2015/07/img_6715.jpg',
     headerTextColor: 'white',
@@ -35,7 +35,7 @@ const preloadedState = {
     renderAtMaxSize: false
   },
   ui: {
-    currentPanel: 3,
+    currentPanel: 1,
     guestSelectorState: 'collapsed',
     dateSelectorState: 'collapsed',
     timeSelectorState  : 'expanded',

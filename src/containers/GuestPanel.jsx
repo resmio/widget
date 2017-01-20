@@ -57,7 +57,7 @@ class GuestPanel extends Component {
           <Input
             label='Phone Number'
             id='guestPhone'
-            placeHolder='017645990313'
+            placeHolder='0555555555'
             key='phone'
             defaultValue={guestPhone}
             onChange={(e)=>{inputChanged('guestPhone', e.target.value)}}

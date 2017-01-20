@@ -12,7 +12,7 @@ import {colors} from '../styles/variables'
 // components
 import Panel from '../components/Panel'
 import IconCheckmark from '../components/IconCheckmark'
-// import IconCircledX from '../components/IconCircledX'
+import IconCircledX from '../components/IconCircledX'
 import IconWarning from '../components/IconWarning'
 
 const successSS = style({
@@ -21,8 +21,13 @@ const successSS = style({
 })
 
 const unconfirmedSS = style({
-    color: colors.goldenTainoi,
-    padding: '5rem 3rem'
+  color: colors.goldenTainoi,
+  padding: '5rem 3rem'
+})
+
+const errorSS = style({
+  color: colors.amaranth,
+  padding: '5rem 3rem'
 })
 
 const messageSS = style({
@@ -74,7 +79,17 @@ const unconfirmed = (
   </div>
 )
 
-const error = <h1>Error</h1>
+const error = (
+  <div {...errorSS}>
+    <IconCircledX size='3.5rem'/>
+    <p {...messageSS}>Ooops!</p>
+    <p {...messageSS}>Something went wrong</p>
+    <p {...smallTextSS}>
+      Please try again or call us at <span {...blackerSS}>Phone number</span>. We apologize for the inconvenience.
+    </p>
+  </div>
+)
+
 const pending = <h1>Pending</h1>
 
 const PanelRouter = (status)=> {

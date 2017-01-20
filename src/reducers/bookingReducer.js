@@ -1,5 +1,6 @@
 import {
   BOOKING_POSTING,
+  BOOKING_POSTING_ERROR,
   BOOKING_POSTING_SUCCESS,
   CHECKBOX_CHANGED,
   GUEST_ADD,
@@ -10,6 +11,10 @@ import {
   TIME_SELECT,
   AVAILABILITIES_FETCHING_SUCCESS
 } from '../actions/bookingActions'
+
+import {
+  UI_NEW_BOOKING
+} from '../actions/uiActions'
 
 import { selectAvailability } from '../utils/availabilities'
 
@@ -72,9 +77,20 @@ function booking (state = {}, action) {
       })
 
     case BOOKING_POSTING_SUCCESS:
-      console.log(action.status)
+      console.log(action)
       return Object.assign({}, state, {
         status: action.response.status
+      })
+
+    case BOOKING_POSTING_ERROR:
+      console.log(action)
+      return Object.assign({}, state, {
+        status: 'error'
+      })
+
+    case UI_NEW_BOOKING:
+      return Object.assign({}, state, {
+        status: 'pending'
       })
 
     // This suff is shaky, probably need to move the timeFocused
