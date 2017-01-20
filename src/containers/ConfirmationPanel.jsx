@@ -4,7 +4,9 @@ import { connect,  } from 'react-redux'
 import * as bookingActions from '../actions/bookingActions'
 import * as uiActions from '../actions/uiActions'
 
-import {style} from 'glamor'
+import {hexToRgb} from '../utils/colors'
+
+import { style, merge, select as $ } from 'glamor'
 import {colors} from '../styles/variables'
 
 // components
@@ -91,11 +93,41 @@ class ConfirmationPanel extends Component {
       status
     } = this.props.booking
 
+    const {
+      buttonColor
+    } = this.props.custom
+
+    const {
+      newBooking
+    } = this.props
+
+    const button = merge(
+      {
+        background: `rgba(${hexToRgb(buttonColor)}, 0.8)`,
+        border: '1px solid white',
+        borderRadius: '4px',
+        color: 'white',
+        cursor: 'pointer',
+        display: 'block',
+        fontSize: '1.4rem',
+        padding: '1rem 3rem',
+        margin: '4rem auto'
+      },
+      $(':hover', {
+        background: 'white',
+        border: `1px solid ${buttonColor}`,
+        color: buttonColor,
+      }),
+      $(':focus', {
+        outline: 'none'
+      })
+    )
+
     return (
       <Panel>
         {PanelRouter(status)}
         <span {...hr}/>
-        <button>Create new booking</button>
+        <button {...button} onClick={newBooking}>Create new booking</button>
       </Panel>
     )
   }

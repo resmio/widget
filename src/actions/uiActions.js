@@ -21,6 +21,8 @@ export const UI_TIME_PERIOD_REDUCE = 'UI_TIME_PERIOD_REDUCE'
 export const UI_PANEL_ADVANCE = 'UI_PANEL_ADVANCE'
 export const UI_PANEL_REDUCE = 'UI_PANEL_REDUCE'
 
+export const UI_NEW_BOOKING = 'UI_NEW_BOOKING'
+
 export function appInit () {
   return (dispatch) => {
     dispatch(fetchAvailabilities())
@@ -53,4 +55,8 @@ export function advanceTimePeriod () {
 
 export function reduceTimePeriod () {
   return { type: UI_TIME_PERIOD_REDUCE }
+}
+
+export function newBooking () {
+  return { type: UI_NEW_BOOKING }
 }

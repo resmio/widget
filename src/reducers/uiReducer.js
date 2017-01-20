@@ -1,6 +1,7 @@
 import {
   UI_DATE_SELECTOR_CHANGE_STATE,
   UI_GUEST_SELECTOR_CHANGE_STATE,
+  UI_NEW_BOOKING,
   UI_TIME_SELECTOR_CHANGE_STATE,
   UI_PANEL_ADVANCE,
   UI_PANEL_REDUCE
@@ -112,6 +113,11 @@ function ui(state={}, action) {
       return Object.assign({}, state, {
         currentPanel: state.currentPanel - 1
       })
+
+    case UI_NEW_BOOKING:
+    return Object.assign({}, state, {
+      currentPanel: 1
+    })
 
     default:
       return state

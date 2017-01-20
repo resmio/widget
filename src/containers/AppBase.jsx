@@ -56,6 +56,19 @@ class AppBase extends Component {
       position: 'relative'
     })
 
+    const footer = (
+      <Footer
+        currentPanel={currentPanel}
+        logo={logoUrl}
+        buttonColor={buttonColor}
+        numberOfPanels={numberOfPanels}
+        onLastClicked={postBooking}
+        onNextClicked={advancePanel}
+        onPreviousClicked={reducePanel}
+        buttonDisabled={!buttonEnabled}
+      />
+    )
+
     return (
       <div {...widgetSS}>
         <Header
@@ -65,16 +78,7 @@ class AppBase extends Component {
           subheaderText={ currentPanel === 1 ? facility : bookingInfo }
         />
         <PanelRouter panel={currentPanel} />
-        <Footer
-          currentPanel={currentPanel}
-          logo={logoUrl}
-          buttonColor={buttonColor}
-          numberOfPanels={numberOfPanels}
-          onLastClicked={postBooking}
-          onNextClicked={advancePanel}
-          onPreviousClicked={reducePanel}
-          buttonDisabled={!buttonEnabled}
-        />
+        { currentPanel <= numberOfPanels ? footer : null }
       </div>
     )
   }
