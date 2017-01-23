@@ -102,7 +102,7 @@ export function postBooking () {
           num: state.booking.selectedGuests,
           date: getSelectedAvailability(state).date,
           name: state.booking.guestName,
-          email: state.booking.guestName,
+          email: state.booking.guestEmail,
           phone: state.booking.guestPhone,
           price_change: getSelectedAvailability(state).price_change,
           checksum: state.booking.selectedAvailability,

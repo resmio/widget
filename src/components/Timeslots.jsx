@@ -44,10 +44,6 @@ const Timeslots= ({
   onTimePeriodAdvance,
   onTimePeriodReduce
 }) => {
-  const timeslotHover = hover({
-    background: color,
-    color: 'white'
-  })
 
   return (
     <div>
@@ -58,6 +54,7 @@ const Timeslots= ({
         }
 
         const isTimeSelected = timeSelected === timeslot.local_time_formatted
+        const available = timeslot.available > 0
 
         const selectedSS = isTimeSelected
           ? {backgroundColor: `rgba(${hexToRgb(color)}, 0.8)`}
@@ -67,13 +64,22 @@ const Timeslots= ({
           ? style({color: 'white'})
           : style({})
 
+        const availableTimeSS = available
+          ? style({textDecoration: 'none'})
+          : style({textDecoration: 'line-through', opacity:'0.2'})
+
+        // This does not work yet
+        const timeslotHover = available
+         ? hover({background: color, color: 'white'})
+         : hover({cursor: 'not-allowed'})
+
         return (
           <div {...merge(timeslotContainer, timeslotHover, selectedSS)}
             key={timeslot.checksum}
-            onClick={onTimeClick}
+            onClick={available ? onTimeClick : ()=>{}}
           >
             <div {...timeslotSS}>
-              <span {...merge(time, selectedTimeSS)}>{timeslot.local_time_formatted}</span>
+              <span {...merge(time, availableTimeSS, selectedTimeSS)}>{timeslot.local_time_formatted}</span>
               <span {...spot}>{timeslot.available} available</span>
               <span {...discount}>
                 {timeslot.price_change !== 0 ? `${timeslot.price_change}%` : ''}
@@ -85,6 +91,13 @@ const Timeslots= ({
     </div>
   )
 }
+
+// Tmeslot not available
+// Disable hover
+// Disable onCLick
+// Change opacity
+// Linetthrough time
+// Show not available
 
 export default Timeslots
 
