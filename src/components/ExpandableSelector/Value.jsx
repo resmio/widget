@@ -9,15 +9,14 @@ const value = style({
   textAlign: 'center'
 })
 
-const Value = ({children, onClickAction}) => (
-  <div {...value} onClick={onClickAction}>
+const Value = ({children}) => (
+  <div {...value}>
     { children }
   </div>
 )
 
 Value.propTypes = {
-  children: PropTypes.node.isRequired,
-  onClickAction: PropTypes.func
+  children: PropTypes.node.isRequired
 }
 
 export default Value

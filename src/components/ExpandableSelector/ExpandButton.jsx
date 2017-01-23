@@ -15,16 +15,15 @@ const arrowHover = hover({
   color: '#555'
 })
 
-const ExpandButton= ({state, onClickAction}) => (
-  <div {...merge(arrow, arrowHover)} onClick={onClickAction}>
+const ExpandButton= ({state}) => (
+  <div {...merge(arrow, arrowHover)}>
     <IconArrow direction={state !== 'expanded' ? 'down' : 'up'} />
   </div>
 
 )
 
 ExpandButton.propTypes = {
-  state: PropTypes.oneOf(['collapsed', 'semicollapsed', 'expanded']).isRequired,
-  onClickAction: PropTypes.func
+  state: PropTypes.oneOf(['collapsed', 'semicollapsed', 'expanded']).isRequired
 }
 
 export default ExpandButton

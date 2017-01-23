@@ -59,10 +59,10 @@ const ExpandableSelector = ({
     state === 'expanded'
       ? <div {...dropdownSS}>{dropdown}</div>
       : (
-        <div {...main}>
+        <div {...main} onClick={onExpandClicked}>
           <Label>{label}</Label>
-          <Value onClickAction={onExpandClicked}>{displayedInfo}</Value>
-          <ExpandButton state={state} onClickAction={onExpandClicked} />
+          <Value>{displayedInfo}</Value>
+          <ExpandButton state={state} />
         </div>
       )
   )
