@@ -36,7 +36,10 @@ function ui(state={}, action) {
     case AVAILABILITIES_FETCHING_SUCCESS:
       return Object.assign({}, state, {
         availabilitiesError: false,
-        availabilitiesFetching: false
+        availabilitiesFetching: false,
+        guestSelectorState: 'collapsed',
+        dateSelectorState: 'collapsed',
+        timeSelectorState  : 'expanded'
       })
 
     case BOOKING_POSTING_SUCCESS:
