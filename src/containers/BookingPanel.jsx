@@ -17,8 +17,6 @@ import TimePicker from '../components/TimePicker'
 class BookingPanel extends Component {
 
   render () {
-    // All of this is horrible and coupling this to the state
-    // Find a better way to do it
     const {
       // actions
       advanceTimePeriod,
@@ -35,8 +33,6 @@ class BookingPanel extends Component {
       selectedAvailability
     } = this.props
 
-    const { buttonColor } = this.props.custom
-
     const {
       selectedDate,
       selectedGuests,
@@ -45,6 +41,10 @@ class BookingPanel extends Component {
       timePeriodSelected,
       timePeriods
     } = this.props.booking
+
+    const {
+      buttonColor
+    } = this.props.custom
 
     const {
       availabilitiesError,
@@ -79,6 +79,7 @@ class BookingPanel extends Component {
         <TimePicker
           color={buttonColor}
           error={availabilitiesError}
+          limit={selectedGuests}
           timePeriods={timePeriods}
           timeSelected={selectedAvailability ? selectedAvailability.local_time_formatted : ''}
           timePeriodSelected={timePeriodSelected}

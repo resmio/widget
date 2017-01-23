@@ -36,6 +36,7 @@ const timeslotContainer = style({
 
 const Timeslots= ({
   color,
+  limit,
   timeslots,
   timeSelected,
   onTimeSelect,
@@ -54,7 +55,7 @@ const Timeslots= ({
         }
 
         const isTimeSelected = timeSelected === timeslot.local_time_formatted
-        const available = timeslot.available > 0
+        const available = timeslot.available > limit
 
         const selectedSS = isTimeSelected
           ? {backgroundColor: `rgba(${hexToRgb(color)}, 0.8)`}
@@ -78,9 +79,9 @@ const Timeslots= ({
             key={timeslot.checksum}
             onClick={available ? onTimeClick : ()=>{}}
           >
-            <div {...timeslotSS}>
+            <div {...merge(timeslotSS)}>
               <span {...merge(time, availableTimeSS, selectedTimeSS)}>{timeslot.local_time_formatted}</span>
-              <span {...spot}>{timeslot.available} available</span>
+              <span {...merge(spot, availableTimeSS)}>{timeslot.available} available</span>
               <span {...discount}>
                 {timeslot.price_change !== 0 ? `${timeslot.price_change}%` : ''}
               </span>

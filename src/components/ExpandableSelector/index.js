@@ -6,6 +6,7 @@ import Label from './Label'
 import Value from './Value'
 import ExpandButton from './ExpandButton'
 
+// Styles
 const dropdownSS = style({
   fontSize: '1.4rem',
   maxHeight: '26.5rem',

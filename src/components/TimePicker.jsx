@@ -21,6 +21,7 @@ const noAvailabilitiesMessage = style({
 
 const TimePicker = ({
   color,
+  limit,
   timeSelected,
   timeslots,
   timePeriods,
@@ -48,6 +49,7 @@ const TimePicker = ({
         {timeslots.length
           ? <Timeslots
               color={color}
+              limit={limit}
               timePeriods={timePeriods}
               timePeriodSelected={timePeriodSelected}
               timeslots={timeslots}
