@@ -14,23 +14,12 @@ export const BOOKING_POSTING = 'BOOKING:POSTING'
 export const BOOKING_POSTING_SUCCESS = 'BOOKING:POSTING:SUCCESS'
 export const BOOKING_POSTING_ERROR = 'BOOKING:POSTING:ERROR'
 export const CHECKBOX_CHANGED = 'CHECKBOX_CHANGED'
-export const GUEST_ADD = 'GUEST_ADD'
-export const GUEST_REMOVE = 'GUEST_REMOVE'
 export const GUEST_SELECT = 'GUEST_SELECT'
 export const INPUT_CHANGED = 'INPUT_CHANGED'
 export const DATE_SELECT = 'DATE_SELECT'
 export const TIME_SELECT = 'TIME_SELECT'
 
 // GUEST COUNTER ---------------------------------------------------------------
-
-export function addGuest () {
- return { type: GUEST_ADD }
-}
-
-export function removeGuest () {
-  return { type: GUEST_REMOVE }
-}
-
 export function selectGuest (e) {
   return {
     type: GUEST_SELECT,

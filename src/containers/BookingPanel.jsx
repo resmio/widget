@@ -24,8 +24,6 @@ class BookingPanel extends Component {
       uiGuestSelectorChangeState,
       uiDateSelectorChangeState,
       uiTimeSelectorChangeState,
-      addGuest,
-      removeGuest,
       selectGuest,
       selectDate,
       selectTime,
@@ -65,8 +63,6 @@ class BookingPanel extends Component {
           number={selectedGuests}
           onEditClicked={uiGuestSelectorChangeState}
           onNumberSelected={selectGuest}
-          onPlusClicked={addGuest}
-          onMinusClicked={removeGuest}
           color={buttonColor}
         />
         <DatePickerSection

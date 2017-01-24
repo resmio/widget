@@ -83,8 +83,8 @@ NumberPicker.propTypes = {
   number: number.isRequired,
   onEditClicked: func.isRequired,
   onNumberSelected: func.isRequired,
-  onPlusClicked: func.isRequired,
-  onMinusClicked: func.isRequired,
+  onPlusClicked: func,
+  onMinusClicked: func,
 }
 
 export default NumberPicker

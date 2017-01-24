@@ -1,14 +1,14 @@
 import React from 'react'
 import { style, hover, merge } from 'glamor'
-import {hexToRgb} from '../utils/colors'
+import { colors } from '../styles/variables'
+import { hexToRgb } from '../utils/colors'
 
 const timeslotSS = style({
   height: '4rem',
   fontSize: '1em',
   lineHeight: '4rem',
   margin: '0 auto',
-  width: '90%',
-  cursor: 'pointer',
+  width: '90%'
 })
 
 const time = style({
@@ -31,7 +31,7 @@ const discount = style({
 })
 
 const timeslotContainer = style({
-  borderBottom: '1px solid #DDD'
+  borderBottom: `1px solid ${colors.alto}`
 })
 
 const Timeslots= ({
@@ -68,8 +68,8 @@ const Timeslots= ({
 
         // This does not work yet
         const timeslotHover = available
-         ? hover({background: color, color: 'white'})
-         : hover({cursor: 'not-allowed'})
+         ? hover({background: color, color: 'white', cursor: 'pointer'})
+         : hover({cursor: 'default'})
 
         return (
           <div {...merge(timeslotContainer, timeslotHover, selectedSS)}

@@ -3,8 +3,6 @@ import {
   BOOKING_POSTING_ERROR,
   BOOKING_POSTING_SUCCESS,
   CHECKBOX_CHANGED,
-  GUEST_ADD,
-  GUEST_REMOVE,
   GUEST_SELECT,
   DATE_SELECT,
   INPUT_CHANGED,
@@ -16,33 +14,20 @@ import {
   UI_NEW_BOOKING
 } from '../actions/uiActions'
 
+import { getSelectedAvailability } from '../selectors'
 import { selectAvailability } from '../utils/availabilities'
 
 function booking (state = {}, action) {
 
   switch (action.type) {
 
-    case GUEST_ADD:
-      if (state.selectedGuests < state.maxGuests) {
-        return Object.assign({}, state, {
-          selectedGuests: state.selectedGuests + 1
-        })
-      } else {
-        return state
-      }
-
-    case GUEST_REMOVE:
-      if (state.selectedGuests > state.minGuests) {
-        return Object.assign({}, state, {
-          selectedGuests: state.selectedGuests - 1
-        })
-      } else {
-        return state
-      }
-
     case GUEST_SELECT:
+      const availability = getSelectedAvailability({booking:state})
+      const available = (availability && availability.available >= action.payload)
+
       return Object.assign({}, state, {
-        selectedGuests: action.payload
+        selectedGuests: action.payload,
+        selectedAvailability: available ? state.selectedAvailability : ''
       })
 
     case DATE_SELECT:
@@ -77,13 +62,11 @@ function booking (state = {}, action) {
       })
 
     case BOOKING_POSTING_SUCCESS:
-      console.log(action)
       return Object.assign({}, state, {
         status: action.response.status
       })
 
     case BOOKING_POSTING_ERROR:
-      console.log(action)
       return Object.assign({}, state, {
         status: 'error'
       })
