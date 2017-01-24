@@ -58,16 +58,19 @@ const hr = style({
   width: '7rem'
 })
 
-const success = (
-  <div {...successSS}>
-    <IconCheckmark size='3.5rem'/>
-    <p {...messageSS}>Thank you!</p>
-    <p {...messageSS}>Your booking is confirmed</p>
-    <p {...smallTextSS}>
-      An email to {'EMAIL@EMAIL.COM'} was sent with your booking confirmation and reservation code - <span {...blackerSS}>{'CODE'}</span>
-    </p>
-  </div>
-)
+const success = (guestEmail, bookingId) => {
+  return (
+    <div {...successSS}>
+      <IconCheckmark size='3.5rem'/>
+      <p {...messageSS}>Thank you!</p>
+      <p {...messageSS}>Your booking is confirmed</p>
+      <p {...smallTextSS}>
+        An email to {guestEmail} was sent with your booking confirmation and reservation code - <span {...blackerSS}>{bookingId}</span>
+      </p>
+    </div>
+  )
+}
+
 const unconfirmed = (
   <div {...unconfirmedSS}>
     <IconWarning size='3.5rem'/>
@@ -92,9 +95,9 @@ const error = (
 
 const pending = <h1>Pending</h1>
 
-const PanelRouter = (status)=> {
+const PanelRouter = ({status, guestEmail, bookingId})=> {
   switch (status) {
-    case 'confirmed': return (success)
+    case 'confirmed': return (success(guestEmail, bookingId))
     case 'unconfirmed': return (unconfirmed)
     case 'pending': return (pending)
     default: return (error)
@@ -105,8 +108,7 @@ class ConfirmationPanel extends Component {
 
   render () {
     const {
-      buttonColor,
-      status
+      buttonColor
     } = this.props.state
 
     const {
@@ -137,7 +139,7 @@ class ConfirmationPanel extends Component {
 
     return (
       <Panel>
-        {PanelRouter(status)}
+        {PanelRouter(this.props.state)}
         <span {...hr}/>
         <button {...button} onClick={newBooking}>Create new booking</button>
       </Panel>

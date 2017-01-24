@@ -3,6 +3,7 @@ import moment from 'moment'
 
 const preloadedState = {
   availabilities: [],
+  BookingId: '',
   guestEmail: '',
   guestName: '',
   guestPhone: '',

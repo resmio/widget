@@ -122,7 +122,8 @@ function reducer (state = {}, action) {
     case BOOKING_POSTING_SUCCESS:
       return Object.assign({}, state, {
         currentPanel: 3,
-        status: action.response.status
+        status: action.response.status,
+        bookingId: action.response.id
       })
 
     case BOOKING_POSTING_ERROR:
