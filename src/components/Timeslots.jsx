@@ -78,7 +78,7 @@ const Timeslots= ({
           >
             <div {...merge(timeslotSS)}>
               <span {...merge(time, availableTimeSS, selectedTimeSS)}>{timeslot.local_time_formatted}</span>
-              <span {...merge(spot, availableTimeSS)}>{timeslot.available} available</span>
+              <span {...merge(spot, availableTimeSS)}>{timeslot.available > 0 ? 'Available' : 'Not Available'}</span>
               <span {...discount}>
                 {timeslot.price_change !== 0 ? `${timeslot.price_change}%` : ''}
               </span>
