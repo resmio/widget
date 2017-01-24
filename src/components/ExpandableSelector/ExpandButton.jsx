@@ -6,9 +6,8 @@ import IconArrow from '../IconArrow'
 const arrow = style({
   color: '#CCC',
   cursor: 'pointer',
-  flex: '1',
-  paddingRight: '1em',
-  textAlign: 'right'
+  textAlign: 'left',
+  width: '10%'
 })
 
 const arrowHover = hover({

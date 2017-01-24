@@ -20,8 +20,7 @@ const time = style({
 const spot = style({
   display: 'inline-block',
   width: '55%',
-  textAlign: 'center',
-  color: '#999'
+  textAlign: 'center'
 })
 
 const discount = style({
@@ -31,7 +30,8 @@ const discount = style({
 })
 
 const timeslotContainer = style({
-  borderBottom: `1px solid ${colors.alto}`
+  borderBottom: `1px solid ${colors.alto}`,
+  color: colors.emperor
 })
 
 const Timeslots= ({

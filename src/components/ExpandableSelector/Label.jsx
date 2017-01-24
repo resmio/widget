@@ -4,8 +4,8 @@ import { colors } from '../../styles/variables'
 
 const label = style({
   color: colors.silver,
-  flex: '1',
-  paddingLeft: '1em'
+  paddingLeft: '6%',
+  width: '35%'
 })
 
 const Label = ({children}) => (
