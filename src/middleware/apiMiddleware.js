@@ -20,7 +20,7 @@ const apiMiddleware = ({ getState, dispatch }) => next => action => {
   }
 
   // let's build the url to be used as an endpoint
-  const facility = getState().custom.facility
+  const facility = getState().facility
   const url = `${API_ROOT}${facility}${payload.url}`
 
 

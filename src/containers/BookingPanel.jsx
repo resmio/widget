@@ -18,39 +18,32 @@ class BookingPanel extends Component {
 
   render () {
     const {
-      // actions
       advanceTimePeriod,
+      availabilitiesError,
+      availabilitiesFetching,
+      dateSelectorState,
+      guestSelectorState,
+      timeSelectorState,
+      buttonColor,
       reduceTimePeriod,
+      availabilities,
+      selectedDate,
+      selectedGuests,
+      maxGuests,
+      minGuests,
+      timePeriodSelected,
+      timePeriods,
+    } = this.props.state
+
+    const {
       uiGuestSelectorChangeState,
       uiDateSelectorChangeState,
       uiTimeSelectorChangeState,
       selectGuest,
       selectDate,
       selectTime,
-      availabilities,
       selectedAvailability
     } = this.props
-
-    const {
-      selectedDate,
-      selectedGuests,
-      maxGuests,
-      minGuests,
-      timePeriodSelected,
-      timePeriods
-    } = this.props.booking
-
-    const {
-      buttonColor
-    } = this.props.custom
-
-    const {
-      availabilitiesError,
-      availabilitiesFetching,
-      dateSelectorState,
-      guestSelectorState,
-      timeSelectorState
-    } = this.props.ui
 
     return (
       <Panel>
@@ -114,9 +107,7 @@ BookingPanel.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    ui: state.ui,
-    custom: state.custom,
-    booking: state.booking,
+    state,
     selectedAvailability: getSelectedAvailability(state),
     availabilities: showAvailabilities(state)
   }

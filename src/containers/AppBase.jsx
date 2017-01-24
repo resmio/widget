@@ -22,6 +22,7 @@ class AppBase extends Component {
   render() {
     const {
       buttonColor,
+      currentPanel,
       defaultHeight,
       defaultWidth,
       facility,
@@ -31,18 +32,14 @@ class AppBase extends Component {
       logoUrl,
       numberOfPanels,
       renderAtMaxSize
-    } = this.props.custom
+    } = this.props.state
 
     const {
-      currentPanel
-    } = this.props.ui
-
-    const {
-      reducePanel,
       advancePanel,
       bookingInfo,
-      postBooking,
-      buttonEnabled
+      buttonEnabled,
+      reducePanel,
+      postBooking
     } = this.props
 
     // generate styles
@@ -87,8 +84,7 @@ class AppBase extends Component {
 // Wiring
 const mapStateToProps = (state) => {
   return {
-    custom: state.custom,
-    ui: state.ui,
+    state,
     bookingInfo: getDisplayBooking(state),
     buttonEnabled: isNextButtonEnabled(state)
   }

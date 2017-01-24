@@ -39,7 +39,7 @@ export const selectAvailability = ({
     // If we have an availability already selected
     // we check if one availability for the same time is available in the new date
     const selectedTime = (
-      getSelectedAvailability({booking: state}).local_time_formatted
+      getSelectedAvailability(state).local_time_formatted
     )
 
     availability = getSameTimeAvailability({

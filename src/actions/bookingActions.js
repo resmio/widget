@@ -38,7 +38,7 @@ export function selectDate (date) {
 // AVAILABILITIES --------------------------------------------------------------
 export function fetchAvailabilities () {
   return  (dispatch, getState) => {
-    const date = getState().booking.selectedDate.toJSON().substr(0,10)
+    const date = getState().selectedDate.toJSON().substr(0,10)
     dispatch({
       type: API,
       payload: {
@@ -88,17 +88,17 @@ export function postBooking () {
         url: '/bookings',
         method: 'POST',
         body: state => ({
-          num: state.booking.selectedGuests,
+          num: state.selectedGuests,
           date: getSelectedAvailability(state).date,
-          name: state.booking.guestName,
-          email: state.booking.guestEmail,
-          phone: state.booking.guestPhone,
+          name: state.guestName,
+          email: state.guestEmail,
+          phone: state.guestPhone,
           price_change: getSelectedAvailability(state).price_change,
-          checksum: state.booking.selectedAvailability,
-          facility: `/v1/facility/${state.custom.facility}`,
+          checksum: state.selectedAvailability,
+          facility: `/v1/facility/${state.facility}`,
           source: 'widget test',
           fb_access_token :null,
-          newsletter_subscribe: state.booking.newsletterSubscription,
+          newsletter_subscribe: state.newsletterSubscription,
         }),
         pending: BOOKING_POSTING,
         success: BOOKING_POSTING_SUCCESS,

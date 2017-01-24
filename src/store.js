@@ -5,8 +5,6 @@ import log from './middleware/logMiddleware'
 import api from './middleware/apiMiddleware'
 import thunk from 'redux-thunk'
 
-// const store = createStore(reducer, preloadedState)
-
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const store = createStore(
   reducer,

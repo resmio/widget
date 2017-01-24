@@ -105,12 +105,9 @@ class ConfirmationPanel extends Component {
 
   render () {
     const {
+      buttonColor,
       status
-    } = this.props.booking
-
-    const {
-      buttonColor
-    } = this.props.custom
+    } = this.props.state
 
     const {
       newBooking
@@ -149,11 +146,7 @@ class ConfirmationPanel extends Component {
 }
 
 function mapStateToProps(state) {
-  return {
-    ui: state.ui,
-    custom: state.custom,
-    booking: state.booking
-  }
+  return { state }
 }
 
 function mapDispachToProps(dispatch) {

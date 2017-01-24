@@ -33,7 +33,7 @@ class GuestPanel extends Component {
       guestEmail,
       guestPhone,
       newsletterSubscription
-    } = this.props.booking
+    } = this.props.state
 
     return (
       <Panel>
@@ -80,7 +80,7 @@ class GuestPanel extends Component {
 
 function mapStateToProps(state) {
   return {
-    booking: state.booking
+    state
   }
 }
 
