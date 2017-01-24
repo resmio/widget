@@ -50,12 +50,9 @@ const Timeslots= ({
     <div>
       {timeslots.map((timeslot) => {
 
-        const onTimeClick = () => {
-          onTimeSelect(timeslot.checksum)
-        }
-
+        const onTimeClick = () => { onTimeSelect(timeslot.checksum) }
         const isTimeSelected = timeSelected === timeslot.local_time_formatted
-        const available = timeslot.available > limit
+        const available = timeslot.available >= limit
 
         const selectedSS = isTimeSelected
           ? {backgroundColor: `rgba(${hexToRgb(color)}, 0.8)`}
@@ -92,13 +89,6 @@ const Timeslots= ({
     </div>
   )
 }
-
-// Tmeslot not available
-// Disable hover
-// Disable onCLick
-// Change opacity
-// Linetthrough time
-// Show not available
 
 export default Timeslots
 
