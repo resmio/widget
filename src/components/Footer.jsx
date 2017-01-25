@@ -40,7 +40,7 @@ const Footer = (props) => {
 
   const button = merge(
     {
-      fontSize: '1.2em',
+      fontSize: '1.3em',
       background: 'white',
       border: `1px solid ${buttonColor}`,
       borderRadius: '4px',
