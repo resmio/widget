@@ -1,5 +1,5 @@
 import React from 'react'
-import { style, hover, merge } from 'glamor'
+import { style, hover, merge} from 'glamor'
 import { colors } from '../styles/variables'
 import { hexToRgb } from '../utils/colors'
 
@@ -55,20 +55,23 @@ const Timeslots= ({
         const available = timeslot.available >= limit
 
         const selectedSS = isTimeSelected
-          ? {backgroundColor: `rgba(${hexToRgb(color)}, 0.8)`}
+          ? {backgroundColor: color}
           : style({})
 
         const selectedTimeSS = isTimeSelected
           ? style({color: 'white'})
           : style({})
 
+        const availableTimeSlotSS = available
+        ? hover({color: 'white'})
+        : style({})
+
         const availableTimeSS = available
           ? style({textDecoration: 'none'})
           : style({textDecoration: 'line-through', opacity:'0.2'})
 
-        // This does not work yet
         const timeslotHover = available
-         ? hover({background: color, color: 'white', cursor: 'pointer'})
+         ? hover({background: `rgba(${hexToRgb(color)}, 0.8)`, cursor: 'pointer'})
          : hover({cursor: 'default'})
 
         return (
@@ -76,9 +79,9 @@ const Timeslots= ({
             key={timeslot.checksum}
             onClick={available ? onTimeClick : ()=>{}}
           >
-            <div {...merge(timeslotSS)}>
+            <div {...merge(timeslotSS, availableTimeSlotSS)}>
               <span {...merge(time, availableTimeSS, selectedTimeSS)}>{timeslot.local_time_formatted}</span>
-              <span {...merge(spot, availableTimeSS)}>{timeslot.available > 0 ? 'Available' : 'Not Available'}</span>
+              <span {...merge(spot, availableTimeSS, selectedTimeSS)}>{timeslot.available > 0 ? 'Available' : 'Not Available'}</span>
               <span {...discount}>
                 {timeslot.price_change !== 0 ? `${timeslot.price_change}%` : ''}
               </span>

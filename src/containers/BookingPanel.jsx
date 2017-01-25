@@ -23,6 +23,7 @@ class BookingPanel extends Component {
       availabilitiesFetching,
       dateSelectorState,
       guestSelectorState,
+      headerColor,
       timeSelectorState,
       buttonColor,
       reduceTimePeriod,
@@ -66,7 +67,7 @@ class BookingPanel extends Component {
           onDateSelected={selectDate}
         />
         <TimePicker
-          color={buttonColor}
+          color={headerColor}
           error={availabilitiesError}
           limit={selectedGuests}
           timePeriods={timePeriods}

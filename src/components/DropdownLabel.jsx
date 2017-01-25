@@ -1,17 +1,19 @@
 import React, { PropTypes } from 'react'
 import { style } from 'glamor'
-import {hexToRgb} from '../utils/colors'
+
+import { colors } from  '../styles/variables'
 
 const DropdownLabel = ({
-  color,
   children,
+  color,
   onClickAction
 }) => {
   const dropdownLabelSS = style({
     width: '100%',
+    color: color,
     textAlign: 'center',
     height: '3rem',
-    background: `rgba(${hexToRgb(color)}, 0.3)`,
+    background: colors.gallery,
     lineHeight: '3rem'
   })
 
