@@ -133,20 +133,20 @@ function reducer (state = {}, action) {
       })
 
     case UI_DATE_SELECTOR_CHANGE_STATE:
-    if (state.dateSelectorState === 'expanded') {
-      return Object.assign({}, state, {
-        guestSelectorState: 'semicollapsed',
-        dateSelectorState: 'semicollapsed',
-        timeSelectorState  : 'semicollapsed'
-      })
-    // If it's not we expand it and collpase the other two
-    } else {
-      return Object.assign({}, state, {
-        guestSelectorState: 'collapsed',
-        dateSelectorState: 'expanded',
-        timeSelectorState  : 'collapsed'
-      })
-    }
+      if (state.dateSelectorState === 'expanded') {
+        return Object.assign({}, state, {
+          guestSelectorState: 'semicollapsed',
+          dateSelectorState: 'semicollapsed',
+          timeSelectorState  : 'semicollapsed'
+        })
+      // If it's not we expand it and collpase the other two
+      } else {
+        return Object.assign({}, state, {
+          guestSelectorState: 'collapsed',
+          dateSelectorState: 'expanded',
+          timeSelectorState  : 'collapsed'
+        })
+      }
 
     case UI_GUEST_SELECTOR_CHANGE_STATE:
       // If it is expanded everything goes back to semicollapsed
@@ -197,8 +197,6 @@ function reducer (state = {}, action) {
         currentPanel: 1,
         status: 'pending'
       })
-
-
 
     default:
       return state

@@ -75,11 +75,11 @@ const Timeslots= ({
          : hover({cursor: 'default'})
 
         return (
-          <div {...merge(timeslotContainer, timeslotHover, selectedSS)}
+          <div {...merge(timeslotContainer, timeslotHover, selectedSS, availableTimeSlotSS)}
             key={timeslot.checksum}
             onClick={available ? onTimeClick : ()=>{}}
           >
-            <div {...merge(timeslotSS, availableTimeSlotSS)}>
+            <div {...timeslotSS}>
               <span {...merge(time, availableTimeSS, selectedTimeSS)}>{timeslot.local_time_formatted}</span>
               <span {...merge(spot, availableTimeSS, selectedTimeSS)}>{timeslot.available > 0 ? 'Available' : 'Not Available'}</span>
               <span {...discount}>

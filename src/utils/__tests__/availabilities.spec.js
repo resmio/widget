@@ -4,7 +4,7 @@ import {
   selectAvailability
 } from '../availabilities'
 
-import state from '../../preloadedState'
+import state from '../../testState'
 
 const availabilities = [
   {
@@ -116,10 +116,10 @@ describe('getSameTimeAvailability', ()=>{
 describe('getSelectedAvailability', ()=>{
   // this function is still not fully tested, but it will do for now
   it('should return an availability for the same time if it exists', () => {
-    state.booking.selectAvailability = state.booking.availabilities[0].checksum
+    state.selectAvailability = state.availabilities[0].checksum
     const options ={
       availabilities: availabilities,
-      state: state.booking,
+      state: state,
       property: 'checksum'
     }
     const actual = selectAvailability(options)
@@ -127,10 +127,10 @@ describe('getSelectedAvailability', ()=>{
     expect(actual).toEqual(expected)
   })
   it('should return an object if no property is given and an availability for the same time exists', () => {
-    state.booking.selectAvailability = state.booking.availabilities[0].checksum
+    state.selectAvailability = state.availabilities[0].checksum
     const options ={
       availabilities: availabilities,
-      state: state.booking
+      state: state
     }
     const actual = selectAvailability(options)
     const expected = availabilities[4]
