@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react'
 import {style} from 'glamor'
-import {hexToRgb} from '../utils/colors'
+import { colors } from '../styles/variables'
 
 import ExpandableSelector from './ExpandableSelector'
 import DropdownOption from './DropdownOption'
@@ -28,7 +28,7 @@ const NumberPicker = ({
     width: '100%',
     textAlign: 'center',
     height: '3rem',
-    background: `rgba(${hexToRgb(color)}, 0.3)`,
+    background: colors.gallery,
     lineHeight: '3rem'
   })
 

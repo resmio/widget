@@ -57,7 +57,7 @@ class BookingPanel extends Component {
           number={selectedGuests}
           onEditClicked={uiGuestSelectorChangeState}
           onNumberSelected={selectGuest}
-          color={buttonColor}
+          color={headerColor}
         />
         <DatePickerSection
           color={buttonColor}
