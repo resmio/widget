@@ -36,6 +36,11 @@ const TimePicker = ({
   fetching
 }) => {
   let dropdown
+  const closed = !fetching && timeslots.length <= 0
+  const fullyBooked = !fetching && timeslots.filter((timeslot) => timeslot.available > 0).length <= 0
+
+  const message = closed ? 'Sorry we are closed that day' : 'Sorry there\'s no more free seats for that day'
+
   if (error) {
     dropdown = <div>OOPS</div>
   } else if (fetching) {
@@ -46,7 +51,7 @@ const TimePicker = ({
         <DropdownLabel color={color}>
           Select time
         </DropdownLabel>
-        {timeslots.length
+        {!fullyBooked
           ? <Timeslots
               color={color}
               limit={limit}
@@ -58,7 +63,7 @@ const TimePicker = ({
               onTimePeriodReduce={onTimePeriodReduce}
               onTimeSelect={onTimeSelect}
             />
-          : <div {...noAvailabilitiesMessage}>Sorry there's no more free seats for that day</div>
+          : <div {...noAvailabilitiesMessage}>{message}</div>
         }
       </div>
     )
