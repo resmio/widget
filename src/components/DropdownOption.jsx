@@ -21,7 +21,7 @@ const DropdownOption = ({
       cursor: 'pointer',
       height: '4rem',
       lineHeight: '4rem',
-      paddingLeft: '9em'
+      paddingLeft: '7em'
     },
     $(':hover', {
       backgroundColor: `rgba(${hexToRgb(color)}, 0.8)`,

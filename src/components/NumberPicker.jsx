@@ -45,7 +45,7 @@ const NumberPicker = ({
           key={i}
           onClickAction={onNumberSelected}
         >
-          {num} {legend(num)}
+          {num}
         </DropdownOption>
       )
     })
