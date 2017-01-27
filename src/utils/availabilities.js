@@ -1,3 +1,7 @@
+// I feel like all this logic needs a serious rewrite
+// Probably implies redesigning the state to something that makes more sense
+// And use selectors everywhere to wire state to components, instead of
+// relying on the state directly
 import { getSelectedAvailability } from '../selectors'
 import { isSameDay, toLinuxTimestamp, toMilliseconds } from './dates'
 
@@ -35,7 +39,7 @@ export const selectAvailability = ({
 
   let availability = {}
 
-  if (state.selectedAvailability !== '') {
+  if (state.selectedAvailability !== '' && getSelectedAvailability(state)) {
     // If we have an availability already selected
     // we check if one availability for the same time is available in the new date
     const selectedTime = (
