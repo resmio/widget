@@ -9,7 +9,6 @@ import * as bookingActions from '../actions/bookingActions'
 import Panel from '../components/Panel'
 import Form from '../components/Form'
 import Input from '../components/Input'
-import Checkbox from '../components/Checkbox'
 
 const newsletterSection = style({
   color: '#999',

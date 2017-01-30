@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react'
 import { style, merge } from 'glamor'
-import { withTranslate } from 'react-redux-multilingual'
 
 const heading = style({
   fontSize: '18px',
@@ -20,8 +19,7 @@ const Header = ({
   bgImage,
   bgColor,
   color,
-  subheaderText,
-  translate
+  subheaderText
 }) => {
   // styles
   // For the background image magic see:
@@ -53,7 +51,7 @@ const Header = ({
   return (
     <header {...header}>
       <h2 {...merge(heading, headerText)}>
-        {translate('Online Booking')}
+        Online Booking
       </h2>
       <h1 {...merge(subHeading, headerText)}>
         {subheaderText}
@@ -71,4 +69,4 @@ Header.propTypes = {
   subheaderText: string
 }
 
-export default withTranslate(Header)
+export default Header

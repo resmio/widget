@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react'
 import { style } from 'glamor'
-import { withTranslate } from 'react-redux-multilingual'
 
 import { momentObj } from 'react-moment-proptypes'
 import { DayPicker } from 'react-dates'
@@ -15,8 +14,7 @@ const DatePickerSection = ({
     state,
     selectedDate,
     onDateSelected,
-    onFocusChange,
-    translate
+    onFocusChange
 }) => {
   const dropdownLabelSS = style({
     background: `rgba(${hexToRgb(color)}, 0.3)`,
@@ -46,7 +44,7 @@ const DatePickerSection = ({
 
   return (
     <ExpandableSelector
-      label={translate('DATE')}
+      label={'DATE'}
       displayedInfo={selectedDate.format('dddd, MMM Do')}
       onExpandClicked={onFocusChange}
       dropdown={main}
@@ -64,4 +62,4 @@ DatePickerSection.propTypes = {
   onDateSelected: func
 }
 
-export default withTranslate(DatePickerSection)
+export default DatePickerSection

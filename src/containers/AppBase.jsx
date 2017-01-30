@@ -19,10 +19,6 @@ class AppBase extends Component {
     this.props.appInit()
   }
 
-  componentDidMount() {
-    this.props.fetchAvailabilities()
-  }
-
   render() {
     const {
       buttonColor,
