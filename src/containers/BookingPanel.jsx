@@ -5,9 +5,6 @@ import * as bookingActions from '../actions/bookingActions'
 import * as uiActions from '../actions/uiActions'
 import { getSelectedAvailability, showAvailabilities } from '../selectors'
 
-// 3rd party components
-import { momentObj } from 'react-moment-proptypes'
-
 // components
 import Panel from '../components/Panel'
 import NumberPicker from '../components/NumberPicker'
@@ -19,31 +16,31 @@ class BookingPanel extends Component {
   render () {
     const {
       advanceTimePeriod,
+      availabilities,
       availabilitiesError,
       availabilitiesFetching,
+      buttonColor,
       dateSelectorState,
       guestSelectorState,
       headerColor,
-      timeSelectorState,
-      buttonColor,
-      reduceTimePeriod,
-      availabilities,
-      selectedDate,
-      selectedGuests,
       maxGuests,
       minGuests,
-      timePeriodSelected,
+      reduceTimePeriod,
+      selectedDate,
+      selectedGuests,
       timePeriods,
+      timePeriodSelected,
+      timeSelectorState,
     } = this.props.state
 
     const {
+      selectDate,
+      selectedAvailability,
+      selectGuest,
+      selectTime,
       uiGuestSelectorChangeState,
       uiDateSelectorChangeState,
       uiTimeSelectorChangeState,
-      selectGuest,
-      selectDate,
-      selectTime,
-      selectedAvailability
     } = this.props
 
     return (
@@ -86,24 +83,17 @@ class BookingPanel extends Component {
   }
 }
 
-const { bool, func, number } = PropTypes
+const { func, object } = PropTypes
 
 BookingPanel.propTypes = {
-  calendarFocused: bool,
-  selectedDate: momentObj,
-  selectedGuests: number,
-  removeGuest: func,
-  addGuest: func,
-  openCalendar: bool,
-  onCalendarFocusChange: func,
-  onDateChange: func,
-  maxGuests: number,
-  minGuests: number,
-  guestSelectorCollapsed: bool,
+  selectGuest: func,
+  selectDate: func,
+  selectedAvailability: object,
+  selectTime: func,
+  state: object,
   uiGuestSelectorChangeState: func,
-  guestSelect: func,
-  uiDatepickerChangeState: func,
-  dateSelect: func
+  uiDateSelectorChangeState: func,
+  uiTimeSelectorChangeState: func,
 }
 
 function mapStateToProps(state) {

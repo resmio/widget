@@ -11,9 +11,9 @@ import Form from '../components/Form'
 import Input from '../components/Input'
 
 const newsletterSection = style({
-  marginTop: '2rem',
+  color: '#999',
   fontSize: '1.6rem',
-  color: '#999'
+  marginTop: '2rem'
 })
 
 const newsletterCheckbox = style({
@@ -78,6 +78,8 @@ class GuestPanel extends Component {
   }
 }
 
+// FIXME:
+// Only connect the elements needed here, instead of the whole state 
 function mapStateToProps(state) {
   return {
     state

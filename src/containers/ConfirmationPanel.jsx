@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect,  } from 'react-redux'
+import { style, merge, select as $ } from 'glamor'
+
+import { colors } from '../styles/variables'
+import { hexToRgb } from '../utils/colors'
 import * as bookingActions from '../actions/bookingActions'
 import * as uiActions from '../actions/uiActions'
 
-import {hexToRgb} from '../utils/colors'
-
-import { style, merge, select as $ } from 'glamor'
-import {colors} from '../styles/variables'
-
 // components
 import Panel from '../components/Panel'
+import Spinner from '../components/Spinner'
 import IconCheckmark from '../components/IconCheckmark'
 import IconCircledX from '../components/IconCircledX'
 import IconWarning from '../components/IconWarning'
@@ -38,10 +38,10 @@ const messageSS = style({
 })
 
 const smallTextSS = style({
+  color: colors.dustyGray,
   fontSize: '1.3rem',
   lineHeight: '1.9rem',
   marginTop: '2rem',
-  color: colors.dustyGray
 })
 
 const blackerSS = style({
@@ -49,10 +49,10 @@ const blackerSS = style({
 })
 
 const hr = style({
-  display: 'block',
-  height: '1px',
   border: '0',
   borderTop: `1px solid ${colors.alto}`,
+  display: 'block',
+  height: '1px',
   margin: '1em auto',
   padding: '0',
   width: '7rem'
@@ -93,9 +93,13 @@ const error = (
   </div>
 )
 
-const pending = <h1>Pending</h1>
+const pending = <Spinner />
 
-const PanelRouter = ({status, guestEmail, bookingId})=> {
+const PanelRouter = ({
+  status,
+  guestEmail,
+  bookingId
+})=> {
   switch (status) {
     case 'confirmed': return (success(guestEmail, bookingId))
     case 'unconfirmed': return (unconfirmed)
@@ -124,8 +128,8 @@ class ConfirmationPanel extends Component {
         cursor: 'pointer',
         display: 'block',
         fontSize: '1.4rem',
+        margin: '4rem auto',
         padding: '1rem 3rem',
-        margin: '4rem auto'
       },
       $(':hover', {
         background: 'white',
@@ -147,6 +151,10 @@ class ConfirmationPanel extends Component {
   }
 }
 
+// FIXME:
+// Only connect the elements needed here, instead of the whole state
+// No big deal, since we don't plan to rerender this often
+// But just to keep up with good practices
 function mapStateToProps(state) {
   return { state }
 }

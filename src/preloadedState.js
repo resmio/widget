@@ -11,7 +11,7 @@ const preloadedState = {
   maxGuests: 6,
   minGuests: 1,
   selectedDate: moment(),
-  selectedGuests: 1,
+  selectedGuests: 2,
   selectedAvailability: '',
   status: 'pending',
   timePeriodSelected: 0,
