@@ -2,7 +2,10 @@
   "name": "resmio_widget",
   "version": "0.2.0",
   "description": "resmio booking widget",
-  "repository": "https://github.com/resmio/widget",
+  "repository": {
+    "url": "git@github.com:resmio/widget.git",
+    "type": "git"
+  },
   "homepage": "http://resmio.github.io/widget",
   "private": true,
   "author": "resmio team",
@@ -23,6 +26,7 @@
     "react-dom": "^15.3.2",
     "react-moment-proptypes": "^1.2.0",
     "react-redux": "^4.4.5",
+    "react-redux-multilingual": "^1.0.2",
     "redux": "^3.6.0",
     "redux-thunk": "^2.1.0",
     "reselect": "^2.5.4"
@@ -31,7 +35,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "deploy": "npm run build && gh-pages -d build",
+    "circleCIOverride": "npm help",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "main": "index.js"
 }

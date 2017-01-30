@@ -9,6 +9,7 @@ import * as bookingActions from '../actions/bookingActions'
 import Panel from '../components/Panel'
 import Form from '../components/Form'
 import Input from '../components/Input'
+import Checkbox from '../components/Checkbox'
 
 const newsletterSection = style({
   color: '#999',
@@ -79,7 +80,7 @@ class GuestPanel extends Component {
 }
 
 // FIXME:
-// Only connect the elements needed here, instead of the whole state 
+// Only connect the elements needed here, instead of the whole state
 function mapStateToProps(state) {
   return {
     state
