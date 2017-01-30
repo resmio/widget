@@ -5,6 +5,7 @@ import { colors } from '../styles/variables'
 import ExpandableSelector from './ExpandableSelector'
 import DropdownLabel from './DropdownLabel'
 import Timeslots from './Timeslots'
+import Spinner from './Spinner'
 
 
 const timepickerContainer = style({
@@ -44,7 +45,7 @@ const TimePicker = ({
   if (error) {
     dropdown = <div>OOPS</div>
   } else if (fetching) {
-    dropdown = <div>FETCHING</div>
+    dropdown = <Spinner />
   } else {
     dropdown = (
       <div {...timepickerContainer}>
