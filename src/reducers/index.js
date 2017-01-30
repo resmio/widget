@@ -47,14 +47,17 @@ function reducer (state = {}, action) {
         property: 'checksum'
       })
 
+      const selectorsState = 'collapsed'
+      const timeSelectorState = 'expanded'
+
       return Object.assign({}, state, {
         availabilities: action.response.objects,
         availabilitiesError: false,
         availabilitiesFetching: false,
-        guestSelectorState: selectedAvailability ? 'semicollapsed' : 'collapsed',
-        dateSelectorState: selectedAvailability ? 'semicollapsed' : 'collapsed',
+        guestSelectorState: selectorsState,
+        dateSelectorState: selectorsState,
         selectedAvailability: selectedAvailability,
-        timeSelectorState  : selectedAvailability ? 'semicollapsed' : 'expanded'
+        timeSelectorState: timeSelectorState
       })
 
     case GUEST_SELECT:
