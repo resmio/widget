@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react'
 import { style } from 'glamor'
-
 import { colors } from  '../styles/variables'
 
 const DropdownLabel = ({
@@ -9,12 +8,12 @@ const DropdownLabel = ({
   onClickAction
 }) => {
   const dropdownLabelSS = style({
-    width: '100%',
-    color: color,
-    textAlign: 'center',
-    height: '3rem',
     background: colors.gallery,
-    lineHeight: '3rem'
+    color: color,
+    height: '3rem',
+    lineHeight: '3rem',
+    textAlign: 'center',
+    width: '100%'
   })
 
   return (

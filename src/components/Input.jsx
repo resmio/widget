@@ -3,29 +3,40 @@ import {style} from 'glamor'
 import {colors} from '../styles/variables'
 
 const inputSS = style({
-  width: '100%',
-  borderRadius: '4px',
   border: '1px solid',
   borderColor: colors.silver,
-  padding: '0.6rem 1.2rem',
+  borderRadius: '4px',
+  fontSize: '1.6em',
   height: '4rem',
-  fontSize: '1.6em'
+  padding: '0.6rem 1.2rem',
+  width: '100%',
 })
 
 const labelSS = style({
-  fontWeight: 400,
+  display: 'block',
   fontSize: '1.5em',
+  fontWeight: 400,
   marginBottom: '0.5rem',
   marginTop: '2rem',
-  display: 'block'
 })
 
+// FIXME: Add validations
 // const disabledSS = style({
 //   cursor: 'not-allowed',
 //   backgroundColor: colors.gallery
 // })
 
-const TextField = (props) => {
+const TextField = ({
+  defaultValue,
+  disabled,
+  id,
+  label,
+  onChange,
+  placeHolder,
+  required,
+  type,
+  value
+}) => {
   // let borderColorStyle = Object.assign({},
   //   props.warning ? {borderColor: colors.goldenTainoi} : {},
   //   props.error ? {borderColor: colors.amaranth} : {}
@@ -47,20 +58,20 @@ const TextField = (props) => {
   const inputField = (
     <input
       {...inputSS}
-      defaultValue={props.defaultValue}
-      disabled={props.disabled}
-      id={props.id}
-      onChange={props.onChange}
-      placeholder={props.placeHolder}
-      required={props.required}
-      type={props.type}
-      value={props.value}
+      defaultValue={defaultValue}
+      disabled={disabled}
+      id={id}
+      onChange={onChange}
+      placeholder={placeHolder}
+      required={required}
+      type={type}
+      value={value}
     />
   )
 
   return (
     <div>
-      <label {...labelSS}>{props.label}</label>
+      <label {...labelSS}>{label}</label>
       {inputField}
     </div>
   )

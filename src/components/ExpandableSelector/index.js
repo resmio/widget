@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import { style } from 'glamor'
-
 import { colors } from '../../styles/variables'
+
 import Label from './Label'
 import Value from './Value'
 import ExpandButton from './ExpandButton'
@@ -20,8 +20,8 @@ const ExpandableSelector = ({
     displayedInfo,
     dropdown,
     label,
-    onExpandClicked,
-    state
+    state,
+    onExpandClicked
 }) => {
 
   let containerHeight, contentHeight

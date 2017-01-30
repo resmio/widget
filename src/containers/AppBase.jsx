@@ -1,13 +1,12 @@
-// Move all this stuff to AppBase
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import * as bookingActions from '../actions/bookingActions'
-import * as uiActions from '../actions/uiActions'
-import { getDisplayBooking, isNextButtonEnabled } from '../selectors'
-
 // react & redux
 import React, { Component } from 'react';
 import { style } from 'glamor'
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+import * as bookingActions from '../actions/bookingActions'
+import * as uiActions from '../actions/uiActions'
+import { getDisplayBooking, isNextButtonEnabled } from '../selectors'
 
 // components
 import Header from '../components/Header'
@@ -16,6 +15,7 @@ import Footer from '../components/Footer'
 
 class AppBase extends Component {
   componentDidMount() {
+    // FIXME: Not sure about calling this here
     this.props.appInit()
   }
 
@@ -38,19 +38,19 @@ class AppBase extends Component {
       advancePanel,
       bookingInfo,
       buttonEnabled,
-      reducePanel,
-      postBooking
+      postBooking,
+      reducePanel
     } = this.props
 
     // generate styles
     const widgetSS = style({
-      minWidth: '300px',
-      maxWidth: '736px',
-      maxHeight: '736px',
-      minHeight: '500px',
-      width: renderAtMaxSize ? '100%' : defaultWidth,
       height: renderAtMaxSize ? '100%' : defaultHeight,
-      position: 'relative'
+      maxHeight: '736px',
+      maxWidth: '736px',
+      minHeight: '500px',
+      minWidth: '300px',
+      position: 'relative',
+      width: renderAtMaxSize ? '100%' : defaultWidth,
     })
 
     const footer = (

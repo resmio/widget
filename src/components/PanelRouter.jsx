@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 // components
 import BookingPanel from '../containers/BookingPanel'
@@ -12,6 +12,10 @@ const PanelRouter = ({panel})=> {
     case 3: return (<ConfirmationPanel />)
     default: return (<BookingPanel />)
   }
+}
+
+PanelRouter.propTypes = {
+  panel: PropTypes.number
 }
 
 export default PanelRouter

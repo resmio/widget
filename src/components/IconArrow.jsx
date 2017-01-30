@@ -15,7 +15,10 @@ const getRotation = (direction) => {
   }
 }
 
-const IconArrow = ({direction, size = '1.2rem'}) => {
+const IconArrow = ({
+  direction,
+  size = '1.2rem'
+}) => {
   // https://css-tricks.com/currentcolor/
   return (
     <svg width={size} viewBox='-1 -1 15 27'>

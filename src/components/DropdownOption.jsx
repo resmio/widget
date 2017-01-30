@@ -3,8 +3,8 @@ import { merge, select as $ } from 'glamor'
 import {hexToRgb} from '../utils/colors'
 
 const DropdownOption = ({
-  color,
   children,
+  color,
   index,
   selected,
   onClickAction
@@ -39,7 +39,9 @@ const DropdownOption = ({
 
 DropdownOption.propTypes = {
   children: PropTypes.node.isRequired,
+  color: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
+  selected: PropTypes.bool.isRequired,
   onClickAction: PropTypes.func.isRequired,
 }
 

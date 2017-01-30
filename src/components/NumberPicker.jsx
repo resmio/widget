@@ -5,31 +5,30 @@ import { colors } from '../styles/variables'
 import ExpandableSelector from './ExpandableSelector'
 import DropdownOption from './DropdownOption'
 
+const dropdownLabel = style({
+  background: colors.gallery,
+  lineHeight: '3rem',
+  height: '3rem',
+  textAlign: 'center',
+  width: '100%',
+})
+
 const NumberPicker = ({
     color,
-    state,
-    legendSingular,
     legendPlural,
+    legendSingular,
     max,
     min,
     number,
     onEditClicked,
+    onMinusClicked,
     onNumberSelected,
     onPlusClicked,
-    onMinusClicked,
-    uiGuestSelectorChangeState
+    state
 }) => {
   const numberPickerSS = style({
     color: color,
     marginTop: '1.6rem'
-  })
-
-  const dropdownLabel = style({
-    width: '100%',
-    textAlign: 'center',
-    height: '3rem',
-    background: colors.gallery,
-    lineHeight: '3rem'
   })
 
   const numbers = [...Array(max+1).keys()].slice(min)
@@ -62,11 +61,11 @@ const NumberPicker = ({
 
   return (
     <ExpandableSelector
-      label='PEOPLE'
       color={color}
       displayedInfo={`${number} ${legend(number)}`}
-      onExpandClicked={onEditClicked}
       dropdown={dropdown}
+      label='PEOPLE'
+      onExpandClicked={onEditClicked}
       state={state}
     />
   )
@@ -75,16 +74,17 @@ const NumberPicker = ({
 const { oneOf, func, number, string } = PropTypes
 
 NumberPicker.propTypes = {
-  state: oneOf(['collapsed', 'semicollapsed', 'expanded']).isRequired,
-  legendSingular: string,
+  color: string,
   legendPlural: string.isRequired,
+  legendSingular: string.isRequired,
   max: number.isRequired,
   min: number.isRequired,
   number: number.isRequired,
   onEditClicked: func.isRequired,
+  onMinusClicked: func,
   onNumberSelected: func.isRequired,
   onPlusClicked: func,
-  onMinusClicked: func,
+  state: oneOf(['collapsed', 'semicollapsed', 'expanded']).isRequired,
 }
 
 export default NumberPicker

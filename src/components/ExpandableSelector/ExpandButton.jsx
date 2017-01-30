@@ -1,17 +1,18 @@
 import React, { PropTypes } from 'react'
 import { style, hover, merge } from 'glamor'
+import { colors } from '../../styles/variables'
 
 import IconArrow from '../IconArrow'
 
 const arrow = style({
-  color: '#CCC',
+  color: colors.silver,
   cursor: 'pointer',
   textAlign: 'left',
   width: '10%'
 })
 
 const arrowHover = hover({
-  color: '#555'
+  color: colors.emperor
 })
 
 const ExpandButton= ({state}) => (

@@ -7,22 +7,25 @@ import DropdownLabel from './DropdownLabel'
 import Timeslots from './Timeslots'
 import Spinner from './Spinner'
 
-
 const timepickerContainer = style({
   marginTop: '1.6rem'
 })
 
 const noAvailabilitiesMessage = style({
-  padding: '2rem',
+  borderBottom: `1px solid ${colors.gallery}`,
+  color: colors.dustyGray,
   fontSize: '1.1em',
   lineHeight: '1.5',
-  color: colors.dustyGray,
-  borderBottom: `1px solid ${colors.gallery}`
+  padding: '2rem',
 })
 
 const TimePicker = ({
   color,
+  dispatch,
+  error,
+  fetching,
   limit,
+  state,
   timeSelected,
   timeslots,
   timePeriods,
@@ -31,19 +34,20 @@ const TimePicker = ({
   onTimePeriodReduce,
   onTimePickerClick,
   onTimeSelect,
-  state,
-  dispatch,
-  error,
-  fetching
 }) => {
   let dropdown
-  const closed = !fetching && timeslots.length <= 0
-  const fullyBooked = !fetching && timeslots.filter((timeslot) => timeslot.available > 0).length <= 0
 
-  const message = closed ? 'Sorry we are closed that day' : 'Sorry there\'s no more free seats for that day'
+  // FIXME: Move this to a selector
+  const closed = (!fetching && timeslots.length <= 0)
+  const noAvailabilities = timeslots.filter((timeslot) => timeslot.available > 0).length <= 0
+  const fullyBooked = !fetching && noAvailabilities
+
+  const message = closed
+    ? 'Sorry we are closed that day'
+    : 'Sorry there\'s no more free seats for that day'
 
   if (error) {
-    dropdown = <div>OOPS</div>
+    dropdown = <div>Something went wrong, please try again</div>
   } else if (fetching) {
     dropdown = <Spinner />
   } else {
@@ -56,13 +60,13 @@ const TimePicker = ({
           ? <Timeslots
               color={color}
               limit={limit}
+              onTimePeriodAdvance={onTimePeriodAdvance}
+              onTimePeriodReduce={onTimePeriodReduce}
+              onTimeSelect={onTimeSelect}
               timePeriods={timePeriods}
               timePeriodSelected={timePeriodSelected}
               timeslots={timeslots}
               timeSelected={timeSelected}
-              onTimePeriodAdvance={onTimePeriodAdvance}
-              onTimePeriodReduce={onTimePeriodReduce}
-              onTimeSelect={onTimeSelect}
             />
           : <div {...noAvailabilitiesMessage}>{message}</div>
         }
@@ -74,8 +78,8 @@ const TimePicker = ({
     <ExpandableSelector
       label='TIME'
       displayedInfo={timeSelected || 'Select time'}
-      onExpandClicked={onTimePickerClick}
       dropdown={dropdown}
+      onExpandClicked={onTimePickerClick}
       state={state}
     />
   )

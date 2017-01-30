@@ -25,6 +25,8 @@ export const UI_NEW_BOOKING = 'UI_NEW_BOOKING'
 
 export function appInit () {
   return (dispatch) => {
+    // Not sure if this is an antipattern
+    // But it looks like it's working
     dispatch(fetchAvailabilities())
   }
 }

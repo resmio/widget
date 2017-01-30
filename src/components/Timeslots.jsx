@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import { style, hover, merge} from 'glamor'
 import { colors } from '../styles/variables'
 import { hexToRgb } from '../utils/colors'
 
 const timeslotSS = style({
-  height: '4rem',
   fontSize: '1em',
+  height: '4rem',
   lineHeight: '4rem',
   margin: '0 auto',
   width: '90%'
@@ -19,14 +19,14 @@ const time = style({
 
 const spot = style({
   display: 'inline-block',
+  textAlign: 'center',
   width: '55%',
-  textAlign: 'center'
 })
 
 const discount = style({
+  color: '#F8C150',
   display: 'inline-block',
   width: '10%',
-  color: '#F8C150'
 })
 
 const timeslotContainer = style({
@@ -37,13 +37,13 @@ const timeslotContainer = style({
 const Timeslots= ({
   color,
   limit,
-  timeslots,
-  timeSelected,
-  onTimeSelect,
-  timePeriods,
-  timePeriodSelected,
   onTimePeriodAdvance,
-  onTimePeriodReduce
+  onTimePeriodReduce,
+  onTimeSelect,
+  timePeriodSelected,
+  timeSelected,
+  timePeriods,
+  timeslots,
 }) => {
 
   return (
@@ -91,6 +91,18 @@ const Timeslots= ({
       })}
     </div>
   )
+}
+
+Timeslots.propTypes = {
+  color: PropTypes.string,
+  limit: PropTypes.number,
+  onTimePeriodAdvance: PropTypes.func,
+  onTimePeriodReduce: PropTypes.func,
+  onTimeSelect: PropTypes.func,
+  timePeriodSelected: PropTypes.number,
+  timeSelected: PropTypes.string,
+  timePeriods: PropTypes.array,
+  timeslots: PropTypes.array
 }
 
 export default Timeslots

@@ -80,6 +80,7 @@ export function checkboxChanged (name, checked) {
   }
 }
 
+// POSTING TO CREATE THE BOOKING
 export function postBooking () {
   return (dispatch, getState) => {
     dispatch({

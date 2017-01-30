@@ -18,22 +18,18 @@ const DatePickerSection = ({
 
 }) => {
   const dropdownLabelSS = style({
-    width: '100%',
-    textAlign: 'center',
-    height: '3rem',
     background: `rgba(${hexToRgb(color)}, 0.3)`,
-    lineHeight: '3rem'
+    height: '3rem',
+    lineHeight: '3rem',
+    textAlign: 'center',
+    width: '100%'
   })
 
   const datepickerDropdown = style({
-    marginTop: '1.3rem',
     background: `rgba(${hexToRgb(color)}, 0.3)`,
+    marginTop: '1.3rem'
   })
-  // Clicking on the arrow also fires an OnFOcuschange on the datePicker
-  // So the uiDateSelectorChangeState fires twice once expanding and the
-  // second one semicollapsing, check redux dev tools to see this clearly
 
-  // Need to deal with it once doing the datepicker section
   const main = (
     <div {...datepickerDropdown}>
       <div {...dropdownLabelSS}>Select day</div>
@@ -42,7 +38,6 @@ const DatePickerSection = ({
         date={selectedDate}
         focused={state === 'expanded'}
         numberOfMonths={1}
-        isOutsideRange={(d) => d < Date.now()}
         onDayClick={onDateSelected}
       />
     </div>

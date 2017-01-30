@@ -15,7 +15,12 @@ const subHeading = style({
   paddingTop: '4px'
 })
 
-const Header = ({bgImage, bgColor, color, subheaderText}) => {
+const Header = ({
+  bgImage,
+  bgColor,
+  color,
+  subheaderText
+}) => {
   // styles
   // For the background image magic see:
   // https://css-tricks.com/snippets/css/transparent-background-images/
@@ -23,18 +28,18 @@ const Header = ({bgImage, bgColor, color, subheaderText}) => {
     background: bgColor,
     height: '6em',
     position: 'relative',
-    zIndex: '-1', // This is to put it at the same level as the bg image
     width: '100%',
+    zIndex: '-1', // This is to put it at the same level as the bg image
     // This attaches the background image and gives it transparency
     '::before': {
-      content: '""',
       background: `url(${bgImage})`,
       backgroundSize: 'cover',
-      bacgroundPosition: 'middle',
+      backgroundPosition: 'middle',
+      content: '""',
+      height: '100%',
       opacity: '0.5',
       position: 'absolute',
       width: '100%',
-      height: '100%',
       zIndex: '-1' // We need this so it does not obscure the text
     }
   })
@@ -60,6 +65,7 @@ const {string} = PropTypes
 Header.propTypes = {
   bgImage: string,
   bgColor: string,
+  color: string,
   subheaderText: string
 }
 

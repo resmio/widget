@@ -3,41 +3,47 @@ import { style, merge, select as $ } from 'glamor'
 
 import Logo from './Logo'
 
+// FIXME
 // This (the icon arrow) is just missing the stroke color when it's not hovered
 // somehow I can not make it work, it's just an aesthetic thing so I'm moving
 // forward and we will fix it later if we have time.
 // import IconArrow from './IconArrow'
 
+// styles
+const left = style({
+  marginLeft: '15px'
+})
+
+const footer = style({
+  alignItems: 'center',
+  bottom: '0',
+  display: 'flex',
+  fontSize: '1.2rem',
+  height: '6em',
+  justifyContent: 'center',
+  left: '0',
+  position: 'absolute',
+  right: '0',
+})
+
+const stepCounter = style({
+  color: '#DDD',
+  flex:'1',
+  textAlign: 'center'
+})
+
 const Footer = (props) => {
   const {
+    buttonColor,
+    buttonDisabled,
     currentPanel,
     numberOfPanels,
     onLastClicked,
     onNextClicked,
     onPreviousClicked,
-    buttonColor,
-    buttonDisabled
   } = props
 
   // styles
-  const footer = style({
-    alignItems: 'center',
-    fontSize: '1.2rem',
-    display: 'flex',
-    height: '6em',
-    position: 'absolute',
-    bottom: '0',
-    left: '0',
-    right: '0',
-    justifyContent: 'center',
-  })
-
-  const stepCounter = style({
-    color: '#DDD',
-    flex:'1',
-    textAlign: 'center'
-  })
-
   const button = merge(
     {
       fontSize: '1.3em',
@@ -52,7 +58,7 @@ const Footer = (props) => {
       marginRight: '15px'
     },
     $('svg', {
-      stroke: 'red',
+      stroke: buttonColor,
       width: '40px'
     }),
     $(':hover', {
@@ -73,11 +79,8 @@ const Footer = (props) => {
     })
   )
 
-  const left = style({
-    marginLeft: '15px'
-  })
-
   // helper functions
+  // FIXME: Move this to a selector
   const isFirstPanel = currentPanel <= 1
   const isLastPanel = currentPanel >= numberOfPanels
 
@@ -101,6 +104,8 @@ const Footer = (props) => {
 }
 
 Footer.propTypes = {
+  buttonColor: PropTypes.string,
+  buttonDisabled: PropTypes.bool,
   currentPanel: PropTypes.number,
   numberOfPanels: PropTypes.number,
   onNextClicked: PropTypes.func,
