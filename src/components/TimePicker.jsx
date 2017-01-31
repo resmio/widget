@@ -8,7 +8,7 @@ import Timeslots from './Timeslots'
 import Spinner from './Spinner'
 
 const timepickerContainer = style({
-  marginTop: '1.6rem'
+  marginTop: '1.2em'
 })
 
 const noAvailabilitiesMessage = style({
@@ -16,7 +16,7 @@ const noAvailabilitiesMessage = style({
   color: colors.dustyGray,
   fontSize: '1.1em',
   lineHeight: '1.5',
-  padding: '2rem',
+  padding: '2em',
 })
 
 const TimePicker = ({

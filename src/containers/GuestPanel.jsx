@@ -12,12 +12,12 @@ import Input from '../components/Input'
 
 const newsletterSection = style({
   color: '#999',
-  fontSize: '1.6rem',
-  marginTop: '2rem'
+  fontSize: '1.6em',
+  marginTop: '2em'
 })
 
 const newsletterCheckbox = style({
-  marginRight: '1rem'
+  marginRight: '1em'
 })
 
 class GuestPanel extends Component {

@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import { merge, select as $ } from 'glamor'
 import {hexToRgb} from '../utils/colors'
+import { colors } from '../styles/variables'
 
 const DropdownOption = ({
   children,
@@ -15,12 +16,12 @@ const DropdownOption = ({
 
   const optionSS = merge(
     {
-      backgroundColor: `rgba(${hexToRgb(color)}, 0.1)`,
+      backgroundColor: colors.white,
       border: `1px solid rgba(${hexToRgb(color)}, 0.2)`,
       borderBottom: 'none',
       cursor: 'pointer',
-      height: '4rem',
-      lineHeight: '4rem',
+      height: '2.8em',
+      lineHeight: '2.8em',
       paddingLeft: '7em'
     },
     $(':hover', {

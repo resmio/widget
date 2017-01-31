@@ -17,7 +17,7 @@ const getRotation = (direction) => {
 
 const IconArrow = ({
   direction,
-  size = '1.2rem'
+  size = '1.2em'
 }) => {
   // https://css-tricks.com/currentcolor/
   return (

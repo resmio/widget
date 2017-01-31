@@ -9,12 +9,12 @@ const spin = css.keyframes({
 
 const spinner = css({
   animation: `${spin} 2s linear infinite`,
-  border: `0.3rem solid ${colors.whiteSand}`,
-  borderRadius: '500rem',
-  borderTop: `0.3rem solid ${colors.silver}`,
-  height: '4.4rem',
-  margin: '0 auto',
-  width: '4.4rem',
+  border: `0.3em solid ${colors.whiteSand}`,
+  borderRadius: '500em',
+  borderTop: `0.3em solid ${colors.silver}`,
+  height: '2.4em',
+  margin: '1em auto',
+  width: '2.4em',
 })
 
 const Spinner = () => (<div {...spinner} />)

@@ -19,14 +19,14 @@ const checkbox = style({
   display: 'block',
   backgroundColor: 'white',
   border: '1px solid #999',
-  padding: '0.1rem',
+  padding: '0.1em',
   borderRadius: '2px',
   cursor: 'pointer',
   borderColor: 'currentColor',
   position: 'relative',
-  height: '2rem',
-  width: '2rem',
-  margin: '0.2rem 0 0 0',
+  height: '2em',
+  width: '2em',
+  margin: '0.2em 0 0 0',
   fontSize: '0px', // fixes weird white-space issues
   userSelect: 'none' // fixes text select on multi-click
 })

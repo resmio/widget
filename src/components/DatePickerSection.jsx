@@ -18,15 +18,15 @@ const DatePickerSection = ({
 }) => {
   const dropdownLabelSS = style({
     background: `rgba(${hexToRgb(color)}, 0.3)`,
-    height: '3rem',
-    lineHeight: '3rem',
+    height: '2em',
+    lineHeight: '2em',
     textAlign: 'center',
     width: '100%'
   })
 
   const datepickerDropdown = style({
     background: `rgba(${hexToRgb(color)}, 0.3)`,
-    marginTop: '1.3rem'
+    marginTop: '1em'
   })
 
   const main = (

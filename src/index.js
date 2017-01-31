@@ -8,11 +8,6 @@ import AppBase from './containers/AppBase';
 import './styles/index';
 
 var widgets = getWidgetsInstancesFromDOM();
-    // Call the server for the feedback score for every widget and render once
-    // we get the data back
-    for (var i=0 ; i < widgets.length ; i++) {
-      renderWidget(widgets[i])
-}
 
 function getWidgetsInstancesFromDOM() {
     var widgets = [];
@@ -42,7 +37,6 @@ function getWidgetsInstancesFromDOM() {
   }
 
 function renderWidget(widget) {
-  debugger
   const MOUNT_NODE = widget.location
   const app = (
     <Provider store={store}>
@@ -55,4 +49,8 @@ function renderWidget(widget) {
     // since it uses its own (fake) DOM
     render(app , MOUNT_NODE)
   }
+}
+
+for (var i=0 ; i < widgets.length ; i++) {
+  renderWidget(widgets[i])
 }

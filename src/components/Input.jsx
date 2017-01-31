@@ -7,8 +7,8 @@ const inputSS = style({
   borderColor: colors.silver,
   borderRadius: '4px',
   fontSize: '1.6em',
-  height: '4rem',
-  padding: '0.6rem 1.2rem',
+  height: '2.5em',
+  padding: '0.6em 1.2em',
   width: '100%',
 })
 
@@ -16,8 +16,8 @@ const labelSS = style({
   display: 'block',
   fontSize: '1.5em',
   fontWeight: 400,
-  marginBottom: '0.5rem',
-  marginTop: '2rem',
+  marginBottom: '0.5em',
+  marginTop: '1.5em',
 })
 
 // FIXME: Add validations

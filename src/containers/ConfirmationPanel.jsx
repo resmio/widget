@@ -17,31 +17,31 @@ import IconWarning from '../components/IconWarning'
 
 const successSS = style({
     color: colors.java,
-    padding: '5rem 3rem'
+    padding: '5em 3em'
 })
 
 const unconfirmedSS = style({
   color: colors.goldenTainoi,
-  padding: '5rem 3rem'
+  padding: '5em 3em'
 })
 
 const errorSS = style({
   color: colors.amaranth,
-  padding: '5rem 3rem'
+  padding: '5em 3em'
 })
 
 const messageSS = style({
-  fontSize: '1.6rem',
+  fontSize: '1.6em',
   margin: '0',
-  marginTop: '0.4rem',
-  marginBottom: '0.4rem'
+  marginTop: '0.4em',
+  marginBottom: '0.4em'
 })
 
 const smallTextSS = style({
   color: colors.dustyGray,
-  fontSize: '1.3rem',
-  lineHeight: '1.9rem',
-  marginTop: '2rem',
+  fontSize: '1.3em',
+  lineHeight: '1.9em',
+  marginTop: '2em',
 })
 
 const blackerSS = style({
@@ -55,13 +55,13 @@ const hr = style({
   height: '1px',
   margin: '1em auto',
   padding: '0',
-  width: '7rem'
+  width: '7em'
 })
 
 const success = (guestEmail, bookingId) => {
   return (
     <div {...successSS}>
-      <IconCheckmark size='3.5rem'/>
+      <IconCheckmark size='3.5em'/>
       <p {...messageSS}>Thank you!</p>
       <p {...messageSS}>Your booking is confirmed</p>
       <p {...smallTextSS}>
@@ -73,7 +73,7 @@ const success = (guestEmail, bookingId) => {
 
 const unconfirmed = (
   <div {...unconfirmedSS}>
-    <IconWarning size='3.5rem'/>
+    <IconWarning size='3.5em'/>
     <p {...messageSS}>Thank you!</p>
     <p {...messageSS}>Booking request received</p>
     <p {...smallTextSS}>
@@ -84,7 +84,7 @@ const unconfirmed = (
 
 const error = (
   <div {...errorSS}>
-    <IconCircledX size='3.5rem'/>
+    <IconCircledX size='3.5em'/>
     <p {...messageSS}>Ooops!</p>
     <p {...messageSS}>Something went wrong</p>
     <p {...smallTextSS}>
@@ -127,9 +127,9 @@ class ConfirmationPanel extends Component {
         color: 'white',
         cursor: 'pointer',
         display: 'block',
-        fontSize: '1.4rem',
-        margin: '4rem auto',
-        padding: '1rem 3rem',
+        fontSize: '1.4em',
+        margin: '4em auto',
+        padding: '1em 3em',
       },
       $(':hover', {
         background: 'white',

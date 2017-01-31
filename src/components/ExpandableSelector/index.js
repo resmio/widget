@@ -8,8 +8,8 @@ import ExpandButton from './ExpandButton'
 
 // Styles
 const dropdownSS = style({
-  fontSize: '1.4rem',
-  maxHeight: '26.5rem',
+  fontSize: '1.4em',
+  maxHeight: '18.9em',
   overflowY: 'scroll',
   padding: '0 1em',
   width: '100%'
@@ -51,7 +51,7 @@ const ExpandableSelector = ({
     display: 'flex',
     height: contentHeight,
     width: '100%',
-    fontSize: '1.4rem',
+    fontSize: '1.4em',
     alignItems: 'center',
     cursor: 'pointer',
   })

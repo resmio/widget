@@ -10,8 +10,8 @@ const DropdownLabel = ({
   const dropdownLabelSS = style({
     background: colors.gallery,
     color: color,
-    height: '3rem',
-    lineHeight: '3rem',
+    height: '2em',
+    lineHeight: '2em',
     textAlign: 'center',
     width: '100%'
   })

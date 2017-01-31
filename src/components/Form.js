@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import {style} from 'glamor'
 
 const formSS = style({
-  margin: '2rem auto',
+  margin: '2em auto',
   width: '90%',
 })
 
