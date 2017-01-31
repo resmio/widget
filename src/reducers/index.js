@@ -47,17 +47,11 @@ function reducer (state = {}, action) {
         property: 'checksum'
       })
 
-      const selectorsState = 'collapsed'
-      const timeSelectorState = 'expanded'
-
       return Object.assign({}, state, {
         availabilities: action.response.objects,
         availabilitiesError: false,
         availabilitiesFetching: false,
-        guestSelectorState: selectorsState,
-        dateSelectorState: selectorsState,
-        selectedAvailability: selectedAvailability,
-        timeSelectorState: timeSelectorState
+        selectedAvailability: selectedAvailability
       })
 
     case GUEST_SELECT:
@@ -88,9 +82,9 @@ function reducer (state = {}, action) {
     // If it is expanded everything goes back to semicollapsed
       if (state.dateSelectorState === 'expanded') {
         return Object.assign({}, state, {
-          guestSelectorState: 'semicollapsed',
-          dateSelectorState: 'semicollapsed',
-          timeSelectorState  : 'semicollapsed',
+          guestSelectorState: 'collapsed',
+          dateSelectorState: 'collapsed',
+          timeSelectorState  : 'expanded',
           selectedDate: action.payload
         })
       // If it's not we expand it and collpase the other two
