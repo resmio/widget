@@ -1,8 +1,8 @@
 // react & redux
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
 import { style } from 'glamor'
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
 import * as bookingActions from '../actions/bookingActions'
 import * as uiActions from '../actions/uiActions'
@@ -14,19 +14,15 @@ import PanelRouter from '../components/PanelRouter'
 import Footer from '../components/Footer'
 
 class AppBase extends Component {
-  componentWillMount() {
-    // This call to appInit (which just calls set_locale) cause everything to
-    // rerender, investigate how to solve this
-    this.props.appInit()
-  }
-
   componentDidMount() {
-    this.props.fetchAvailabilities()
+    // FIXME: Not sure about calling this here
+    this.props.appInit()
   }
 
   render() {
     const {
       buttonColor,
+      currentPanel,
       defaultHeight,
       defaultWidth,
       facility,
@@ -36,30 +32,39 @@ class AppBase extends Component {
       logoUrl,
       numberOfPanels,
       renderAtMaxSize
-    } = this.props.custom
+    } = this.props.state
 
     const {
-      currentPanel
-    } = this.props.ui
-
-    const {
-      reducePanel,
       advancePanel,
       bookingInfo,
+      buttonEnabled,
       postBooking,
-      buttonEnabled
+      reducePanel
     } = this.props
 
     // generate styles
     const widgetSS = style({
-      minWidth: '300px',
-      maxWidth: '736px',
-      maxHeight: '736px',
-      minHeight: '500px',
-      width: renderAtMaxSize ? '100%' : defaultWidth,
       height: renderAtMaxSize ? '100%' : defaultHeight,
-      position: 'relative'
+      maxHeight: '736px',
+      maxWidth: '736px',
+      minHeight: '500px',
+      minWidth: '300px',
+      position: 'relative',
+      width: renderAtMaxSize ? '100%' : defaultWidth,
     })
+
+    const footer = (
+      <Footer
+        currentPanel={currentPanel}
+        logo={logoUrl}
+        buttonColor={buttonColor}
+        numberOfPanels={numberOfPanels}
+        onLastClicked={postBooking}
+        onNextClicked={advancePanel}
+        onPreviousClicked={reducePanel}
+        buttonDisabled={!buttonEnabled}
+      />
+    )
 
     return (
       <div {...widgetSS}>
@@ -70,16 +75,7 @@ class AppBase extends Component {
           subheaderText={ currentPanel === 1 ? facility : bookingInfo }
         />
         <PanelRouter panel={currentPanel} />
-        <Footer
-          currentPanel={currentPanel}
-          logo={logoUrl}
-          buttonColor={buttonColor}
-          numberOfPanels={numberOfPanels}
-          onLastClicked={postBooking}
-          onNextClicked={advancePanel}
-          onPreviousClicked={reducePanel}
-          buttonDisabled={!buttonEnabled}
-        />
+        { currentPanel <= numberOfPanels ? footer : null }
       </div>
     )
   }
@@ -88,8 +84,7 @@ class AppBase extends Component {
 // Wiring
 const mapStateToProps = (state) => {
   return {
-    custom: state.custom,
-    ui: state.ui,
+    state,
     bookingInfo: getDisplayBooking(state),
     buttonEnabled: isNextButtonEnabled(state)
   }

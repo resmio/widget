@@ -1,22 +1,19 @@
 import React from 'react'
 import { style } from 'glamor'
 
-const Panel = (props) => {
-  const { children } = props
+// Styles
+const panel = style({
+  bottom: '6em',
+  left: '0',
+  position: 'absolute',
+  right: '0',
+  top: '6em'
+})
 
-  const panel = style({
-    position: 'absolute',
-    top: '6em',
-    bottom: '6em',
-    left: '0',
-    right: '0'
-  })
-
-  return (
-    <section {...panel}>
-      { children }
-    </section>
-  )
-}
+const Panel = ({children}) => (
+  <section {...panel}>
+    { children }
+  </section>
+)
 
 export default Panel

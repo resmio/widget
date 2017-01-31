@@ -14,23 +14,12 @@ export const BOOKING_POSTING = 'BOOKING:POSTING'
 export const BOOKING_POSTING_SUCCESS = 'BOOKING:POSTING:SUCCESS'
 export const BOOKING_POSTING_ERROR = 'BOOKING:POSTING:ERROR'
 export const CHECKBOX_CHANGED = 'CHECKBOX_CHANGED'
-export const GUEST_ADD = 'GUEST_ADD'
-export const GUEST_REMOVE = 'GUEST_REMOVE'
 export const GUEST_SELECT = 'GUEST_SELECT'
 export const INPUT_CHANGED = 'INPUT_CHANGED'
 export const DATE_SELECT = 'DATE_SELECT'
 export const TIME_SELECT = 'TIME_SELECT'
 
 // GUEST COUNTER ---------------------------------------------------------------
-
-export function addGuest () { 
- return { type: GUEST_ADD }
-}
-
-export function removeGuest () {
-  return { type: GUEST_REMOVE }
-}
-
 export function selectGuest (e) {
   return {
     type: GUEST_SELECT,
@@ -49,7 +38,7 @@ export function selectDate (date) {
 // AVAILABILITIES --------------------------------------------------------------
 export function fetchAvailabilities () {
   return  (dispatch, getState) => {
-    const date = getState().booking.selectedDate.toJSON().substr(0,10)
+    const date = getState().selectedDate.toJSON().substr(0,10)
     dispatch({
       type: API,
       payload: {
@@ -91,6 +80,7 @@ export function checkboxChanged (name, checked) {
   }
 }
 
+// POSTING TO CREATE THE BOOKING
 export function postBooking () {
   return (dispatch, getState) => {
     dispatch({
@@ -99,17 +89,17 @@ export function postBooking () {
         url: '/bookings',
         method: 'POST',
         body: state => ({
-          num: state.booking.selectedGuests,
+          num: state.selectedGuests,
           date: getSelectedAvailability(state).date,
-          name: state.booking.guestName,
-          email: state.booking.guestName,
-          phone: state.booking.guestPhone,
+          name: state.guestName,
+          email: state.guestEmail,
+          phone: state.guestPhone,
           price_change: getSelectedAvailability(state).price_change,
-          checksum: state.booking.selectedAvailability,
-          facility: `/v1/facility/${state.custom.facility}`,
+          checksum: state.selectedAvailability,
+          facility: `/v1/facility/${state.facility}`,
           source: 'widget test',
           fb_access_token :null,
-          newsletter_subscribe: state.booking.newsletterSubscription,
+          newsletter_subscribe: state.newsletterSubscription,
         }),
         pending: BOOKING_POSTING,
         success: BOOKING_POSTING_SUCCESS,

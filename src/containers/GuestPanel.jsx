@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect,  } from 'react-redux'
+import { style } from 'glamor'
 
 import * as bookingActions from '../actions/bookingActions'
 
@@ -8,7 +9,16 @@ import * as bookingActions from '../actions/bookingActions'
 import Panel from '../components/Panel'
 import Form from '../components/Form'
 import Input from '../components/Input'
-import Checkbox from '../components/Checkbox'
+
+const newsletterSection = style({
+  color: '#999',
+  fontSize: '1.6rem',
+  marginTop: '2rem'
+})
+
+const newsletterCheckbox = style({
+  marginRight: '1rem'
+})
 
 class GuestPanel extends Component {
 
@@ -23,7 +33,7 @@ class GuestPanel extends Component {
       guestEmail,
       guestPhone,
       newsletterSubscription
-    } = this.props.booking
+    } = this.props.state
 
     return (
       <Panel>
@@ -47,25 +57,32 @@ class GuestPanel extends Component {
           <Input
             label='Phone Number'
             id='guestPhone'
-            placeHolder='017645990313'
+            placeHolder='0555555555'
             key='phone'
             defaultValue={guestPhone}
             onChange={(e)=>{inputChanged('guestPhone', e.target.value)}}
           />
-          <Checkbox
-            checked={newsletterSubscription}
-            id='newsletterSubscription'
-            onChange={checkboxChanged}
-           />
+          <div {...newsletterSection}>
+            <input
+              {...newsletterCheckbox}
+              type='checkbox'
+              checked={newsletterSubscription}
+              id='newsletterSubscription'
+              onChange={(e)=>{checkboxChanged('newsletterSubscription', e.target.checked)}}
+             />
+             <label htmlFor='newsletterSubscription'>Follow restaurant newsletter</label>
+          </div>
         </Form>
       </Panel>
     )
   }
 }
 
+// FIXME:
+// Only connect the elements needed here, instead of the whole state
 function mapStateToProps(state) {
   return {
-    booking: state.booking
+    state
   }
 }
 

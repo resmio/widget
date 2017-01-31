@@ -1,32 +1,33 @@
 import { createSelector } from 'reselect'
 import { formatLocalDate } from '../utils/dates'
 
-const getGuests = (state) => state.booking.selectedGuests
-const getPanel = (state) => state.ui.currentPanel
+const getGuests = (state) => state.selectedGuests
+const getPanel = (state) => state.currentPanel
 
 const validGuestData = (state) => {
   // We can create more sophisticated validations later if needed
   return (
-    state.booking.guestName !== ''
-    && state.booking.guestEmail !== ''
-    && state.booking.guestPhone !== ''
+    state.guestName !== ''
+    && state.guestEmail !== ''
+    && state.guestPhone !== ''
   )
 }
 
 export const getSelectedAvailability = (state) => {
-  const { availabilities, selectedAvailability } = state.booking
+  const { availabilities, selectedAvailability } = state
   // we are returning an empty object at initialization
   // this is not a goood solution but it works for now
   // Probably we need to init with some availability in there before
   // rendering the time picker (componentDidMount for booking Panel)
   // We need the spinner logic first
+  if (!availabilities) { return {} }
   return availabilities.filter(
     availability => availability.checksum === selectedAvailability
-  )[0] || {}
+  )[0]
 }
 
 export const showAvailabilities = (state) => {
-  const { availabilities } = state.booking
+  const { availabilities } = state
   return availabilities.filter(
     availability => availability.available > 0
   ) || []
@@ -35,7 +36,12 @@ export const showAvailabilities = (state) => {
 export const getDisplayBooking = createSelector(
   [getGuests, getSelectedAvailability],
   (guests, availability) => {
-    return `${guests} Guests, ${formatLocalDate(availability.local_date_formatted)}`
+    if (typeof availability !== 'undefined') {
+      return `${guests} Guests, ${formatLocalDate(availability.local_date_formatted)}`
+    }
+    else {
+      return ''
+    }
   }
 )
 
@@ -44,6 +50,7 @@ export const getDisplayBooking = createSelector(
 export const isNextButtonEnabled = createSelector(
   [getPanel, getSelectedAvailability, validGuestData],
   (panel, availability, guestData) => {
+    if (typeof availability === 'undefined') { return }
     // In the first panel we disable the button if there's
     // no availability selected
     if (panel === 1 && Object.keys(availability).length === 0) {

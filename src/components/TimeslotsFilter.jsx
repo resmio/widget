@@ -4,30 +4,30 @@ import {style, merge } from 'glamor'
 import IconArrow from './IconArrow'
 
 const container = style({
+  alignItems: 'center',
   background: '#CCC',
   display: 'flex',
-  alignItems: 'center',
-  height: '4rem',
   fontSize: '1em',
+  height: '4rem',
+  left: '4%',
   lineHeight: '4rem',
   position: 'absolute',
   right: '4%',
-  left: '4%'
 })
 
 const arrow = merge({
+  cursor: 'pointer',
   flex: '1',
   height: '2rem',
   lineHeight: '2rem',
-  cursor: 'pointer',
   ':hover': {
     color: 'white'
   }
 })
 
 const disabled = merge({
-  opacity: '0.2',
   cursor: 'normal',
+  opacity: '0.2',
   ':hover': {
     color: 'black'
   }

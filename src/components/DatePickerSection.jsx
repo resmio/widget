@@ -1,38 +1,50 @@
 import React, { PropTypes } from 'react'
-import { withTranslate } from 'react-redux-multilingual'
+import { style } from 'glamor'
 
 import { momentObj } from 'react-moment-proptypes'
 import { DayPicker } from 'react-dates'
-import 'react-dates/lib/css/_datepicker.css'
+import {hexToRgb} from '../utils/colors'
+
+import '../styles/_datepicker.css'
 
 import ExpandableSelector from './ExpandableSelector'
 
 const DatePickerSection = ({
+    color,
     state,
     selectedDate,
     onDateSelected,
-    onFocusChange,
-    translate
+    onFocusChange
 }) => {
+  const dropdownLabelSS = style({
+    background: `rgba(${hexToRgb(color)}, 0.3)`,
+    height: '3rem',
+    lineHeight: '3rem',
+    textAlign: 'center',
+    width: '100%'
+  })
 
-  // Clicking on the arrow also fires an OnFOcuschange on the datePicker
-  // So the uiDateSelectorChangeState fires twice once expanding and the
-  // second one semicollapsing, check redux dev tools to see this clearly
+  const datepickerDropdown = style({
+    background: `rgba(${hexToRgb(color)}, 0.3)`,
+    marginTop: '1.3rem'
+  })
 
-  // Need to deal with it once doing the datepicker section
   const main = (
-    <DayPicker
-      id="date_input"
-      date={selectedDate}
-      focused={state === 'expanded'}
-      numberOfMonths={1}
-      onDayClick={onDateSelected}
-    />
+    <div {...datepickerDropdown}>
+      <div {...dropdownLabelSS}>Select day</div>
+      <DayPicker
+        id="date_input"
+        date={selectedDate}
+        focused={state === 'expanded'}
+        numberOfMonths={1}
+        onDayClick={onDateSelected}
+      />
+    </div>
   )
 
   return (
     <ExpandableSelector
-      label={translate('DATE')}
+      label={'DATE'}
       displayedInfo={selectedDate.format('dddd, MMM Do')}
       onExpandClicked={onFocusChange}
       dropdown={main}
@@ -50,4 +62,4 @@ DatePickerSection.propTypes = {
   onDateSelected: func
 }
 
-export default withTranslate(DatePickerSection)
+export default DatePickerSection

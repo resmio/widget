@@ -1,10 +1,11 @@
 import React, { PropTypes } from 'react'
 import { style } from 'glamor'
+import { colors } from '../../styles/variables'
 
 const label = style({
-  color: '#CCC',
-  flex: '1',
-  paddingLeft: '1em'
+  color: colors.silver,
+  paddingLeft: '6%',
+  width: '35%'
 })
 
 const Label = ({children}) => (

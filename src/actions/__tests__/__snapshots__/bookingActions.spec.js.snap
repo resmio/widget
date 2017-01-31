@@ -1,9 +1,3 @@
-exports[`booking actions should create an action to add a guest 1`] = `
-Object {
-  "type": "GUEST_ADD",
-}
-`;
-
 exports[`booking actions should create an action to check a checkbox 1`] = `
 Object {
   "payload": Object {
@@ -11,12 +5,6 @@ Object {
     "value": true,
   },
   "type": "CHECKBOX_CHANGED",
-}
-`;
-
-exports[`booking actions should create an action to remove a guest 1`] = `
-Object {
-  "type": "GUEST_REMOVE",
 }
 `;
 

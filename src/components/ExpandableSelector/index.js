@@ -1,24 +1,26 @@
 import React, { PropTypes } from 'react'
 import { style } from 'glamor'
+import { colors } from '../../styles/variables'
 
 import Label from './Label'
 import Value from './Value'
 import ExpandButton from './ExpandButton'
 
+// Styles
 const dropdownSS = style({
   fontSize: '1.4rem',
-  maxHeight: '18rem',
+  maxHeight: '26.5rem',
   overflowY: 'scroll',
   padding: '0 1em',
   width: '100%'
 })
 
 const ExpandableSelector = ({
-    state,
-    label,
-    displayedInfo,
     customButton,
+    displayedInfo,
     dropdown,
+    label,
+    state,
     onExpandClicked
 }) => {
 
@@ -37,11 +39,11 @@ const ExpandableSelector = ({
 
     default:
       containerHeight = '70%'
-      contentHeight = '6em'
+      contentHeight = '100%'
   }
 
   const container = style({
-    borderBottom: '1px solid #DDD',
+    borderBottom: `1px solid ${colors.alto}`,
     height: containerHeight,
   })
 
@@ -54,28 +56,21 @@ const ExpandableSelector = ({
     cursor: 'pointer',
   })
 
-  // This is just for the numberPicker that has the +/- buttons when expanded
-  // change here if we also want those buttons for collapsed or remove the
-  // entire customButton logic if we want every component to just have an up
-  // arrow when expanded
-  const action = (state === 'expanded' && customButton )
-    ? customButton
-    : <ExpandButton state={state} onClickAction={onExpandClicked} />
-
-  const dropdownIfExpanded = (
+  const dropdownSection = (
     state === 'expanded'
       ? <div {...dropdownSS}>{dropdown}</div>
-      : null
+      : (
+        <div {...main} onClick={onExpandClicked}>
+          <Label>{label}</Label>
+          <Value>{displayedInfo}</Value>
+          <ExpandButton state={state} />
+        </div>
+      )
   )
 
   return (
     <div {...container}>
-      <div {...main}>
-        <Label>{label}</Label>
-        <Value onClickAction={onExpandClicked}>{displayedInfo}</Value>
-        { action }
-      </div>
-      { dropdownIfExpanded }
+      { dropdownSection }
     </div>
   )
 }
@@ -83,11 +78,11 @@ const ExpandableSelector = ({
 const { oneOf, func, string, node } = PropTypes
 
 ExpandableSelector.propTypes = {
-  state: oneOf(['collapsed', 'semicollapsed', 'expanded']).isRequired,
-  label: string,
-  displayedInfo: string.isRequired,
   customButton: node,
+  displayedInfo: string.isRequired,
   dropdown: node,
+  label: string,
+  state: oneOf(['collapsed', 'semicollapsed', 'expanded']).isRequired,
   onExpandClicked: func.isRequired,
 }
 

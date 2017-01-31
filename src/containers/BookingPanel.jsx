@@ -1,14 +1,10 @@
 import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect,  } from 'react-redux'
-import { withTranslate } from 'react-redux-multilingual'
 
 import * as bookingActions from '../actions/bookingActions'
 import * as uiActions from '../actions/uiActions'
 import { getSelectedAvailability, showAvailabilities } from '../selectors'
-
-// 3rd party components
-import { momentObj } from 'react-moment-proptypes'
 
 // components
 import Panel from '../components/Panel'
@@ -19,66 +15,61 @@ import TimePicker from '../components/TimePicker'
 class BookingPanel extends Component {
 
   render () {
-    // All of this is horrible and coupling this to the state
-    // Find a better way to do it
     const {
-      // actions
       advanceTimePeriod,
+      availabilities,
+      availabilitiesError,
+      availabilitiesFetching,
+      buttonColor,
+      dateSelectorState,
+      guestSelectorState,
+      headerColor,
+      maxGuests,
+      minGuests,
       reduceTimePeriod,
+      selectedDate,
+      selectedGuests,
+      timePeriods,
+      timePeriodSelected,
+      timeSelectorState,
+    } = this.props.state
+
+    const {
+      selectDate,
+      selectedAvailability,
+      selectGuest,
+      selectTime,
       uiGuestSelectorChangeState,
       uiDateSelectorChangeState,
       uiTimeSelectorChangeState,
-      addGuest,
-      removeGuest,
-      selectGuest,
-      selectDate,
-      selectTime,
-      availabilities,
-      selectedAvailability,
-      translate
     } = this.props
-
-    const {
-      selectedDate,
-      selectedGuests,
-      maxGuests,
-      minGuests,
-      timePeriodSelected,
-      timePeriods
-    } = this.props.booking
-
-    const {
-      availabilitiesError,
-      availabilitiesFetching,
-      dateSelectorState,
-      guestSelectorState,
-      timeSelectorState
-    } = this.props.ui
 
     return (
       <Panel>
         <NumberPicker
           state={guestSelectorState}
-          legendSingular={translate('guest')}
-          legendPlural={translate('guests')}
+          legendSingular='guest'
+          legendPlural='guests'
           max={maxGuests}
           min={minGuests}
           number={selectedGuests}
           onEditClicked={uiGuestSelectorChangeState}
           onNumberSelected={selectGuest}
-          onPlusClicked={addGuest}
-          onMinusClicked={removeGuest}
+          color={headerColor}
         />
         <DatePickerSection
+          color={buttonColor}
           state={dateSelectorState}
           selectedDate={selectedDate}
           onFocusChange={uiDateSelectorChangeState}
           onDateSelected={selectDate}
         />
         <TimePicker
+          color={headerColor}
           error={availabilitiesError}
+          limit={selectedGuests}
           timePeriods={timePeriods}
-          timeSelected={selectedAvailability.local_time_formatted}
+          timeSelected={selectedAvailability ? selectedAvailability.local_time_formatted : ''}
           timePeriodSelected={timePeriodSelected}
           state={timeSelectorState}
           timeslots={availabilities}
@@ -93,31 +84,22 @@ class BookingPanel extends Component {
   }
 }
 
-const { bool, func, number } = PropTypes
+const { func, object } = PropTypes
 
 BookingPanel.propTypes = {
-  calendarFocused: bool,
-  selectedDate: momentObj,
-  selectedGuests: number,
-  removeGuest: func,
-  addGuest: func,
-  openCalendar: bool,
-  onCalendarFocusChange: func,
-  onDateChange: func,
-  maxGuests: number,
-  minGuests: number,
-  guestSelectorCollapsed: bool,
+  selectGuest: func,
+  selectDate: func,
+  selectedAvailability: object,
+  selectTime: func,
+  state: object,
   uiGuestSelectorChangeState: func,
-  guestSelect: func,
-  uiDatepickerChangeState: func,
-  dateSelect: func
+  uiDateSelectorChangeState: func,
+  uiTimeSelectorChangeState: func,
 }
 
 function mapStateToProps(state) {
   return {
-    ui: state.ui,
-    custom: state.custom,
-    booking: state.booking,
+    state,
     selectedAvailability: getSelectedAvailability(state),
     availabilities: showAvailabilities(state)
   }
@@ -129,4 +111,4 @@ function mapDispachToProps(dispatch) {
   )
 }
 
-export default connect(mapStateToProps, mapDispachToProps)(withTranslate(BookingPanel))
+export default connect(mapStateToProps, mapDispachToProps)(BookingPanel)

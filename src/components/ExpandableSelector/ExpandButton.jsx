@@ -1,30 +1,29 @@
 import React, { PropTypes } from 'react'
 import { style, hover, merge } from 'glamor'
+import { colors } from '../../styles/variables'
 
 import IconArrow from '../IconArrow'
 
 const arrow = style({
-  color: '#CCC',
+  color: colors.silver,
   cursor: 'pointer',
-  flex: '1',
-  paddingRight: '1em',
-  textAlign: 'right'
+  textAlign: 'left',
+  width: '10%'
 })
 
 const arrowHover = hover({
-  color: '#555'
+  color: colors.emperor
 })
 
-const ExpandButton= ({state, onClickAction}) => (
-  <div {...merge(arrow, arrowHover)} onClick={onClickAction}>
+const ExpandButton= ({state}) => (
+  <div {...merge(arrow, arrowHover)}>
     <IconArrow direction={state !== 'expanded' ? 'down' : 'up'} />
   </div>
 
 )
 
 ExpandButton.propTypes = {
-  state: PropTypes.oneOf(['collapsed', 'semicollapsed', 'expanded']).isRequired,
-  onClickAction: PropTypes.func
+  state: PropTypes.oneOf(['collapsed', 'semicollapsed', 'expanded']).isRequired
 }
 
 export default ExpandButton

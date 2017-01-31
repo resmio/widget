@@ -1,23 +1,23 @@
 import React, { PropTypes } from 'react'
 import { style } from 'glamor'
+import { colors } from '../../styles/variables'
 
 const value = style({
-  color: '#555',
-  flex: '1',
+  color: colors.emperor,
   role: 'input',
   tabindex: '0',
-  textAlign: 'center'
+  textAlign: 'left',
+  width: '60%'
 })
 
-const Value = ({children, onClickAction}) => (
-  <div {...value} onClick={onClickAction}>
+const Value = ({children}) => (
+  <div {...value}>
     { children }
   </div>
 )
 
 Value.propTypes = {
-  children: PropTypes.node.isRequired,
-  onClickAction: PropTypes.func
+  children: PropTypes.node.isRequired
 }
 
 export default Value
