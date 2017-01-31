@@ -12,5 +12,5 @@ machine:
 
 test:
   override:
-    npm run circleCIOverride
+    - npm run circleCIOverride
     # - yarn test
