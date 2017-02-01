@@ -18,7 +18,7 @@ const footer = style({
   alignItems: 'center',
   bottom: '0',
   display: 'flex',
-  fontSize: '1.2rem',
+  fontSize: '1.2em',
   height: '6em',
   justifyContent: 'center',
   left: '0',

@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 
-const IconCircledX = ({size = '1.2rem'}) => {
+const IconCircledX = ({size = '1.2em'}) => {
   // https://css-tricks.com/currentcolor/
   return (
     <svg width={size} viewBox='0 0 32 32'>

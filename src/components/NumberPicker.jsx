@@ -7,8 +7,8 @@ import DropdownOption from './DropdownOption'
 
 const dropdownLabel = style({
   background: colors.gallery,
-  lineHeight: '3rem',
-  height: '3rem',
+  lineHeight: '2em',
+  height: '2em',
   textAlign: 'center',
   width: '100%',
 })
@@ -28,7 +28,7 @@ const NumberPicker = ({
 }) => {
   const numberPickerSS = style({
     color: color,
-    marginTop: '1.6rem'
+    marginTop: '1.2em'
   })
 
   const numbers = [...Array(max+1).keys()].slice(min)

@@ -44,6 +44,7 @@ class AppBase extends Component {
 
     // generate styles
     const widgetSS = style({
+      fontSize: '10px',
       height: renderAtMaxSize ? '100%' : defaultHeight,
       maxHeight: '736px',
       maxWidth: '736px',
@@ -51,6 +52,7 @@ class AppBase extends Component {
       minWidth: '300px',
       position: 'relative',
       width: renderAtMaxSize ? '100%' : defaultWidth,
+      zIndex: '10000 !important'
     })
 
     const footer = (

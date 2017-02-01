@@ -5,8 +5,8 @@ import { hexToRgb } from '../utils/colors'
 
 const timeslotSS = style({
   fontSize: '1em',
-  height: '4rem',
-  lineHeight: '4rem',
+  height: '2.8em',
+  lineHeight: '2.8em',
   margin: '0 auto',
   width: '90%'
 })
@@ -30,7 +30,8 @@ const discount = style({
 })
 
 const timeslotContainer = style({
-  borderBottom: `1px solid ${colors.alto}`,
+  border: `1px solid ${colors.alto}`,
+  borderBottom: 'none',
   color: colors.emperor
 })
 
