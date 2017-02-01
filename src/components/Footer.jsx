@@ -54,6 +54,7 @@ const Footer = (props) => {
       cursor: 'pointer',
       flex: '1',
       height: '35px',
+      lineHeigth: '1',
       maxWidth: '100px',
       marginRight: '15px'
     },
