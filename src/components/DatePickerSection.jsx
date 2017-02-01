@@ -3,7 +3,8 @@ import { style } from 'glamor'
 
 import { momentObj } from 'react-moment-proptypes'
 import { DayPicker } from 'react-dates'
-import {hexToRgb} from '../utils/colors'
+import { colors } from '../styles/variables'
+import { hexToRgb } from '../utils/colors'
 
 import '../styles/_datepicker.css'
 
@@ -17,7 +18,8 @@ const DatePickerSection = ({
     onFocusChange
 }) => {
   const dropdownLabelSS = style({
-    background: `rgba(${hexToRgb(color)}, 0.3)`,
+    background: colors.gallery,
+    color: color,
     height: '2em',
     lineHeight: '2em',
     textAlign: 'center',

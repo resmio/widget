@@ -20,7 +20,6 @@ class BookingPanel extends Component {
       availabilities,
       availabilitiesError,
       availabilitiesFetching,
-      buttonColor,
       dateSelectorState,
       guestSelectorState,
       headerColor,
@@ -58,7 +57,7 @@ class BookingPanel extends Component {
           color={headerColor}
         />
         <DatePickerSection
-          color={buttonColor}
+          color={headerColor}
           state={dateSelectorState}
           selectedDate={selectedDate}
           onFocusChange={uiDateSelectorChangeState}
