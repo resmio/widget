@@ -74,6 +74,10 @@
   cursor: default; }
   .CalendarMonth__day--outside:active {
     background: #fff; }
+  .CalendarMonth__day--outside:hover {
+    background: white;
+    cursor: normal;
+  }
 
 .CalendarMonth__day--hovered {
   background: #e4e7e7;

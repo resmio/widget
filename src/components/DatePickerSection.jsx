@@ -15,6 +15,8 @@ const isDisabled = (day) => {
   return moment(day).diff(moment(new Date()), 'days') < 0
 }
 
+const emptyFunction = () => {}
+
 const DatePickerSection = ({
     color,
     state,
@@ -36,6 +38,10 @@ const DatePickerSection = ({
     marginTop: '1em'
   })
 
+  const onDateSelectedWrapper = (day) => {
+    isDisabled(day) ? emptyFunction() : onDateSelected(day)
+  }
+
   const modifiers = {
     isDisabled: isDisabled,
     isSelected: (day) => moment(day).isSame(selectedDate, 'day')
@@ -50,7 +56,7 @@ const DatePickerSection = ({
         date={selectedDate}
         focused={state === 'expanded'}
         numberOfMonths={1}
-        onDayClick={onDateSelected}
+        onDayClick={onDateSelectedWrapper}
       />
     </div>
   )
