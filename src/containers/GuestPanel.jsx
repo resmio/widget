@@ -53,6 +53,7 @@ class GuestPanel extends Component {
             key='email'
             defaultValue={guestEmail}
             onChange={(e)=>{inputChanged('guestEmail', e.target.value)}}
+            type='email'
           />
           <Input
             label='Phone Number'
@@ -61,6 +62,7 @@ class GuestPanel extends Component {
             key='phone'
             defaultValue={guestPhone}
             onChange={(e)=>{inputChanged('guestPhone', e.target.value)}}
+            type='tel'
           />
           <div {...newsletterSection}>
             <input

@@ -12,7 +12,6 @@ const timepickerContainer = style({
 })
 
 const noAvailabilitiesMessage = style({
-  borderBottom: `1px solid ${colors.gallery}`,
   color: colors.dustyGray,
   fontSize: '1.1em',
   lineHeight: '1.5',

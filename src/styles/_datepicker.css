@@ -26,12 +26,13 @@
 
 .CalendarMonth--horizontal {
   display: inline-block;
+  margin-bottom: 1em;
   min-height: 100%; }
 
 .CalendarMonth__caption {
   color: #3c3f40;
   margin-top: 5px;
-  font-size: 1.4em;
+  font-size: 1em;
   padding: 5px 0 25px;
   text-align: center;
   margin-bottom: 2px; }
@@ -119,7 +120,7 @@
 .CalendarMonthGrid--horizontal {
   position: absolute;
   left: 12px;
-  width: 1200px; }
+}
 
 .CalendarMonthGrid--vertical {
   width: 300px;
@@ -155,7 +156,7 @@
     padding-left: 0; }
   .DayPicker__week-header li {
     display: inline-block;
-    width: 36px;
+    width: 35px;
     text-align: center; }
 
 .DayPicker--horizontal .DayPicker__week-header {

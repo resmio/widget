@@ -9,6 +9,7 @@ const logoStyles = style({
   marginLeft: '15px',
   maxWidth: '80px',
   minWidth: '30px',
+  '& svg': { maxWidth: '80px' }
 })
 
 const Logo = (props) => {
