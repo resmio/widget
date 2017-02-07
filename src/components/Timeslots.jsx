@@ -31,7 +31,7 @@ const discount = style({
 
 const timeslotContainer = style({
   border: `1px solid ${colors.alto}`,
-  borderBottom: 'none',
+  borderTop: 'none',
   color: colors.emperor
 })
 
