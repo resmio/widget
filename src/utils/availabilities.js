@@ -8,12 +8,13 @@ import { isSameDay, toLinuxTimestamp, toMilliseconds } from './dates'
 export const getFutureAvailability = ({
   availabilities,
   date,
-  timeOffsetInMilliseconds
+  timeOffsetInMilliseconds,
+  spots
 }) => {
   const targetTime = toLinuxTimestamp(date) + timeOffsetInMilliseconds
 
   const selectedAvailability = availabilities.find((availability) => {
-    return (toLinuxTimestamp(availability.date) >= targetTime)
+    return (toLinuxTimestamp(availability.date) >= targetTime && availability.available >= spots)
   })
 
   return selectedAvailability ? selectedAvailability : {}
@@ -21,13 +22,14 @@ export const getFutureAvailability = ({
 
 export const getSameTimeAvailability = ({
   availabilities,
-  time
+  time,
+  spots
 }) => {
   const availability = availabilities.find((availability) => {
-    return availability.local_time_formatted === time
-    }
-  )
-
+    return (
+      availability.local_time_formatted === time & availability.available >= spots
+    )
+  })
   return availability ?  availability : {}
 }
 
@@ -38,17 +40,17 @@ export const selectAvailability = ({
 }) => {
 
   let availability = {}
+  const selectedAvailability = getSelectedAvailability(state)
 
-  if (state.selectedAvailability !== '' && getSelectedAvailability(state)) {
+  if (state.selectedAvailability !== '' && selectedAvailability) {
     // If we have an availability already selected
     // we check if one availability for the same time is available in the new date
-    const selectedTime = (
-      getSelectedAvailability(state).local_time_formatted
-    )
+    const selectedTime = selectedAvailability.local_time_formatted
 
     availability = getSameTimeAvailability({
       availabilities: availabilities,
-      time: selectedTime
+      time: selectedTime,
+      spots: state.selectedGuests
     })
 
   } else {
@@ -60,6 +62,7 @@ export const selectAvailability = ({
       availability = getFutureAvailability({
         availabilities: availabilities,
         date: new Date(),
+        spots: state.selectedGuests,
         timeOffsetInMilliseconds: toMilliseconds({hours: 2})
       })
     }
