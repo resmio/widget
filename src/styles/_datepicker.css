@@ -46,13 +46,38 @@
   width: 36px;
   height: 30px; }
   .CalendarMonth__day:active {
-    color: red; }
+    background: #3E4862;
+    color: white; }
+
+  .CalendarMonth__day:hover {
+    background: rgba(83,98,140, 0.8);
+    color: white;
+  }
+
+  .CalendarMonth__day--isDisabled {
+    color: #EEE;
+  }
+
+  .CalendarMonth__day--isDisabled:hover {
+    background: white;
+    color: #EEE;
+    cursor: not-allowed;
+  }
+
+  .CalendarMonth__day--isSelected {
+    color: white;
+    background: #3E4862;
+  }
 
 .CalendarMonth__day--outside {
   border: 0;
   cursor: default; }
   .CalendarMonth__day--outside:active {
     background: #fff; }
+  .CalendarMonth__day--outside:hover {
+    background: white;
+    cursor: normal;
+  }
 
 .CalendarMonth__day--hovered {
   background: #e4e7e7;
