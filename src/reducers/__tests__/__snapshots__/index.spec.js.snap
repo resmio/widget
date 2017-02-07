@@ -66,14 +66,14 @@ Object {
   "availabilitiesFetching": false,
   "buttonColor": "#3E4862",
   "currentPanel": 1,
-  "dateSelectorState": "semicollapsed",
+  "dateSelectorState": "collapsed",
   "defaultHeight": "380px",
   "defaultWidth": "330px",
   "facility": "meson-california-2",
   "guestEmail": "",
   "guestName": "",
   "guestPhone": "",
-  "guestSelectorState": "semicollapsed",
+  "guestSelectorState": "collapsed",
   "headerColor": "#53628C",
   "headerImage": "https://zenezake.files.wordpress.com/2015/07/img_6715.jpg",
   "headerTextColor": "white",
@@ -88,7 +88,7 @@ Object {
   "status": "pending",
   "timeFocused": "",
   "timePeriodSelected": 0,
-  "timeSelectorState": "semicollapsed",
+  "timeSelectorState": "expanded",
 }
 `;
 

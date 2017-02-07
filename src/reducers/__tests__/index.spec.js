@@ -197,7 +197,7 @@ describe('ui reducer', () => {
         expect(actual.timeSelectorState).toEqual(expected)
       })
 
-      it('should semicollapse everything if itself is expanded', () => {
+      it('should collapse everything if itself is expanded', () => {
         const testState = Object.assign(
           {}, state, {
             guestSelectorState: 'collapsed',
