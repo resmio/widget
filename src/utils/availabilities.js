@@ -27,7 +27,7 @@ export const getSameTimeAvailability = ({
 }) => {
   const availability = availabilities.find((availability) => {
     return (
-      availability.local_time_formatted === time & availability.available >= spots
+      availability.local_time_formatted === time && availability.available >= spots
     )
   })
   return availability ?  availability : {}
