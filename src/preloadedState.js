@@ -31,7 +31,10 @@ const preloadedState = {
   dateSelectorState: 'collapsed',
   timeSelectorState  : 'expanded',
   availabilitiesFetching: false,
-  availabilitiesError: false
+  availabilitiesError: false,
+  emailInvalid: false,
+  phoneInvalid: false,
+  nameInvalid: false
 }
 
 export default preloadedState

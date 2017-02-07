@@ -4,6 +4,7 @@
 // Async actions use : instead of _ (GUEST:ADDING)
 // Error actions append _ERROR to the action type (TODO_ADD_ERROR)
 import { getSelectedAvailability } from '../selectors'
+import { isValidEmail } from '../utils/validators'
 
 export const API = 'API'
 export const APP_INIT = 'APP_INIT'
@@ -18,6 +19,7 @@ export const GUEST_SELECT = 'GUEST_SELECT'
 export const INPUT_CHANGED = 'INPUT_CHANGED'
 export const DATE_SELECT = 'DATE_SELECT'
 export const TIME_SELECT = 'TIME_SELECT'
+export const VALIDATION_ERROR = 'VALIDATION_ERROR'
 
 // GUEST COUNTER ---------------------------------------------------------------
 export function selectGuest (e) {
@@ -83,28 +85,60 @@ export function checkboxChanged (name, checked) {
 // POSTING TO CREATE THE BOOKING
 export function postBooking () {
   return (dispatch, getState) => {
-    dispatch({
+    const {
+      selectedGuests,
+      facility,
+      guestEmail,
+      guestName,
+      guestPhone,
+      selectedAvailability,
+      newsletterSubscription
+    } = getState()
+
+    const {
+      date,
+      price_change
+    } = getSelectedAvailability(getState())
+
+    const postBooking = {
       type: API,
       payload: {
         url: '/bookings',
         method: 'POST',
-        body: state => ({
-          num: state.selectedGuests,
-          date: getSelectedAvailability(state).date,
-          name: state.guestName,
-          email: state.guestEmail,
-          phone: state.guestPhone,
-          price_change: getSelectedAvailability(state).price_change,
-          checksum: state.selectedAvailability,
-          facility: `/v1/facility/${state.facility}`,
+        body: () => ({
+          num: selectedGuests,
+          date: date,
+          name: guestName,
+          email: guestEmail,
+          phone: guestPhone,
+          price_change: price_change,
+          checksum: selectedAvailability,
+          facility: `/v1/facility/${facility}`,
           source: 'widget test',
           fb_access_token :null,
-          newsletter_subscribe: state.newsletterSubscription,
+          newsletter_subscribe: newsletterSubscription,
         }),
         pending: BOOKING_POSTING,
         success: BOOKING_POSTING_SUCCESS,
         error: BOOKING_POSTING_ERROR
       }
-    })
+    }
+
+    const validEmail = isValidEmail(guestEmail)
+
+    const validationError = {
+      type: VALIDATION_ERROR,
+      payload: {
+        emailInvalid: !validEmail,
+        phoneInvalid: false,
+        nameInvalid: false
+      }
+    }
+
+    const validatedData = validEmail
+
+    validatedData
+      ? dispatch(postBooking)
+      : dispatch(validationError)
   }
 }

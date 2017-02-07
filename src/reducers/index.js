@@ -20,6 +20,7 @@ import {
   GUEST_SELECT,
   INPUT_CHANGED,
   TIME_SELECT,
+  VALIDATION_ERROR
 } from '../actions/bookingActions'
 
 import { getSelectedAvailability } from '../selectors'
@@ -194,6 +195,9 @@ function reducer (state = {}, action) {
         currentPanel: 1,
         status: 'pending'
       })
+
+    case VALIDATION_ERROR:
+      return Object.assign({}, state, action.payload)
 
     default:
       return state
