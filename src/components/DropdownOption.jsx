@@ -18,7 +18,7 @@ const DropdownOption = ({
     {
       backgroundColor: colors.white,
       border: `1px solid rgba(${hexToRgb(color)}, 0.2)`,
-      borderBottom: 'none',
+      borderTop: 'none',
       cursor: 'pointer',
       height: '2.8em',
       lineHeight: '2.8em',
