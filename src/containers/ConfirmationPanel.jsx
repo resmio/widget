@@ -58,14 +58,14 @@ const hr = style({
   width: '7em'
 })
 
-const success = (guestEmail, bookingId) => {
+const success = (guestEmail, bookingRefNum) => {
   return (
     <div {...successSS}>
       <IconCheckmark size='3.5em'/>
       <p {...messageSS}>Thank you!</p>
       <p {...messageSS}>Your booking is confirmed</p>
       <p {...smallTextSS}>
-        An email to {guestEmail} was sent with your booking confirmation and reservation code - <span {...blackerSS}>{bookingId}</span>
+        An email to {guestEmail} was sent with your booking confirmation and reservation code - <span {...blackerSS}>{bookingRefNum}</span>
       </p>
     </div>
   )
@@ -98,10 +98,10 @@ const pending = <Spinner />
 const PanelRouter = ({
   status,
   guestEmail,
-  bookingId
+  bookingRefNum
 })=> {
   switch (status) {
-    case 'confirmed': return (success(guestEmail, bookingId))
+    case 'confirmed': return (success(guestEmail, bookingRefNum))
     case 'unconfirmed': return (unconfirmed)
     case 'pending': return (pending)
     default: return (error)
