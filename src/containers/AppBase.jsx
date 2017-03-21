@@ -13,10 +13,14 @@ import Header from '../components/Header'
 import PanelRouter from '../components/PanelRouter'
 import Footer from '../components/Footer'
 
+// Analytics
+import { analyticsSetup } from '../utils/googleAnalytics'
+
 class AppBase extends Component {
   componentDidMount() {
     // FIXME: Not sure about calling this here
     this.props.appInit()
+    analyticsSetup()
   }
 
   render() {
