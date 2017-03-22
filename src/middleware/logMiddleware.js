@@ -1,9 +1,8 @@
-/* global ga:false */
+/* global dataLayer:false */
 
 const logMiddleware = ({ getState, dispatch }) => next => action => {
-  ga('send', 'event', action.type)
+  window.dataLayer && action.analytics && dataLayer.push({...action.analytics, facility: getState().facility})
   next(action)
-  console.timeEnd(action.type)
 }
 
 export default logMiddleware

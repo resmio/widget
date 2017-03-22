@@ -43,11 +43,21 @@ export function uiDateSelectorChangeState () {
 }
 
 export function advancePanel () {
-  return { type: UI_PANEL_ADVANCE }
+  return {
+    type: UI_PANEL_ADVANCE,
+    analytics: {
+      event: 'PANEL_ADVANCED'
+    }
+  }
 }
 
 export function reducePanel () {
-  return { type: UI_PANEL_REDUCE }
+  return {
+    type: UI_PANEL_REDUCE,
+    analytics: {
+      event: 'PANEL_REDUCE'
+    }
+  }
 }
 
 export function advanceTimePeriod () {
@@ -59,5 +69,10 @@ export function reduceTimePeriod () {
 }
 
 export function newBooking () {
-  return { type: UI_NEW_BOOKING }
+  return {
+    type: UI_NEW_BOOKING,
+    analytics: {
+      event: 'MAKE_EXTRA_BOOKING'
+    }
+  }
 }

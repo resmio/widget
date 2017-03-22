@@ -14,13 +14,18 @@ import PanelRouter from '../components/PanelRouter'
 import Footer from '../components/Footer'
 
 // Analytics
-import { analyticsSetup } from '../utils/googleAnalytics'
+import { analyticsSetup, analyticsIframe } from '../utils/googleAnalytics'
 
 class AppBase extends Component {
+  state = {
+    analyticsCodeLoaded: false
+  }
+
   componentDidMount() {
     // FIXME: Not sure about calling this here
     this.props.appInit()
     analyticsSetup()
+    setTimeout(function() { this.setState({analyticsCodeLoaded: true}); }.bind(this), 3000)
   }
 
   render() {
@@ -74,6 +79,7 @@ class AppBase extends Component {
 
     return (
       <div {...widgetSS}>
+        { this.state.analyticsCodeLoaded && <analyticsIframe /> }
         <Header
           bgImage={headerImage}
           bgColor={headerColor}

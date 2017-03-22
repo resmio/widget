@@ -23,14 +23,25 @@ export const TIME_SELECT = 'TIME_SELECT'
 export function selectGuest (e) {
   return {
     type: GUEST_SELECT,
-    payload: parseInt(e.target.id, 10) + 1
+    payload: parseInt(e.target.id, 10) + 1,
+    analytics: {
+      event: 'GUEST_SELECT',
+      numberOfGuestsSelected: parseInt(e.target.id, 10) + 1
+    }
   }
 }
 
 // DATE ------------------------------------------------------------------------
 export function selectDate (date) {
   return (dispatch) => {
-    dispatch({type: DATE_SELECT, payload: date})
+    dispatch({
+      type: DATE_SELECT,
+      payload: date,
+      analytics: {
+        event: 'DATE_SELECT',
+        date: date
+      }
+    })
     dispatch(fetchAvailabilities())
   }
 }
@@ -55,7 +66,10 @@ export function fetchAvailabilities () {
 export function selectTime (checksum) {
   return {
     type: TIME_SELECT,
-    payload: checksum
+    payload: checksum,
+    analytics: {
+      event: TIME_SELECT
+    }
   }
 }
 
@@ -104,6 +118,9 @@ export function postBooking () {
         pending: BOOKING_POSTING,
         success: BOOKING_POSTING_SUCCESS,
         error: BOOKING_POSTING_ERROR
+      },
+      analytics: {
+        event: 'BOOKING_POSTING'
       }
     })
   }
