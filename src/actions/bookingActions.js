@@ -25,7 +25,6 @@ export function selectGuest (e) {
     type: GUEST_SELECT,
     payload: parseInt(e.target.id, 10) + 1,
     analytics: {
-      event: 'GUEST_SELECT',
       numberOfGuestsSelected: parseInt(e.target.id, 10) + 1
     }
   }
@@ -38,7 +37,6 @@ export function selectDate (date) {
       type: DATE_SELECT,
       payload: date,
       analytics: {
-        event: 'DATE_SELECT',
         date: date
       }
     })
@@ -67,9 +65,7 @@ export function selectTime (checksum) {
   return {
     type: TIME_SELECT,
     payload: checksum,
-    analytics: {
-      event: TIME_SELECT
-    }
+    analytics: {}
   }
 }
 
@@ -119,9 +115,7 @@ export function postBooking () {
         success: BOOKING_POSTING_SUCCESS,
         error: BOOKING_POSTING_ERROR
       },
-      analytics: {
-        event: 'BOOKING_POSTING'
-      }
+      analytics: {}
     })
   }
 }
