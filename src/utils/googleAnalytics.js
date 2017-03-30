@@ -9,7 +9,6 @@ export const analyticsSetup = () => (
 )
 
 export const analyticsIframe = () => {
-  debugger
   return (
     <noscript>
       <iframe
