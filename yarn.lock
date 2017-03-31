@@ -974,10 +974,6 @@ binary-extensions@^1.0.0:
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/binary-extensions/-/binary-extensions-1.8.0.tgz#48ec8d16df4377eae5fa5884682480af4d95c774"
 
-blacklist@^1.1.4:
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/blacklist/-/blacklist-1.1.4.tgz#b2dd09d6177625b2caa69835a37b28995fa9a2f2"
-
 block-stream@*:
   version "0.0.9"
   resolved "https://registry.yarnpkg.com/block-stream/-/block-stream-0.0.9.tgz#13ebfe778a03205cfe03751481ebb4b3300c126a"
@@ -2771,6 +2767,10 @@ is-glob@^3.0.0:
   dependencies:
     is-extglob "^2.1.0"
 
+is-in-browser@1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/is-in-browser/-/is-in-browser-1.0.2.tgz#f688bea8f1e5aadc3244ebc870d188cfb9b613cf"
+
 is-my-json-valid@^2.10.0, is-my-json-valid@^2.12.4:
   version "2.15.0"
   resolved "https://registry.yarnpkg.com/is-my-json-valid/-/is-my-json-valid-2.15.0.tgz#936edda3ca3c211fd98f3b2d3e08da43f7b2915b"
@@ -3251,6 +3251,17 @@ jsprim@^1.2.2:
     extsprintf "1.0.2"
     json-schema "0.2.3"
     verror "1.3.6"
+
+jss-isolate@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/jss-isolate/-/jss-isolate-2.0.1.tgz#7ee5591e0dc5d358a2fbed25ccf0f2510413c896"
+
+jss@^6.5.0:
+  version "6.5.0"
+  resolved "https://registry.yarnpkg.com/jss/-/jss-6.5.0.tgz#9294a367b658daa2036c36f563ff6bfb0c7b12a1"
+  dependencies:
+    is-in-browser "1.0.2"
+    warning "3.0.0"
 
 jsx-ast-utils@^1.0.0, jsx-ast-utils@^1.3.1:
   version "1.4.0"
@@ -4378,12 +4389,6 @@ react-dom@^15.3.2:
     loose-envify "^1.1.0"
     object-assign "^4.1.0"
 
-react-frame@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/react-frame/-/react-frame-2.0.0.tgz#77accb25f2a34401cc2246306ba5edd18cc54c80"
-  dependencies:
-    blacklist "^1.1.4"
-
 react-moment-proptypes@^1.2.0, react-moment-proptypes@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/react-moment-proptypes/-/react-moment-proptypes-1.2.1.tgz#f672cb07e49f2a32c08f2c02ac30cb255850dc0a"
@@ -5319,6 +5324,12 @@ walker@~1.0.5:
   resolved "https://registry.yarnpkg.com/walker/-/walker-1.0.7.tgz#2f7f9b8fd10d677262b18a884e28d19618e028fb"
   dependencies:
     makeerror "1.0.x"
+
+warning@3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/warning/-/warning-3.0.0.tgz#32e5377cb572de4ab04753bdf8821c01ed605b7c"
+  dependencies:
+    loose-envify "^1.0.0"
 
 watch@~0.10.0:
   version "0.10.0"

@@ -19,6 +19,8 @@
   },
   "dependencies": {
     "glamor": "^2.17.14",
+    "jss": "^6.5.0",
+    "jss-isolate": "^2.0.1",
     "moment": "^2.15.2",
     "react": "^15.3.2",
     "react-addons-shallow-compare": "^15.3.2",

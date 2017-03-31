@@ -1,8 +1,9 @@
 // react & redux
-import React, { Component } from 'react';
-import { style } from 'glamor'
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import React, { Component } from 'react'
+import jss from 'jss'
+import isolate from 'jss-isolate'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 
 import * as bookingActions from '../actions/bookingActions'
 import * as uiActions from '../actions/uiActions'
@@ -52,17 +53,27 @@ class AppBase extends Component {
     } = this.props
 
     // generate styles
-    const widgetSS = style({
-      fontSize: '10px',
-      height: renderAtMaxSize ? '100%' : defaultHeight,
-      maxHeight: '736px',
-      maxWidth: '736px',
-      minHeight: '500px',
-      minWidth: '300px',
-      position: 'relative',
-      width: renderAtMaxSize ? '100%' : defaultWidth,
-      zIndex: '10000 !important'
-    })
+    jss.use(isolate({
+      // Will match rule names `widgetSS` in all StyleSheets.
+      reset: 'all'
+    }))
+
+    const styles = {
+      widgetSS: {
+        'background-color': 'white',
+        'font-size': '10px',
+        height: renderAtMaxSize ? '100%' : defaultHeight,
+        maxHeight: 736,
+        maxWidth: 736,
+        minHeight: 500,
+        minWidth: 300,
+        position: 'relative',
+        width: renderAtMaxSize ? '100%' : defaultWidth,
+        zIndex: '10000 !important'
+      }
+    }
+
+    const {classes} = jss.createStyleSheet(styles).attach()
 
     const footer = (
       <Footer
@@ -78,7 +89,7 @@ class AppBase extends Component {
     )
 
     return (
-      <div {...widgetSS}>
+      <div className={classes.widgetSS}>
         { this.state.analyticsCodeLoaded && <analyticsIframe /> }
         <Header
           bgImage={headerImage}
