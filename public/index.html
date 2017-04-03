@@ -15,9 +15,150 @@
     -->
     <title>resmio widget</title>
     <link rel="stylesheet" href="./externalTestStyles.css">
+    <link rel="stylesheet" href="https://pages-resmio-com.s3.amazonaws.com/static/styles/main.css">
+    <style>
+      @-webkit-keyframes button-hover {
+        0% {
+          background: none;
+          border: 2px solid #eee; }
+
+        100% {
+          background: #1e2323;
+          border: 2px solid #1e2323; } }
+
+      @-moz-keyframes button-hover {
+        0% {
+          background: none;
+          border: 2px solid #eee; }
+
+        100% {
+          background: #1e2323;
+          border: 2px solid #1e2323; } }
+
+      @keyframes button-hover {
+        0% {
+          background: none;
+          border: 2px solid #eee; }
+
+        100% {
+          background: #1e2323;
+          border: 2px solid #1e2323; } }
+
+      a {
+        color: #414950; }
+        a:active, a:focus {
+          color: #1e2323;
+        }
+        a:hover {
+          color: #1e2323;
+        }
+        a:active, a:focus {
+          outline: none; }
+
+      button, input[type="button"], input[type="reset"], input[type="submit"], button {
+        background-color: #9ca3b1;
+        color: #eee; }
+        button:hover, button:focus, input[type="button"]:hover, input[type="button"]:focus, input[type="reset"]:hover, input[type="reset"]:focus, input[type="submit"]:hover, input[type="submit"]:focus, button:hover, button:focus {
+          background-color: #89392f;
+          color: #eee; }
+
+      ::selection {
+        background-color: #9ca3b1; }
+
+      .hero {
+        background-color: #414950;
+        border-top: 3px solid #414950;
+      }
+
+      .hero__main-text {
+        color: #eee;
+        text-shadow: 4px 4px #1e2323, 6px 6px #9ca3b1;
+        }
+
+      .hero__important-info {
+        color: #9ca3b1;
+        background: rgba(32,32,32, 0.5);
+      }
+
+      .address {
+        border-color: #414950;
+      }
+
+      .opening-hours__toggler:hover {
+        border: 1px solid #414950;
+      }
+
+      .arrow--down,
+      .arrow--up {
+        color: #9ca3b1;
+      }
+
+      .arrow--down:hover,
+      .arrow--up:hover {
+        fill: #414950;
+      }
+
+      .social-link__link {
+        color: #1e2323; }
+        .social-link__link:hover {
+          background: #1e2323; }
+          .social-link__link:hover .svg-icon__icon {
+            fill: #f7f7f7; }
+
+      .svg-icon__icon {
+        fill: #1e2323; }
+
+      .newsletter-signup__container {
+        border-color: #414950;
+        color: #414950;
+      }
+
+      .resmio-button__container {
+        background: #1e2323; }
+
+      .resmio-button .btn {
+        background: #414950;
+        border: 2px solid #eee; }
+        .resmio-button .btn:hover {
+          -moz-animation: button-hover 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+          animation: button-hover 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+          -webkit-animation-fill-mode: forward;
+          -moz-animation-fill-mode: forward;
+          animation-fill-mode: forward; }
+
+      </style>
+      <style>
+        .hero__image {
+          background-image:url(https://imgresize.resmio.com/600x0/70/jpg/https://resmio-static-files.s3.amazonaws.com/media/facilityimage/mxpipicehecesv0z.JPG);
+        }
+
+          @media screen and (min-width: 40em) {
+            .hero__image {
+              background-image: url(https://imgresize.resmio.com/800x0/70/jpg/https://resmio-static-files.s3.amazonaws.com/media/facilityimage/mxpipicehecesv0z.JPG);
+            }
+          }
+
+          @media screen and (min-width: 50em) {
+            .hero__image {
+              background-image: url(https://imgresize.resmio.com/1100x0/70/jpg/https://resmio-static-files.s3.amazonaws.com/media/facilityimage/mxpipicehecesv0z.JPG);
+            }
+          }
+
+          @media screen and (min-width: 65em) {
+            .hero__image {
+              background-image: url(https://imgresize.resmio.com/1600x0/70/jpg/https://resmio-static-files.s3.amazonaws.com/media/facilityimage/mxpipicehecesv0z.JPG);
+            }
+          }
+
+          @media screen and (min-width: 85em) {
+            .hero__image {
+              background-image: url(https://imgresize.resmio.com/2000x0/70/jpg/https://resmio-static-files.s3.amazonaws.com/media/facilityimage/mxpipicehecesv0z.JPG);
+            }
+          }
+        </style>
   </head>
   <body>
-    <div class="resmio-widget" data-resmio-widget-id='meson-california-2'></div>
+    <div class="resmio-widget" style="margin-top:0;" data-resmio-widget-id='meson-california-2'></div>
     <h1>THIS SHOULD BE RED WITH LIME BACKGROUND</H1>
     <!--
       This HTML file is a template.

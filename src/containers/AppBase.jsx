@@ -1,13 +1,16 @@
 // react & redux
 import React, { Component } from 'react'
-import jss from 'jss'
-import isolate from 'jss-isolate'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 import * as bookingActions from '../actions/bookingActions'
 import * as uiActions from '../actions/uiActions'
 import { getDisplayBooking, isNextButtonEnabled } from '../selectors'
+
+// styles
+import jss from 'jss'
+import isolate from 'jss-isolate'
+import preset from 'jss-preset-default'
 
 // components
 import Header from '../components/Header'
@@ -53,15 +56,14 @@ class AppBase extends Component {
     } = this.props
 
     // generate styles
-    jss.use(isolate({
-      // Will match rule names `widgetSS` in all StyleSheets.
-      reset: 'all'
-    }))
+    jss.setup(preset())
+    // jss.use(isolate({reset: 'all'}))
 
     const styles = {
       widgetSS: {
-        'background-color': 'white',
-        'font-size': '10px',
+        backgroundColor: 'white',
+        fontFamily: '-apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif',
+        fontSize: 10,
         height: renderAtMaxSize ? '100%' : defaultHeight,
         maxHeight: 736,
         maxWidth: 736,
@@ -73,7 +75,7 @@ class AppBase extends Component {
       }
     }
 
-    const {classes} = jss.createStyleSheet(styles).attach()
+    const {classes} = jss.createStyleSheet(styles, {isolate: true}).attach()
 
     const footer = (
       <Footer
@@ -89,7 +91,7 @@ class AppBase extends Component {
     )
 
     return (
-      <div className={classes.widgetSS}>
+     <div className={classes.widgetSS}>
         { this.state.analyticsCodeLoaded && <analyticsIframe /> }
         <Header
           bgImage={headerImage}
