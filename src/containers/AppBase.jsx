@@ -1,12 +1,22 @@
 // react & redux
 import React, { Component } from 'react';
-import { style } from 'glamor'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import * as bookingActions from '../actions/bookingActions'
 import * as uiActions from '../actions/uiActions'
 import { getDisplayBooking, isNextButtonEnabled } from '../selectors'
+
+// styles
+// import injectSheet from 'react-jss'
+import {create as createJss} from 'jss'
+import {create as createInjectSheet} from 'react-jss'
+import isolate from 'jss-isolate'
+
+const jss = createJss()
+jss.use(isolate({ reset: 'all' }))
+
+const injectSheet = createInjectSheet(jss)
 
 // components
 import Header from '../components/Header'
@@ -15,6 +25,22 @@ import Footer from '../components/Footer'
 
 // Analytics
 import { analyticsSetup, analyticsIframe } from '../utils/googleAnalytics'
+
+// generate styles
+const styles = {
+  widget: {
+    background: 'red',
+    fontSize: '10px',
+    height: props => props.state.renderAtMaxSize ? '100%' : props.state.defaultHeight,
+    maxHeight: '736px',
+    maxWidth: '736px',
+    minHeight: '500px',
+    minWidth: '300px',
+    position: 'relative',
+    width: props => props.state.renderAtMaxSize ? '100%' : props.state.defaultWidth,
+    zIndex: '10000 !important'
+  }
+}
 
 class AppBase extends Component {
   state = {
@@ -32,15 +58,12 @@ class AppBase extends Component {
     const {
       buttonColor,
       currentPanel,
-      defaultHeight,
-      defaultWidth,
       facility,
       headerColor,
       headerTextColor,
       headerImage,
       logoUrl,
-      numberOfPanels,
-      renderAtMaxSize
+      numberOfPanels
     } = this.props.state
 
     const {
@@ -48,21 +71,9 @@ class AppBase extends Component {
       bookingInfo,
       buttonEnabled,
       postBooking,
-      reducePanel
+      reducePanel,
+      classes
     } = this.props
-
-    // generate styles
-    const widgetSS = style({
-      fontSize: '10px',
-      height: renderAtMaxSize ? '100%' : defaultHeight,
-      maxHeight: '736px',
-      maxWidth: '736px',
-      minHeight: '500px',
-      minWidth: '300px',
-      position: 'relative',
-      width: renderAtMaxSize ? '100%' : defaultWidth,
-      zIndex: '10000 !important'
-    })
 
     const footer = (
       <Footer
@@ -78,7 +89,7 @@ class AppBase extends Component {
     )
 
     return (
-      <div {...widgetSS}>
+      <div className={classes.widget} >
         { this.state.analyticsCodeLoaded && <analyticsIframe /> }
         <Header
           bgImage={headerImage}
@@ -108,4 +119,5 @@ const  mapDispachToProps = (dispatch) => {
   )
 }
 
-export default connect(mapStateToProps, mapDispachToProps)(AppBase)
+const styledAppBase = injectSheet(styles)(AppBase)
+export default connect(mapStateToProps, mapDispachToProps)(styledAppBase)

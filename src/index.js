@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 
 import store from './store'
 import AppBase from './containers/AppBase';
-import './styles/index';
+// import './styles/index';
 
 var widgets = getWidgetsInstancesFromDOM();
 
