@@ -8,15 +8,7 @@ import * as uiActions from '../actions/uiActions'
 import { getDisplayBooking, isNextButtonEnabled } from '../selectors'
 
 // styles
-// import injectSheet from 'react-jss'
-import {create as createJss} from 'jss'
-import {create as createInjectSheet} from 'react-jss'
-import isolate from 'jss-isolate'
-
-const jss = createJss()
-jss.use(isolate({ reset: 'all' }))
-
-const injectSheet = createInjectSheet(jss)
+import injectSheet from 'react-jss'
 
 // components
 import Header from '../components/Header'
@@ -29,8 +21,9 @@ import { analyticsSetup, analyticsIframe } from '../utils/googleAnalytics'
 // generate styles
 const styles = {
   widget: {
-    background: 'red',
+    background: 'white',
     fontSize: '10px',
+    fontFamily: 'sans-serif',
     height: props => props.state.renderAtMaxSize ? '100%' : props.state.defaultHeight,
     maxHeight: '736px',
     maxWidth: '736px',
