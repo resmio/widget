@@ -12,8 +12,10 @@
   "license": "ISC",
   "engine": "node 6.5.0",
   "devDependencies": {
+    "babel-cli": "^6.24.1",
     "babel-plugin-react-intl": "^2.3.1",
     "gh-pages": "^0.11.0",
+    "react-intl-translations-manager": "^5.0.0",
     "react-moment-proptypes": "^1.2.0",
     "react-scripts": "0.8.5",
     "redux-mock-store": "^1.2.1"
@@ -39,7 +41,8 @@
     "deploy": "npm run build && gh-pages -d build",
     "circleCIOverride": "npm help",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "manage:translations": "node ./scripts/translationRunner.js"
   },
   "main": "index.js"
 }
