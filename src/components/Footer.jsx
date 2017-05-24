@@ -63,8 +63,8 @@ const Footer = (props) => {
       width: '40px'
     }),
     $(':hover', {
-      background: buttonColor,
-      color: 'white',
+      background: buttonDisabled || buttonColor,
+      color: buttonDisabled || 'white',
     }),
     $(':focus', {
       outline: 'none'
@@ -80,6 +80,12 @@ const Footer = (props) => {
     })
   )
 
+const disabled = style({
+  background: 'white',
+  color: '#EEEEEE',
+  borderColor: '#EEEEEE'
+})
+
   // helper functions
   // FIXME: Move this to a selector
   const isFirstPanel = currentPanel <= 1
@@ -91,8 +97,8 @@ const Footer = (props) => {
     : <button {...merge(button, left)} onClick={onPreviousClicked}>Back</button>
 
   const rightElement = isLastPanel
-    ? <button {...button} onClick={onLastClicked} disabled={buttonDisabled}>Book Now</button>
-    : <button {...button} onClick={onNextClicked} disabled={buttonDisabled}>Next</button>
+    ? <button {...merge(button, buttonDisabled && disabled)} onClick={onLastClicked} disabled={buttonDisabled}>Book Now</button>
+    : <button {...merge(button, buttonDisabled && disabled)} onClick={onNextClicked} disabled={buttonDisabled}>Next</button>
 
   // actual render
   return (
