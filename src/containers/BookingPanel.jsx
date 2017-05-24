@@ -31,7 +31,7 @@ class BookingPanel extends Component {
       timePeriods,
       timePeriodSelected,
       timeSelectorState,
-    } = this.props.state
+    } = this.props.widget
 
     const {
       selectDate,
@@ -96,11 +96,11 @@ BookingPanel.propTypes = {
   uiTimeSelectorChangeState: func,
 }
 
-function mapStateToProps(state) {
+function mapStateToProps({widget}) {
   return {
-    state,
-    selectedAvailability: getSelectedAvailability(state),
-    availabilities: showAvailabilities(state)
+    widget,
+    selectedAvailability: getSelectedAvailability(widget),
+    availabilities: showAvailabilities(widget)
   }
 }
 

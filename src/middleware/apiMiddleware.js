@@ -16,7 +16,7 @@ const apiMiddleware = ({ getState, dispatch }) => next => action => {
   if (payload.body) { options.body = JSON.stringify(payload.body(getState())) }
 
   // let's build the url to be used as an endpoint
-  const facility = getState().facility
+  const facility = getState().widget.facility
   const url = `${API_ROOT}${facility}${payload.url}`
 
   const handleError = ( response => dispatch({ type: payload.error, response }))

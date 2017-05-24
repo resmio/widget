@@ -41,7 +41,7 @@ class AppBase extends Component {
       logoUrl,
       numberOfPanels,
       renderAtMaxSize
-    } = this.props.state
+    } = this.props.widget
 
     const {
       advancePanel,
@@ -79,7 +79,7 @@ class AppBase extends Component {
 
     return (
       <div {...widgetSS}>
-        { this.state.analyticsCodeLoaded && <analyticsIframe /> }
+        { this.analyticsCodeLoaded && <analyticsIframe /> }
         <Header
           bgImage={headerImage}
           bgColor={headerColor}
@@ -94,11 +94,11 @@ class AppBase extends Component {
 }
 
 // Wiring
-const mapStateToProps = (state) => {
+const mapStateToProps = ({widget}) => {
   return {
-    state,
-    bookingInfo: getDisplayBooking(state),
-    buttonEnabled: isNextButtonEnabled(state)
+    widget,
+    bookingInfo: getDisplayBooking(widget),
+    buttonEnabled: isNextButtonEnabled(widget)
   }
 }
 

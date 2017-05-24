@@ -4,7 +4,7 @@ const logMiddleware = ({ getState, dispatch }) => next => action => {
     ...action.analytics,
     event: 'ANALYTICS',
     action: action.type,
-    facility: getState().facility}
+    facility: getState().widget.facility}
   )
   next(action)
 }

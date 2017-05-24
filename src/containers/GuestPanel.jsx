@@ -33,7 +33,7 @@ class GuestPanel extends Component {
       guestEmail,
       guestPhone,
       newsletterSubscription
-    } = this.props.state
+    } = this.props.widget
 
     return (
       <Panel>
@@ -82,9 +82,9 @@ class GuestPanel extends Component {
 
 // FIXME:
 // Only connect the elements needed here, instead of the whole state
-function mapStateToProps(state) {
+function mapStateToProps({widget}) {
   return {
-    state
+    widget
   }
 }
 
