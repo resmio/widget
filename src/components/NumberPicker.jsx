@@ -1,4 +1,5 @@
 import React, {PropTypes} from 'react'
+import {injectIntl, intlShape, FormattedMessage} from 'react-intl';
 import {style} from 'glamor'
 import { colors } from '../styles/variables'
 
@@ -53,7 +54,10 @@ const NumberPicker = ({
   const dropdown = (
     <div {...numberPickerSS}>
       <div {...dropdownLabel}>
-        Select amount of people
+        <FormattedMessage
+          id="numberpicker.title"
+          description="Number picker title"
+          defaultMessage="Select amount of people"/>
       </div>
       {dropdownOptions}
     </div>
@@ -87,4 +91,4 @@ NumberPicker.propTypes = {
   state: oneOf(['collapsed', 'semicollapsed', 'expanded']).isRequired,
 }
 
-export default NumberPicker
+export default injectIntl(NumberPicker)
