@@ -44,7 +44,7 @@
     "eject": "react-scripts eject",
     "manage:translations": "node ./scripts/translationRunner.js",
     "build:langs": "BABEL_ENV=production ./node_modules/.bin/babel-node scripts/translator.js",
-    "extract:translations": "node scripts/translate.js"
+    "extract:messages": "node scripts/translate.js"
   },
   "main": "index.js"
 }
