@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react'
-import {injectIntl, intlShape, FormattedMessage} from 'react-intl';
+import {injectIntl, FormattedMessage} from 'react-intl';
 import {style} from 'glamor'
 import { colors } from '../styles/variables'
 
