@@ -23,7 +23,6 @@ if (languageWithoutRegionCode === 'de') {
   messages = localeEnData;
 }
 
-console.log(messages, 'hellooooooo')
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const store = createStore(
   reducer,
