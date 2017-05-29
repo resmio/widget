@@ -24,14 +24,14 @@ globSync(path.join(paths.appSrc, '/**/*.jsx'))
         const result = transformFileSync(filename, {
             plugins: ['react-intl']
         });
-        const messages = result.metadata["react-intl"]["messages"];
-        if (messages.length > 0) {
-            const relFn = path.relative(paths.appSrc, filename);
-            const outFilename = path.join(
-                paths.appBuildMessages,
-                path.dirname(relFn), `${path.basename(relFn, ".js")}.json`);
-            mkdirpSync(path.dirname(outFilename));
-            const outFd = fs.openSync(outFilename, 'w');
-            fs.write(outFd, JSON.stringify(messages));
-        }
+        // const messages = result.metadata["react-intl"]["messages"];
+        // if (messages.length > 0) {
+        //     const relFn = path.relative(paths.appSrc, filename);
+        //     const outFilename = path.join(
+        //         paths.appBuildMessages,
+        //         path.dirname(relFn), `${path.basename(relFn, ".js")}.json`);
+        //     mkdirpSync(path.dirname(outFilename));
+        //     const outFd = fs.openSync(outFilename, 'w');
+        //     fs.write(outFd, JSON.stringify(messages));
+        // }
     });
