@@ -10,7 +10,7 @@ const transformFileSync = require('babel-core').transformFileSync;
 
 // const paths = require('../config/paths');
 const paths = {
-  appSrc: '../widget/src',
+  appSrc: 'src',
   appBuildMessages: 'build/messages'
 }
 
