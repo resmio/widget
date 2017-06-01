@@ -113,7 +113,7 @@ class ConfirmationPanel extends Component {
   render () {
     const {
       buttonColor
-    } = this.props.state
+    } = this.props.widget
 
     const {
       newBooking
@@ -143,7 +143,7 @@ class ConfirmationPanel extends Component {
 
     return (
       <Panel>
-        {PanelRouter(this.props.state)}
+        {PanelRouter(this.props.widget)}
         <span {...hr}/>
         <button {...button} onClick={newBooking}>Create new booking</button>
       </Panel>
@@ -155,8 +155,8 @@ class ConfirmationPanel extends Component {
 // Only connect the elements needed here, instead of the whole state
 // No big deal, since we don't plan to rerender this often
 // But just to keep up with good practices
-function mapStateToProps(state) {
-  return { state }
+function mapStateToProps({widget}) {
+  return { widget }
 }
 
 function mapDispachToProps(dispatch) {

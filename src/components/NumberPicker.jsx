@@ -1,9 +1,18 @@
 import React, {PropTypes} from 'react'
+import {injectIntl, intlShape, defineMessages, FormattedMessage} from 'react-intl';
 import {style} from 'glamor'
 import { colors } from '../styles/variables'
 
 import ExpandableSelector from './ExpandableSelector'
 import DropdownOption from './DropdownOption'
+
+const messages = defineMessages({
+    'ExpandableSelectorLabel': {
+      id: 'NumberPicker.ExpandableSelector.Label',
+      description: 'NumberPicker ExpandableSelector label',
+      defaultMessage: 'PEOPLE'
+    }
+})
 
 const dropdownLabel = style({
   background: colors.gallery,
@@ -12,11 +21,11 @@ const dropdownLabel = style({
   textAlign: 'center',
   width: '100%',
 })
-
 const NumberPicker = ({
     color,
     legendPlural,
     legendSingular,
+
     max,
     min,
     number,
@@ -24,7 +33,8 @@ const NumberPicker = ({
     onMinusClicked,
     onNumberSelected,
     onPlusClicked,
-    state
+    state,
+    intl
 }) => {
   const numberPickerSS = style({
     color: color,
@@ -53,7 +63,10 @@ const NumberPicker = ({
   const dropdown = (
     <div {...numberPickerSS}>
       <div {...dropdownLabel}>
-        Select amount of people
+        <FormattedMessage
+          id="numberpicker.title"
+          description="Number picker title"
+          defaultMessage="Select amount of people"/>
       </div>
       {dropdownOptions}
     </div>
@@ -64,7 +77,7 @@ const NumberPicker = ({
       color={color}
       displayedInfo={`${number} ${legend(number)}`}
       dropdown={dropdown}
-      label='PEOPLE'
+      label={intl.formatMessage(messages.ExpandableSelectorLabel)}
       onExpandClicked={onEditClicked}
       state={state}
     />
@@ -85,6 +98,7 @@ NumberPicker.propTypes = {
   onNumberSelected: func.isRequired,
   onPlusClicked: func,
   state: oneOf(['collapsed', 'semicollapsed', 'expanded']).isRequired,
+  intl: intlShape
 }
 
-export default NumberPicker
+export default injectIntl(NumberPicker)
