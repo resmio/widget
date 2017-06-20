@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect,  } from 'react-redux'
-import {injectIntl, defineMessages, FormattedMessage} from 'react-intl';
+import {injectIntl, defineMessages} from 'react-intl';
 import { style } from 'glamor'
 
 import * as bookingActions from '../actions/bookingActions'

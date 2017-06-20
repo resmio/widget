@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect,  } from 'react-redux'
+import {injectIntl, intlShape, defineMessages, FormattedMessage} from 'react-intl';
 import { style, merge, select as $ } from 'glamor'
 
 import { colors } from '../styles/variables'
@@ -62,8 +63,18 @@ const success = (guestEmail, bookingRefNum) => {
   return (
     <div {...successSS}>
       <IconCheckmark size='3.5em'/>
-      <p {...messageSS}>Thank you!</p>
-      <p {...messageSS}>Your booking is confirmed</p>
+      <p {...messageSS}>
+        <FormattedMessage
+          id="confirmationpanel.thanks"
+          description="ConfirmationPanel thank you message"
+          defaultMessage="Thank you!"/>
+      </p>
+      <p {...messageSS}>
+        <FormattedMessage
+          id="confirmationpanel.confirmed"
+          description="ConfirmationPanel confirmed message"
+          defaultMessage="Your booking is confirmed"/>
+      </p>
       <p {...smallTextSS}>
         An email to {guestEmail} was sent with your booking confirmation and reservation code - <span {...blackerSS}>{bookingRefNum}</span>
       </p>
@@ -116,7 +127,8 @@ class ConfirmationPanel extends Component {
     } = this.props.widget
 
     const {
-      newBooking
+      newBooking,
+      intl
     } = this.props
 
     const button = merge(
@@ -145,7 +157,12 @@ class ConfirmationPanel extends Component {
       <Panel>
         {PanelRouter(this.props.widget)}
         <span {...hr}/>
-        <button {...button} onClick={newBooking}>Create new booking</button>
+        <button {...button} onClick={newBooking}>
+          <FormattedMessage
+            id="confirmationpanel.createnewbooking"
+            description="ConfirmationPanel create new booking button"
+            defaultMessage="Create new booking"/>
+        </button>
       </Panel>
     )
   }
@@ -165,4 +182,4 @@ function mapDispachToProps(dispatch) {
   )
 }
 
-export default connect(mapStateToProps, mapDispachToProps)(ConfirmationPanel)
+export default connect(mapStateToProps, mapDispachToProps)(injectIntl(ConfirmationPanel))
