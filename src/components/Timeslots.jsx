@@ -1,7 +1,21 @@
 import React, { PropTypes } from 'react'
+import {injectIntl, intlShape, defineMessages} from 'react-intl';
 import { style, hover, merge} from 'glamor'
 import { colors } from '../styles/variables'
 import { hexToRgb } from '../utils/colors'
+
+const messages = defineMessages({
+    'TimeslotAvailable': {
+      id: 'timeslot.available',
+      description: 'Timeslot available label',
+      defaultMessage: 'Available'
+    },
+    'TimeslotNotAvailable': {
+      id: 'timeslot.notAvailable',
+      description: 'Timeslot not available label',
+      defaultMessage: 'Not available'
+    }
+})
 
 const timeslotSS = style({
   fontSize: '1em',
@@ -45,6 +59,7 @@ const Timeslots= ({
   timeSelected,
   timePeriods,
   timeslots,
+  intl
 }) => {
 
   return (
@@ -82,7 +97,9 @@ const Timeslots= ({
           >
             <div {...timeslotSS}>
               <span {...merge(time, availableTimeSS, selectedTimeSS)}>{timeslot.local_time_formatted}</span>
-              <span {...merge(spot, availableTimeSS, selectedTimeSS)}>{timeslot.available > 0 ? 'Available' : 'Not Available'}</span>
+              <span {...merge(spot, availableTimeSS, selectedTimeSS)}>
+                {timeslot.available > 0 ? intl.formatMessage(messages.TimeslotAvailable) : intl.formatMessage(messages.TimeslotNotAvailable)}
+              </span>
               <span {...discount}>
                 {timeslot.price_change !== 0 ? `${timeslot.price_change}%` : ''}
               </span>
@@ -103,10 +120,11 @@ Timeslots.propTypes = {
   timePeriodSelected: PropTypes.number,
   timeSelected: PropTypes.string,
   timePeriods: PropTypes.array,
-  timeslots: PropTypes.array
+  timeslots: PropTypes.array,
+  intl: intlShape
 }
 
-export default Timeslots
+export default injectIntl(Timeslots)
 
 // This is the part for the filter
 
