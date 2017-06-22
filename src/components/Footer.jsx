@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
 import { style, merge, select as $ } from 'glamor'
+import {injectIntl, FormattedMessage} from 'react-intl';
 
 import Logo from './Logo'
 
@@ -97,8 +98,18 @@ const disabled = style({
     : <button {...merge(button, left)} onClick={onPreviousClicked}>Back</button>
 
   const rightElement = isLastPanel
-    ? <button {...merge(button, buttonDisabled && disabled)} onClick={onLastClicked} disabled={buttonDisabled}>Book Now</button>
-    : <button {...merge(button, buttonDisabled && disabled)} onClick={onNextClicked} disabled={buttonDisabled}>Next</button>
+    ? <button {...merge(button, buttonDisabled && disabled)} onClick={onLastClicked} disabled={buttonDisabled}>
+      <FormattedMessage
+        id="footer.booknow"
+        description="Footer book now button"
+        defaultMessage="Book now"/>
+    </button>
+    : <button {...merge(button, buttonDisabled && disabled)} onClick={onNextClicked} disabled={buttonDisabled}>
+      <FormattedMessage
+        id="footer.next"
+        description="Footer next button"
+        defaultMessage="Next"/>
+    </button>
 
   // actual render
   return (
@@ -120,4 +131,4 @@ Footer.propTypes = {
   onLastClicked: PropTypes.func
 }
 
-export default Footer
+export default injectIntl(Footer)

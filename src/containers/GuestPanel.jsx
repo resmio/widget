@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect,  } from 'react-redux'
+import {injectIntl, defineMessages} from 'react-intl';
 import { style } from 'glamor'
 
 import * as bookingActions from '../actions/bookingActions'
@@ -9,6 +10,29 @@ import * as bookingActions from '../actions/bookingActions'
 import Panel from '../components/Panel'
 import Form from '../components/Form'
 import Input from '../components/Input'
+
+const messages = defineMessages({
+    'GuestPanelNameLabel': {
+      id: 'guestpanel.name.label',
+      description: 'GuestPanel name label',
+      defaultMessage: 'Name'
+    },
+    'GuestPanelEmailLabel': {
+      id: 'guestpanel.email.label',
+      description: 'GuestPanel email label',
+      defaultMessage: 'Email'
+    },
+    'GuestPanelPhoneLabel': {
+      id: 'guestpanel.phone.label',
+      description: 'GuestPanel phone label',
+      defaultMessage: 'Phone Number'
+    },
+    'GuestPanelNewsletterLabel': {
+      id: 'guestpanel.newsletter.label',
+      description: 'GuestPanel newsletter label',
+      defaultMessage: 'Follow restaurant newsletter'
+    }
+})
 
 const newsletterSection = style({
   color: '#999',
@@ -25,7 +49,8 @@ class GuestPanel extends Component {
   render () {
     const {
       checkboxChanged,
-      inputChanged
+      inputChanged,
+      intl
     } = this.props
 
     const {
@@ -39,7 +64,7 @@ class GuestPanel extends Component {
       <Panel>
         <Form>
           <Input
-            label='Name'
+            label={intl.formatMessage(messages.GuestPanelNameLabel)}
             id='guestName'
             placeHolder='John Doe'
             key='name'
@@ -47,7 +72,7 @@ class GuestPanel extends Component {
             onChange={(e)=>{inputChanged('guestName', e.target.value)}}
           />
           <Input
-            label='Email'
+            label={intl.formatMessage(messages.GuestPanelEmailLabel)}
             id='guestEmail'
             placeHolder='example@mail.com'
             key='email'
@@ -56,7 +81,7 @@ class GuestPanel extends Component {
             type='email'
           />
           <Input
-            label='Phone Number'
+            label={intl.formatMessage(messages.GuestPanelPhoneLabel)}
             id='guestPhone'
             placeHolder='0555555555'
             key='phone'
@@ -72,7 +97,9 @@ class GuestPanel extends Component {
               id='newsletterSubscription'
               onChange={(e)=>{checkboxChanged('newsletterSubscription', e.target.checked)}}
              />
-             <label htmlFor='newsletterSubscription'>Follow restaurant newsletter</label>
+             <label htmlFor='newsletterSubscription'>
+               {intl.formatMessage(messages.GuestPanelNewsletterLabel)}
+             </label>
           </div>
         </Form>
       </Panel>
@@ -94,4 +121,4 @@ function mapDispachToProps(dispatch) {
   )
 }
 
-export default connect(mapStateToProps, mapDispachToProps)(GuestPanel)
+export default connect(mapStateToProps, mapDispachToProps)(injectIntl(GuestPanel))

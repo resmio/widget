@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect,  } from 'react-redux'
+import {injectIntl, FormattedMessage} from 'react-intl';
 import { style, merge, select as $ } from 'glamor'
 
 import { colors } from '../styles/variables'
@@ -62,10 +63,27 @@ const success = (guestEmail, bookingRefNum) => {
   return (
     <div {...successSS}>
       <IconCheckmark size='3.5em'/>
-      <p {...messageSS}>Thank you!</p>
-      <p {...messageSS}>Your booking is confirmed</p>
+      <p {...messageSS}>
+        <FormattedMessage
+          id="confirmationpanel.thanks"
+          description="ConfirmationPanel thank you message"
+          defaultMessage="Thank you!"/>
+      </p>
+      <p {...messageSS}>
+        <FormattedMessage
+          id="confirmationpanel.confirmed"
+          description="ConfirmationPanel confirmed message"
+          defaultMessage="Your booking is confirmed"/>
+      </p>
       <p {...smallTextSS}>
-        An email to {guestEmail} was sent with your booking confirmation and reservation code - <span {...blackerSS}>{bookingRefNum}</span>
+        <FormattedMessage
+          id="confirmationpanel.message"
+          description="ConfirmationPanel message"
+          defaultMessage="An email to {guestEmail} was sent with your booking confirmation and reservation code"
+          values={{
+            guestEmail: guestEmail
+          }}/>
+          - <span {...blackerSS}>{bookingRefNum}</span>
       </p>
     </div>
   )
@@ -74,10 +92,27 @@ const success = (guestEmail, bookingRefNum) => {
 const unconfirmed = (
   <div {...unconfirmedSS}>
     <IconWarning size='3.5em'/>
-    <p {...messageSS}>Thank you!</p>
-    <p {...messageSS}>Booking request received</p>
+    <p {...messageSS}>
+      <FormattedMessage
+        id="confirmationpanel.unconfirmed.thankyou"
+        description="ConfirmationPanel unconfirmed thank you"
+        defaultMessage="Thank you"/>
+    </p>
+    <p {...messageSS}>
+      <FormattedMessage
+        id="confirmationpanel.unconfirmed.request"
+        description="ConfirmationPanel unconfirmed request"
+        defaultMessage="Booking request received"/>
+    </p>
     <p {...smallTextSS}>
-      Atention, your booking <span {...blackerSS}>has not been confirmed yet</span>, but we will contact you as soon as we know whether we can accomodate your request.
+      <FormattedMessage
+        id="confirmationpanel.unconfirmed.notconfirmed"
+        description="ConfirmationPanel unconfirmed alert"
+        defaultMessage="Your booking has not been confirmed yet."/>
+      <FormattedMessage
+        id="confirmationpanel.unconfirmed.contactyou"
+        description="ConfirmationPanel unconfirmed alert"
+        defaultMessage="We will contact you as soon as we know whether we can accomodate your request."/>
     </p>
   </div>
 )
@@ -86,9 +121,21 @@ const error = (
   <div {...errorSS}>
     <IconCircledX size='3.5em'/>
     <p {...messageSS}>Ooops!</p>
-    <p {...messageSS}>Something went wrong</p>
+    <p {...messageSS}>
+      <FormattedMessage
+        id="confirmationpanel.error"
+        description="ConfirmationPanel error"
+        defaultMessage="Something went wrong"/>
+    </p>
     <p {...smallTextSS}>
-      Please try again or call us at <span {...blackerSS}>Phone number</span>. We apologize for the inconvenience.
+      <FormattedMessage
+        id="confirmationpanel.error.tryagain"
+        description="ConfirmationPanel error"
+        defaultMessage="Please try again or call us at Phone number."/>
+      <FormattedMessage
+        id="confirmationpanel.error.apologize"
+        description="ConfirmationPanel error"
+        defaultMessage="We apologize for the inconvenience."/>
     </p>
   </div>
 )
@@ -145,7 +192,12 @@ class ConfirmationPanel extends Component {
       <Panel>
         {PanelRouter(this.props.widget)}
         <span {...hr}/>
-        <button {...button} onClick={newBooking}>Create new booking</button>
+        <button {...button} onClick={newBooking}>
+          <FormattedMessage
+            id="confirmationpanel.createnewbooking"
+            description="ConfirmationPanel create new booking button"
+            defaultMessage="Create new booking"/>
+        </button>
       </Panel>
     )
   }
@@ -165,4 +217,4 @@ function mapDispachToProps(dispatch) {
   )
 }
 
-export default connect(mapStateToProps, mapDispachToProps)(ConfirmationPanel)
+export default connect(mapStateToProps, mapDispachToProps)(injectIntl(ConfirmationPanel))

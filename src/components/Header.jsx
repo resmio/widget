@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
 import { style, merge } from 'glamor'
+import {injectIntl, FormattedMessage} from 'react-intl';
 
 const heading = style({
   fontSize: '18px',
@@ -51,7 +52,10 @@ const Header = ({
   return (
     <header {...header}>
       <h2 {...merge(heading, headerText)}>
-        Online Booking
+      <FormattedMessage
+        id="header.title"
+        description="Widget header title"
+        defaultMessage="Online Booking"/>
       </h2>
       <h1 {...merge(subHeading, headerText)}>
         {subheaderText}
@@ -69,4 +73,4 @@ Header.propTypes = {
   subheaderText: string
 }
 
-export default Header
+export default injectIntl(Header)

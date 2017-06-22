@@ -1,5 +1,6 @@
 import React from 'react'
 import { style } from 'glamor'
+import {injectIntl, intlShape, defineMessages, FormattedMessage} from 'react-intl';
 
 const container = style({
   color: '#999',
@@ -44,8 +45,13 @@ const Checkbox = ({
       id={id}
       onChange={(e) =>{ onChange(e.target.id, e.target.checked)}}
      />
-     <label {...label} htmlFor='newsletterSubscription'>Follow restaurant newsletter</label>
+    <label {...label} htmlFor='newsletterSubscription'>
+      <FormattedMessage
+        id="checkbox.label"
+        description="Follow newsletter checkbox label"
+        defaultMessage="Follow restaurant newsletter"/>
+     </label>
   </div>
 )
 
-export default Checkbox
+export default injectIntl(Checkbox)

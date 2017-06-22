@@ -1,4 +1,5 @@
 import React from 'react'
+import {injectIntl, defineMessages} from 'react-intl';
 import { style } from 'glamor'
 import { colors } from '../styles/variables'
 
@@ -6,6 +7,24 @@ import ExpandableSelector from './ExpandableSelector'
 import DropdownLabel from './DropdownLabel'
 import Timeslots from './Timeslots'
 import Spinner from './Spinner'
+
+const messages = defineMessages({
+    'ClosedMessage': {
+      id: 'timepicker.closed',
+      description: 'Message displayed when the facility is closed',
+      defaultMessage: 'Sorry we are closed that day'
+    },
+    'CapacityMessage': {
+      id: 'timepicker.capacity',
+      description: 'Message displayed when the facility is full',
+      defaultMessage: 'Sorry there\'s no more free seats for that day'
+    },
+    'TimeMessage': {
+      id: 'timepicker.label',
+      description: 'Timepicker label',
+      defaultMessage: 'TIME'
+    }
+})
 
 const timepickerContainer = style({
   marginTop: '1.2em'
@@ -33,6 +52,7 @@ const TimePicker = ({
   onTimePeriodReduce,
   onTimePickerClick,
   onTimeSelect,
+  intl
 }) => {
   let dropdown
 
@@ -42,8 +62,8 @@ const TimePicker = ({
   const fullyBooked = !fetching && noAvailabilities
 
   const message = closed
-    ? 'Sorry we are closed that day'
-    : 'Sorry there\'s no more free seats for that day'
+    ? intl.formatMessage(messages.ClosedMessage)
+    : intl.formatMessage(messages.CapacityMessage)
 
   if (error) {
     dropdown = <div>Something went wrong, please try again</div>
@@ -75,7 +95,7 @@ const TimePicker = ({
 
   return (
     <ExpandableSelector
-      label='TIME'
+      label={intl.formatMessage(messages.TimeMessage)}
       displayedInfo={timeSelected || 'Select time'}
       dropdown={dropdown}
       onExpandClicked={onTimePickerClick}
@@ -84,4 +104,4 @@ const TimePicker = ({
   )
 }
 
-export default TimePicker
+export default injectIntl(TimePicker)
