@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect,  } from 'react-redux'
-import {injectIntl, intlShape, defineMessages, FormattedMessage} from 'react-intl';
+import {injectIntl, FormattedMessage} from 'react-intl';
 import { style, merge, select as $ } from 'glamor'
 
 import { colors } from '../styles/variables'
@@ -76,7 +76,14 @@ const success = (guestEmail, bookingRefNum) => {
           defaultMessage="Your booking is confirmed"/>
       </p>
       <p {...smallTextSS}>
-        An email to {guestEmail} was sent with your booking confirmation and reservation code - <span {...blackerSS}>{bookingRefNum}</span>
+        <FormattedMessage
+          id="confirmationpanel.message"
+          description="ConfirmationPanel message"
+          defaultMessage="An email to {guestEmail} was sent with your booking confirmation and reservation code"
+          values={{
+            guestEmail: guestEmail
+          }}/>
+          - <span {...blackerSS}>{bookingRefNum}</span>
       </p>
     </div>
   )
@@ -85,10 +92,27 @@ const success = (guestEmail, bookingRefNum) => {
 const unconfirmed = (
   <div {...unconfirmedSS}>
     <IconWarning size='3.5em'/>
-    <p {...messageSS}>Thank you!</p>
-    <p {...messageSS}>Booking request received</p>
+    <p {...messageSS}>
+      <FormattedMessage
+        id="confirmationpanel.unconfirmed.thankyou"
+        description="ConfirmationPanel unconfirmed thank you"
+        defaultMessage="Thank you"/>
+    </p>
+    <p {...messageSS}>
+      <FormattedMessage
+        id="confirmationpanel.unconfirmed.request"
+        description="ConfirmationPanel unconfirmed request"
+        defaultMessage="Booking request received"/>
+    </p>
     <p {...smallTextSS}>
-      Atention, your booking <span {...blackerSS}>has not been confirmed yet</span>, but we will contact you as soon as we know whether we can accomodate your request.
+      <FormattedMessage
+        id="confirmationpanel.unconfirmed.notconfirmed"
+        description="ConfirmationPanel unconfirmed alert"
+        defaultMessage="Your booking has not been confirmed yet."/>
+      <FormattedMessage
+        id="confirmationpanel.unconfirmed.contactyou"
+        description="ConfirmationPanel unconfirmed alert"
+        defaultMessage="We will contact you as soon as we know whether we can accomodate your request."/>
     </p>
   </div>
 )
