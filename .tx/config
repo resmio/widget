@@ -1,0 +1,9 @@
+[main]
+host = https://www.transifex.com
+
+[widget-3.enjson]
+file_filter = src/locales/<lang>.json
+source_file = src/locales/en.json
+source_lang = en
+type = KEYVALUEJSON
+
