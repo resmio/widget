@@ -163,8 +163,7 @@ class ConfirmationPanel extends Component {
     } = this.props.widget
 
     const {
-      newBooking,
-      intl
+      newBooking
     } = this.props
 
     const button = merge(
