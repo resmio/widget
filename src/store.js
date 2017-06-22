@@ -8,9 +8,11 @@ import {addLocaleData} from 'react-intl';
 
 import en from 'react-intl/locale-data/en';
 import de from 'react-intl/locale-data/de';
+import da from 'react-intl/locale-data/da';
 import localeEnData from './locales/en.json';
 import localeDeData from './locales/de.json';
-addLocaleData([...en, ...de]);
+import localeDaData from './locales/da.json';
+addLocaleData([...en, ...de, ...da]);
 
 let messages;
 const language =
@@ -19,6 +21,8 @@ const languageWithoutRegionCode = language.toLowerCase().split(/[_-]+/)[0];
 
 if (languageWithoutRegionCode === 'de') {
   messages = localeDeData;
+} if (languageWithoutRegionCode === 'da') {
+  messages = localeDaData;
 } else {
   messages = localeEnData;
 }
