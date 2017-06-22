@@ -121,9 +121,21 @@ const error = (
   <div {...errorSS}>
     <IconCircledX size='3.5em'/>
     <p {...messageSS}>Ooops!</p>
-    <p {...messageSS}>Something went wrong</p>
+    <p {...messageSS}>
+      <FormattedMessage
+        id="confirmationpanel.error"
+        description="ConfirmationPanel error"
+        defaultMessage="Something went wrong"/>
+    </p>
     <p {...smallTextSS}>
-      Please try again or call us at <span {...blackerSS}>Phone number</span>. We apologize for the inconvenience.
+      <FormattedMessage
+        id="confirmationpanel.error.tryagain"
+        description="ConfirmationPanel error"
+        defaultMessage="Please try again or call us at Phone number."/>
+      <FormattedMessage
+        id="confirmationpanel.error.apologize"
+        description="ConfirmationPanel error"
+        defaultMessage="We apologize for the inconvenience."/>
     </p>
   </div>
 )
