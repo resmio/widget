@@ -19,9 +19,10 @@ const language =
 (navigator.languages && navigator.languages[0]) || navigator.language;
 const languageWithoutRegionCode = language.toLowerCase().split(/[_-]+/)[0];
 
+
 if (languageWithoutRegionCode === 'de') {
   messages = localeDeData;
-} if (languageWithoutRegionCode === 'da') {
+} else if (languageWithoutRegionCode === 'da') {
   messages = localeDaData;
 } else {
   messages = localeEnData;
