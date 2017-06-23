@@ -1,5 +1,7 @@
 {
   "checkbox.label": "Tilmeld nyhedsbrev",
+  "datepickersection.date": "DATO",
+  "footer.back": "Tilbage",
   "footer.booknow": "Reserver nu",
   "footer.next": "Næste",
   "header.title": "Online reservation",
@@ -8,6 +10,7 @@
   "timepicker.closed": "Vi er desværre lukket denne dag",
   "timepicker.capacity": "Der er ikke flere ledig pladser",
   "timepicker.label": "TID",
+  "SelectTime": "Vælg tid",
   "timeslot.available": "Fri",
   "timeslot.notAvailable": "Ikke fri",
   "confirmationpanel.thanks": "Tak",
