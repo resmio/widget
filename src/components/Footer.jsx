@@ -95,7 +95,12 @@ const disabled = style({
   // what to render
   const leftElement = isFirstPanel
     ? <Logo />
-    : <button {...merge(button, left)} onClick={onPreviousClicked}>Back</button>
+    : <button {...merge(button, left)} onClick={onPreviousClicked}>
+        <FormattedMessage
+          id="footer.back"
+          description="Footer back button"
+          defaultMessage="Back"/>
+      </button>
 
   const rightElement = isLastPanel
     ? <button {...merge(button, buttonDisabled && disabled)} onClick={onLastClicked} disabled={buttonDisabled}>
