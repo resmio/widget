@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+import {injectIntl, defineMessages} from 'react-intl';
 import { style } from 'glamor'
 
 import moment from 'moment'
@@ -11,6 +12,14 @@ import '../styles/_datepicker.css'
 
 import ExpandableSelector from './ExpandableSelector'
 
+const messages = defineMessages({
+    'DateLabel': {
+      id: 'datepickersection.date',
+      description: 'DatePicker label',
+      defaultMessage: 'DATE'
+    }
+})
+
 const isDisabled = (day) => {
   return moment(day).diff(moment(new Date()), 'days') < 0
 }
@@ -22,7 +31,8 @@ const DatePickerSection = ({
     state,
     selectedDate,
     onDateSelected,
-    onFocusChange
+    onFocusChange,
+    intl
 }) => {
   const dropdownLabelSS = style({
     background: colors.gallery,
@@ -63,7 +73,7 @@ const DatePickerSection = ({
 
   return (
     <ExpandableSelector
-      label={'DATE'}
+      label={intl.formatMessage(messages.DateLabel)}
       displayedInfo={selectedDate.format('dddd, MMM Do')}
       onExpandClicked={onFocusChange}
       dropdown={main}
@@ -81,4 +91,4 @@ DatePickerSection.propTypes = {
   onDateSelected: func
 }
 
-export default DatePickerSection
+export default injectIntl(DatePickerSection)

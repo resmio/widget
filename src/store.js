@@ -5,6 +5,7 @@ import log from './middleware/logMiddleware'
 import api from './middleware/apiMiddleware'
 import thunk from 'redux-thunk'
 import {addLocaleData} from 'react-intl';
+import moment from 'moment'
 
 import en from 'react-intl/locale-data/en';
 import de from 'react-intl/locale-data/de';
@@ -19,6 +20,7 @@ const language =
 (navigator.languages && navigator.languages[0]) || navigator.language;
 const languageWithoutRegionCode = language.toLowerCase().split(/[_-]+/)[0];
 
+moment.locale(language)
 
 if (languageWithoutRegionCode === 'de') {
   messages = localeDeData;

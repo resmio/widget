@@ -23,6 +23,11 @@ const messages = defineMessages({
       id: 'timepicker.label',
       description: 'Timepicker label',
       defaultMessage: 'TIME'
+    },
+    'SelectTime': {
+      id: 'SelectTime',
+      description: 'Select time label',
+      defaultMessage: 'Select time'
     }
 })
 
@@ -73,7 +78,7 @@ const TimePicker = ({
     dropdown = (
       <div {...timepickerContainer}>
         <DropdownLabel color={color}>
-          Select time
+          {intl.formatMessage(messages.SelectTime)}
         </DropdownLabel>
         {!fullyBooked
           ? <Timeslots
@@ -96,7 +101,7 @@ const TimePicker = ({
   return (
     <ExpandableSelector
       label={intl.formatMessage(messages.TimeMessage)}
-      displayedInfo={timeSelected || 'Select time'}
+      displayedInfo={timeSelected || intl.formatMessage(messages.SelectTime)}
       dropdown={dropdown}
       onExpandClicked={onTimePickerClick}
       state={state}
