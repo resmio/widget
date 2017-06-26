@@ -1,7 +1,7 @@
 import moment from 'moment'
 
 // this is function so moment is evaluated after locale is set
-const preloadedState = (facilityId='the-fish') => {
+const preloadedState = (facilityId='the-fish', facilityName) => {
   return {
     widget: {
       availabilities: [],
@@ -23,6 +23,7 @@ const preloadedState = (facilityId='the-fish') => {
       defaultHeight: '380px', // = 500px - 60px header - 60px footer
       defaultWidth: '330px',
       facility: facilityId,
+      facilityName: facilityName,
       headerColor: '#53628C',
       headerImage: 'https://zenezake.files.wordpress.com/2015/07/img_6715.jpg',
       headerTextColor: 'white',
