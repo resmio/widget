@@ -47,8 +47,6 @@ class BookingPanel extends Component {
       <Panel>
         <NumberPicker
           state={guestSelectorState}
-          legendSingular='guest'
-          legendPlural='guests'
           max={maxGuests}
           min={minGuests}
           number={selectedGuests}

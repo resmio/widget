@@ -11,6 +11,11 @@ const messages = defineMessages({
       id: 'NumberPicker.ExpandableSelector.Label',
       description: 'NumberPicker ExpandableSelector label',
       defaultMessage: 'PEOPLE'
+    },
+    'ExpandableSelectorMessage': {
+      id: 'NumberPicker.ExpandableSelector.Message',
+      description: '',
+      defaultMessage: '{itemCount, plural, one {1 guest} other {{itemCount} guests}}'
     }
 })
 
@@ -23,9 +28,6 @@ const dropdownLabel = style({
 })
 const NumberPicker = ({
     color,
-    legendPlural,
-    legendSingular,
-
     max,
     min,
     number,
@@ -42,7 +44,6 @@ const NumberPicker = ({
   })
 
   const numbers = [...Array(max+1).keys()].slice(min)
-  const legend = (num) => num === 1 ? legendSingular : legendPlural
 
   const dropdownOptions = (
     numbers.map((num, i) => {
@@ -75,7 +76,7 @@ const NumberPicker = ({
   return (
     <ExpandableSelector
       color={color}
-      displayedInfo={`${number} ${legend(number)}`}
+      displayedInfo={intl.formatMessage(messages.ExpandableSelectorMessage, {itemCount: number})}
       dropdown={dropdown}
       label={intl.formatMessage(messages.ExpandableSelectorLabel)}
       onExpandClicked={onEditClicked}
@@ -88,8 +89,6 @@ const { oneOf, func, number, string } = PropTypes
 
 NumberPicker.propTypes = {
   color: string,
-  legendPlural: string.isRequired,
-  legendSingular: string.isRequired,
   max: number.isRequired,
   min: number.isRequired,
   number: number.isRequired,
