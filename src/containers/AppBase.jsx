@@ -34,7 +34,6 @@ class AppBase extends Component {
       currentPanel,
       defaultHeight,
       defaultWidth,
-      facility,
       facilityEntity,
       headerColor,
       headerTextColor,
