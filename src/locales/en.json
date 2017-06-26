@@ -1,11 +1,13 @@
 {
   "checkbox.label": "Follow restaurant newsletter",
   "datepickersection.date": "DATE",
+  "datepickerpicker.title": "Select day",
   "footer.back": "Back",
   "footer.booknow": "Book now",
   "footer.next": "Next",
   "header.title": "Online Booking",
   "NumberPicker.ExpandableSelector.Label": "PEOPLE",
+  "NumberPicker.ExpandableSelector.Message": "{itemCount, plural, one {1 guest} other {{itemCount} guests}}",
   "numberpicker.title": "Select amount of people",
   "timepicker.closed": "Sorry we are closed that day",
   "timepicker.capacity": "Sorry there's no more free seats for that day",
