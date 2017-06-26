@@ -17,6 +17,9 @@ import {
   BOOKING_POSTING_SUCCESS,
   CHECKBOX_CHANGED,
   DATE_SELECT,
+  FACILITY_FETCHING,
+  FACILITY_FETCHING_ERROR,
+  FACILITY_FETCHING_SUCCESS,
   GUEST_SELECT,
   INPUT_CHANGED,
   TIME_SELECT,
@@ -28,6 +31,25 @@ import { selectAvailability } from '../utils/availabilities'
 function reducer (state = {}, action) {
 
   switch (action.type) {
+
+    case FACILITY_FETCHING:
+      return Object.assign({}, state, {
+        facilityFetching: true
+      })
+
+    case FACILITY_FETCHING_ERROR:
+      return Object.assign({}, state, {
+        facilityError: true,
+        facilityFetching: false
+      })
+
+    case FACILITY_FETCHING_SUCCESS:
+
+      return Object.assign({}, state, {
+        facilityEntity: action.response,
+        availabilitiesError: false,
+        availabilitiesFetching: false
+      })
 
     case AVAILABILITIES_FETCHING:
       return Object.assign({}, state, {
