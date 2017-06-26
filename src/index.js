@@ -1,4 +1,5 @@
 // react
+import Raven from 'raven-js';
 import React from 'react';
 import { render } from 'react-dom';
 import {Provider} from 'react-intl-redux';
@@ -6,6 +7,13 @@ import {Provider} from 'react-intl-redux';
 import store from './store'
 import AppBase from './containers/AppBase';
 import './styles/index';
+
+if (process.env.NODE_ENV === 'production') {
+    // Configure Sentry error tracking
+    const key = process.env.REACT_APP_SENTRY_KEY
+    const project = process.env.REACT_APP_SENTRY_PROJECT
+    Raven.config(`https://${key}@sentry.resmio.io/${project}`).install();
+}
 
 var widgets = getWidgetsInstancesFromDOM();
 
