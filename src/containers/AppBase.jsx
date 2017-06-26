@@ -35,7 +35,6 @@ class AppBase extends Component {
       defaultHeight,
       defaultWidth,
       facility,
-      facilityName,
       headerColor,
       headerTextColor,
       headerImage,
@@ -85,7 +84,7 @@ class AppBase extends Component {
           bgImage={headerImage}
           bgColor={headerColor}
           color={headerTextColor}
-          subheaderText={ currentPanel === 1 ? (facilityName || facility) : bookingInfo }
+          subheaderText={ currentPanel === 1 ? facility : bookingInfo }
         />
         <PanelRouter panel={currentPanel} />
         { currentPanel <= numberOfPanels ? footer : null }

@@ -21,7 +21,6 @@ function getWidgetsInstancesFromDOM() {
       location.removeAttribute('resmio-widget');
       var options = {
         id: location.getAttribute('data-resmio-widget-id'),
-        name: location.getAttribute('data-resmio-widget-name'),
         location: location
       };
       // Handle the case when no valid id is given
@@ -40,7 +39,7 @@ function getWidgetsInstancesFromDOM() {
 function renderWidget(widget) {
   const MOUNT_NODE = widget.location
   const app = (
-    <Provider store={store(widget)}>
+    <Provider store={store(widget.id)}>
       <AppBase />
     </Provider>
   )
