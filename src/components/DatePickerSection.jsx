@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import {injectIntl, defineMessages} from 'react-intl';
+import {injectIntl, defineMessages, FormattedMessage} from 'react-intl';
 import { style } from 'glamor'
 
 import moment from 'moment'
@@ -59,7 +59,12 @@ const DatePickerSection = ({
 
   const main = (
     <div {...datepickerDropdown}>
-      <div {...dropdownLabelSS}>Select day</div>
+      <div {...dropdownLabelSS}>
+        <FormattedMessage
+          id="datepickerpicker.title"
+          description="Date picker title"
+          defaultMessage="Select day"/>
+      </div>
       <DayPicker
         id="date_input"
         modifiers={modifiers}

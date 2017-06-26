@@ -33,7 +33,7 @@ if (languageWithoutRegionCode === 'de') {
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const store = createStore(
   reducer,
-  Object.assign({}, preloadedState, {intl: {messages: messages, locale: languageWithoutRegionCode}}),
+  Object.assign({}, preloadedState(), {intl: {messages: messages, locale: languageWithoutRegionCode}}),
   composeEnhancers(
     applyMiddleware(log, thunk, api)
   )
