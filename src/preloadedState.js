@@ -9,6 +9,7 @@ const preloadedState = () => {
       guestEmail: '',
       guestName: '',
       guestPhone: '',
+      guestComment: '',
       newsletterSubscription: false,
       maxGuests: 6,
       minGuests: 1,

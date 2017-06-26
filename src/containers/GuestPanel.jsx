@@ -27,6 +27,16 @@ const messages = defineMessages({
       description: 'GuestPanel phone label',
       defaultMessage: 'Phone Number'
     },
+    'GuestPanelCommentLabel': {
+      id: 'guestpanel.comment.label',
+      description: 'GuestPanel comment label',
+      defaultMessage: 'Comment'
+    },
+    'GuestPanelCommentPlaceholder': {
+      id: 'guestpanel.comment.placeholder',
+      description: 'GuestPanel comment placeholder',
+      defaultMessage: 'Optional'
+    },
     'GuestPanelNewsletterLabel': {
       id: 'guestpanel.newsletter.label',
       description: 'GuestPanel newsletter label',
@@ -57,6 +67,7 @@ class GuestPanel extends Component {
       guestName,
       guestEmail,
       guestPhone,
+      guestComment,
       newsletterSubscription
     } = this.props.widget
 
@@ -88,6 +99,14 @@ class GuestPanel extends Component {
             defaultValue={guestPhone}
             onChange={(e)=>{inputChanged('guestPhone', e.target.value)}}
             type='tel'
+          />
+          <Input
+            label={intl.formatMessage(messages.GuestPanelCommentLabel)}
+            id='guestComment'
+            placeHolder={intl.formatMessage(messages.GuestPanelCommentPlaceholder)}
+            key='comment'
+            defaultValue={guestComment}
+            onChange={(e)=>{inputChanged('guestComment', e.target.value)}}
           />
           <div {...newsletterSection}>
             <input
