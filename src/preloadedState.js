@@ -9,6 +9,7 @@ const preloadedState = (facilityId='the-fish') => {
       guestEmail: '',
       guestName: '',
       guestPhone: '',
+      guestComment: '',
       newsletterSubscription: false,
       maxGuests: 6,
       minGuests: 1,

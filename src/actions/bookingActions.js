@@ -122,6 +122,7 @@ export function postBooking () {
           name: widget.guestName,
           email: widget.guestEmail,
           phone: widget.guestPhone,
+          comment: widget.guestComment,
           price_change: getSelectedAvailability(widget).price_change,
           checksum: widget.selectedAvailability,
           facility: `/v1/facility/${widget.facility}`,
