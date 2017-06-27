@@ -29,5 +29,7 @@
   "guestpanel.name.label": "Name",
   "guestpanel.email.label": "Email",
   "guestpanel.phone.label": "Phone Number",
+  "guestpanel.comment.label": "Comment",
+  "guestpanel.comment.placeholder": "Optional",
   "guestpanel.newsletter.label": "Follow restaurant newsletter"
 }
