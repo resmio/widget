@@ -5,7 +5,7 @@
 // Async actions use present and past tense to determine state
 // (ex GUEST:ADDING GUEST:ADDED)
 // Error actions append _ERROR to the action type (TODO_ADD_ERROR)
-import { fetchAvailabilities } from './bookingActions'
+import { fetchFacility, fetchAvailabilities } from './bookingActions'
 
 // First Panel collapsing/expanding selectors
 export const UI_DATE_SELECTOR_CHANGE_STATE = 'UI_DATE_SELECTOR_CHANGE_STATE'
@@ -26,6 +26,7 @@ export function appInit () {
   return (dispatch) => {
     // Not sure if this is an antipattern
     // But it looks like it's working
+    dispatch(fetchFacility())
     dispatch(fetchAvailabilities())
   }
 }
