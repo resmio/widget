@@ -17,7 +17,7 @@ const labelSS = style({
   fontSize: '1.5em',
   fontWeight: 400,
   marginBottom: '0.5em',
-  marginTop: '1.5em',
+  marginTop: '1em',
 })
 
 // FIXME: Add validations
