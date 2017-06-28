@@ -1,11 +1,14 @@
 {
   "checkbox.label": "Angebote vom Restaurant erhalten",
   "datepickersection.date": "DATUM",
+  "datepickerpicker.title": "Select day",
   "footer.back": "zurück",
   "footer.booknow": "Jetzt reservieren",
   "footer.next": "weiter",
   "header.title": "Online Reservierung",
   "NumberPicker.ExpandableSelector.Label": "PERSONEN",
+  "NumberPicker.ExpandableSelector.MessageSingular": "guest",
+  "NumberPicker.ExpandableSelector.MessagePlural": "guests",
   "numberpicker.title": "Anzahl der Personen auswählen",
   "timepicker.closed": "Leider sind wir geschlossen an diesem Tag",
   "timepicker.capacity": "Leider gibt es keine freien Plätze mehr",
@@ -27,5 +30,7 @@
   "guestpanel.name.label": "Name",
   "guestpanel.email.label": "E-Mail",
   "guestpanel.phone.label": "Telefonnummer",
+  "guestpanel.comment.label": "Comment",
+  "guestpanel.comment.placeholder": "Optional",
   "guestpanel.newsletter.label": "Angebote vom Restaurant erhalten"
 }
