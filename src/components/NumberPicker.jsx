@@ -12,10 +12,15 @@ const messages = defineMessages({
       description: 'NumberPicker ExpandableSelector label',
       defaultMessage: 'PEOPLE'
     },
-    'ExpandableSelectorMessage': {
-      id: 'NumberPicker.ExpandableSelector.Message',
-      description: '',
-      defaultMessage: '{itemCount, plural, one {1 guest} other {{itemCount} guests}}'
+    'ExpandableSelectorMessageSingular': {
+      id: 'NumberPicker.ExpandableSelector.MessageSingular',
+      description: 'guests singular',
+      defaultMessage: 'guest'
+    },
+    'ExpandableSelectorMessagePlural': {
+      id: 'NumberPicker.ExpandableSelector.MessagePlural',
+      description: 'guests plural',
+      defaultMessage: 'guests'
     }
 })
 
@@ -73,10 +78,14 @@ const NumberPicker = ({
     </div>
   )
 
+  const legendSingular = intl.formatMessage(messages.ExpandableSelectorMessageSingular)
+  const legendPlural = intl.formatMessage(messages.ExpandableSelectorMessagePlural)
+  const legend = (num) => num === 1 ? legendSingular : legendPlural
+
   return (
     <ExpandableSelector
       color={color}
-      displayedInfo={intl.formatMessage(messages.ExpandableSelectorMessage, {itemCount: number})}
+      displayedInfo={`${number} ${legend(number)}`}
       dropdown={dropdown}
       label={intl.formatMessage(messages.ExpandableSelectorLabel)}
       onExpandClicked={onEditClicked}

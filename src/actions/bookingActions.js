@@ -7,6 +7,9 @@ import { getSelectedAvailability } from '../selectors'
 
 export const API = 'API'
 export const APP_INIT = 'APP_INIT'
+export const FACILITY_FETCHING = 'FACILITY:FETCHING'
+export const FACILITY_FETCHING_SUCCESS = 'FACILITY:FETCHING:SUCCESS'
+export const FACILITY_FETCHING_ERROR = 'FACILITY:FETCHING:ERROR'
 export const AVAILABILITIES_FETCHING = 'AVAILABILITIES:FETCHING'
 export const AVAILABILITIES_FETCHING_SUCCESS = 'AVAILABILITIES:FETCHING:SUCCESS'
 export const AVAILABILITIES_FETCHING_ERROR = 'AVAILABILITIES:FETCHING:ERROR'
@@ -41,6 +44,21 @@ export function selectDate (date) {
       }
     })
     dispatch(fetchAvailabilities())
+  }
+}
+
+// FACILITY --------------------------------------------------------------------
+export function fetchFacility () {
+  return (dispatch, getState) => {
+    dispatch({
+      type: API,
+      payload: {
+        url: '',
+        pending: FACILITY_FETCHING,
+        success: FACILITY_FETCHING_SUCCESS,
+        error: FACILITY_FETCHING_ERROR
+      }
+    })
   }
 }
 
@@ -104,6 +122,7 @@ export function postBooking () {
           name: widget.guestName,
           email: widget.guestEmail,
           phone: widget.guestPhone,
+          comment: widget.guestComment,
           price_change: getSelectedAvailability(widget).price_change,
           checksum: widget.selectedAvailability,
           facility: `/v1/facility/${widget.facility}`,

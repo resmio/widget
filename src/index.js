@@ -47,7 +47,7 @@ function getWidgetsInstancesFromDOM() {
 function renderWidget(widget) {
   const MOUNT_NODE = widget.location
   const app = (
-    <Provider store={store}>
+    <Provider store={store(widget.id)}>
       <AppBase />
     </Provider>
   )

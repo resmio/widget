@@ -1,11 +1,14 @@
 {
   "checkbox.label": "Tilmeld nyhedsbrev",
   "datepickersection.date": "DATO",
+  "datepickerpicker.title": "Vælg dato",
   "footer.back": "Tilbage",
   "footer.booknow": "Reserver nu",
   "footer.next": "Næste",
   "header.title": "Online reservation",
   "NumberPicker.ExpandableSelector.Label": "GÆSTER",
+  "NumberPicker.ExpandableSelector.MessageSingular": "gæst",
+  "NumberPicker.ExpandableSelector.MessagePlural": "gæster",
   "numberpicker.title": "Vælg antal gæster",
   "timepicker.closed": "Vi er desværre lukket denne dag",
   "timepicker.capacity": "Der er ikke flere ledig pladser",
@@ -27,5 +30,7 @@
   "guestpanel.name.label": "Navn",
   "guestpanel.email.label": "E-mail",
   "guestpanel.phone.label": "Telefonnummer",
+  "guestpanel.comment.label": "Kommentar",
+  "guestpanel.comment.placeholder": "Valgfri",
   "guestpanel.newsletter.label": "Tilmeld nyhedsbrev"
 }
