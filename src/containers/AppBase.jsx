@@ -1,12 +1,14 @@
 // react & redux
 import React, { Component } from 'react';
+import { injectIntl, defineMessages } from 'react-intl';
 import { style } from 'glamor'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import * as bookingActions from '../actions/bookingActions'
 import * as uiActions from '../actions/uiActions'
-import { getDisplayBooking, isNextButtonEnabled } from '../selectors'
+import { getSelectedAvailability, isNextButtonEnabled } from '../selectors'
+import { formatLocalDate } from '../utils/dates'
 
 // components
 import Header from '../components/Header'
@@ -15,6 +17,20 @@ import Footer from '../components/Footer'
 
 // Analytics
 import { analyticsSetup, analyticsIframe } from '../utils/googleAnalytics'
+
+const messages = defineMessages({
+    'ExpandableSelectorMessageSingular': {
+      id: 'NumberPicker.ExpandableSelector.MessageSingular',
+      description: 'guests singular',
+      defaultMessage: 'guest'
+    },
+    'ExpandableSelectorMessagePlural': {
+      id: 'NumberPicker.ExpandableSelector.MessagePlural',
+      description: 'guests plural',
+      defaultMessage: 'guests'
+    }
+})
+
 
 class AppBase extends Component {
   state = {
@@ -40,15 +56,17 @@ class AppBase extends Component {
       headerImage,
       logoUrl,
       numberOfPanels,
-      renderAtMaxSize
+      renderAtMaxSize,
+      selectedGuests
     } = this.props.widget
 
     const {
       advancePanel,
-      bookingInfo,
       buttonEnabled,
       postBooking,
-      reducePanel
+      reducePanel,
+      availability,
+      intl
     } = this.props
 
     // generate styles
@@ -77,6 +95,14 @@ class AppBase extends Component {
       />
     )
 
+    let bookingInfo = ''
+    if (availability) {
+      const legendSingular = intl.formatMessage(messages.ExpandableSelectorMessageSingular)
+      const legendPlural = intl.formatMessage(messages.ExpandableSelectorMessagePlural)
+      const legend = selectedGuests === 1 ? legendSingular : legendPlural
+      bookingInfo = `${selectedGuests} ${legend}, ${formatLocalDate(availability.local_date_formatted)}`
+    }
+
     return (
       <div {...widgetSS}>
         { this.analyticsCodeLoaded && <analyticsIframe /> }
@@ -97,7 +123,7 @@ class AppBase extends Component {
 const mapStateToProps = ({widget}) => {
   return {
     widget,
-    bookingInfo: getDisplayBooking(widget),
+    availability: getSelectedAvailability(widget),
     buttonEnabled: isNextButtonEnabled(widget)
   }
 }
@@ -108,4 +134,4 @@ const  mapDispachToProps = (dispatch) => {
   )
 }
 
-export default connect(mapStateToProps, mapDispachToProps)(AppBase)
+export default connect(mapStateToProps, mapDispachToProps)(injectIntl(AppBase))
