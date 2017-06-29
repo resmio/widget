@@ -64,6 +64,7 @@
   "dependencies": {
     "glamor": "^2.17.14",
     "moment": "^2.15.2",
+    "raven-js": "^3.16.0",
     "react": "^15.3.2",
     "react-addons-shallow-compare": "^15.3.2",
     "react-dates": "^4.0.0",
