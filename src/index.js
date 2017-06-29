@@ -10,9 +10,10 @@ import './styles/index';
 
 if (process.env.NODE_ENV === 'production') {
     // Configure Sentry error tracking
-    const key = process.env.REACT_APP_SENTRY_KEY
-    const project = process.env.REACT_APP_SENTRY_PROJECT
-    Raven.config(`https://${key}@sentry.resmio.com/${project}`).install();
+    let key = process.env.REACT_APP_SENTRY_KEY || '134d457df8d74a1aa80f59e873f214fc'
+    let project = process.env.REACT_APP_SENTRY_PROJECT || 4
+    let url = process.env.REACT_APP_SENTRY_URL || 'sentry.resmio.com'
+    Raven.config(`https://${key}@${url}/${project}`).install();
 }
 
 var widgets = getWidgetsInstancesFromDOM();
