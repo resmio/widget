@@ -12,7 +12,7 @@ if (process.env.NODE_ENV === 'production') {
     // Configure Sentry error tracking
     const key = process.env.REACT_APP_SENTRY_KEY
     const project = process.env.REACT_APP_SENTRY_PROJECT
-    Raven.config(`https://${key}@sentry.resmio.io/${project}`).install();
+    Raven.config(`https://${key}@sentry.resmio.com/${project}`).install();
 }
 
 var widgets = getWidgetsInstancesFromDOM();
