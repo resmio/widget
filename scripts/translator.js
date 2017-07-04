@@ -1,7 +1,7 @@
 /* eslint-disable */
-import * as fs from 'fs';
-import { sync as globSync } from 'glob';
-import { sync as mkdirpSync } from 'mkdirp';
+var fs = require('fs');
+var globSync = require('glob').sync;
+var mkdirpSync = require('mkdirp').sync
 
 const filePattern = './build/messages/**/*.json';
 const outputLanguageDataDir = './src/locales/';

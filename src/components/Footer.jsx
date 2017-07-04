@@ -105,9 +105,9 @@ const disabled = style({
   const rightElement = isLastPanel
     ? <button {...merge(button, buttonDisabled && disabled)} onClick={onLastClicked} disabled={buttonDisabled}>
       <FormattedMessage
-        id="footer.booknow"
-        description="Footer book now button"
-        defaultMessage="Book now"/>
+        id="footer.book"
+        description="Footer book button"
+        defaultMessage="Book"/>
     </button>
     : <button {...merge(button, buttonDisabled && disabled)} onClick={onNextClicked} disabled={buttonDisabled}>
       <FormattedMessage

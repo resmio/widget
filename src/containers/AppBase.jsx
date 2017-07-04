@@ -19,13 +19,13 @@ import Footer from '../components/Footer'
 import { analyticsSetup, analyticsIframe } from '../utils/googleAnalytics'
 
 const messages = defineMessages({
-    'ExpandableSelectorMessageSingular': {
-      id: 'NumberPicker.ExpandableSelector.MessageSingular',
+    'AppBaseMessageSingular': {
+      id: 'AppBase.MessageSingular',
       description: 'guests singular',
       defaultMessage: 'guest'
     },
-    'ExpandableSelectorMessagePlural': {
-      id: 'NumberPicker.ExpandableSelector.MessagePlural',
+    'AppBaseMessagePlural': {
+      id: 'AppBase.MessagePlural',
       description: 'guests plural',
       defaultMessage: 'guests'
     }
@@ -97,8 +97,8 @@ class AppBase extends Component {
 
     let bookingInfo = ''
     if (availability) {
-      const legendSingular = intl.formatMessage(messages.ExpandableSelectorMessageSingular)
-      const legendPlural = intl.formatMessage(messages.ExpandableSelectorMessagePlural)
+      const legendSingular = intl.formatMessage(messages.AppBaseMessageSingular)
+      const legendPlural = intl.formatMessage(messages.AppBaseMessagePlural)
       const legend = selectedGuests === 1 ? legendSingular : legendPlural
       bookingInfo = `${selectedGuests} ${legend}, ${formatLocalDate(availability.local_date_formatted)}`
     }
