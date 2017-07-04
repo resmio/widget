@@ -106,8 +106,8 @@ const disabled = style({
     ? <button {...merge(button, buttonDisabled && disabled)} onClick={onLastClicked} disabled={buttonDisabled}>
       <FormattedMessage
         id="footer.booknow"
-        description="Footer book now button"
-        defaultMessage="Book now"/>
+        description="Footer book button"
+        defaultMessage="Book"/>
     </button>
     : <button {...merge(button, buttonDisabled && disabled)} onClick={onNextClicked} disabled={buttonDisabled}>
       <FormattedMessage
