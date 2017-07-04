@@ -7,6 +7,19 @@ import api from './middleware/apiMiddleware'
 import thunk from 'redux-thunk'
 import {addLocaleData} from 'react-intl';
 import moment from 'moment'
+import 'moment/locale/de';
+import 'moment/locale/da';
+import 'moment/locale/sv';
+import 'moment/locale/nl';
+import 'moment/locale/fi';
+import 'moment/locale/fr';
+import 'moment/locale/it';
+import 'moment/locale/lt';
+import 'moment/locale/pl';
+import 'moment/locale/pt';
+import 'moment/locale/ru';
+import 'moment/locale/es';
+import 'moment/locale/tr';
 
 import en from 'react-intl/locale-data/en';
 import de from 'react-intl/locale-data/de';

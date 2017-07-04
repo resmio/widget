@@ -57,6 +57,12 @@ const DatePickerSection = ({
     isSelected: (day) => moment(day).isSame(selectedDate, 'day')
   }
 
+  // override localized dateformats
+  const localizedDateFormats = {
+    de: 'dddd, Do MMM'
+  }
+  const dateFormat = localizedDateFormats[moment.locale()] || 'LL'
+
   const main = (
     <div {...datepickerDropdown}>
       <div {...dropdownLabelSS}>
@@ -79,7 +85,7 @@ const DatePickerSection = ({
   return (
     <ExpandableSelector
       label={intl.formatMessage(messages.DateLabel)}
-      displayedInfo={selectedDate.format('dddd, MMM Do')}
+      displayedInfo={selectedDate.format(dateFormat)}
       onExpandClicked={onFocusChange}
       dropdown={main}
       state={state}
